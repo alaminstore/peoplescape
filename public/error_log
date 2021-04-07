@@ -1,0 +1,1 @@
+[10-Feb-2020 13:25:33 Asia/Dhaka] PHP Fatal error:  Cannot redeclare App\Http\Controllers\Backend\CareerController::jobnaturestore() in /home/peoplescapebd/public_html/peoplescap/app/Http/Controllers/Backend/CareerController.php on line 431
