@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
        $user_image = $user->image;
        $usercv_id = Cvform::where('userid','=',$user->id)->first();
        if($usercv_id){
-        $cv_id = $usercv_id->id; 
+        $cv_id = $usercv_id->id;
 
        }
      }
@@ -166,14 +166,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li class="@yield('home-active')"><a href="{{route('degree.create')}}"><i class="fa fa fa-share"></i> <span>Degree List</span></a></li>
             <li class="@yield('inst-active')"><a href="{{route('institution.create')}}"><i class="fa fa fa-share"></i> <span>Institution List</span></a></li>
             <li class="@yield('home-active')"><a href="{{route('maintainuser.create')}}"><i class="fa fa fa-share"></i> <span>Create User</span></a></li>
-            <li class="@yield('about-active')"><a href="{{route('aboutusop.index')}}"><i class="fa fa fa-share"></i> <span>Aboutus</span></a></li>
-          <li class="@yield('service-active')"><a href="{{route('serviceop.index')}}"><i class="fa fa fa-share"></i> <span>Service</span></a></li>
+            <li class="@yield('about-active')"><a href="{{route('aboutusop.index')}}"><i class="fa fa fa-share"></i> <span>About Us</span></a></li>
+          <li class="@yield('service-active')"><a href="{{route('serviceop.index')}}"><i class="fa fa fa-share"></i> <span>Services</span></a></li>
           <li class="@yield('client-active')"><a href="{{route('clientop.index')}}"><i class="fa fa fa-share"></i> <span>Client</span></a></li>
           <li class="@yield('recog-active')"><a href="{{route('recog.index')}}"><i class="fa fa fa-share"></i> <span>Recognition</span></a></li>
           <li class="@yield('career-active')"><a href="{{route('careerop.index')}}"><i class="fa fa fa-share"></i> <span>Create Job</span></a></li>
+
+          {{-- Job Open start --}}
+         <li class="nav-item open-main-menu">
+            <a class="nav-link" data-toggle="collapse" href="#job_open" aria-expanded="false" aria-controls="ui-sliders" style="display: flex;
+            justify-content: space-between;
+            align-items: center; width:75%;">
+                <div class="open">
+                    <i class="ti-agenda menu-icon"></i>
+                    <i class="fa fa fa-share"></i> <span class="menu-title">Job Open</span>
+                </div>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </a>
+            <div class="collapse" id="job_open">
+                <ul class="nav flex-column sub-menu">
+                  <li class="@yield('jobopen-active')"><a href="{{route('job.open')}}">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i>  &nbsp;&nbsp;Job Opening Header</a></li>
+                </ul>
+            </div>
+        </li>
+         {{-- Job Open End --}}
+
           <li class="@yield('joblist-active')"><a href="{{route('job.list')}}"><i class="fa fa fa-share"></i> <span>Joblist</span></a></li>
           <li class="@yield('contact-active')"><a href="{{route('contactop.index')}}"><i class="fa fa fa-share"></i> <span>Contact</span></a></li>
-          <li class="@yield('galery-active')"><a href="{{route('galeryop.index')}}"><i class="fa fa fa-share"></i> <span>Galery</span></a></li>
+          <li class="@yield('galery-active')"><a href="{{route('galeryop.index')}}"><i class="fa fa fa-share"></i> <span>Gallery</span></a></li>
           <li class="@yield('application-active')"><a href="{{route('application.index')}}"><i class="fa fa fa-share"></i> <span>Application Lists</span></a></li>
        </ul>
       @endif
@@ -181,13 +201,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu tree" data-widget="tree">
       <li class="@yield('home-active')"><a href="{{route('slider.index')}}"><i class="fa fa fa-share"></i> <span>Home</span></a></li>
       <li class="@yield('about-active')"><a href="{{route('aboutusop.index')}}"><i class="fa fa fa-share"></i> <span>Aboutus</span></a></li>
-      <li class="@yield('service-active')"><a href="{{route('serviceop.index')}}"><i class="fa fa fa-share"></i> <span>Service</span></a></li>
+      <li class="@yield('service-active')"><a href="{{route('serviceop.index')}}"><i class="fa fa fa-share"></i> <span>Services</span></a></li>
       <li class="@yield('client-active')"><a href="{{route('clientop.index')}}"><i class="fa fa fa-share"></i> <span>Client</span></a></li>
       <li class="@yield('recog-active')"><a href="{{route('recog.index')}}"><i class="fa fa fa-share"></i> <span>Recognition</span></a></li>
       <li class="@yield('career-active')"><a href="{{route('careerop.index')}}"><i class="fa fa fa-share"></i> <span>Create Job</span></a></li>
       <li class="@yield('joblist-active')"><a href="{{route('job.list')}}"><i class="fa fa fa-share"></i> <span>Joblist</span></a></li>
       <li class="@yield('contact-active')"><a href="{{route('contactop.index')}}"><i class="fa fa fa-share"></i> <span>Contact</span></a></li>
-      <li class="@yield('galery-active')"><a href="{{route('galeryop.index')}}"><i class="fa fa fa-share"></i> <span>Galery</span></a></li>
+      <li class="@yield('galery-active')"><a href="{{route('galeryop.index')}}"><i class="fa fa fa-share"></i> <span>Gallery</span></a></li>
       <!--<li class="@yield('application-active')"><a href="{{route('application.index')}}"><i class="fa fa fa-share"></i> <span>Application Lists</span></a></li>-->
     </ul>
     @endif
@@ -195,7 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu tree" data-widget="tree">
       <li class="@yield('home-active')"><a href="{{route('slider.index')}}"><i class="fa fa fa-share"></i> <span>Home</span></a></li>
       <li class="@yield('about-active')"><a href="{{route('aboutusop.index')}}"><i class="fa fa fa-share"></i> <span>Aboutus</span></a></li>
-      <li class="@yield('service-active')"><a href="{{route('serviceop.index')}}"><i class="fa fa fa-share"></i> <span>Service</span></a></li>
+      <li class="@yield('service-active')"><a href="{{route('serviceop.index')}}"><i class="fa fa fa-share"></i> <span>Services</span></a></li>
       <li class="@yield('client-active')"><a href="{{route('clientop.index')}}"><i class="fa fa fa-share"></i> <span>Client</span></a></li>
       <li class="@yield('recog-active')"><a href="{{route('recog.index')}}"><i class="fa fa fa-share"></i> <span>Recognition</span></a></li>
       <li class="@yield('contact-active')"><a href="{{route('contactop.index')}}"><i class="fa fa fa-share"></i> <span>Contact</span></a></li>
@@ -314,7 +334,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             },
         ]
     } );
-  
+
   </script>
 </body>
 </html>

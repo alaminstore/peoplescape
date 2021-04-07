@@ -187,6 +187,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('filterededzip','Backend\CareerController@filteredzip')->name('filterd.pdf');
     Route::get('sendbulkmail','Backend\CareerController@sendBulkmail')->name('send.bulkmail');
     Route::get('joblist','Backend\CareerController@joblist')->name('job.list');
+    Route::get('Job-open','JobOpenController@index')->name('job.open');
     //02/10/2020
     Route::post('jobnaturestore','Backend\CareerController@jobnaturestore')->name('jobnature.store');
     Route::get('jobnaturedit','Backend\CareerController@jobnatureedit')->name('jobnature.edit');

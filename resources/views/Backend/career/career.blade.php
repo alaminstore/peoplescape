@@ -14,103 +14,11 @@
             <ul class="nav nav-tabs">
                 <li class="active commonlitabforcash"><a data-toggle="tab" href="#tab2">Post Job</a></li>
                 @if(Auth::user()->status !='moderator')
-                <li class="commonlitabforcash"><a data-toggle="tab" href="#tab4">Job Nature</a></li>
-                <li class=" commonlitabforcash"><a data-toggle="tab" href="#tab3">Career  Head</a></li>
+
                 @endif
             </ul>
         <div class="tab-content">
-            <div id="tab3" class="tab-pane fade in">
-                <section class="content" id="careerheadref">
-                <div class="box box-info">
-                        <div class="box-header with-border">
-                        <h3 class="box-title">Career Head</h3>
 
-                        </div>
-                        {!!Form::open(['class' => 'form-horizontal','id'=>'careerhead','enctype'=>'multipart/form-data'])!!}
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="title" class="col-sm-2 control-label">Title</label>
-                                <div class="col-sm-8">
-                                <input type="text" class="form-control" id="title" name="title" value="{{$data['careerhead']->title}}">
-                                <input type="hidden" class="form-control" id="id" name="id" value="{{$data['careerhead']->id}}">
-
-                            </div>
-                            </div>
-
-                        <div class="form-group">
-                                <label for="title" class="col-sm-2 control-label"></label>
-                                <div class="col-md-10">
-                                <img id="myImage" class="img-responsive" width="200" height="100" src="{{url('/'.$data['careerhead']->image)}}" alt="">
-                                </div>
-                                </div>
-                        <div class="form-group">
-                            <label for="title" class="col-sm-2 control-label">Image (748X530)</label>
-                            <div class="col-sm-8">
-                            <input type="file" class="form-control" id="image" name="image">
-                            </div>
-                        </div>
-
-                        </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-info">Update</button>
-                        </div>
-                        {!!Form::close()!!}
-                    </div>
-                </section>
-                <script>
-                    $(document).ready(function () {
-                    $('#careerhead').validate({
-                        rules: {
-                            title:
-                            {
-                                required: true,
-
-                            },
-                        },
-
-                        highlight: function(element) {
-                            $(element).parent().addClass('has-error');
-                        },
-                        unhighlight: function(element) {
-                            $(element).parent().removeClass('has-error');
-                        },
-                    });
-                    });
-                    $(document).on('submit','#careerhead',function(e){
-                        e.preventDefault();
-                        //var data = $(this).serialize();
-                        if ($('#careerhead').valid()) {
-                        $.ajax({
-                        url:"{!! route('careerhead.update') !!}",
-                        method:"POST",
-                        data:new FormData(this),
-                        dataType:'JSON',
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                            success:function(data)
-                            {
-                            //console.log(data);
-                            toastr.options = {
-                                    "debug": false,
-                                    "positionClass": "toast-bottom-right",
-                                    "onclick": null,
-                                    "fadeIn": 300,
-                                    "fadeOut": 1000,
-                                    "timeOut": 5000,
-                                    "extendedTimeOut": 1000
-                                    };
-                            toastr.success('Data Updated Successfully');
-
-
-                            $("#careerheadref").load(location.href + " #careerheadref");
-                            }
-
-                        });
-                    }
-                })
-              </script>
-             </div>
             {{-- tab1 here --}}
         <div id="tab2" class="tab-pane fade in active">
             @if(Auth::user()->status !='moderator')
@@ -122,13 +30,13 @@
                          {!!Form::open(['class' => 'form-horizontal','id'=>'myjob','enctype'=>'multipart/form-data'])!!}
                          <div class="box-body">
                              <div class="form-group">
-                                 <label for="title" class="col-sm-2 control-label">Job Title (2)</label>
+                                 <label for="title" class="col-sm-2 control-label">Job Title</label>
                                  <div class="col-sm-8">
                                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter category Title">
                                  </div>
                              </div>
                              <div class="form-group">
-                                <label for="title" class="col-sm-2 control-label">Company Name (2)</label>
+                                <label for="title" class="col-sm-2 control-label">Company Name</label>
                                 <div class="col-sm-8">
                                 <input type="text" class="form-control" id="company" name="company" placeholder="Enter Company Name">
                                 </div>
@@ -146,14 +54,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="title" class="col-sm-2 control-label">Job Type</label>
-                                <div class="col-sm-8">
+                                <label for="title" class="col-sm-2 control-label">Job Nature</label>
+                                <div class="col-sm-6">
                                    <select  class="form-control"  name="jobtype">
-                                      <option value="">Select Jobtype</option>
+                                      <option value="">Select Job Nature</option>
                                       @foreach($data['jobnature'] as $type)
                                           <option value="{{$type->nature}}" >{{$type->nature}}</option>
                                       @endforeach
                                   </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="pull-right">
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                          <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add New Job Nature
+                                      </button>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -182,7 +97,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="department"  class="col-sm-2 control-label">Select Category</label>
+                                <label for="department"  class="col-sm-2 control-label">Career Category</label>
                                 <div class="form_with_button style="
                                 display: flex;
                                 justify-content: space-between;
@@ -199,7 +114,7 @@
                                       <div class="col-sm-2">
                                           <div class="pull-right">
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add New Category
+                                                <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add New  Category
                                             </button>
                                           </div>
                                       </div>
@@ -288,7 +203,293 @@
 
 
 
-                                    <!-- Modal -->
+
+
+
+
+                                    <!-- Button trigger modal -->
+
+
+                                    <!-- Modal Job Nature -->
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Job Nature</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div id="tab4" class="tab-pane fade in">
+                                                    <div class="row">
+                                                      <div class="col-md-12"><br>
+                                                        <div class="box box-info">
+                                                          <div class="box-header with-border">
+                                                            <h3 class="box-title">Job Nature</h3>
+                                                            </div>
+                                                          <div class="col-md-12">
+                                                            <section class="content">
+                                                             {!!Form::open(['class' => 'form-horizontal','id'=>'jobnature'])!!}
+                                                                  <div class="box-body">
+                                                                      <div class="form-group">
+                                                                          <label for="title" class="col-sm-2 control-label">Nature </label>
+                                                                          <div class="col-sm-8">
+                                                                            <input type="text" class="form-control" id="nature" name="nature" placeholder="Ex: Full Time..">
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                                <div class="box-footer">
+                                                                    <button type="submit" class="btn btn-info">Submit</button>
+                                                                </div>
+                                                              {!!Form::close()!!}
+                                                             </section>
+                                                          </div>
+                                                          <div class="col-md-12">
+                                                              <section class="content">
+                                                                      <div class="row">
+                                                                      <div class="col-xs-12">
+                                                                      <div class="box-body">
+                                                                          <table id="example1" class="table table-bordered table-striped ">
+                                                                              <thead>
+                                                                              <tr>
+                                                                              <th width="50%">Nature</th>
+                                                                              <th width="30%">Action</th>
+                                                                              </tr>
+                                                                              </thead>
+                                                                              <tbody class="jobnatureappend">
+                                                                                @foreach($data['jobnature'] as $jn )
+                                                                                <tr class="unqjobnature{{$jn->id}}">
+                                                                                  <td>{{$jn->nature}}</td>
+                                                                                  <td>
+                                                                                      <a data-id ="{{$jn->id}}" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                                                                      <a class="deletejobnature" data-id ="{{$jn->id}}" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                                                  </td>
+                                                                              </tr>
+                                                                              @endforeach
+                                                                              </tbody>
+                                                                          </table>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </section>
+                                                              <div class="modal fade" id="degreeupdatemodal">
+                                                                      <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                          <div class="modal-header">
+                                                                            <div class="header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true"></span></button>
+                                                                                  <h4 class="modal-title">Job Nature Info</h4>
+                                                                            </div>
+                                                                          </div>
+                                                                            <div class="modal-body">
+                                                                                {!!Form::open(['class' => 'form-horizontal','id'=>'updatejobnature'])!!}
+                                                                                <div class="box-body">
+                                                                              <div class="form-group">
+                                                                                  <label for="link" class="col-sm-2 control-label">Nature</label>
+                                                                                  <div class="col-sm-8">
+                                                                                      <input type="text" class="form-control" id="nature" name="nature">
+                                                                                      <input type="hidden" class="form-control" id="id" name="id">
+                                                                                  </div>
+                                                                              </div>
+                                                                          </div>
+                                                                                <div class="box-footer">
+                                                                                    <button type="submit" class="btn btn-info">Update</button>
+                                                                                </div>
+                                                                                {!!Form::close()!!}
+                                                                          </div>
+                                                                        </div>
+                                                                     </div>
+                                                              </div>
+                                                          </div>
+                                                          <script>
+                                                              $(document).ready(function () {
+                                                                  $('#jobnature').validate({
+                                                                  rules:{
+                                                                      nature:
+                                                                          {
+                                                                          required: true,
+
+                                                                      },
+                                                                 },
+
+                                                                  highlight: function(element) {
+                                                                      $(element).parent().addClass('has-error');
+                                                                  },
+                                                                  unhighlight: function(element) {
+                                                                      $(element).parent().removeClass('has-error');
+                                                                  },
+                                                                  });
+
+                                                              });
+                                                              $('#jobnature').on('submit',function(e){
+                                                                  e.preventDefault();
+                                                                  if ($('#jobnature').valid()) {
+                                                                      $.ajax({
+                                                                      url:"{{route('jobnature.store')}}",
+                                                                      method:"POST",
+                                                                      data:new FormData(this),
+                                                                      dataType:'JSON',
+                                                                      contentType: false,
+                                                                      cache: false,
+                                                                      processData: false,
+                                                                      success:function(data)
+                                                                      {
+                                                                          //console.log(data);
+                                                                          toastr.options = {
+                                                                                  "debug": false,
+                                                                                  "positionClass": "toast-bottom-right",
+                                                                                  "onclick": null,
+                                                                                  "fadeIn": 300,
+                                                                                  "fadeOut": 1000,
+                                                                                  "timeOut": 5000,
+                                                                                  "extendedTimeOut": 1000
+                                                                              };
+                                                                          toastr.success('Data Inserted Successfully');
+                                                                          $('.jobnatureappend').prepend(`<tr class='unqjobnature`+data.id+`'>
+                                                                          <td>`+data.nature+`</td>
+                                                                          <td>
+                                                                              <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                                                              <a class="deletejobnature" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                                          </td>
+                                                                          </tr>`);
+                                                                          $('#jobnature').trigger('reset');
+                                                                      }
+
+                                                                  });
+                                                                  }
+                                                              });
+                                                              $(document).on('click','.editjobnature',function(){
+                                                                  var id = $(this).data('id');
+                                                                  $.ajax({
+                                                                  url: "{!! route('jobnature.edit') !!}",
+                                                                  type: "get",
+                                                                  data: {
+                                                                      id: id,
+                                                                  },
+                                                                  success: function(data) {
+
+                                                                      $('#updatejobnature').find('#id').val(data.id);
+                                                                      $('#updatejobnature').find('#nature').val(data.nature);
+
+
+                                                                      }
+                                                                  });
+                                                              })
+                                                              $(document).ready(function () {
+                                                                  $('#updatejobnature').validate({
+                                                                  rules: {
+
+
+                                                                          nature:
+                                                                          {
+                                                                          required: true,
+
+                                                                          },
+
+
+                                                                  },
+
+                                                                  highlight: function(element) {
+                                                                      $(element).parent().addClass('has-error');
+                                                                  },
+                                                                  unhighlight: function(element) {
+                                                                      $(element).parent().removeClass('has-error');
+                                                                  },
+                                                                  });
+
+                                                              });
+
+                                                              $(document).on('submit','#updatejobnature',function(e){
+                                                                  e.preventDefault();
+                                                                      if ($('#updatejobnature').valid()) {
+                                                                          $.ajax({
+                                                                          url:"{!! route('jobnature.update') !!}",
+                                                                          method:"POST",
+                                                                          data:new FormData(this),
+                                                                          dataType:'JSON',
+                                                                          contentType: false,
+                                                                          cache: false,
+                                                                          processData: false,
+                                                                          success:function(data)
+                                                                          {
+                                                                              toastr.options = {
+                                                                                      "debug": false,
+                                                                                      "positionClass": "toast-bottom-right",
+                                                                                      "onclick": null,
+                                                                                      "fadeIn": 300,
+                                                                                      "fadeOut": 1000,
+                                                                                      "timeOut": 5000,
+                                                                                      "extendedTimeOut": 1000
+                                                                                  };
+                                                                              toastr.success('Data Updated Successfully');
+                                                                                  $('.unqjobnature'+data.id).replaceWith(`<tr class='unqjobnature`+data.id+`'>
+                                                                              <td>`+data.nature+`</td>
+                                                                              <td>
+                                                                                  <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                                                                  <a class="deletejobnature" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                                              </td>
+                                                                              </tr>`);
+                                                                              setTimeout(function() {$('#degreeupdatemodal').modal('hide');}, 1500);
+
+                                                                              $('#updatejobnature').trigger('reset');
+                                                                          }
+
+                                                                      });
+                                                                      }
+
+                                                              })
+                                                              $(document).on('click','.deletejobnature',function(e) {
+                                                                  e.preventDefault();
+                                                                  var id = $(this).data('id');
+                                                                  //alert(role);
+                                                                  Swal.fire({
+                                                                  title: 'Are you sure?',
+                                                                  text: "You won't be able to revert this!",
+                                                                  type: 'warning',
+                                                                  showCancelButton: true,
+                                                                  confirmButtonColor: '#3085d6',
+                                                                  cancelButtonColor: '#d33',
+                                                                  confirmButtonText: 'Yes, delete it!',
+
+                                                                  }).then(result => {
+
+                                                                  if (result.value) {
+                                                                      $.ajax({
+                                                                      url: "{!! route('jobnature.delete') !!}",
+                                                                      type: "get",
+                                                                      data: {
+                                                                          id: id,
+                                                                      },
+                                                                      success: function(data) {
+                                                                          }
+                                                                      });
+
+                                                                      $(this).closest('tr').hide();
+
+                                                                  }
+                                                                  }
+                                                              )
+                                                          });
+                                                          </script>
+                                                      </div>
+                                                      </div>
+                                                    </div>
+                                                 </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    <!-- Modal Career Category-->
                                     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -370,7 +571,7 @@
                                                                   <div class="modal-content">
                                                                     <div class="modal-header">
                                                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span></button>
+                                                                        <span aria-hidden="true"></span></button>
                                                                       <h4 class="modal-title">Edit Category Info</h4>
                                                                     </div>
                                                                       <div class="modal-body">
@@ -939,260 +1140,7 @@
     });
          </script>
     </div>
-    <div id="tab4" class="tab-pane fade in">
-            <div class="row">
-              <div class="col-md-12"><br>
-                <div class="box box-info">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Job Nature</h3>
-                    </div>
-                  <div class="col-md-4">
-                    <section class="content">
-                     {!!Form::open(['class' => 'form-horizontal','id'=>'jobnature'])!!}
-                          <div class="box-body">
-                              <div class="form-group">
-                                  <label for="title" class="col-sm-2 control-label">Nature </label>
-                                  <div class="col-sm-8">
-                                  <input type="text" class="form-control" id="nature" name="nature" placeholder="Ex: Full Time..">
-                                  </div>
-                              </div>
-                          </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-info btn-block">Submit</button>
-                        </div>
-                      {!!Form::close()!!}
-                     </section>
-                  </div>
-                  <div class="col-md-8">
-                      <section class="content">
-                              <div class="row">
-                              <div class="col-xs-12">
-                              <div class="box-body">
-                                  <table id="example1" class="table table-bordered table-striped ">
-                                      <thead>
-                                      <tr>
-                                      <th width="50%">Nature</th>
-                                      <th width="30%">Action</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody class="jobnatureappend">
-                                        @foreach($data['jobnature'] as $jn )
-                                        <tr class="unqjobnature{{$jn->id}}">
-                                          <td>{{$jn->nature}}</td>
-                                          <td>
-                                              <a data-id ="{{$jn->id}}" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                              <a class="deletejobnature" data-id ="{{$jn->id}}" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                          </td>
-                                      </tr>
-                                      @endforeach
-                                      </tbody>
-                                  </table>
-                                  </div>
-                              </div>
-                          </div>
-                      </section>
-                      <div class="modal fade" id="degreeupdatemodal">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Jobnature Info</h4>
-                                  </div>
-                                    <div class="modal-body">
-                                        {!!Form::open(['class' => 'form-horizontal','id'=>'updatejobnature'])!!}
-                                        <div class="box-body">
-                                      <div class="form-group">
-                                          <label for="link" class="col-sm-2 control-label">Nature</label>
-                                          <div class="col-sm-8">
-                                              <input type="text" class="form-control" id="nature" name="nature">
-                                              <input type="hidden" class="form-control" id="id" name="id">
-                                          </div>
-                                      </div>
-                                  </div>
-                                        <div class="box-footer">
-                                            <button type="submit" class="btn btn-info">Update</button>
-                                        </div>
-                                        {!!Form::close()!!}
-                                  </div>
-                                </div>
-                             </div>
-                      </div>
-                  </div>
-                  <script>
-                      $(document).ready(function () {
-                          $('#jobnature').validate({
-                          rules:{
-                              nature:
-                                  {
-                                  required: true,
-
-                              },
-                         },
-
-                          highlight: function(element) {
-                              $(element).parent().addClass('has-error');
-                          },
-                          unhighlight: function(element) {
-                              $(element).parent().removeClass('has-error');
-                          },
-                          });
-
-                      });
-                      $('#jobnature').on('submit',function(e){
-                          e.preventDefault();
-                          if ($('#jobnature').valid()) {
-                              $.ajax({
-                              url:"{{route('jobnature.store')}}",
-                              method:"POST",
-                              data:new FormData(this),
-                              dataType:'JSON',
-                              contentType: false,
-                              cache: false,
-                              processData: false,
-                              success:function(data)
-                              {
-                                  //console.log(data);
-                                  toastr.options = {
-                                          "debug": false,
-                                          "positionClass": "toast-bottom-right",
-                                          "onclick": null,
-                                          "fadeIn": 300,
-                                          "fadeOut": 1000,
-                                          "timeOut": 5000,
-                                          "extendedTimeOut": 1000
-                                      };
-                                  toastr.success('Data Inserted Successfully');
-                                  $('.jobnatureappend').prepend(`<tr class='unqjobnature`+data.id+`'>
-                                  <td>`+data.nature+`</td>
-                                  <td>
-                                      <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                      <a class="deletejobnature" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                  </td>
-                                  </tr>`);
-                                  $('#jobnature').trigger('reset');
-                              }
-
-                          });
-                          }
-                      });
-                      $(document).on('click','.editjobnature',function(){
-                          var id = $(this).data('id');
-                          $.ajax({
-                          url: "{!! route('jobnature.edit') !!}",
-                          type: "get",
-                          data: {
-                              id: id,
-                          },
-                          success: function(data) {
-
-                              $('#updatejobnature').find('#id').val(data.id);
-                              $('#updatejobnature').find('#nature').val(data.nature);
-
-
-                              }
-                          });
-                      })
-                      $(document).ready(function () {
-                          $('#updatejobnature').validate({
-                          rules: {
-
-
-                                  nature:
-                                  {
-                                  required: true,
-
-                                  },
-
-
-                          },
-
-                          highlight: function(element) {
-                              $(element).parent().addClass('has-error');
-                          },
-                          unhighlight: function(element) {
-                              $(element).parent().removeClass('has-error');
-                          },
-                          });
-
-                      });
-
-                      $(document).on('submit','#updatejobnature',function(e){
-                          e.preventDefault();
-                              if ($('#updatejobnature').valid()) {
-                                  $.ajax({
-                                  url:"{!! route('jobnature.update') !!}",
-                                  method:"POST",
-                                  data:new FormData(this),
-                                  dataType:'JSON',
-                                  contentType: false,
-                                  cache: false,
-                                  processData: false,
-                                  success:function(data)
-                                  {
-                                      toastr.options = {
-                                              "debug": false,
-                                              "positionClass": "toast-bottom-right",
-                                              "onclick": null,
-                                              "fadeIn": 300,
-                                              "fadeOut": 1000,
-                                              "timeOut": 5000,
-                                              "extendedTimeOut": 1000
-                                          };
-                                      toastr.success('Data Updated Successfully');
-                                          $('.unqjobnature'+data.id).replaceWith(`<tr class='unqjobnature`+data.id+`'>
-                                      <td>`+data.nature+`</td>
-                                      <td>
-                                          <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                          <a class="deletejobnature" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                      </td>
-                                      </tr>`);
-                                      setTimeout(function() {$('#degreeupdatemodal').modal('hide');}, 1500);
-
-                                      $('#updatejobnature').trigger('reset');
-                                  }
-
-                              });
-                              }
-
-                      })
-                      $(document).on('click','.deletejobnature',function(e) {
-                          e.preventDefault();
-                          var id = $(this).data('id');
-                          //alert(role);
-                          Swal.fire({
-                          title: 'Are you sure?',
-                          text: "You won't be able to revert this!",
-                          type: 'warning',
-                          showCancelButton: true,
-                          confirmButtonColor: '#3085d6',
-                          cancelButtonColor: '#d33',
-                          confirmButtonText: 'Yes, delete it!',
-
-                          }).then(result => {
-
-                          if (result.value) {
-                              $.ajax({
-                              url: "{!! route('jobnature.delete') !!}",
-                              type: "get",
-                              data: {
-                                  id: id,
-                              },
-                              success: function(data) {
-                                  }
-                              });
-
-                              $(this).closest('tr').hide();
-
-                          }
-                          }
-                      )
-                  });
-                  </script>
-              </div>
-              </div>
-            </div>
-         </div>
+    {{-- here...... tab 4 --}}
     </div>
 </section>
 @endsection
