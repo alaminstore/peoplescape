@@ -48,7 +48,7 @@
                         <td width="40%"><b>Marital Status</b></td>
                         <td width="60%">{{$careerInfoByid->marital_status}}</td>
                     </tr>
-                    
+
             </table><br>
            <div class="row" style="margin:2px;">
                 <div class="col-12">
@@ -59,7 +59,7 @@
             </div>
             <div class="col-12">
                 <div class="form-group">
-                
+
                 <textarea name="coverletter" class="form-control" rows="8">{{$careerInfoByid->objective}}</textarea>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                     <th width="15%">Major</th>
                     <th width="15%">Minor</th>
                     <th width="15%">Location</th>
-                    <th width="15%">Passing Year</th> 
+                    <th width="15%">Passing Year</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -91,14 +91,16 @@
                         <td>{{$acc->degree}}</td>
                         <td>{{$acc->cgpa}}</td>
                         <td>
-                             @if(array_key_exists('major', $acc))
+                             {{-- @if(array_key_exists('major', $acc)) --}}
+                             @if(isset($acc->major))
                             {{$acc->major}}
                             @else
                             {{N/A}}
                             @endif
                         </td>
                         <td>
-                            @if(array_key_exists('minor', $acc))
+                            {{-- @if(array_key_exists('minor', $acc)) --}}
+                            @if(isset($acc->minor))
                             {{$acc->minor}}
                             @else
                             {{N/A}}
@@ -111,7 +113,7 @@
                   @endif
                 </tbody>
             </table><br>
-      
+
       <div class="row" style="margin:2px;">
         <div class="col-12">
             <div class="form-group">
@@ -124,15 +126,15 @@
       <tr>
           <th width="20%">Job Title</th>
           <th width="20%">Company Name</th>
-          <th width="20%">Responsibilities</th> 
-          <th width="20%">Joined On</th> 
-          <th width="20%">Left On</th> 
+          <th width="20%">Responsibilities</th>
+          <th width="20%">Joined On</th>
+          <th width="20%">Left On</th>
       </tr>
       </thead>
       <tbody>
           @if(!empty($careerInfoByid->experience))
               <?php $jsonexpdata = json_decode($careerInfoByid->experience);?>
-          
+
           @foreach($jsonexpdata as $exp)
           <tr>
           <td>{{$exp->title}}</td>
@@ -162,8 +164,8 @@
           <tbody>
               @if(!empty($careerInfoByid->project))
                  <?php  $jsonprojectdata = json_decode($careerInfoByid->project);?>
-              
-              
+
+
               @foreach($jsonprojectdata as $pro)
               <tr>
               <td>{{$pro->url}}</td>
@@ -183,19 +185,19 @@
               <table class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                     
+
                       <th>Achievements</th>
                   </tr>
                   </thead>
                   <tbody>
-                      
+
                       @if(!empty($careerInfoByid->achievement))
                          <?php  $jsonachievementdata = json_decode($careerInfoByid->achievement);?>
-                      
-                      
+
+
                       @foreach($jsonachievementdata as $achv)
                       <tr>
-                     
+
                       <td>{{$achv->achieve}}</td>
                       </tr>
                     @endforeach
@@ -212,19 +214,19 @@
                       <table class="table table-bordered table-striped">
                           <thead>
                           <tr>
-                             
+
                               <th>Skills</th>
                           </tr>
                           </thead>
                           <tbody>
-                              
+
                               @if(!empty($careerInfoByid->skill))
                                  <?php  $jsonskilldata = json_decode($careerInfoByid->skill);?>
-                              
-                              
+
+
                               @foreach($jsonskilldata as $sk)
                               <tr>
-                             
+
                               <td>{{$sk->competent}}</td>
                               </tr>
                             @endforeach
@@ -235,7 +237,7 @@
             <div class="col-12">
                 <div class="form-group">
                 <label for="sel1"><b>Coverletter</b></label>
-                
+
                 <textarea name="coverletter" class="form-control" rows="8">{{$careerInfoByid->interest}}</textarea>
                 </div>
             </div>
@@ -250,21 +252,21 @@
           <table class="table table-bordered table-striped">
               <thead>
               <tr>
-                 
+
                   <th width="30%">Title</th>
                   <th width="30%">Company</th>
                   <th width="30%">Contact Info</th>
               </tr>
               </thead>
               <tbody>
-                  
+
                   @if(!empty($careerInfoByid->reference))
                      <?php  $jsonreferencedata = json_decode($careerInfoByid->reference);?>
-                  
-                  
+
+
                   @foreach($jsonreferencedata as $ref)
                   <tr>
-                 
+
                   <td>{{$ref->title}}</td>
                   <td>{{$ref->company}}</td>
                   <td>{{$ref->contactinfo}}</td>
