@@ -24,12 +24,12 @@ class CareerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $data = [];
         $data['cat'] = Careercat::all();
         //$data['job'] = Career::all();
          $data['job'] =  DB::select(DB::raw("SELECT careers.*,COUNT(DISTINCT jobapplieds.applicant_id) AS totalapplicant,COUNT(DISTINCT shortlisteds.user_id) AS totalshortlisted
-                        FROM careers 
+                        FROM careers
                         LEFT JOIN jobapplieds ON careers.id = jobapplieds.job_id
                         LEFT JOIN shortlisteds ON careers.id = shortlisteds.job_id
                         GROUP BY careers.id"));
@@ -42,7 +42,7 @@ class CareerController extends Controller
         $data['cat'] = Careercat::all();
         //$data['job'] = Career::all();
          $data['job'] =  DB::select(DB::raw("SELECT careers.*,COUNT(DISTINCT jobapplieds.applicant_id) AS totalapplicant,COUNT(DISTINCT shortlisteds.user_id) AS totalshortlisted
-                        FROM careers 
+                        FROM careers
                         LEFT JOIN jobapplieds ON careers.id = jobapplieds.job_id
                         LEFT JOIN shortlisteds ON careers.id = shortlisteds.job_id
                         GROUP BY careers.id"));
@@ -74,12 +74,13 @@ class CareerController extends Controller
         }
     }
     public function careercatstore(Request $request){
+
         $careerCat = new Careercat();
         $careerCat->title = $request->title;
         $careerCat->save();
         return response()->json($careerCat);
     }
-    
+
     public function careercatedit(Request $request){
         $id = $request->id;
         $careerCat = Careercat::find($id);
@@ -116,8 +117,8 @@ class CareerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-    
+    {
+
         $career = new Career();
         $career->title = $request->title;
         $career->company = $request->company;
@@ -189,7 +190,7 @@ class CareerController extends Controller
         $id = $request->id;
         $data['careerbyid']  = Career::find($id);
         $data['cat'] = Careercat::all();
-        return view('Backend.career.detailjob',compact('data','id'));  
+        return view('Backend.career.detailjob',compact('data','id'));
 
     }
     public function applicantlist(Request $request){
@@ -204,25 +205,25 @@ class CareerController extends Controller
         $leftIn=[];
         $i=0;
         foreach($applicantByjobid as $us){
-            $i++; 
-            $sum=0;        
+            $i++;
+            $sum=0;
             $decoded = json_decode($us->experience);
             $initiallef=0;
-           
+
             foreach($decoded as $key=>$exp){
                 $expjoin = strtotime($exp->joinedin);
                 $expleft = strtotime($exp->leftin);
                 $diff = $expleft - $expjoin;
                 $day = $diff / 86400;
-                $sum = $sum + $day; 
+                $sum = $sum + $day;
                 if(strtotime($exp->leftin) > $initiallef ){
                     $userid[$i]['lastleftin']=$exp->leftin;
                     $userid[$i]['lastcompany']=$exp->company;
                 }else{
-                    $userid[$i]['lastcompany']='Wrong format'; 
+                    $userid[$i]['lastcompany']='Wrong format';
                 }
                 $initiallef=strtotime($exp->leftin);
-                
+
             }
             $decoded1 = json_decode($us->academic);
             $intitialpyear=0;
@@ -230,18 +231,18 @@ class CareerController extends Controller
                 if(strtotime($acc->pyear) > $intitialpyear){
                     $userid[$i]['lastinst']=$acc->instname;
                     if($userid[$i]['lastinst']=='other'){
-                        $userid[$i]['lastinst']=$acc->instnameoth; 
+                        $userid[$i]['lastinst']=$acc->instnameoth;
                     }
-                    $userid[$i]['lastdegree']=$acc->degree; 
+                    $userid[$i]['lastdegree']=$acc->degree;
                    if(array_key_exists('major', $acc)){
                       $userid[$i]['major']=$acc->major;
                     }else{
-                        $userid[$i]['major']='No Data'; 
+                        $userid[$i]['major']='No Data';
                     }
                    if(array_key_exists('minor', $acc)){
                       $userid[$i]['minor']=$acc->minor;
                    }else{
-                        $userid[$i]['minor']='No Data'; 
+                        $userid[$i]['minor']='No Data';
                     }
                 }else{
                      $userid[$i]['lastinst']='wrong format';
@@ -263,7 +264,7 @@ class CareerController extends Controller
         return view('Backend.career.applicantlist',compact('applicantByjobid','id','countApplicant','degrees','userid'));
 
     }
-  
+
     public function shortlistedapplicantlist(Request $request){
         $jobid = $request->id;
         $findShortlistedapplicant = DB::table('users')
@@ -276,25 +277,25 @@ class CareerController extends Controller
         $leftIn=[];
         $i=0;
         foreach($findShortlistedapplicant as $us){
-            $i++; 
-            $sum=0;        
+            $i++;
+            $sum=0;
             $decoded = json_decode($us->experience);
             $initiallef=0;
-           
+
             foreach($decoded as $key=>$exp){
                 $expjoin = strtotime($exp->joinedin);
                 $expleft = strtotime($exp->leftin);
                 $diff = $expleft - $expjoin;
                 $day = $diff / 86400;
-                $sum = $sum + $day; 
+                $sum = $sum + $day;
                 if(strtotime($exp->leftin) > $initiallef ){
                     $userid[$i]['lastleftin']=$exp->leftin;
                     $userid[$i]['lastcompany']=$exp->company;
                 }else{
-                    $userid[$i]['lastcompany']='Wrong format'; 
+                    $userid[$i]['lastcompany']='Wrong format';
                 }
                 $initiallef=strtotime($exp->leftin);
-                
+
             }
             $decoded1 = json_decode($us->academic);
             $intitialpyear=0;
@@ -302,18 +303,18 @@ class CareerController extends Controller
                 if(strtotime($acc->pyear) > $intitialpyear){
                     $userid[$i]['lastinst']=$acc->instname;
                     if($userid[$i]['lastinst']=='other'){
-                        $userid[$i]['lastinst']=$acc->instnameoth; 
+                        $userid[$i]['lastinst']=$acc->instnameoth;
                     }
-                    $userid[$i]['lastdegree']=$acc->degree; 
+                    $userid[$i]['lastdegree']=$acc->degree;
                    if(array_key_exists('major', $acc)){
                       $userid[$i]['major']=$acc->major;
                     }else{
-                        $userid[$i]['major']='No Data'; 
+                        $userid[$i]['major']='No Data';
                     }
                    if(array_key_exists('minor', $acc)){
                       $userid[$i]['minor']=$acc->minor;
                    }else{
-                        $userid[$i]['minor']='No Data'; 
+                        $userid[$i]['minor']='No Data';
                     }
                 }else{
                      $userid[$i]['lastinst']='wrong format';
@@ -330,7 +331,7 @@ class CareerController extends Controller
             $userid[$i]['age']=$us->age;
             $userid[$i]['gender']=$us->gender;
         }
-         $countsortApplicant = Shortlisted::where('job_id',$jobid)->get(); 
+         $countsortApplicant = Shortlisted::where('job_id',$jobid)->get();
           $degrees = Degree::orderBy('id','desc')->get();
         return view('Backend.career.shortlistedapplicantlist',compact('findShortlistedapplicant','jobid','countsortApplicant','degrees','userid'));
     }
@@ -341,28 +342,28 @@ class CareerController extends Controller
       return response()->json('deleted');
     }
     public function singlezip(Request $request){
-        $id = $request->id; 
+        $id = $request->id;
         $zipableFile = Jobapplied::where('job_id','=',$id)->get();
           unlink('appliedcv.zip');
         foreach($zipableFile as $article) {
             $files =('careerfile/'.$article->pdf);
               \Zipper::make('appliedcv.zip')->add($files)->close();
-            } 
-            return $response = response()->download('appliedcv.zip'); 
+            }
+            return $response = response()->download('appliedcv.zip');
 
-           
+
     }
     public function shortlistedzip(Request $request){
-        $id = $request->id; 
-       
+        $id = $request->id;
+
         $zipper = new \Chumper\Zipper\Zipper;
          $zipableFile = Shortlisted::where('job_id','=',$id)->get();
          unlink('shortappliedcv.zip');
         foreach($zipableFile as $article) {
             $files =('careerfile/'.$article->pdf);
               \Zipper::make('shortappliedcv.zip')->add($files)->close();
-            } 
-            return $response = response()->download('shortappliedcv.zip'); 
+            }
+            return $response = response()->download('shortappliedcv.zip');
     }
         //11.12.2019
     public function filterApplicant(Request $request, Cvform $user){
@@ -377,8 +378,8 @@ class CareerController extends Controller
         if(!empty($cgpa)){
             $cgpaArray = \explode('-',$cgpa);
         }
-        $gender=$request->gender;      
-        $user = $user->newQuery(); 
+        $gender=$request->gender;
+        $user = $user->newQuery();
         $appLieduer=Jobapplied::where('job_id',$request->id)->pluck('applicant_id');
         //return $appLieduer;
         if(!empty($area)) {
@@ -408,23 +409,23 @@ class CareerController extends Controller
         $leftIn=[];
         $i=0;
         foreach($user as $us){
-            $i++; 
-            $sum=0;        
+            $i++;
+            $sum=0;
             $decoded = json_decode($us->experience);
             $initiallef=0;
-           
+
             foreach($decoded as $key=>$exp){
                 $expjoin = strtotime($exp->joinedin);
                 $expleft = strtotime($exp->leftin);
                 $diff = $expleft - $expjoin;
                 $day = $diff / 86400;
-                $sum = $sum + $day; 
+                $sum = $sum + $day;
                 if(strtotime($exp->leftin) > $initiallef ){
                     $userid[$i]['lastleftin']=$exp->leftin;
                     $userid[$i]['lastcompany']=$exp->company;
                 }
                 $initiallef=strtotime($exp->leftin);
-                
+
             }
             $decoded1 = json_decode($us->academic);
             $intitialpyear=0;
@@ -432,22 +433,22 @@ class CareerController extends Controller
                 if(strtotime($acc->pyear) > $intitialpyear){
                     $userid[$i]['lastinst']=$acc->instname;
                     if($userid[$i]['lastinst']=='other'){
-                        $userid[$i]['lastinst']=$acc->instnameoth; 
+                        $userid[$i]['lastinst']=$acc->instnameoth;
                     }
-                    $userid[$i]['lastdegree']=$acc->degree; 
+                    $userid[$i]['lastdegree']=$acc->degree;
                     $userid[$i]['major']=$acc->major;
                     $userid[$i]['minor']=$acc->minor;
                 }
                 $intitialpyear = strtotime($acc->pyear);
             }
-            //$expcount[$us->id] = $sum / 365; 
+            //$expcount[$us->id] = $sum / 365;
             $appLieduer= Shortlisted::where('job_id',$request->id)->where('user_id',$us->userid)->first();
             if($appLieduer){
-                $userid[$i]['status'] = 'sortlisted'; 
+                $userid[$i]['status'] = 'sortlisted';
             }else{
-                $userid[$i]['status'] = 'unsortlisted'; 
+                $userid[$i]['status'] = 'unsortlisted';
             }
-            
+
             $userid[$i]['name']=$us->name;
             $userid[$i]['email']=$us->email;
             $userid[$i]['mobile']=$us->mobile;
@@ -456,7 +457,7 @@ class CareerController extends Controller
             $userid[$i]['age']=$us->age;
             $userid[$i]['gender']=$us->gender;
         }
-        return response()->json($userid);   
+        return response()->json($userid);
     }
         public function filtersortApplicant(Request $request, Cvform $user){
         $area=$request->area;
@@ -471,7 +472,7 @@ class CareerController extends Controller
             $cgpaArray = \explode('-',$cgpa);
         }
         $gender=$request->gender;
-        $user = $user->newQuery(); 
+        $user = $user->newQuery();
         $appLieduer= Shortlisted::where('job_id',$request->id)->pluck('user_id');
         //return $appLieduer;
         if(!empty($area)) {
@@ -495,29 +496,29 @@ class CareerController extends Controller
         if(!empty($gender)) {
             $user->whereIn('userid',$appLieduer)->where('gender',$gender);
         }
-        
+
         $user=$user->get();
         $userid=[];
         $leftIn=[];
         $i=0;
         foreach($user as $us){
-            $i++; 
-            $sum=0;        
+            $i++;
+            $sum=0;
             $decoded = json_decode($us->experience);
             $initiallef=0;
-           
+
             foreach($decoded as $key=>$exp){
                 $expjoin = strtotime($exp->joinedin);
                 $expleft = strtotime($exp->leftin);
                 $diff = $expleft - $expjoin;
                 $day = $diff / 86400;
-                $sum = $sum + $day; 
+                $sum = $sum + $day;
                 if(strtotime($exp->leftin) > $initiallef ){
                     $userid[$i]['lastleftin']=$exp->leftin;
                     $userid[$i]['lastcompany']=$exp->company;
                 }
                 $initiallef=strtotime($exp->leftin);
-                
+
             }
             $decoded1 = json_decode($us->academic);
             $intitialpyear=0;
@@ -525,9 +526,9 @@ class CareerController extends Controller
                 if(strtotime($acc->pyear) > $intitialpyear){
                     $userid[$i]['lastinst']=$acc->instname;
                     if($userid[$i]['lastinst']=='other'){
-                        $userid[$i]['lastinst']=$acc->instnameoth; 
+                        $userid[$i]['lastinst']=$acc->instnameoth;
                     }
-                    $userid[$i]['lastdegree']=$acc->degree; 
+                    $userid[$i]['lastdegree']=$acc->degree;
                     $userid[$i]['major']=$acc->major;
                     $userid[$i]['minor']=$acc->minor;
                 }
@@ -541,7 +542,7 @@ class CareerController extends Controller
             $userid[$i]['age']=$us->age;
             $userid[$i]['gender']=$us->gender;
         }
-        return response()->json($userid);   
+        return response()->json($userid);
 
     }
 
@@ -560,16 +561,16 @@ class CareerController extends Controller
              $findJob = Career::find($request->jobid);
             $findJob->comstatus = 'running';
             $findJob->save();
-            
+
         }
           //$findJob->status = $request->id;
           //$findJob->save();
           return response()->json($request->sttype);
     }
-    
-    
+
+
      public function unshortlistapplicatn(Request $request){
-        
+
         $shortlistedApplicant = Shortlisted::where('job_id',$request->jobid)->where('user_id',$request->userid)->first();
         $id = $shortlistedApplicant->id;
         $findid = Shortlisted::find($id);
@@ -577,14 +578,14 @@ class CareerController extends Controller
         return response()->json('success');
     }
     public function shortlistapplicatn(Request $request){
-        
+
         $shortlistedApplicant = new Shortlisted();
         $shortlistedApplicant->job_id = $request->jobid;
         $shortlistedApplicant->user_id = $request->userid;
         $shortlistedApplicant->pdf = $request->userid.'.pdf';
         $shortlistedApplicant->save();
         return response()->json('success');
-      
+
     }
     public function filteredzip(Request $request){
         $ids = $request->ids;
@@ -593,9 +594,9 @@ class CareerController extends Controller
                $orgid = $id.'.pdf';
             $files =('careerfile/'.$orgid);
               \Zipper::make('filtered.zip')->add($files)->close();
-            } 
-            // \Zipper->close(); 
-            return $response = response()->download('filtered.zip'); 
+            }
+            // \Zipper->close();
+            return $response = response()->download('filtered.zip');
 
     }
      public function sortfilteredzip(Request $request){
@@ -605,9 +606,9 @@ class CareerController extends Controller
                $orgid = $id.'.pdf';
             $files = ('careerfile/'.$orgid);
               \Zipper::make('sortfiltered.zip')->add($files)->close();
-            } 
-            // \Zipper->close(); 
-            return $response = response()->download('sortfiltered.zip'); 
+            }
+            // \Zipper->close();
+            return $response = response()->download('sortfiltered.zip');
     }
     public function filterunsort(Request $request){
         $jobid = $request->jobid;
@@ -617,13 +618,13 @@ class CareerController extends Controller
         $deleteitem->delete();
         return response()->json('deleted');
       }
-      
+
      public function sendBulkmail(Request $request){
         $data = $request->data;
         $emailbody = $request->emailbody;
         Mail::to($data)->queue(new InvitationMail($emailbody));
         return response()->json($data);
-         
+
      }
          public function jobnaturestore(Request $request){
             $jobNature = new Jobnature();
@@ -633,7 +634,7 @@ class CareerController extends Controller
         }
         public function jobnatureedit(Request $request){
             $jobNature =  Jobnature::find($request->id);
-            return response()->json($jobNature);  
+            return response()->json($jobNature);
         }
         public function jobnaturupdate(Request $request){
             $jobNature =  Jobnature::find($request->id);
@@ -646,7 +647,7 @@ class CareerController extends Controller
             $jobNature->delete();
             return response()->json('success');
         }
-  
+
     /**
      * Display the specified resource.
      *

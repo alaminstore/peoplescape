@@ -14,7 +14,6 @@
             <ul class="nav nav-tabs">
                 <li class="active commonlitabforcash"><a data-toggle="tab" href="#tab2">Post Job</a></li>
                 @if(Auth::user()->status !='moderator')
-                <li class=" commonlitabforcash"><a data-toggle="tab" href="#tab1">Career  Category</a></li>
                 <li class="commonlitabforcash"><a data-toggle="tab" href="#tab4">Job Nature</a></li>
                 <li class=" commonlitabforcash"><a data-toggle="tab" href="#tab3">Career  Head</a></li>
                 @endif
@@ -25,7 +24,7 @@
                 <div class="box box-info">
                         <div class="box-header with-border">
                         <h3 class="box-title">Career Head</h3>
-                        
+
                         </div>
                         {!!Form::open(['class' => 'form-horizontal','id'=>'careerhead','enctype'=>'multipart/form-data'])!!}
                         <div class="box-body">
@@ -34,10 +33,10 @@
                                 <div class="col-sm-8">
                                 <input type="text" class="form-control" id="title" name="title" value="{{$data['careerhead']->title}}">
                                 <input type="hidden" class="form-control" id="id" name="id" value="{{$data['careerhead']->id}}">
-        
+
                             </div>
                             </div>
-                        
+
                         <div class="form-group">
                                 <label for="title" class="col-sm-2 control-label"></label>
                                 <div class="col-md-10">
@@ -50,7 +49,7 @@
                             <input type="file" class="form-control" id="image" name="image">
                             </div>
                         </div>
-                            
+
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-info">Update</button>
@@ -60,18 +59,15 @@
                 </section>
                 <script>
                     $(document).ready(function () {
-                    $('#careerhead').validate({ 
+                    $('#careerhead').validate({
                         rules: {
-                            title: 
+                            title:
                             {
                                 required: true,
-                                
+
                             },
-                            
-                            
-                            
                         },
-                        
+
                         highlight: function(element) {
                             $(element).parent().addClass('has-error');
                         },
@@ -105,283 +101,17 @@
                                     "extendedTimeOut": 1000
                                     };
                             toastr.success('Data Updated Successfully');
-                                
-                    
+
+
                             $("#careerheadref").load(location.href + " #careerheadref");
                             }
-                            
+
                         });
                     }
                 })
               </script>
              </div>
-            <div id="tab1" class="tab-pane fade in ">
-                <section class="content">
-                        <div class="box box-info">
-                             <div class="box-header with-border">
-                             <h3 class="box-title">Career Category</h3>
-                             </div>
-                             {!!Form::open(['class' => 'form-horizontal','id'=>'category','enctype'=>'multipart/form-data'])!!}
-                             <div class="box-body">
-                                 <div class="form-group">
-                                     <label for="title" class="col-sm-2 control-label">Title (2)</label>
-                                     <div class="col-sm-8">
-                                     <input type="text" class="form-control" id="title" name="title" placeholder="Enter category Title">
-                                     </div>
-                                 </div>
-                             </div>
-                             <div class="box-footer">
-                                 <button type="submit" class="btn btn-info">Submit</button>
-                             </div>
-                             {!!Form::close()!!}
-                         </div>
-                     </section>
-                    <section class="content">
-                      <div class="row">
-                        <div class="col-xs-12">
-                          <div class="box box-info">
-                            <div class="box-header">
-                              <h3 class="box-title">Category  List</h3>
-                               <div class="box-tools pull-right">
-                                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-                                </div>
-                               </div>
-                            <div class="box-body">
-                              <table id="example2" class="table table-bordered table-striped catprepend">
-                                <thead>
-                                <tr>
-                                  <th width="20%">Title</th>
-                                  <th width="40%">Created At</th>
-                                   <th width="15%">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody class="catappend">
-                                  @foreach($data['cat'] as $category)
-                                 <tr class='unqcat{{$category->id}}'>
-                                    <td>{{$category->title}}</td>
-                                    <td>{{$category->created_at}}</td>
-                                     <td>
-                                      <a data-id ="{{$category->id}}" data-toggle="modal" data-target="#catupdate" class="editcat"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                      <a class="deletecat" data-id ="{{$category->id}}"><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                    </td>
-                                  </tr>
-                                @endforeach
-                                </tbody>
-                              </table>
-                            </div>
-                            <!-- /.box-body -->
-                          </div>
-                          <!-- /.box -->
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                    </section>
-                        {{-- //department edit modal --}}
-                        <div class="modal fade" id="catupdate">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button>
-                                  <h4 class="modal-title">Edit Category Info</h4>
-                                </div>
-                                  <div class="modal-body">
-                                      {!!Form::open(['class' => 'form-horizontal','id'=>'updatecat','enctype'=>'multipart/form-data'])!!}
-                                      <div class="box-body">
-                                          <div class="form-group">
-                                              <label for="title" class="col-sm-2 control-label">Title (2)</label>
-                                              <div class="col-sm-8">
-                                              <input type="text" class="form-control" id="title" name="title" placeholder="Enter  Title">
-                                              <input type="hidden" class="form-control" id="id" name="id" placeholder="Enter Image Title">
-                  
-                                              </div>
-                                          </div>
-                                         
-        
-                                      <div class="box-footer">
-                                          <button type="submit" class="btn btn-info">Update</button>
-                                      </div>
-                                      {!!Form::close()!!}
-                                </div>
-                              </div>
-                           </div>
-                    </div>
-                    <script>
-                    //Form validation Script
-                    $(document).ready(function () {
-                      $('#category').validate({ 
-                        rules: {
-                              title: 
-                              {
-                                required: true,
-                                
-                              },
-                             
-                        },
-                        
-                        highlight: function(element) {
-                            $(element).parent().addClass('has-error');
-                        },
-                        unhighlight: function(element) {
-                            $(element).parent().removeClass('has-error');
-                        },
-                      });
-                    });
-                    //Form validation Script
-                    $(document).ready(function () {
-                      $('#updatecat').validate({ 
-                        rules: {
-                              title: 
-                              {
-                                required: true,
-                                
-                              },
-                              
-                              
-                        },
-                        
-                        highlight: function(element) {
-                            $(element).parent().addClass('has-error');
-                        },
-                        unhighlight: function(element) {
-                            $(element).parent().removeClass('has-error');
-                        },
-                      });
-                    });
-                       $('#category').on('submit',function(e){
-                            e.preventDefault();
-                            //alert('ok');
-                            //var data = $(this).serialize();
-                            if ($('#category').valid()) {
-                             $.ajax({
-                                url:"{{route('careercat.store')}}",
-                                method:"POST",
-                              data:new FormData(this),
-                              dataType:'JSON',
-                              contentType: false,
-                              cache: false,
-                              processData: false,
-                                success:function(data)
-                                {
-                                 //console.log(data);
-                                  toastr.options = {
-                                          "debug": false,
-                                          "positionClass": "toast-bottom-right",
-                                          "onclick": null,
-                                          "fadeIn": 300,
-                                          "fadeOut": 1000,
-                                          "timeOut": 5000,
-                                          "extendedTimeOut": 1000
-                                        };
-                                  toastr.success('Data Inserted Successfully');
-                                   $('.catappend').prepend(`<tr class='unqcat`+data.id+`'>
-                                    <td>`+data.title+`</td>
-                                    <td>`+data.created_at+`</td>
-                                    <td>
-                                      <a data-id ="`+data.id+`" data-toggle="modal" data-target="#catupdate" class="editcat"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                      <a class="deletecat" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                    </td>
-                                  </tr>`);          
-                                  $('#category').trigger('reset');
-                                }
-                                
-                            });
-                            }
-                       });
-                    $(document).on('click','.editcat',function(){
-                      var id = $(this).data('id');
-                      $.ajax({
-                        url: "{!! route('careercat.edit') !!}",
-                        type: "get", 
-                        data: {  
-                            id: id, 
-                        },
-                        success: function(data) {
-                           
-                            $('#updatecat').find('#title').val(data.title);
-                            $('#updatecat').find('#id').val(data.id);
-
-                        
-                         }
-                        });
-                    })
-                    $(document).on('submit','#updatecat',function(e){
-                      e.preventDefault();
-                            //var data = $(this).serialize();
-                            if ($('#updatecat').valid()) {
-                                $.ajax({
-                                url:"{!! route('careercat.update') !!}",
-                                method:"POST",
-                                data:new FormData(this),
-                                dataType:'JSON',
-                                contentType: false,
-                                cache: false,
-                                processData: false,
-                                success:function(data)
-                                {
-                                    //console.log(data);
-                                    toastr.options = {
-                                            "debug": false,
-                                            "positionClass": "toast-bottom-right",
-                                            "onclick": null,
-                                            "fadeIn": 300,
-                                            "fadeOut": 1000,
-                                            "timeOut": 5000,
-                                            "extendedTimeOut": 1000
-                                        };
-                                    toastr.success('Data Updated Successfully');
-                                    $('.unqcat'+data.id).replaceWith(`<tr class='unqcat`+data.id+`'>
-                                    <td>`+data.title+`</td>
-                                    <td>`+data.created_at+`</td>
-                                    <td>
-                                      <a data-id ="`+data.id+`" data-toggle="modal" data-target="#catupdate" class="editcat"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                      <a class="deletecat" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                    </td>
-                                  </tr>`);    
-                                    setTimeout(function() {$('#catupdate').modal('hide');}, 1500);
-                        
-                                    $('#updatecat').trigger('reset');
-                                }
-                                
-                            });
-                        }
-                    })
-                    $(document).on('click','.deletecat',function(e) {
-                        e.preventDefault();
-                        var id = $(this).data('id');
-                        //alert(role);
-                        Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        type: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!',
-                        
-                        }).then(result => {
-                        
-                        if (result.value) {
-                            $.ajax({
-                            url: "{!! route('careercat.delete') !!}",
-                            type: "get", 
-                            data: {  
-                                id: id, 
-                            },
-                            success: function(data) {
-                                }
-                            });
-                            
-                            $(this).closest('tr').hide();
-                            
-                        }
-                        }
-                    )
-                });
-            </script>
-        </div>
-        </div>
+            {{-- tab1 here --}}
         <div id="tab2" class="tab-pane fade in active">
             @if(Auth::user()->status !='moderator')
             <section class="content">
@@ -423,7 +153,7 @@
                                       @foreach($data['jobnature'] as $type)
                                           <option value="{{$type->nature}}" >{{$type->nature}}</option>
                                       @endforeach
-                                  </select> 
+                                  </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -450,19 +180,32 @@
                                 <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary">
                                 </div>
                             </div>
-                           
+
                             <div class="form-group">
                                 <label for="department"  class="col-sm-2 control-label">Select Category</label>
-                                <div class="col-sm-8">
-                                  <select id="category" class="form-control"  name="catid">
-                                      <option value="">Select Category</option>
-                                      @foreach($data['cat'] as $category)
-                                          <option value="{{$category->id}}" >{{$category->title}}</option>
-                                      @endforeach
-                                  </select>
+                                <div class="form_with_button style="
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                ">
+                                    <div class="col-sm-6">
+                                        <select id="category" class="form-control"  name="catid">
+                                            <option value="">Select Category</option>
+                                            @foreach($data['cat'] as $category)
+                                                <option value="{{$category->id}}">{{$category->title}}</option>
+                                            @endforeach
+                                        </select>
+                                      </div>
+                                      <div class="col-sm-2">
+                                          <div class="pull-right">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                                <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add New Category
+                                            </button>
+                                          </div>
+                                      </div>
                                 </div>
-                              </div>
-                            
+                            </div>
+
                             <div class="form-group">
                                 <label for="title" class="col-sm-2 control-label">Job Description</label>
                                 <div class="col-sm-8">
@@ -485,13 +228,13 @@
                                             <th width="50%">Responsibilities</th>
                                             <th width="15%">Option</th>
                                         </tr>
-                                         
+
                                             <tr class="item_tr single_list">
                                                 <td class="day_no">1</td>
                                                 <td><input type="text" class="form-control" id="pro_description" name="program[0][responsibilitiespoint]" ><br></td>
                                                 <td><span class="remove" style="background: #ed3610;padding: 8px 10px;color: #fff;border-radius: 6%;text-decoration: none;cursor:pointer">-</span></td>
                                             </tr>
-                                       
+
                                     </table>
                                     <span  class="add_more" style="background: #28d19c;
                                                                             padding: 8px 21px;
@@ -499,7 +242,7 @@
                                                                             border-radius: 8%;text-decoration: none; margin-bottom: 10px;cursor:pointer;">+</span><br><br>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label">Qualifications</label>
                         <div class="slist col-sm-8 " data-index_no="1000">
@@ -510,13 +253,13 @@
                                         <th width="50%">Qualification</th>
                                         <th width="15%">Option</th>
                                     </tr>
-                                     
+
                                         <tr class="sitem_tr ssingle_list">
                                             <td class="day_no">1</td>
                                             <td><input type="text" class="form-control" id="pro_description" name="qualification[0][qualification]" ><br></td>
                                             <td><span class="sremove" style="background: #ed3610;padding: 8px 10px;color: #fff;border-radius: 6%;text-decoration: none;cursor:pointer">-</span></td>
                                         </tr>
-                                 
+
                                 </table>
                                 <span  class="sadd_more" style="background: #28d19c;
                                                                         padding: 8px 21px;
@@ -537,6 +280,310 @@
                          </div>
                          {!!Form::close()!!}
                      </div>
+
+                                {{-- ------------------------------------------------------------------------------------------------ --}}
+
+
+                                {{-- Modal start --}}
+
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div>
+                                                    <section class="content">
+                                                            <div class="box box-info">
+                                                                 <div class="box-header with-border">
+                                                                 <h3 class="box-title">Career Category</h3>
+                                                                 </div>
+                                                                 {{-- <form id="category" action="{{route('careercat.store')}}" method="post"> --}}
+                                                                 {!!Form::open(['class' => 'form-horizontal','id'=>'categoryAdd','enctype'=>'multipart/form-data'])!!}
+                                                                 <div class="box-body">
+                                                                     <div class="form-group">
+                                                                         <label for="title" class="col-sm-2 control-label">Title</label>
+                                                                         <div class="col-sm-8">
+                                                                         <input type="text" class="form-control" id="title" name="title" placeholder="Enter category Title">
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="box-footer">
+                                                                     <button type="submit" class="btn btn-info">Submit</button>
+                                                                 </div>
+                                                                 {!!Form::close()!!}
+                                                                 </form>
+                                                             </div>
+                                                         </section>
+                                                        <section class="content">
+                                                          <div class="row">
+                                                            <div class="col-xs-12">
+                                                              <div class="box box-info">
+                                                                <div class="box-header">
+                                                                  <h3 class="box-title">Category  List</h3>
+                                                                   <div class="box-tools pull-right">
+                                                                      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                                                      <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+                                                                    </div>
+                                                                   </div>
+                                                                <div class="box-body">
+                                                                <table id="example2" class="table table-bordered table-striped catprepend">
+                                                                    <thead>
+                                                                    <tr>
+                                                                      <th width="20%">Title</th>
+                                                                      <th width="40%">Created At</th>
+                                                                       <th width="15%">Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody class="catappend">
+                                                                      @foreach($data['cat'] as $category)
+                                                                     <tr class='unqcat{{$category->id}}'>
+                                                                        <td>{{$category->title}}</td>
+                                                                        <td>{{$category->created_at}}</td>
+                                                                         <td>
+                                                                          <a data-id ="{{$category->id}}" data-toggle="modal" data-target="#catupdate" class="editcat bd-example-modal-sm"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                                                          <a class="deletecat" data-id ="{{$category->id}}"><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                                        </td>
+                                                                      </tr>
+                                                                    @endforeach
+                                                                    </tbody>
+                                                                  </table>
+                                                                </div>
+                                                                <!-- /.box-body -->
+                                                              </div>
+                                                              <!-- /.box -->
+                                                            </div>
+                                                            <!-- /.col -->
+                                                          </div>
+                                                        </section>
+                                                            {{-- //department edit modal --}}
+                                                            <div class="modal  fade bd-example-modal-sm" id="catupdate">
+                                                                <div class="modal-dialog">
+                                                                  <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span></button>
+                                                                      <h4 class="modal-title">Edit Category Info</h4>
+                                                                    </div>
+                                                                      <div class="modal-body">
+                                                                          {!!Form::open(['class' => 'form-horizontal','id'=>'updatecat','enctype'=>'multipart/form-data'])!!}
+                                                                          <div class="box-body">
+                                                                              <div class="form-group">
+                                                                                  <label for="title" class="col-sm-2 control-label">Title</label>
+                                                                                  <div class="col-sm-8">
+                                                                                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter  Title">
+                                                                                  <input type="hidden" class="form-control" id="id" name="id" placeholder="Enter Image Title">
+
+                                                                                  </div>
+                                                                              </div>
+                                                                          <div class="box-footer">
+                                                                              <button type="submit" class="btn btn-info">Update</button>
+                                                                          </div>
+                                                                          {!!Form::close()!!}
+                                                                    </div>
+                                                                  </div>
+                                                               </div>
+                                                        </div>
+                                                        <script>
+                                                        //Form validation Script
+                                                        $(document).ready(function () {
+                                                          $('#categoryAdd').validate({
+                                                            rules: {
+                                                                  title:
+                                                                  {
+                                                                    required: true,
+
+                                                                  },
+
+                                                            },
+
+                                                            highlight: function(element) {
+                                                                $(element).parent().addClass('has-error');
+                                                            },
+                                                            unhighlight: function(element) {
+                                                                $(element).parent().removeClass('has-error');
+                                                            },
+                                                          });
+                                                        });
+                                                        //Form validation Script
+                                                        $(document).ready(function () {
+                                                          $('#updatecat').validate({
+                                                            rules: {
+                                                                  title:
+                                                                  {
+                                                                    required: true,
+
+                                                                  },
+
+
+                                                            },
+
+                                                            highlight: function(element) {
+                                                                $(element).parent().addClass('has-error');
+                                                            },
+                                                            unhighlight: function(element) {
+                                                                $(element).parent().removeClass('has-error');
+                                                            },
+                                                          });
+                                                        });
+
+                                                            $(document).on('submit','#categoryAdd',function(e){
+                                                                e.preventDefault();
+                                                                var selectedVal= $("select option:selected").val();
+                                                                console.log(selectedVal);
+                                                                // var prod_id=$(this).val();
+                                                                //  console.log('id',prod_id);
+                                                                // alert('ok');
+                                                                //var data = $(this).serialize();
+                                                                if ($('#categoryAdd').valid()) {
+                                                                 $.ajax({
+                                                                    url:"{{route('careercat.store')}}",
+                                                                    method:"POST",
+                                                                    data:new FormData(this),
+                                                                    dataType:'JSON',
+                                                                    contentType: false,
+                                                                    cache: false,
+                                                                    processData: false,
+                                                                    success:function(data)
+                                                                    {
+                                                                     //console.log(data);
+                                                                      toastr.options = {
+                                                                              "debug": false,
+                                                                              "positionClass": "toast-bottom-right",
+                                                                              "onclick": null,
+                                                                              "fadeIn": 300,
+                                                                              "fadeOut": 1000,
+                                                                              "timeOut": 5000,
+                                                                              "extendedTimeOut": 1000
+                                                                            };
+                                                                      toastr.success('Data Inserted Successfully');
+                                                                       $('.catappend').prepend(`<tr class='unqcat`+data.id+`'>
+                                                                        <td>`+data.title+`</td>
+                                                                        <td>`+data.created_at+`</td>
+                                                                        <td>
+                                                                          <a data-id ="`+data.id+`" data-toggle="modal" data-target="#catupdate" class="editcat"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                                                          <a class="deletecat" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                                        </td>
+                                                                      </tr>`);
+                                                                      $('#categoryAdd').trigger('reset');
+                                                                    }
+
+                                                                });
+                                                                }
+                                                           });
+                                                        $(document).on('click','.editcat',function(){
+                                                          var id = $(this).data('id');
+                                                          $.ajax({
+                                                            url: "{!! route('careercat.edit') !!}",
+                                                            type: "get",
+                                                            data: {
+                                                                id: id,
+                                                            },
+                                                            success: function(data) {
+
+                                                                $('#updatecat').find('#title').val(data.title);
+                                                                $('#updatecat').find('#id').val(data.id);
+
+
+                                                             }
+                                                            });
+                                                        })
+                                                        $(document).on('submit','#updatecat',function(e){
+                                                          e.preventDefault();
+                                                                //var data = $(this).serialize();
+                                                                if ($('#updatecat').valid()) {
+                                                                    $.ajax({
+                                                                    url:"{!! route('careercat.update') !!}",
+                                                                    method:"POST",
+                                                                    data:new FormData(this),
+                                                                    dataType:'JSON',
+                                                                    contentType: false,
+                                                                    cache: false,
+                                                                    processData: false,
+                                                                    success:function(data)
+                                                                    {
+                                                                        //console.log(data);
+                                                                        toastr.options = {
+                                                                                "debug": false,
+                                                                                "positionClass": "toast-bottom-right",
+                                                                                "onclick": null,
+                                                                                "fadeIn": 300,
+                                                                                "fadeOut": 1000,
+                                                                                "timeOut": 5000,
+                                                                                "extendedTimeOut": 1000
+                                                                            };
+                                                                        toastr.success('Data Updated Successfully');
+                                                                        $('.unqcat'+data.id).replaceWith(`<tr class='unqcat`+data.id+`'>
+                                                                        <td>`+data.title+`</td>
+                                                                        <td>`+data.created_at+`</td>
+                                                                        <td>
+                                                                          <a data-id ="`+data.id+`" data-toggle="modal" data-target="#catupdate" class="editcat"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                                                          <a class="deletecat" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                                        </td>
+                                                                      </tr>`);
+                                                                        setTimeout(function() {$('#catupdate').modal('hide');}, 1500);
+
+                                                                        $('#updatecat').trigger('reset');
+                                                                    }
+
+                                                                });
+                                                            }
+                                                        })
+                                                        $(document).on('click','.deletecat',function(e) {
+                                                            e.preventDefault();
+                                                            var id = $(this).data('id');
+                                                            //alert(role);
+                                                            Swal.fire({
+                                                            title: 'Are you sure?',
+                                                            text: "You won't be able to revert this!",
+                                                            type: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#3085d6',
+                                                            cancelButtonColor: '#d33',
+                                                            confirmButtonText: 'Yes, delete it!',
+
+                                                            }).then(result => {
+
+                                                            if (result.value) {
+                                                                $.ajax({
+                                                                url: "{!! route('careercat.delete') !!}",
+                                                                type: "get",
+                                                                data: {
+                                                                    id: id,
+                                                                },
+                                                                success: function(data) {
+                                                                    }
+                                                                });
+
+                                                                $(this).closest('tr').hide();
+
+                                                            }
+                                                            }
+                                                        )
+                                                    });
+                                                </script>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                   {{-- Modal end --}}
+
+
                  </section>
                  @endif
                 <!--<section class="content">-->
@@ -648,79 +695,79 @@
                             }
                         }
                     });
-                    $('#myjob').validate({ 
+                    $('#myjob').validate({
                         rules: {
-                              title: 
+                              title:
                               {
                                 required: true,
-                                
+
                               },
-                              company: 
+                              company:
                               {
                                 required: true,
-                                
+
                               },
                               jobtype:{
                                   required: true,
                               },
-                              experience: 
+                              experience:
                               {
                                 required: true,
-                                
+
                               },
-                              vacancy: 
+                              vacancy:
                               {
                                 required: true,
-                                
+
                               },
-                              education: 
+                              education:
                               {
                                 required: true,
-                                
+
                               },
-                              deadline: 
+                              deadline:
                               {
                                 required: true,
-                                
+
                               },
-                              location: 
+                              location:
                               {
                                 required: true,
-                                
+
                               },
-                              salary: 
+                              salary:
                               {
                                 required: true,
-                                
+
                               },
-                              topdescription: 
+                              topdescription:
                               {
                                 required: true,
-                                
+
                               },
-                              responsibilitiestext: 
+                              responsibilitiestext:
                               {
                                 required: true,
-                                
+
                               },
-                              howtoapply: 
+                              howtoapply:
                               {
                                 required: true,
-                                
+
                               },
-                              howtoapply: 
+                              howtoapply:
                               {
                                 required: true,
-                                
+
                               },
-                                 catid: 
+                                 catid:
                               {
                                 required: true,
-                                
+
                               },
-                             
+
                         },
-                        
+
                         highlight: function(element) {
                             $(element).parent().addClass('has-error');
                         },
@@ -769,10 +816,10 @@
                                       <a href="`+url+`"  class="editjob"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                                       <a class="deletejob" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                                     </td>
-                                  </tr>`);          
+                                  </tr>`);
                                   $('#myjob').trigger('reset');
                                 }
-                                
+
                             });
                            }
                        });
@@ -781,19 +828,19 @@
                     //     var id = $(this).data('id');
                     //     $.ajax({
                     //       url: "{!! route('career.edit') !!}",
-                    //       type: "get", 
-                    //       data: {  
-                    //           id: id, 
+                    //       type: "get",
+                    //       data: {
+                    //           id: id,
                     //       },
                     //       success: function(data) {
-                            
+
                     //         // var newid = data.id;
                     //         // var base = "{!! route('career.edit') !!}";
                     //         // var url = base+'?id='+id ;
                     //         //  window.location.href=url;
                     //          //console.log(url);
 
-                          
+
                     //       }
                     //     });
                     // })
@@ -810,22 +857,22 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Yes, delete it!',
-                        
+
                         }).then(result => {
-                        
+
                         if (result.value) {
                             $.ajax({
                             url: "{!! route('career.delete') !!}",
-                            type: "get", 
-                            data: {  
-                                id: id, 
+                            type: "get",
+                            data: {
+                                id: id,
                             },
                             success: function(data) {
                                 }
                             });
-                            
+
                             $(this).closest('tr').hide();
-                            
+
                         }
                         }
                     )
@@ -837,10 +884,10 @@
         $(this).addClass('jobactive');
         $.ajax({
           url: "{!! route('job.status') !!}",
-          type: "get", 
-          data: {  
-            id: id, 
-            jobid: jobid, 
+          type: "get",
+          data: {
+            id: id,
+            jobid: jobid,
 
           },
           success: function(data) {
@@ -868,10 +915,10 @@
         $(this).addClass('jobdeactive');
         $.ajax({
           url: "{!! route('job.status') !!}",
-          type: "get", 
-          data: {  
-            id: id, 
-            jobid: jobid, 
+          type: "get",
+          data: {
+            id: id,
+            jobid: jobid,
           },
           success: function(data) {
             toastr.options = {
@@ -897,7 +944,7 @@
               <div class="col-md-12"><br>
                 <div class="box box-info">
                   <div class="box-header with-border">
-                    <h3 class="box-title">Job Nature</h3>                   
+                    <h3 class="box-title">Job Nature</h3>
                     </div>
                   <div class="col-md-4">
                     <section class="content">
@@ -941,7 +988,7 @@
                                       </tbody>
                                   </table>
                                   </div>
-                              </div>                             
+                              </div>
                           </div>
                       </section>
                       <div class="modal fade" id="degreeupdatemodal">
@@ -974,15 +1021,15 @@
                   </div>
                   <script>
                       $(document).ready(function () {
-                          $('#jobnature').validate({ 
+                          $('#jobnature').validate({
                           rules:{
-                              nature: 
+                              nature:
                                   {
                                   required: true,
-                                  
+
                               },
                          },
-                          
+
                           highlight: function(element) {
                               $(element).parent().addClass('has-error');
                           },
@@ -990,7 +1037,7 @@
                               $(element).parent().removeClass('has-error');
                           },
                           });
-                          
+
                       });
                       $('#jobnature').on('submit',function(e){
                           e.preventDefault();
@@ -1022,10 +1069,10 @@
                                       <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                                       <a class="deletejobnature" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                                   </td>
-                                  </tr>`);          
+                                  </tr>`);
                                   $('#jobnature').trigger('reset');
                               }
-                              
+
                           });
                           }
                       });
@@ -1033,33 +1080,33 @@
                           var id = $(this).data('id');
                           $.ajax({
                           url: "{!! route('jobnature.edit') !!}",
-                          type: "get", 
-                          data: {  
-                              id: id, 
+                          type: "get",
+                          data: {
+                              id: id,
                           },
                           success: function(data) {
-                             
+
                               $('#updatejobnature').find('#id').val(data.id);
                               $('#updatejobnature').find('#nature').val(data.nature);
-                              
-              
+
+
                               }
                           });
                       })
                       $(document).ready(function () {
-                          $('#updatejobnature').validate({ 
+                          $('#updatejobnature').validate({
                           rules: {
-                                  
-                                  
-                                  nature: 
+
+
+                                  nature:
                                   {
                                   required: true,
-                                  
+
                                   },
-                                  
-                                  
+
+
                           },
-                          
+
                           highlight: function(element) {
                               $(element).parent().addClass('has-error');
                           },
@@ -1067,9 +1114,9 @@
                               $(element).parent().removeClass('has-error');
                           },
                           });
-                          
+
                       });
-                  
+
                       $(document).on('submit','#updatejobnature',function(e){
                           e.preventDefault();
                               if ($('#updatejobnature').valid()) {
@@ -1099,15 +1146,15 @@
                                           <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editjobnature"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                                           <a class="deletejobnature" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                                       </td>
-                                      </tr>`);    
+                                      </tr>`);
                                       setTimeout(function() {$('#degreeupdatemodal').modal('hide');}, 1500);
-                          
+
                                       $('#updatejobnature').trigger('reset');
                                   }
-                                  
+
                               });
                               }
-                          
+
                       })
                       $(document).on('click','.deletejobnature',function(e) {
                           e.preventDefault();
@@ -1121,22 +1168,22 @@
                           confirmButtonColor: '#3085d6',
                           cancelButtonColor: '#d33',
                           confirmButtonText: 'Yes, delete it!',
-                          
+
                           }).then(result => {
-                          
+
                           if (result.value) {
                               $.ajax({
                               url: "{!! route('jobnature.delete') !!}",
-                              type: "get", 
-                              data: {  
-                                  id: id, 
+                              type: "get",
+                              data: {
+                                  id: id,
                               },
                               success: function(data) {
                                   }
                               });
-                              
+
                               $(this).closest('tr').hide();
-                              
+
                           }
                           }
                       )

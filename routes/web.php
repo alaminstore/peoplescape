@@ -12,7 +12,7 @@
 */
 
 // Route::get('/galary', function () {
-    
+
 // });
 // Route::get('/about-us', function () {
 //     return view('Frontend.aboutus');
@@ -51,7 +51,7 @@ Route::get('majorminorbydegree','Frontend\PeoplesscapeHomeController@majorminorb
 
 
 Route::get('/accessdenied', function() {
-   return view('denied'); 
+   return view('denied');
 })->name('errorroute');
 
 Auth::routes();
@@ -96,7 +96,7 @@ Route::group(['prefix' => 'admin'], function(){
            Route::get('deleteuser','Backend\SliderController@userdelete')->name('maintainuser.delete');
            Route::get('status','Backend\SliderController@userstatus')->name('user.status');
 
-           
+
            Route::get('degree','Backend\SliderController@degreelist')->name('degree.create');
            Route::post('degreestore','Backend\SliderController@degreestore')->name('degree.store');
            Route::get('degreeedit','Backend\SliderController@degreeedit')->name('degree.edit');
@@ -192,7 +192,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::get('jobnaturedit','Backend\CareerController@jobnatureedit')->name('jobnature.edit');
     Route::post('jobnaturupdate','Backend\CareerController@jobnaturupdate')->name('jobnature.update');
     Route::get('jobnaturdelete','Backend\CareerController@jobnaturdelete')->name('jobnature.delete');
-    
+
 
 
 });

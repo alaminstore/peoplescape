@@ -8,25 +8,25 @@
       <div class="col-xs-12">
         <div class="box box-info">
           <div class="box-header">
-            <h3 class="box-title">Application  List</h3> || <button class="btn btn-primary excel">Exportexcel</button>
+            <h3 class="box-title">Application  List</h3>&nbsp; ||&nbsp; <button class="btn btn-primary excel btn-sm">Exportexcel</button>
              <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
               </div>
              </div>
           <div class="box-body">
-              
+
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
                <th width="5%">S.I</th>
                 <th width="15%">Name</th>
-                <th width="20%">Email</th> 
+                <th width="20%">Email</th>
                 <th width="15%">MobileNO</th>
                 <th width="15%">Last Degree</th>
                  <th width="20%">Score</th>
                   <th width="10%">Action</th>
-                
+
               </tr>
               </thead>
               <tbody>
@@ -51,7 +51,7 @@
                 <thead>
                 <tr class="noExl">
                   <th >Name</th>
-                   <th >Email</th> 
+                   <th >Email</th>
                    <th >MobileNO</th>
                    <th >Last Degree</th>
                    <th >Last Institution</th>
@@ -60,12 +60,12 @@
                    <th >Last Organization</th>
                    <th >Year Of Experience</th>
                    <th>Age</th>
-                   <th >Gender</th>       
-                  
+                   <th >Gender</th>
+
                 </tr>
                 <tr style="display:none">
                    <th>Name</th>
-                   <th>Email</th> 
+                   <th>Email</th>
                    <th>MobileNO</th>
                    <th>Last Degree</th>
                    <th>Last Institution</th>
@@ -74,7 +74,7 @@
                    <th>Last Organization</th>
                    <th>Year Of Experience</th>
                    <th>Age</th>
-                   <th>Gender</th>                   
+                   <th>Gender</th>
                  </tr>
                 </thead>
                 <tbody class="filterdataappexcel">
@@ -114,7 +114,7 @@
         name: "applicant",
         filename: "SomeFile", //do not include extension
         fileext: ".xls" // file extension
-      }); 
+      });
     });
   </script>
 @endpush

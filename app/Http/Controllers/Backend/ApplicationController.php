@@ -21,37 +21,37 @@ class ApplicationController extends Controller
      */
      public function __construct()
     {
-      
+
 
         $this->middleware('accesscontrol', ['only' => ['index']]);
 
     }
     public function index()
-    {  
+    {
         $cv = Cvform::orderBy('id','desc')->get();
          $userid=[];
         $leftIn=[];
         $i=0;
         foreach($cv as $us){
-            $i++; 
-            $sum=0;        
+            $i++;
+            $sum=0;
             $decoded = json_decode($us->experience);
             $initiallef=0;
-           
+
             foreach($decoded as $key=>$exp){
                 $expjoin = strtotime($exp->joinedin);
                 $expleft = strtotime($exp->leftin);
                 $diff = $expleft - $expjoin;
                 $day = $diff / 86400;
-                $sum = $sum + $day; 
+                $sum = $sum + $day;
                 if(strtotime($exp->leftin) > $initiallef ){
                     $userid[$i]['lastleftin']=$exp->leftin;
                     $userid[$i]['lastcompany']=$exp->company;
                 }else{
-                    $userid[$i]['lastcompany']='Wrong format'; 
+                    $userid[$i]['lastcompany']='Wrong format';
                 }
                 $initiallef=strtotime($exp->leftin);
-                
+
             }
             $decoded1 = json_decode($us->academic);
             $intitialpyear=0;
@@ -59,18 +59,20 @@ class ApplicationController extends Controller
                 if(strtotime($acc->pyear) > $intitialpyear){
                     $userid[$i]['lastinst']=$acc->instname;
                     if($userid[$i]['lastinst']=='other'){
-                        $userid[$i]['lastinst']=$acc->instnameoth; 
+                        $userid[$i]['lastinst']=$acc->instnameoth;
                     }
-                    $userid[$i]['lastdegree']=$acc->degree; 
-                   if(array_key_exists('major', $acc)){
+                    $userid[$i]['lastdegree']=$acc->degree;
+                //    if(array_key_exists('major', $acc)){
+                   if(isset($acc->major)){
                       $userid[$i]['major']=$acc->major;
                     }else{
-                        $userid[$i]['major']='No Data'; 
+                        $userid[$i]['major']='No Data';
                     }
-                   if(array_key_exists('minor', $acc)){
+                //    if(array_key_exists('minor', $acc)){
+                   if(isset($acc->minor)){
                       $userid[$i]['minor']=$acc->minor;
                    }else{
-                        $userid[$i]['minor']='No Data'; 
+                        $userid[$i]['minor']='No Data';
                     }
                 }else{
                      $userid[$i]['lastinst']='wrong format';
@@ -119,7 +121,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {  
+    {
         $careerInfoByid = Cvform::findorfail($id);
         return view('Backend.application.singleapplication',compact('careerInfoByid'));
     }
@@ -167,7 +169,7 @@ class ApplicationController extends Controller
     }
     public function basicinfop(Request $request){
         $id = $request->userid;
-       
+
         $user = User::find($id);
         if($request->file('image')){
             $user = User::find($id);
@@ -202,7 +204,7 @@ class ApplicationController extends Controller
             $cvinfo->save();
             return $id;
         }
-        
+
     }
     public function educationalinfo(Request $request){
         $id = $request->userid;
@@ -230,7 +232,7 @@ class ApplicationController extends Controller
         }
          $cvform->dateee=date('Y-m-d');
         $cvform->save();
-        return $id; 
+        return $id;
     }
     public function skillupdate(Request $request){
         $id = $request->userid;
@@ -306,16 +308,16 @@ class ApplicationController extends Controller
         $image = $request->file('image');
         $new_name_image =time().'.'.$image->getClientOriginalExtension();
         $image->move('careerfile/',$new_name_image);
-        
+
         $user = User::find($request->userid);
         $user->image = 'careerfile/'.$new_name_image;
         $user->save();
-        
+
         $notification = array(
-            'message' => 'Your Cv has submitted successfully', 
+            'message' => 'Your Cv has submitted successfully',
             'alert-type' => 'success'
         );
-        
+
         return redirect('/home')->with($notification);
     }
     public function usercv(){
