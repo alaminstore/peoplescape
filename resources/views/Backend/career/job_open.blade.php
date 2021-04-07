@@ -6,7 +6,7 @@
     <section class="content" id="careerheadref">
     <div class="box box-info">
             <div class="box-header with-border">
-            <h3 class="box-title">Career Head</h3>
+            <h3 class="box-title">Job Opening Header</h3>
 
             </div>
             {!!Form::open(['class' => 'form-horizontal','id'=>'careerhead','enctype'=>'multipart/form-data'])!!}
