@@ -669,7 +669,7 @@ button:hover {
 
 
 
-                    <div style="overflow:auto;">
+                    <div style="overflow:auto;" id="sub_btn">
                         <div style="float:right;">
                           <button type="button"  id="prevBtn" onclick="nextPrev(-1)">Previous</button>
                           <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
@@ -710,7 +710,10 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if(n == (x.length - 1)){
-    document.getElementById("nextBtn").type = "submit"
+    document.getElementById("nextBtn").type = "submit";
+    $("#sub_btn").click(function(){
+    $("#sub_btna").hide();
+  });
   }
   if (n == (x.length - 2)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
