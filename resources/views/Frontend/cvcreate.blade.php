@@ -16,7 +16,7 @@
     .labelclass{
         font-weight: normal!important;
     }
-    .custombtn{
+.custombtn{
     border: 1px solid #0d72ba;
     background: #0d72ba;
     color: #e4d8d8;
@@ -59,27 +59,33 @@ button:hover {
 }
 
 #prevBtn {
-  background-color: #bbbbbb;
+
 }
 
+.btn_prev, .btn_next{
+    padding: 5px 80px;
+    font-size: 20px;
+    font-weight: 700;
+}
 /* Make circles that indicate the steps of the form: */
 .step {
-  height: 15px;
-  width: 15px;
   margin: 0 2px;
-  background-color: #bbbbbb;
+  background-color: rgb(148, 122, 122)2);
   border: none;
-  border-radius: 50%;
+  border-radius: 4%;
   display: inline-block;
   opacity: 0.5;
 }
 
 .step.active {
   opacity: 1;
+  color:#fff;
+  background-color: #007bff;
 }
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
+  opacity: 1;
   background-color: #4CAF50;
 }
 /* Custom Style End */
@@ -110,23 +116,25 @@ button:hover {
                <form action="{{url('/cvformstore')}}" method="post" id="cvcreateform" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                          <a class="nav-link active" id="pills-information-tab" data-toggle="pill" href="#pills-information" role="tab" aria-controls="pills-info" aria-selected="true"><i class="fas fa-user"></i> Personal Information</a>
+                        <li class="nav-item step">
+                          <a class="nav-link " id="pills-information-tab" data-toggle="pill" href="#pills-information" role="tab" aria-controls="pills-info" aria-selected="true"><i class="fas fa-user"></i> Personal Information</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item step">
                           <a class="nav-link" id="pills-education-tab" data-toggle="pill" href="#pills-education" role="tab" aria-controls="pills-education" aria-selected="false"><i class="fas fa-book-open"></i> Educational Qualification</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item step">
                           <a class="nav-link" id="pills-experience-tab" data-toggle="pill" href="#pills-experience" role="tab" aria-controls="pills-experience" aria-selected="false"><i class="far fa-file-alt"></i> Experience</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item step">
                           <a class="nav-link" id="pills-skills-tab" data-toggle="pill" href="#pills-skills" role="tab" aria-controls="pills-skills" aria-selected="false"><i class="fas fa-archive"></i> Skills</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item step">
                           <a class="nav-link" id="pills-reference-tab" data-toggle="pill" href="#pills-reference" role="tab" aria-controls="pills-reference" aria-selected="false"><i class="far fa-share-square"></i> Reference</a>
                         </li>
-                      </ul>
-                    <div class="tab-content" id="pills-tabContent">
+                    </ul>
+
+
+                <div class="tab-content" id="pills-tabContent">
 
              {{-- Tab 1 --}}
             <div class="tab">
@@ -206,14 +214,10 @@ button:hover {
                                 <div class="col-6">
                                     <div class="form-radio form-radio-inline">
                                         <div style="padding-left:6px;font-size: 1rem" class="form-radio-legend "><span style="color:red">*</span> Gender</div>
-                                        <label class="form-radio-label">
-                                            <input name=gender class="form-radio-field" type="radio" required value="Male" />
-                                            <i class="form-radio-button"></i>
+
+                                        &nbsp;&nbsp;&nbsp; <input type="radio"  name=gender class="form-radio-field" type="radio" required value="Male" />
                                             <span>Male</span>
-                                        </label>
-                                        <label class="form-radio-label">
-                                            <input name=gender class="form-radio-field" type="radio" required value="Female" />
-                                            <i class="form-radio-button"></i>
+                                            &nbsp;&nbsp;&nbsp; <input type="radio"  name=gender class="form-radio-field" type="radio" required value="Female" />
                                             <span>Female</span>
                                         </label>
                                     </div>
@@ -240,16 +244,14 @@ button:hover {
                                 <div class="col-6">
                                     <div class="form-radio form-radio-inline">
                                         <div style="padding-left:6px;font-size: 1rem" class="form-radio-legend "><span style="color:red">*</span> Marital Status</div>
-                                        <label class="form-radio-label">
-                                            <input name=marital_status class="form-radio-field" type="radio" required value="Married" />
-                                            <i class="form-radio-button"></i>
+
+                                           &nbsp;&nbsp;&nbsp; <input name=marital_status class="form-radio-field" type="radio" required value="Married" />
                                             <span>Married</span>
-                                        </label>
-                                        <label class="form-radio-label">
-                                            <input name=marital_status class="form-radio-field" type="radio" required value="Unmarried" />
-                                            <i class="form-radio-button"></i>
+
+
+                                            &nbsp;&nbsp;&nbsp; <input name=marital_status class="form-radio-field" type="radio" required value="Unmarried" />
                                             <span>Unmarried</span>
-                                        </label>
+
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -294,7 +296,7 @@ button:hover {
                             <div class="row" style="margin:10px 2px 2px 2px;">
                                 <div class="col-6">
                                     <div>
-                                        <label for="sel1" class="labelclass">Upload Your Photo</label>
+                                        <label for="sel1" class="labelclass">Upload Your Photo</label><br>
                                         <input type="file"name='image'>
                                     </div>
                                 </div>
@@ -664,26 +666,25 @@ button:hover {
                 <div class="tab">
                     <h2 class="text-center">Almost there...</h2>
                 </div>
-
-                    </div>
-
+            </div>
 
 
+                    <br>
                     <div style="overflow:auto;" id="sub_btn">
-                        <div style="float:right;">
-                          <button type="button"  id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                        <div class="text-center">
+                          <button type="button" class="btn btn-info btn-lg btn_prev"  id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                          <button type="button" class="btn btn-success btn-lg btn_next" id="nextBtn" onclick="nextPrev(1)"><b>Next</b></button>
                         </div>
                       </div>
 
 
-                      <div style="text-align:center;margin-top:40px;">
+                      {{-- <div style="text-align:center;margin-top:40px;">
                         <span class="step"></span>
                         <span class="step"></span>
                         <span class="step"></span>
                         <span class="step"></span>
                         <span class="step"></span>
-                      </div>
+                      </div> --}}
 
                 </form>
 
@@ -712,7 +713,7 @@ function showTab(n) {
   if(n == (x.length - 1)){
     document.getElementById("nextBtn").type = "submit";
     $("#sub_btn").click(function(){
-    $("#sub_btna").hide();
+    $("#sub_btn").hide();
   });
   }
   if (n == (x.length - 2)) {
