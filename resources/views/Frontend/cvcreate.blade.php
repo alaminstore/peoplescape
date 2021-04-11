@@ -27,6 +27,69 @@
   background: transparent!important;
   cursor: pointer;
 }
+
+
+
+
+
+/* Custom Style Start */
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+/* Custom Style End */
+
+
+
+
+
+
+
     </style>
 <!-- Services Details Area START -->
 <section class="services-details-area">
@@ -64,7 +127,9 @@
                         </li>
                       </ul>
                     <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-information" role="tabpanel" aria-labelledby="pills-information-tab">
+
+             {{-- Tab 1 --}}
+            <div class="tab">
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -121,7 +186,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Password(At least 8 characters) </label>
@@ -196,7 +261,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -225,7 +290,7 @@
                                     </div>
                                 </div>
                             </div>
-                                    
+
                             <div class="row" style="margin:10px 2px 2px 2px;">
                                 <div class="col-6">
                                     <div>
@@ -241,132 +306,117 @@
                                 </div>
                             </div> <br>
 
-                            {{-- tabular idea --}}
-                            {{-- <div class="row" style="margin:2px; float:right;">
-                                <div class="col-12">
-                                    <a class="btn btn-info" data-toggle="pill" href="#pills-education" role="tab" aria-selected="true">Next</a>
-                                </div>
-                            </div> --}}
-                            <div class="row cbtn" style="margin:2px;">
-                                <div class="col-12">
-                                    <button class="btn btn-block btn-info" id="information-education" data-toggle="pill" href="#pills-education" role="tab" onclick="infoToedu()">Next</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-education" role="tabpanel" aria-labelledby="pills-education-tab">
-                                <div class="row" style="margin:2px;">
+
+            </div>
+                        {{-- Tab 2 --}}
+            <div class="tab">
+                                    <div class="row" style="margin:2px;">
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="sel1" style="font-size: 22px;"> Educational Qualification</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" >
-                                        <div class="col-12">
-                                               <div class="form-group">
-                                                        <div class="alist col-sm-12 " data-index_no="1000">
-                                                        <div class="aitemWrapper">
-                                                            <table class="table table-bordered amoreTable">
-                                                                <tr>
-                                                                    <th width="5%" class="labelclass">S.N</th>
-                                                                    <th width="15%" class="labelclass">Degree</th>
-                                                                    <th width="15%" class="labelclass">Institution Name</th>
-                                                                    <th width="10%" class="labelclass">Score</th>
-                                                                    <th width="15%" class="labelclass">Major</th>
-                                                                    <th width="15%" class="labelclass">Minor</th>
-                                                                    <th width="10%" class="labelclass">Location</th>
-                                                                    <th width="10%" class="labelclass">Passing Year</th>
-                                                                    <th width="5%" class="labelclass">Remove</th>
-                                                                </tr>
-                                                                
-                                                                    <tr class="aitem_tr asingle_list">
-                                                                        <td class="day_no labelclass" >1</td>
-                                                                        <td> 
-                                                                            <select class="form-control degreeonchange" name="academic[0][degree]" id="degree">
-                                                                                <option value="">SelectOption</option>
-                                                                                @foreach ($data['deg'] as $item)
-                                                                                    <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </td>
-                                                                        <td class="otherapp deloapp">
-                                                                           <select class="form-control institute delinst"  name="academic[0][instname]">
-                                                                                <option value="">Select</option>
-                                                                                @foreach ($data['inst'] as $insti)
-                                                                                    <option value="{{$insti->name}}">{{$insti->name}}</option>
-                                                                                @endforeach
-                                                                                <option value="other">Other</option>
-                                                                            </select>
-                                                                            <input type="text" class="form-control otherinst"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
-                                                                                                                                               
-                                                                        </td>
-                                                                        <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
-                                                                        <td>
-                                                                            <select class="form-control majorapp"  name="academic[0][major]">
-                                                                             </select>                                                                                                                                              
-                                                                         </td>
-                                                                         <td>
-                                                                            <select class="form-control minorapp"  name="academic[0][minor]">
-                                                                             </select>                                                                                                                                             
-                                                                         </td>
-                                                                        <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
-                                                                        <td><input type="date" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
-             
-                                                                         <td><span class="aremove" style="background: #ed3610;
-                                                                        padding: 0px 7px;;
-                                                                        color: #fff;
-                                                                        border-radius: 8%;
-                                                                        text-decoration: none;
-                                                                        margin-bottom: 10px;
-                                                                        cursor: pointer;">-</span></td>
-                                                                    </tr>
-                                                                
-                                                            </table>
-                                                            <span  class="aadd_more" style="background: #0d72ba;
-                                                            padding: 0px 7px;;
-                                                            color: #fff;
-                                                            border-radius: 8%;
-                                                            text-decoration: none;
-                                                            margin-bottom: 10px;
-                                                            cursor: pointer;">+</span><br><br>
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                        </div>
-                                        <div class="col-6">
+                            <div class="row" >
+                                <div class="col-12">
                                         <div class="form-group">
-                                            <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Last Degree</label>
-                                            <div class="col-10" style="max-width: 100%">
-                                                <!--<input type="text" class="form-control" id="l_degree" name="l_degree" placeholder="EX:M.B.A" required>-->
-                                                <select class="form-control" name="l_degree">
-                                                    <option value="">SelectOption</option>
-                                                    @foreach ($data['deg'] as $item)
-                                                        <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
-                                                    @endforeach
-                                                </select>
+                                                <div class="alist col-sm-12 " data-index_no="1000">
+                                                <div class="aitemWrapper">
+                                                    <table class="table table-bordered amoreTable">
+                                                        <tr>
+                                                            <th width="5%" class="labelclass">S.N</th>
+                                                            <th width="15%" class="labelclass">Degree</th>
+                                                            <th width="15%" class="labelclass">Institution Name</th>
+                                                            <th width="10%" class="labelclass">Score</th>
+                                                            <th width="15%" class="labelclass">Major</th>
+                                                            <th width="15%" class="labelclass">Minor</th>
+                                                            <th width="10%" class="labelclass">Location</th>
+                                                            <th width="10%" class="labelclass">Passing Year</th>
+                                                            <th width="5%" class="labelclass">Remove</th>
+                                                        </tr>
+
+                                                            <tr class="aitem_tr asingle_list">
+                                                                <td class="day_no labelclass" >1</td>
+                                                                <td>
+                                                                    <select class="form-control degreeonchange" name="academic[0][degree]" id="degree">
+                                                                        <option value="">SelectOption</option>
+                                                                        @foreach ($data['deg'] as $item)
+                                                                            <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td class="otherapp deloapp">
+                                                                    <select class="form-control institute delinst"  name="academic[0][instname]">
+                                                                        <option value="">Select</option>
+                                                                        @foreach ($data['inst'] as $insti)
+                                                                            <option value="{{$insti->name}}">{{$insti->name}}</option>
+                                                                        @endforeach
+                                                                        <option value="other">Other</option>
+                                                                    </select>
+                                                                    <input type="text" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
+
+                                                                </td>
+                                                                <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
+                                                                <td>
+                                                                    <select class="form-control majorapp"  name="academic[0][major]">
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                    <select class="form-control minorapp"  name="academic[0][minor]">
+                                                                        </select>
+                                                                    </td>
+                                                                <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
+                                                                <td><input type="date" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
+
+                                                                    <td><span class="aremove" style="background: #ed3610;
+                                                                padding: 0px 7px;;
+                                                                color: #fff;
+                                                                border-radius: 8%;
+                                                                text-decoration: none;
+                                                                margin-bottom: 10px;
+                                                                cursor: pointer;">-</span></td>
+                                                            </tr>
+
+                                                    </table>
+                                                    <span  class="aadd_more" style="background: #0d72ba;
+                                                    padding: 0px 7px;;
+                                                    color: #fff;
+                                                    border-radius: 8%;
+                                                    text-decoration: none;
+                                                    margin-bottom: 10px;
+                                                    cursor: pointer;">+</span><br><br>
+                                                </div>
                                             </div>
                                         </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Score of Last Degree </label>
-                                        <div class="col-10" style="max-width: 100%">
-                                        <input type="text" class="form-control" id="l_score" name="l_score" placeholder="EX:3.80" required>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Last Degree</label>
+                                    <div class="col-10" style="max-width: 100%">
+                                        <!--<input type="text" class="form-control" id="l_degree" name="l_degree" placeholder="EX:M.B.A" required>-->
+                                        <select class="form-control" name="l_degree">
+                                            <option value="">SelectOption</option>
+                                            @foreach ($data['deg'] as $item)
+                                                <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                    </div>
-                                    <div class="row cbtn" style="margin:2px;">
-                                        <div class="col-6">
-                                            <a class="btn btn-block btn-warning" id="education-personal" data-toggle="pill" href="#pills-information" role="tab" onclick="eduToinfo()">Previous</a>
-                                        </div>
-                                        <div class="col-6">
-                                            <button class="btn btn-block btn-info" id="education-experience" data-toggle="pill" href="#pills-experience" role="tab" onclick="eduToexp()">Next</button>
-                                        </div>
-                                    </div>
                         </div>
-                        
-                        <div class="tab-pane fade" id="pills-experience" role="tabpanel" aria-labelledby="pills-experience-tab">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Score of Last Degree </label>
+                                <div class="col-10" style="max-width: 100%">
+                                <input type="text" class="form-control" id="l_score" name="l_score" placeholder="EX:3.80" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+
+                        {{-- Tab 3 --}}
+            <div class="tab">
                                 <div class="row" style="margin:2px;">
                                         <div class="col-12">
                                             <div class="form-group">
@@ -375,7 +425,7 @@
                                         </div>
                                 </div>
                                  <div class="row" >
-                                  <div class="col-12"> 
+                                  <div class="col-12">
                                     <div class="form-group">
                                         <div class="list col-sm-12 " data-index_no="1000">
                                             <div class="itemWrapper">
@@ -389,7 +439,7 @@
                                                         <th width="15%" class="labelclass">Left On</th>
                                                         <th width="10%" class="labelclass">Remove</th>
                                                     </tr>
-                                                    
+
                                                         <tr class="item_tr single_list">
                                                             <td class="day_no labelclass" >1</td>
                                                             <td><input type="text" class="form-control" id="pro_role" name="experience[0][title]" placeholder="Enter Job Title"><br></td>
@@ -405,7 +455,7 @@
                                                                 margin-bottom: 10px;
                                                                 cursor: pointer;">-</span></td>
                                                         </tr>
-                                                    
+
                                                 </table>
                                                 <span  class="add_more" style="background: #0d72ba;
                                                 padding: 0px 7px;;
@@ -416,7 +466,7 @@
                                                 cursor: pointer;">+</span><br><br>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                             </div>
                         </div>
                         <div class="row" style="margin:2px;">
@@ -438,7 +488,7 @@
                                                             <th width="50%" class="labelclass">Project Details</th>
                                                             <th width="10%" class="labelclass">Remove</th>
                                                         </tr>
-                                                        
+
                                                             <tr class="witem_tr wsingle_list">
                                                                 <td class="day_no labelclass">1</td>
                                                                 <td><input type="text" class="form-control" id="pro_url" name="project[0][url]" placeholder="Enter Project Url"><br></td>
@@ -451,7 +501,7 @@
                                                                 margin-bottom: 10px;
                                                                 cursor: pointer;">-</span></td>
                                                             </tr>
-                                                       
+
                                                     </table>
                                                     <span  class="wadd_more" style="background: #0d72ba;
                                                     padding: 0px 7px;;
@@ -462,7 +512,7 @@
                                                     cursor: pointer;">+</span><br><br>
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                 </div>
                             </div>
                             <div class="row" style="margin:2px;">
@@ -483,7 +533,7 @@
                                                             <th width="700%" class="labelclass">Achievements</th>
                                                            <th width="10%" class="labelclass">Remove</th>
                                                         </tr>
-                                                        
+
                                                             <tr class="acitem_tr acsingle_list">
                                                                 <td class="day_no labelclass">1</td>
                                                                 <td><textarea type="text" class="form-control" id="achievement" rows="3" name="achievement[0][achieve]" placeholder="Enter Your personal achievement"></textarea><br></td>
@@ -495,7 +545,7 @@
                                                                 margin-bottom: 10px;
                                                                 cursor: pointer;">-</span></td>
                                                             </tr>
-                                                       
+
                                                     </table>
                                                     <span  class="acadd_more" style="background: #0d72ba;
                                                     padding: 0px 7px;;
@@ -506,19 +556,13 @@
                                                     cursor: pointer;">+</span><br><br>
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                 </div>
                             </div>
-                            <div class="row cbtn" style="margin:2px;">
-                                <div class="col-6">
-                                    <a class="btn btn-block btn-warning" id="experience-education" data-toggle="pill" href="#pills-education" role="tab" onclick="expToedu()">Previous</a>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-block btn-info" id="experience-skill" data-toggle="pill" href="#pills-skills" role="tab" onclick="expToski()">Next</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-skills-tab">
+
+            </div>
+                        {{-- TB 4 --}}
+                <div class="tab">
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -537,7 +581,7 @@
                                                             <th width="700%" class="labelclass">Professional Or Technical Skills</th>
                                                         <th width="10%" class="labelclass">Remove</th>
                                                         </tr>
-                                                        
+
                                                             <tr class="skitem_tr sksingle_list">
                                                                 <td class="day_no labelclass">1</td>
                                                                 <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
@@ -549,7 +593,7 @@
                                                                 margin-bottom: 10px;
                                                                 cursor: pointer;">-</span></td>
                                                             </tr>
-                                                    
+
                                                     </table>
                                                     <span  class="skadd_more" style="background: #0d72ba;
                                                     padding: 0px 7px;;
@@ -560,19 +604,13 @@
                                                     cursor: pointer;">+</span><br><br>
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                 </div>
                             </div>
-                            <div class="row cbtn" style="margin:2px;">
-                                <div class="col-6">
-                                    <a class="btn btn-block btn-warning" id="skill-experience" data-toggle="pill" href="#pills-experience" role="tab" onclick="skiToexp()">Previous</a>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-block btn-info" id="skill-reference" data-toggle="pill" href="#pills-reference" role="tab" onclick="skiToref()">Next</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-reference" role="tabpanel" aria-labelledby="pills-reference-tab">
+
+                </div>
+                        {{-- Tab 5 --}}
+                <div class="tab">
                                 <div class="row" style="margin:2px;">
                                         <div class="col-12">
                                             <div class="form-group">
@@ -593,7 +631,7 @@
                                                                 <th width="40%" class="labelclass">Contact info</th>
                                                                 <th width="15%" class="labelclass">Remove</th>
                                                             </tr>
-                                                            
+
                                                                 <tr class="reitem_tr resingle_list">
                                                                     <td class="day_no labelclass" >1</td>
                                                                     <td><input type="text" class="form-control"  name="reference[0][title]" placeholder="Enter Degree  Name"><br></td>
@@ -607,7 +645,7 @@
                                                                     margin-bottom: 10px;
                                                                     cursor: pointer;">-</span></td>
                                                                 </tr>
-                                                            
+
                                                         </table>
                                                         <span  class="readd_more" style="background: #0d72ba;
                                                         padding: 0px 7px;;
@@ -618,457 +656,140 @@
                                                         cursor: pointer;">+</span><br><br>
                                                     </div>
                                                 </div>
-                                            </div> 
-                                        </div>
-                                    </div>
-                                    <div class="row cbtn" style="margin:2px;">
-                                        <div class="col-6">
-                                            <a class="btn btn-block btn-warning" id="reference-skill" data-toggle="pill" href="#pills-skills" role="tab" onclick="refToski()">Previous</a>
-                                        </div>
-                                        <div class="col-6">
-                                            <button class='btn btn-block custombtn' type="submit">SUBMIT</button>
-                                        </div>
-                                    </div>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        {{-- <div class="row" style="margin:2px;">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="sel1" style="font-size: 22px;">Personal Information</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="title" class="col-sm-4 control-label labelclass"><span style="color:red">*</span> Name</label>
-                                    <div class="col-sm-10" style="max-width: 100%">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="birthdate" class="col-sm-4 control-label labelclass"><span style="color:red">*</span> Birthdate</label>
-                                        <div class="col-sm-10" style="max-width: 100%">
-                                        <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Enter Your Name">
-                                        </div>
-                                    </div>
-                            </div>
-                            <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="haddress" class="col-4 control-label labelclass"><span style="color:red">*</span> Home Address</label>
-                                        <div class="col-10" style="max-width: 100%">
-                                        <input type="text" class="form-control" id="haddress" name="haddress" placeholder="Enter  Address">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="paddress" class="col-6 control-label labelclass"><span style="color:red">*</span> Permanent Address</label>
-                                            <div class="col-10" style="max-width: 100%">
-                                            <input type="text" class="form-control" id="paddress" name="paddress" placeholder="Enter  Address">
                                             </div>
                                         </div>
                                     </div>
-                                <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Phone NO</label>
-                                            <div class="col-10" style="max-width: 100%">
-                                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter  Mobile Number">
-                                            </div>
-                                        </div>
-                                    </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Email </label>
-                                    <div class="col-10" style="max-width: 100%">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address">
-                                    </div>
-                                </div>
-                            </div>
-                           
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Password(At least 8 characters) </label>
-                                    <div class="col-10" style="max-width: 100%">
-                                    <input type="password" class="form-control" id="matchpassword" name="password" placeholder="Enter password">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Confirm Password </label>
-                                    <div class="col-10" style="max-width: 100%">
-                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-radio form-radio-inline">
-                                     <div style="padding-left:6px;font-size: 1rem" class="form-radio-legend "><span style="color:red">*</span> Gender</div>
-                                     <label class="form-radio-label">
-                                         <input name=gender class="form-radio-field" type="radio" required value="Male" />
-                                         <i class="form-radio-button"></i>
-                                         <span>Male</span>
-                                     </label>
-                                     <label class="form-radio-label">
-                                         <input name=gender class="form-radio-field" type="radio" required value="Female" />
-                                         <i class="form-radio-button"></i>
-                                         <span>Female</span>
-                                     </label>
-                                 </div>
-                             </div>
-                        </div> --}}
-                        
-                                   
-                        {{-- <div class="row" style="margin:2px;">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="sel1" style="font-size: 22px;"> Educational Qualification</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row" >
-                            <div class="col-12">
-                                   <div class="form-group">
-                                            <div class="alist col-sm-12 " data-index_no="1000">
-                                            <div class="aitemWrapper">
-                                                <table class="table table-bordered amoreTable">
-                                                    <tr>
-                                                        <th width="5%" class="labelclass">S.N</th>
-                                                        <th width="20%" class="labelclass">Degree</th>
-                                                        <th width="20%" class="labelclass">Institution Name</th>
-                                                        <th width="15%" class="labelclass">Score</th>
-                                                        <th width="15%" class="labelclass">Location</th>
-                                                        <th width="15%" class="labelclass">Passing Year</th>
-                                                        <th width="10%" class="labelclass">Remove</th>
-                                                    </tr>
-                                                    
-                                                        <tr class="aitem_tr asingle_list">
-                                                            <td class="day_no labelclass" >1</td>
-                                                            <td><input type="text" class="form-control"  name="academic[0][degree]" placeholder="Enter Degree  Name"><br></td>
-                                                            <td><input type="text" class="form-control"  name="academic[0][instname]" placeholder="Enter Institute Name"><br></td>
-                                                            <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="Enter Score "><br></td>
-                                                            <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
-                                                            <td><input type="text" class="form-control"  name="academic[0][pyear]" placeholder="Enter Location "><br></td>
- 
-                                                             <td><span class="aremove" style="background: #ed3610;
-                                                            padding: 0px 7px;;
-                                                            color: #fff;
-                                                            border-radius: 8%;
-                                                            text-decoration: none;
-                                                            margin-bottom: 10px;
-                                                            cursor: pointer;">-</span></td>
-                                                        </tr>
-                                                    
-                                                </table>
-                                                <span  class="aadd_more" style="background: #0d72ba;
-                                                padding: 0px 7px;;
-                                                color: #fff;
-                                                border-radius: 8%;
-                                                text-decoration: none;
-                                                margin-bottom: 10px;
-                                                cursor: pointer;">+</span><br><br>
-                                            </div>
-                                        </div>
-                                    </div> 
-                            </div>
-                        </div> --}}
-                    {{-- <div class="row" style="margin:2px;">
-                            <div class="col-12">
-                                <div class="form-group">
-                                <label for="sel1" style="font-size: 22px;"> Experience</label>
-                                </div>
-                            </div>
-                    </div>
-                     <div class="row" >
-                      <div class="col-12"> 
-                        <div class="form-group">
-                            <div class="list col-sm-12 " data-index_no="1000">
-                                <div class="itemWrapper">
-                                    <table class="table table-bordered moreTable">
-                                        <tr>
-                                            <th width="5%" class="labelclass">S.N</th>
-                                            <th width="15%" class="labelclass">Job Title</th>
-                                            <th width="15%" class="labelclass">Company Name</th>
-                                            <th width="20%" class="labelclass">Responsibilities</th>
-                                            <th width="15%" class="labelclass">Joined On</th>
-                                            <th width="15%" class="labelclass">Left On</th>
-                                            <th width="10%" class="labelclass">Option</th>
-                                        </tr>
-                                        
-                                            <tr class="item_tr single_list">
-                                                <td class="day_no labelclass" >1</td>
-                                                <td><input type="text" class="form-control" id="pro_role" name="experience[0][title]" placeholder="Enter Job Title"><br></td>
-                                                <td><input type="text" class="form-control" id="pro_role" name="experience[0][company]" placeholder="Enter Company Name"><br></td>
-                                                <td><input type="text" class="form-control" id="pro_role" name="experience[0][responsibilites]" placeholder="Enter Responsibilites"><br></td>
-                                                <td><input type="text" class="form-control" id="pro_role" name="experience[0][joinedin]" placeholder="Enter Joined date EX:dd-mm-yy"><br></td>
-                                                <td><input type="text" class="form-control" id="pro_role" name="experience[0][leftin]" placeholder="Enter Leftin date EX:dd-mm-yy"><br></td>
-                                                <td><span class="remove" style="background: #ed3610;
-                                                    padding: 0px 7px;;
-                                                    color: #fff;
-                                                    border-radius: 8%;
-                                                    text-decoration: none;
-                                                    margin-bottom: 10px;
-                                                    cursor: pointer;">-</span></td>
-                                            </tr>
-                                        
-                                    </table>
-                                    <span  class="add_more" style="background: #0d72ba;
-                                    padding: 0px 7px;;
-                                    color: #fff;
-                                    border-radius: 8%;
-                                    text-decoration: none;
-                                    margin-bottom: 10px;
-                                    cursor: pointer;">+</span><br><br>
-                                </div>
-                            </div>
-                        </div> 
-                </div>
-            </div>
-            <div class="row" style="margin:2px;">
-                    <div class="col-12">
-                        <div class="form-group">
-                        <label for="sel1" style="font-size: 22px;"> Personal Project</label>
-                        </div>
-                    </div>
-            </div>
-            <div class="row" >
-                    <div class="col-12">
-                            <div class="form-group">
-                                <div class="wlist col-sm-12 " data-index_no="1000">
-                                    <div class="witemWrapper">
-                                        <table class="table table-bordered wmoreTable">
-                                            <tr>
-                                                <th width="5%" class="labelclass">S.N</th>
-                                                <th width="30%" class="labelclass">Url</th>
-                                                <th width="50%" class="labelclass">Project Details</th>
-                                                <th width="10%" class="labelclass">Option</th>
-                                            </tr>
-                                            
-                                                <tr class="witem_tr wsingle_list">
-                                                    <td class="day_no labelclass">1</td>
-                                                    <td><input type="text" class="form-control" id="pro_url" name="project[0][url]" placeholder="Enter Project Url"><br></td>
-                                                    <td><textarea type="text" class="form-control" id="pro_comment" name="project[0][comment]" placeholder="Enter Description About Project"></textarea><br></td>
-                                                   <td><span class="wremove" style="background: #ed3610;
-                                                    padding: 0px 7px;;
-                                                    color: #fff;
-                                                    border-radius: 8%;
-                                                    text-decoration: none;
-                                                    margin-bottom: 10px;
-                                                    cursor: pointer;">-</span></td>
-                                                </tr>
-                                           
-                                        </table>
-                                        <span  class="wadd_more" style="background: #0d72ba;
-                                        padding: 0px 7px;;
-                                        color: #fff;
-                                        border-radius: 8%;
-                                        text-decoration: none;
-                                        margin-bottom: 10px;
-                                        cursor: pointer;">+</span><br><br>
-                                    </div>
-                                </div>
-                            </div> 
-                    </div>
-                </div>
-                <div class="row" style="margin:2px;">
-                    <div class="col-12">
-                        <div class="form-group">
-                        <label for="sel1" style="font-size: 22px;"> Personal Achievements</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" >
-                    <div class="col-12">
-                            <div class="form-group">
-                                <div class="aclist col-sm-12 " data-index_no="1000">
-                                    <div class="acitemWrapper">
-                                        <table class="table table-bordered acmoreTable">
-                                            <tr>
-                                                <th width="5%" class="labelclass">S.N</th>
-                                                <th width="700%" class="labelclass">Achievements</th>
-                                               <th width="10%" class="labelclass">Remove</th>
-                                            </tr>
-                                            
-                                                <tr class="acitem_tr acsingle_list">
-                                                    <td class="day_no labelclass">1</td>
-                                                    <td><textarea type="text" class="form-control" id="achievement" rows="3" name="achievement[0][achieve]" placeholder="Enter Your personal achievement"></textarea><br></td>
-                                                   <td><span class="acremove" style="background: #ed3610;
-                                                    padding: 0px 7px;;
-                                                    color: #fff;
-                                                    border-radius: 8%;
-                                                    text-decoration: none;
-                                                    margin-bottom: 10px;
-                                                    cursor: pointer;">-</span></td>
-                                                </tr>
-                                           
-                                        </table>
-                                        <span  class="acadd_more" style="background: #0d72ba;
-                                        padding: 0px 7px;;
-                                        color: #fff;
-                                        border-radius: 8%;
-                                        text-decoration: none;
-                                        margin-bottom: 10px;
-                                        cursor: pointer;">+</span><br><br>
-                                    </div>
-                                </div>
-                            </div> 
-                    </div>
-                </div> --}}
-                {{-- <div class="row" style="margin:2px;">
-                    <div class="col-12">
-                        <div class="form-group">
-                        <label for="sel1" style="font-size: 22px;"> Skills</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" >
-                    <div class="col-12">
-                            <div class="form-group">
-                                <div class="sklist col-sm-12 " data-index_no="1000">
-                                    <div class="skitemWrapper">
-                                        <table class="table table-bordered skmoreTable">
-                                            <tr>
-                                                <th width="5%" class="labelclass">S.N</th>
-                                                <th width="700%" class="labelclass">Professional Or Technical Skills</th>
-                                               <th width="10%" class="labelclass">Remove</th>
-                                            </tr>
-                                            
-                                                <tr class="skitem_tr sksingle_list">
-                                                    <td class="day_no labelclass">1</td>
-                                                    <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
-                                                    <td><span class="skremove" style="background: #ed3610;
-                                                    padding: 0px 7px;;
-                                                    color: #fff;
-                                                    border-radius: 8%;
-                                                    text-decoration: none;
-                                                    margin-bottom: 10px;
-                                                    cursor: pointer;">-</span></td>
-                                                </tr>
-                                           
-                                        </table>
-                                        <span  class="skadd_more" style="background: #0d72ba;
-                                        padding: 0px 7px;;
-                                        color: #fff;
-                                        border-radius: 8%;
-                                        text-decoration: none;
-                                        margin-bottom: 10px;
-                                        cursor: pointer;">+</span><br><br>
-                                    </div>
-                                </div>
-                            </div> 
-                    </div>
-                </div> --}}
-                {{-- <div class="row" style="margin:2px;">
-                    <div class="col-12">
-                        <div class="form-group">
-                        <label for="sel1" style="font-size: 22px;">Objective</label>
-                        </div>
-                    </div>
-               </div>
-               <div class="row" style="margin:2px;">
-                <div class="col-12">
-                    <div class="form-group">
-                    <textarea name="objective" class="form-control" rows="4" placeholder="Write Objective...."></textarea>
-                    </div>
-                </div>
-              </div>
-                <div class="row" style="margin:2px;">
-                        <div class="col-12">
-                            <div class="form-group">
-                            <label for="sel1" style="font-size: 22px;"> Personal Interest</label>
-                            </div>
-                        </div>
-                </div>
-                <div class="row" style="margin:2px;">
-                        <div class="col-12">
-                            <div class="form-group">
-                            <textarea name="interest" class="form-control" rows="4" placeholder="Write About Yourself...."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin:2px;">
-                        <div class="col-12">
-                            <div class="form-group">
-                            <label for="sel1" style="font-size: 22px;"> Reference Name</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" >
-                    <div class="col-12">
-                           <div class="form-group">
-                                    <div class="relist col-sm-12 " data-index_no="1000">
-                                    <div class="reitemWrapper">
-                                        <table class="table table-bordered remoreTable">
-                                            <tr>
-                                                <th width="5%" class="labelclass">S.N</th>
-                                                <th width="20%" class="labelclass">Title</th>
-                                                <th width="20%" class="labelclass">Company</th>
-                                                <th width="40%" class="labelclass">Contact info</th>
-                                                <th width="15%" class="labelclass">Remove</th>
-                                            </tr>
-                                            
-                                                <tr class="reitem_tr resingle_list">
-                                                    <td class="day_no labelclass" >1</td>
-                                                    <td><input type="text" class="form-control"  name="reference[0][title]" placeholder="Enter Degree  Name"><br></td>
-                                                    <td><input type="text" class="form-control"  name="reference[0][company]" placeholder="Enter Institute Name"><br></td>
-                                                    <td><input type="text" class="form-control"  name="reference[0][contactinfo]" placeholder="Enter Score "><br></td>
-                                                    <td><span class="reremove" style="background: #ed3610;
-                                                    padding: 0px 7px;;
-                                                    color: #fff;
-                                                    border-radius: 8%;
-                                                    text-decoration: none;
-                                                    margin-bottom: 10px;
-                                                    cursor: pointer;">-</span></td>
-                                                </tr>
-                                            
-                                        </table>
-                                        <span  class="readd_more" style="background: #0d72ba;
-                                        padding: 0px 7px;;
-                                        color: #fff;
-                                        border-radius: 8%;
-                                        text-decoration: none;
-                                        margin-bottom: 10px;
-                                        cursor: pointer;">+</span><br><br>
-                                    </div>
-                                </div>
-                            </div> 
-                    </div>
-                </div> --}}
-                    {{-- <div class="row" style="margin:2px;">
-                        <div class="col-12">
-                            <div class="form-group">
-                            <label for="sel1" class="labelclass">Upload Your Photo</label>
-                            <input type="file" class="form-control" name='image'>
-                            </div>
-                        </div>
-                    </div> <br>
-                    
-                    <div class="row" style="margin:2px;">
-                            <div class="col-12">
-                                <div class="form-group">
-                                <label for="sel1" class="labelclass">Upload Your Cv(doc,pdf)</label>
-                                <input type="file" class="form-control" name='cv'>
-                                </div>
-                            </div>
-                    </div> <br> --}}
 
-                    {{-- <div class="row cbtn" style="margin:2px;">
-                        <div class="col-12">
-                            <button class='btn btn-block custombtn' type="submit">SUBMIT</button>
+                </div>
+                <div class="tab">
+                    <h2 class="text-center">Almost there...</h2>
+                </div>
+
+                    </div>
+
+
+
+                    <div style="overflow:auto;">
+                        <div style="float:right;">
+                          <button type="button"  id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
                         </div>
-                    </div> --}}
+                      </div>
+
+
+                      <div style="text-align:center;margin-top:40px;">
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                      </div>
+
                 </form>
-            {{-- {!!Form::close()!!} --}}
+
           </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     {{-- <script src="{{ asset('frontEnd/form-wizard/js/main.js') }}"></script> --}}
+
+
+   <script>
+       var currentTab = 0; // Current tab is set to be the first tab (0)
+       showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if(n == (x.length - 1)){
+    document.getElementById("nextBtn").type = "submit"
+  }
+  if (n == (x.length - 2)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  console.log('tab length',x.length);  //tab length 4
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:;
+    document.getElementById("cvcreateform").submit();
+    return true;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script>
    //new 2.17.2020
@@ -1079,9 +800,9 @@
             //var id = $(this).data('id');
             $.ajax({
             url: "{!! route('degree.majorminor') !!}",
-            type: "get", 
-            data: {  
-                id: id, 
+            type: "get",
+            data: {
+                id: id,
             },
             //context: this,
             success: function(data) {
@@ -1092,28 +813,28 @@
                    if(majordegree.major==null){
                         $this.closest('.aitem_tr').find('.majorapp').append('<option >No data found</option>');
                     }else{
-                        $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');                        
-                    }                
-               }); 
+                        $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');
+                    }
+               });
                $.each(JSON.parse(data.minor),function(index, minordegree){
                    if(minordegree.minor==null){
                     $this.closest('.aitem_tr').find('.minorapp').append('<option >No Data Found</option>');
                     }else{
-                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');                        
-                    }                
-               });              
+                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');
+                    }
+               });
             }
         })
         });
         $(document).on('change','.institute',function(){
             if(this.value =='other'){
-                
+
                 $(this).closest('.aitem_tr').find('.otherinst').show();
             }else{
-                $(this).closest('.aitem_tr').find('.otherinst').hide(); 
-            }         
+                $(this).closest('.aitem_tr').find('.otherinst').hide();
+            }
         })
-      
+
         $(document).ready(function () {
             $.validator.addMethod('filesize', function (value, element, arg) {
             if(element.files[0].size<=arg){
@@ -1122,95 +843,95 @@
                 return false;
             }
         });
-        $('#cvcreateform').validate({ 
+        $('#cvcreateform').validate({
         rules: {
-                name: 
+                name:
                 {
                 required: true,
-                
+
                 },
-                birthdate: 
+                birthdate:
                 {
                 required: true,
-                
+
                 },
-                haddress: 
+                haddress:
                 {
                 required: true,
-                
+
                 },
-                paddress: 
+                paddress:
                 {
                 required: true,
-               
+
                 },
-                
-                mobile: 
+
+                mobile:
                 {
                     required: true,
                     number: true,
                     minlength: 11,
                     maxlength: 11
-                    
-                },   
-                email: 
+
+                },
+                email:
                 {
                 required: true,
                 email:true,
-                remote: 
+                remote:
                     {
                       url: "{{route('unqemail.chk')}}"
                     },
-                }, 
-                password: 
+                },
+                password:
                 {
                    required: true,
                    minlength: 8
-                }, 
+                },
                 password_confirmation : {
                     equalTo : "#matchpassword"
                 },
                 area:{
-                    required: true, 
+                    required: true,
                 },
-                image: 
+                image:
                 {
                  required: true,
                  extension: "jpg|png|jpeg"
-                }, 
-                cv: 
+                },
+                cv:
                 {
                  required: true,
                  extension: "pdf|doc|docx",
                  filesize: 200000,
-                }, 
+                },
                 objective:{
                     required: true,
                 }
         },
-        messages: 
+        messages:
           {
             confirmpassword: " Enter Confirm Password Same as Password",
             password:{
-                maxlength:"Password length must not be less than 8 characters", 
+                maxlength:"Password length must not be less than 8 characters",
             },
-            email: 
+            email:
             {
                 email:"Please enter a valid email address",
                 // remote:("Email is already in use"),
             },
-            
-            image: 
+
+            image:
             {
                 extension:("Only jpg,png,jpeg image is accepted"),
             },
-            cv: 
+            cv:
             {
                 extension:("Only Pdf,Doc,Docx is accepted"),
                 filesize:("file size must be less than 200 KB."),
             },
         },
-        
+
         highlight: function(element) {
             $(element).parent().addClass('has-error');
         },
@@ -1223,7 +944,7 @@
         var pyear =  $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.pyear').val();
         if(pyear==''){
             alert('You have to Fill Passing year!');
-            
+
         }else{
         var index = $('.alist').data('index_no');
         $('.alist').data('index_no', index + 1);
@@ -1236,7 +957,7 @@
         var rowCount = $('.amoreTable tr').length;
         $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.day_no').html(rowCount-1);
         $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.dayval').val(rowCount-1);
-         $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.otherinst').hide();       
+         $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.otherinst').hide();
         }
     });
     $(document).on('click', '.aremove', function () {
@@ -1252,7 +973,7 @@
         }
     });
     $(document).on('click','.add_more',function(){
-        
+
     var lefton =  $(this).closest('.itemWrapper').find('.item_tr:last').find('.lefton').val();
     var joinon =  $(this).closest('.itemWrapper').find('.item_tr:last').find('.joinon').val();
 

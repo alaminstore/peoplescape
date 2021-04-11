@@ -43,11 +43,11 @@ class SliderController extends Controller
         $testmonials = Testimonials::all();
         $monialTop = Monialtop::find(1);
         $footer = Footer::find(1);
-        $counter =Counterpart::find(1); 
+        $counter =Counterpart::find(1);
         return view('Backend.home.home',compact('sliderList','sliderBottom','servicetop','allservices','locationtop','alllocations','hcall','teamTop','teams','testmonials','monialTop','footer','counter'));
     }
- 
-    
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -130,7 +130,7 @@ class SliderController extends Controller
             $slider->save();
             return response()->json($slider);
         }else{
-          
+
         $slider = Slider::find($request->sliderid);
         $slider->title = $request->title;
         $slider->description = $request->description;
@@ -146,7 +146,7 @@ class SliderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request)
-    {   
+    {
         $id = $request->id;
         $delete_sliderimg = Slider::find($id);
         $unlink_img = $delete_sliderimg->image;
@@ -230,10 +230,10 @@ class SliderController extends Controller
             $serviceTop->description = $request->description;
             $serviceTop->save();
             return response()->json($serviceTop);
-    
+
         }
-            
-        
+
+
     }
     public function servicedelete(Request $request){
         $id = $request->id;
@@ -353,8 +353,8 @@ class SliderController extends Controller
             $team->save();
             return response()->json($team);
         }
-        
-        
+
+
 
     }
     public function teamdelete(Request $request){
@@ -403,8 +403,8 @@ class SliderController extends Controller
             $testimonial->save();
             return response()->json($testimonial);
         }
-        
-        
+
+
 
     }
     public function testimonialdelete(Request $request){
@@ -465,7 +465,7 @@ class SliderController extends Controller
         return response()->json($footer);
         }
     }
-    
+
       public function degreelist(){
         $degrees = Degree::orderBy('id','desc')->get();
         return view('Backend.user.degree',compact('degrees'));
@@ -485,9 +485,9 @@ class SliderController extends Controller
         $Degree =  Degree::find($request->id);
         $degreemajorminor = Degreemajorminor::where('degree_id',$request->id)->first();
         //$degreeMajorjson = json_decode()
-        return response()->json(['deg'=>$Degree,'degreemajorminor'=>$degreemajorminor]);  
+        return response()->json(['deg'=>$Degree,'degreemajorminor'=>$degreemajorminor]);
     }
-    public function degreeupdate(Request $request){        
+    public function degreeupdate(Request $request){
         $Degree =  Degree::find($request->id);
         $Degree->degree = $request->degree;
         $Degree->save();
@@ -519,7 +519,7 @@ class SliderController extends Controller
     // }
     // public function degreeedit(Request $request){
     //     $Degree =  Degree::find($request->id);
-    //     return response()->json($Degree);  
+    //     return response()->json($Degree);
     // }
     // public function degreeupdate(Request $request){
     //     $Degree =  Degree::find($request->id);
@@ -553,7 +553,7 @@ class SliderController extends Controller
     public function useredit(Request $request){
         $getuserByid = User::find($request->id);
         return response()->json($getuserByid);
-       
+
     }
     public function userupdate(Request $request){
         if($request->file('image')){
@@ -578,10 +578,10 @@ class SliderController extends Controller
             $user->save();
             return response()->json($user);
         }
-        
+
     }
     public function userdelete(Request $request){
-     
+
         $delete_user = User::find($request->id);
         $unlink_img = $delete_user->image;
         $delete_user->delete();
@@ -591,17 +591,17 @@ class SliderController extends Controller
         if($request->id==0){
             $user = User::find($request->userid);
             $user->activity = $request->id;
-            $user->temp_pass =$user->password; 
+            $user->temp_pass =$user->password;
             $user->password ='';
-            $user->save(); 
+            $user->save();
         }else{
             $user = User::find($request->userid);
             $user->activity = $request->id;
             $user->password =$user->temp_pass;
-            $user->temp_pass =''; 
-            $user->save(); 
+            $user->temp_pass ='';
+            $user->save();
         }
-       
+
         return response()->json($request->id);
 
     }
@@ -618,7 +618,7 @@ class SliderController extends Controller
     }
     public function institutionedit(Request $request){
         $institution =  Institution::find($request->id);
-        return response()->json($institution);  
+        return response()->json($institution);
     }
     public function institutionupdate(Request $request){
         $institution =  Institution::find($request->id);

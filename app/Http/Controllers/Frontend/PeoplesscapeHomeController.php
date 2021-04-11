@@ -44,14 +44,14 @@ class PeoplesscapeHomeController extends Controller
     }
 
     public function cvform(){
-        $data=[]; 
+        $data=[];
         $data['servicehead'] = Servicehead::find(1);
         $data['deg'] = Degree::orderBy('id','desc')->get();
         $data['inst'] = Institution::orderBy('id','desc')->get();
         return view('Frontend.cvcreate',compact('data'));
     }
     public function cvformstore(Request $request){
-        //return $request->all();
+        // return $request->all();
         $request->validate([
              'name'=>'required',
              'email' => 'required|unique:users',
@@ -68,7 +68,7 @@ class PeoplesscapeHomeController extends Controller
              'l_score'=>'required',
             'image' => 'required|mimes:jpeg,jpg,png|',
             'cv' => 'required|mimes:doc,docx,pdf|max:200',
-           
+
         ]);
         $image = $request->file('image');
         $new_name_image =time().'.'.$image->getClientOriginalExtension();
@@ -133,17 +133,17 @@ class PeoplesscapeHomeController extends Controller
         $cvform->dateee=date('Y-m-d');
         $cvform->save();
 
-        
+
         $notification = array(
-            'message' => 'Success! You can Login Now', 
+            'message' => 'Success! You can Login Now',
             'alert-type' => 'success'
         );
-        
+
         return redirect()->back()->with($notification);
 
     }
     public function pdfview(Request $request)
-    {   
+    {
         $id = $request->id;
         $careerInfoByid = Cvform::findorfail($id);
         view()->share('careerInfoByid',$careerInfoByid);
@@ -153,7 +153,7 @@ class PeoplesscapeHomeController extends Controller
         // return $pdf->download('itsolutionstuff.pdf');
     }
     public function pdfdownload(Request $request)
-    {   
+    {
         $id = $request->id;
         $careerInfoByid = Cvform::findorfail($id);
         view()->share('careerInfoByid',$careerInfoByid);
@@ -181,15 +181,15 @@ class PeoplesscapeHomeController extends Controller
         if ($user) {
             return response()->json('Email is already taken');
         } else {
-            
+
             return response()->json('true');
         }
     }
-    
+
     //2/12/2020
     public function  majorminorbyDegree(Request $request){
         $findmajorminorBydegree = Degreemajorminor::where('degree_id',$request->id)->first();
         return response()->json($findmajorminorBydegree);
     }
-    
+
 }

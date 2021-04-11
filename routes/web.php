@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 
            Route::get('degree','Backend\SliderController@degreelist')->name('degree.create');
-           Route::post('degreestore','Backend\SliderController@degreestore')->name('degree.store');
+           Route::post('degree','Backend\SliderController@degreestore')->name('degree.store');
            Route::get('degreeedit','Backend\SliderController@degreeedit')->name('degree.edit');
            Route::post('degreeupdate','Backend\SliderController@degreeupdate')->name('degree.update');
            Route::get('degreedelete','Backend\SliderController@degreedelete')->name('degree.delete');

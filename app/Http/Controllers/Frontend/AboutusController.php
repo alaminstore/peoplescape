@@ -32,10 +32,9 @@ class AboutusController extends Controller
         $data['success'] =Success ::find(1);
         $data['mission'] = Ourmission ::find(1);
         $data['vision'] = Ourvision ::find(1);
-         $data['alllocations']= Alllocations::all();
-         $data['locationtop']= Locationtop::find(1);
-         return view('Frontend.aboutus',compact('data'));
-       
+        $data['alllocations']= Alllocations::all();
+        $data['locationtop']= Locationtop::find(1);
+        return view('Frontend.aboutus',compact('data'));
     }
 
     /**

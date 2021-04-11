@@ -31,7 +31,7 @@
                                     </tr>
                                     <tr class="skitem_tr sksingle_list">
                                             <td class="day_no labelclass">1</td>
-                                            <td><input type="text" class="form-control" id="skill"  name="major[0][major]" placeholder="Eg: Marketing.."><br></td>
+                                            <td><input type="text" class="form-control" id="skill"  name="major[0][major]" placeholder="Eg: Marketing.." required><br></td>
                                            <td><span class="skremove" style="background: #ed3610;
                                             padding: 0px 7px;;
                                             color: #fff;
@@ -39,7 +39,7 @@
                                             text-decoration: none;
                                             margin-bottom: 10px;
                                             cursor: pointer;">-</span></td>
-                                        </tr>                                   
+                                        </tr>
                                 </table>
                                 <span  class="skadd_more" style="background: #0d72ba;
                                 padding: 0px 7px;;
@@ -50,7 +50,7 @@
                                 cursor: pointer;">+</span><br><br>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Minor </label>
                         <div class="ssklist col-sm-12 " data-index_no="2000">
@@ -63,7 +63,7 @@
                                     </tr>
                                     <tr class="sskitem_tr ssksingle_list">
                                             <td class="day_no labelclass">1</td>
-                                            <td><input type="text" class="form-control" id="skill"  name="minor[0][minor]" placeholder="Eg: Marketing.."><br></td>
+                                            <td><input type="text" class="form-control" id="skill"  name="minor[0][minor]" placeholder="Eg: Marketing.."></td>
                                            <td><span class="sskremove" style="background: #ed3610;
                                             padding: 0px 7px;;
                                             color: #fff;
@@ -71,7 +71,7 @@
                                             text-decoration: none;
                                             margin-bottom: 10px;
                                             cursor: pointer;">-</span></td>
-                                        </tr>                                   
+                                        </tr>
                                 </table>
                                 <span  class="sskadd_more" style="background: #0d72ba;
                                 padding: 0px 7px;;
@@ -82,7 +82,7 @@
                                 cursor: pointer;">+</span><br><br>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
                </div>
                 <div class="box-footer">
@@ -159,8 +159,8 @@
                                             </tr>
                                             </thead>
                                            <tbody class="majorapp">
-                                                
-                                            </tbody>                                  
+
+                                            </tbody>
                                         </table>
                                         <span  class="sekadd_more" style="background: #0d72ba;
                                         padding: 0px 7px;;
@@ -171,7 +171,7 @@
                                         cursor: pointer;">+</span><br><br>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label for="title" class="col-sm-2">Minor </label>
                                 <div class="sseklist col-sm-12 " data-index_no="2000">
@@ -184,8 +184,8 @@
                                             </tr>
                                             <thead>
                                            <tbody class="minorapp">
-                                               
-                                            </tbody>                                  
+
+                                            </tbody>
                                         </table>
                                         <span  class="ssekadd_more" style="background: #0d72ba;
                                         padding: 0px 7px;;
@@ -197,7 +197,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-info">Update</button>
@@ -260,15 +260,15 @@
         }
      });
         $(document).ready(function () {
-            $('#degree').validate({ 
+            $('#degree').validate({
             rules:{
-                degree: 
+                degree:
                     {
                     required: true,
-                    
+
                 },
            },
-            
+
             highlight: function(element) {
                 $(element).parent().addClass('has-error');
             },
@@ -276,9 +276,14 @@
                 $(element).parent().removeClass('has-error');
             },
             });
-            
+
         });
+
+
+
+
         $('#degree').on('submit',function(e){
+
             e.preventDefault();
             if ($('#degree').valid()) {
                 $.ajax({
@@ -308,11 +313,11 @@
                         <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editdegree"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                         <a class="deletedegree" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                     </td>
-                    </tr>`);          
+                    </tr>`);
                     $('#degree').trigger('reset');
                     $("#degreecontent").load(location.href + " #degreecontent");
                 }
-                
+
             });
             }
         });
@@ -320,14 +325,14 @@
             var id = $(this).data('id');
             $.ajax({
             url: "{!! route('degree.edit') !!}",
-            type: "get", 
-            data: {  
-                id: id, 
+            type: "get",
+            data: {
+                id: id,
             },
             success: function(data) {
                 $('.majorapp').empty();
-                $('.minorapp').empty();               
-               //console.log(data);            
+                $('.minorapp').empty();
+               //console.log(data);
                 $.each(JSON.parse(data.degreemajorminor.major),function(index, majordegree){
                    if(majordegree.major==null){
                         $('.majorapp').prepend(`<tr class="sekitem_tr seksingle_list">
@@ -354,11 +359,11 @@
                                     cursor: pointer;">-</span></td>
                                 </tr>
                         `);
-                    }                
+                    }
                });
-              
-              
-                   
+
+
+
                     $.each(JSON.parse(data.degreemajorminor.minor),function(index,minordegree){
                         if(minordegree.minor==null){
                             $('.minorapp').prepend(`<tr class="ssekitem_tr sseksingle_list">
@@ -371,7 +376,7 @@
                                                         margin-bottom: 10px;
                                                         cursor: pointer;">-</span></td>
                                                     </tr> `);
-               
+
                         }else{
                             $('.minorapp').prepend(`
                             <tr class="ssekitem_tr sseksingle_list">
@@ -386,12 +391,12 @@
                                                     </tr>
                             `);
                         }
-                   
+
                 });
-                           
+
                 $('#updatedegree').find('#id').val(data.deg.id);
                 $('#updatedegree').find('#degree').val(data.deg.degree);
-                
+
 
                 }
             });
@@ -447,24 +452,24 @@
             }
         });
         $(document).ready(function () {
-            $('#updatedegree').validate({ 
+            $('#updatedegree').validate({
             rules: {
-                    degree: 
+                    degree:
                     {
                     required: true,
-                    
-                    },                                       
+
+                    },
             },
-            
+
             highlight: function(element) {
                 $(element).parent().addClass('has-error');
             },
             unhighlight: function(element) {
                 $(element).parent().removeClass('has-error');
             },
-            });           
+            });
         });
-    
+
         $(document).on('submit','#updatedegree',function(e){
             e.preventDefault();
                 if ($('#updatedegree').valid()) {
@@ -477,7 +482,7 @@
                     cache: false,
                     processData: false,
                     success:function(data)
-                    { 
+                    {
                         console.log(data);
                         toastr.options = {
                                 "debug": false,
@@ -495,15 +500,15 @@
                             <a data-id ="`+data.id+`" data-toggle="modal" data-target="#degreeupdatemodal" class="editdegree"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                             <a class="deletedegree" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                         </td>
-                        </tr>`);    
+                        </tr>`);
                         setTimeout(function() {$('#degreeupdatemodal').modal('hide');}, 1500);
-            
+
                         $('#updatedegree').trigger('reset');
                     }
-                    
+
                 });
                 }
-            
+
         })
         $(document).on('click','.deletedegree',function(e) {
             e.preventDefault();
@@ -517,22 +522,22 @@
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!',
-            
+
             }).then(result => {
-            
+
             if (result.value) {
                 $.ajax({
                 url: "{!! route('degree.delete') !!}",
-                type: "get", 
-                data: {  
-                    id: id, 
+                type: "get",
+                data: {
+                    id: id,
                 },
                 success: function(data) {
                     }
                 });
-                
+
                 $(this).closest('tr').hide();
-                
+
             }
             }
         )

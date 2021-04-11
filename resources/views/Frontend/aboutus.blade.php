@@ -30,7 +30,7 @@
 
           <div class="row">
 
-              
+
 
               <div class="col-sm-6 padding-zero">
 
@@ -38,7 +38,7 @@
 
                       <h2>{{ $data['vision']->title}} <span class="title-img-style"><img src="{{asset('frontEnd/img/title-style.png')}}" alt=""></span></h2>
 
-  
+
 
                       <p>{{ $data['vision']->description}}
 
@@ -54,7 +54,7 @@
 
                       <h2>{{$data['mission']->title}} <span class="title-img-style"><img src="{{asset('frontEnd/img/title-style.png')}}" alt=""></span></h2>
 
-  
+
 
                       <p> {{$data['mission']->description}}
 
@@ -70,7 +70,7 @@
 
   </section>
 
-  
+
 
   <section class="introduction-area">
 
@@ -92,7 +92,7 @@
 
                       <h2>{{$data['choose']->title}} <span class="title-img-style"><img src="{{asset('frontEnd/img/title-style.png')}}" alt=""></span></h2>
 
-  
+
 
                       <p>
 
@@ -133,7 +133,7 @@
 
                       $description = json_decode($data['success']->description);
 
-                      
+
 
                       @endphp
 
@@ -161,7 +161,7 @@
 
                       @endforeach
 
-  
+
 
                  </div>
 
@@ -186,7 +186,7 @@
 
                 </div>
 
-    
+
 
                 <div class="col-sm-12 padding-zero">
 
@@ -202,18 +202,18 @@
 
                                 <p>{{$locations->description}}</p>
 
-                                <a href="https://goo.gl/maps/fPzAVK3uoqn" target="_blank" class="common-button">Get Direction</a>
+                                <a href="{{$locations->link}}" target="_blank" class="common-button">Get Direction</a>
 
                             </div>
 
                        @endforeach
                     </div>
 
-    
+
 
                 </div>
 
-    
+
 
             </div>
 
