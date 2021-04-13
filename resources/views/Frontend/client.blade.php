@@ -19,7 +19,7 @@
               <h2 class="theme-title">{{$data['clienttop']->title}} <span class="title-img-style"><img src="{{asset('frontEnd/img/title-style.png')}}" alt=""></span></h2>
               <!--<p class="theme-para">{{$data['clienttop']->description}}</p>-->
               </div>
-              <div class="col-sm-12">
+              <div class="col-sm-12 text-center">
                   @foreach( $data['clients'] as $client)
                   <div class="client-logo">
                       <a href="#"><img src="{{url($client->image)}}" alt="GP"></a>

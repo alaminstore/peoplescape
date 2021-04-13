@@ -103,13 +103,13 @@
                                if($usercv_id){
                                    $cv_id = $usercv_id->id;
                                    ?>
-                                   <a href="#" data-userid="{{$user->id}}" data-cvid="{{ $usercv_id ? $cv_id : ''  }}"  data-jobid="{{$careerByid->id}}"  class="common-button applyjob"><i class="fa fa-spinner fa-spin buttonloader" style="display:none"></i>Apply Now</a>
+                                   <a href="#" data-userid="{{$user->id}}" data-cvid="{{ $usercv_id ? $cv_id : ''  }}"  data-jobid="{{$careerByid->id}}"  class="common-button applyjob mb-3"><i class="fa fa-spinner fa-spin buttonloader" style="display:none"></i>Apply Now</a>
                            <?php } 
                                else {?>
-                                  <a href="#" data-userid="{{$user->id}}" data-cvid=""  data-jobid="{{$careerByid->id}}"  class="common-button applyjob"><i class="fa fa-spinner fa-spin buttonloader" style="display:none"></i>Apply Now</a>
+                                  <a href="#" data-userid="{{$user->id}}" data-cvid=""  data-jobid="{{$careerByid->id}}"  class="common-button applyjob mb-3"><i class="fa fa-spinner fa-spin buttonloader" style="display:none"></i>Apply Now</a>
                            <?php } ?>
                        @else
-                        <a href="#" data-userid="" data-jobid="{{$careerByid->id}}" data-cvid="" class="common-button applyjob"><i class="fa fa-spinner fa-spin buttonloader" style="display:none"></i>Apply Now</a>
+                        <a href="#" data-userid="" data-jobid="{{$careerByid->id}}" data-cvid="" class="common-button applyjob mb-3"><i class="fa fa-spinner fa-spin buttonloader" style="display:none"></i>Apply Now</a>
                        @endif
                       </div>
                       <div class="details-widget">
@@ -207,7 +207,7 @@
                           </div>
                       </div>
   
-                         @if(Auth::check())
+                         <!-- @if(Auth::check())
                           <?php
                                $user = Auth::user();
                                $usercv_id = Cvform::where('userid','=',$user->id)->first();
@@ -221,7 +221,7 @@
                            <?php } ?>
                        @else
                         <a href="#" data-userid="" data-jobid="{{$careerByid->id}}" data-cvid="" class="common-button applyjob"><i class="fa fa-spinner fa-spin buttonloader" style="display:none"></i> Apply Now</a>
-                       @endif
+                       @endif -->
                   </div>
               </div>
           </div>

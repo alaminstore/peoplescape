@@ -63,8 +63,8 @@
                                     <td width="40%"><b>Gender</b></td>
                                     <td width="60%">{{$user_info->gender}}</td>
                                 </tr>
-                              
-                                
+
+
                         </table><br>
                   </div>
                 </div>
@@ -92,12 +92,12 @@
                                        <td width="20%"><b>Mobile</b></td>
                                        <td width="80%"><input type="text" class="form-control" name="mobile" value="{{$user_info->mobile}}"></td>
                                    </tr>
-                                    
+
                                   <tr>
                                        <td width="40%"><b></b></td>
                                        <td width="60%"><button class='btn  custombtn' type="submit">UPDATE</button></td>
                                    </tr>
-                                   
+
                            </table><br>
                         </form>
                 </div>
@@ -114,7 +114,7 @@
                 //var data = $(this).serialize();
                 var base_url = $('#mainsliderform').find('#path').val();
                 //alert (base_url)
-                
+
                     $.ajax({
                     url:"{{route('basicinfop.update')}}",
                     method:"POST",
@@ -139,7 +139,7 @@
                            $('.basicpinfoupdate').css('display','none');
                         $( ".basicpifo" ).load(window.location.href + " .basicpifo" );
                         toastr.success('Data Inserted Successfully');
-                        
+
                     }
                  });
             });
@@ -153,7 +153,7 @@
                         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
                       </div>
                      </div>
-                     
+
                   <div class="box-body">
                         <div id="accordion">
                                 <div class="card">
@@ -164,7 +164,7 @@
                                       </button>
                                     </h5>
                                   </div>
-                                
+
                                   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                     <div class="card-body personalinfodiv">
                                         <div class="col-md-12">
@@ -178,7 +178,7 @@
                                                  </div>
                                              </div>
                                              </div>
-                                             
+
                                              <div class="col-md-12">
                                              <div class="form-group">
                                                  <label for="paddress" class="control-label"><span style="color:red">*</span> Permanent Address</label>
@@ -193,7 +193,7 @@
                                                  </div>
                                              </div>
                                              </div>
-                                             
+
                                              <div class="col-md-12">
                                                  <div class="form-group">
                                                      <label for="birthdate" class="control-label"><span style="color:red">*</span> Birthdate</label>
@@ -224,8 +224,8 @@
                                                          <a href="{{url($findCv->cv)}}" style="color:#0d72ba">Your CV</a>
                                                      </div>
                                                  </div>
-                                           
-                                       </div>  
+
+                                       </div>
                                      <form id="personalinfo" enctype="multipart/form-data">
                                         @csrf
                                      <div class="card-body personalinfodivupdate" style="display:none">
@@ -239,7 +239,7 @@
                                                 </div>
                                             </div>
                                             </div>
-                                            
+
                                             <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="paddress" class="control-label"><span style="color:red">*</span> Permanent Address</label>
@@ -278,7 +278,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                                 <div class="col-md-12">
                                                         <div class="form-group">
                                                          <a href="{{url($findCv->cv)}}" style="color:#0d72ba">Your CV</a>
@@ -309,7 +309,7 @@
                                         //var data = $(this).serialize();
                                         var base_url = $('#mainsliderform').find('#path').val();
                                         //alert (base_url)
-                                       
+
                                             $.ajax({
                                             url:"{{route('personalinfo.update')}}",
                                             method:"POST",
@@ -334,11 +334,11 @@
                                                 $('.personalinfodiv').css('display','block');
                                                 $( ".personalinfodiv" ).load(window.location.href + " .personalinfodiv" );
                                                 toastr.success('Data Inserted Successfully');
-                                                
+
                                             }
-                                            
+
                                         });
-                                    
+
                                     });
                                 </script>
 
@@ -363,15 +363,15 @@
                                                     <th width="20%">Degree</th>
                                                     <th width="20%">Score</th>
                                                     <th width="20%">Location</th>
-                                                    <th width="20%">Passing Year</th> 
+                                                    <th width="20%">Passing Year</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                   
+
                                                     @if(!empty($findCv->academic))
                                                         <?php $jsonaccdata = json_decode($findCv->academic);?>
-                                                    
-                                                    
+
+
                                                     @foreach($jsonaccdata as $acc)
                                                     <tr>
                                                     <td>{{$acc->instname=='other' ? $acc->instnameoth : $acc->instname}}</td>
@@ -406,7 +406,7 @@
                                                                     @if(!empty($findCv->academic))
                                                                     <?php $jsonaccdata = json_decode($findCv->academic);?>
                                                                     @foreach($jsonaccdata as $acc)
-                                                                    
+
                                                                         <tr class="aitem_tr asingle_list">
                                                                             <td>
                                                                                 <select class="form-control degreeonchange" name="academic[{{$loop->index +1}}][degree]" id="degree">
@@ -428,12 +428,12 @@
                                                                             @if($acc->instname =='other')
                                                                              <input type="text" class="form-control"  name="academic[{{$loop->index +1}}][instnameoth]" value="{{$acc->instnameoth}}">
                                                                              @endif
-                                                                            
+
                                                                              <input type="text" class="form-control otherinst"  name="academic[{{$loop->index +1}}][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
 
                                                                              </td>
                                                                             <!--<td>-->
-                                                                                
+
                                                                                 <!--<input type="text" class="form-control"  name="academic[{{$loop->index +1}}][instname]" value="{{$acc->instname}}"><br>-->
                                                                             <!--</td>-->
                                                                             <td><input type="text" class="form-control"  name="academic[{{$loop->index +1}}][cgpa]" value="{{$acc->cgpa}}"><br></td>
@@ -443,15 +443,15 @@
                                                                                  $majorMinor = Degreemajorminor::where('degree_id',$degree->id)->first();
                                                                                  $decodemajor = json_decode($majorMinor->major);
                                                                                  $decodeminor = json_decode($majorMinor->minor);
-                                                                                
+
                                                                                 @endphp
-                                                                                
-                                                                                @if(array_key_exists('major', $acc))
+
+                                                                                @if(isset($acc))
                                                                                     <select class="form-control majorapp"  name="academic[{{$loop->index +1}}][major]">
                                                                                         <option value="">Select</option>
                                                                                         @foreach($decodemajor as $maj)
                                                                                           <option value="{{$maj->major}}" @if($maj->major == $acc->major) selected = "selected" @endif>{{$maj->major}}</option>
-      
+
                                                                                         @endforeach
                                                                                     </select>
                                                                                 <!--<input type="text" class="form-control"  name="academic[{{$loop->index +1}}][major]" value="{{$acc->major}}"><br>-->
@@ -460,18 +460,18 @@
                                                                                         <option value="">Select</option>
                                                                                          @foreach($decodemajor as $maj)
                                                                                           <option value="{{$maj->major}}">{{$maj->major}}</option>
-      
+
                                                                                         @endforeach
                                                                                     </select>
                                                                                  @endif
                                                                             </td>
                                                                                <td>
-                                                                                   @if(array_key_exists('minor', $acc))
+                                                                                   @if(isset($acc))
                                                                                     <select class="form-control minorapp"  name="academic[{{$loop->index +1}}][minor]">
                                                                                         <option value="">Select</option>
                                                                                         @foreach($decodeminor as $min)
                                                                                           <option value="{{$min->minor}}" @if($min->minor == $acc->minor) selected = "selected" @endif>{{$min->minor}}</option>
-      
+
                                                                                         @endforeach
                                                                                     </select>
                                                                                 <!--<input type="text" class="form-control"  name="academic[{{$loop->index +1}}][major]" value="{{$acc->major}}"><br>-->
@@ -480,7 +480,7 @@
                                                                                         <option value="">Select</option>
                                                                                           @foreach($decodeminor as $min)
                                                                                           <option value="{{$min->minor}}">{{$min->minor}}</option>
-      
+
                                                                                         @endforeach
                                                                                     </select>
                                                                                  @endif
@@ -510,7 +510,7 @@
                                                                 cursor: pointer;">+</span><br><br>
                                                             </div>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                     <div class="row cbtn" style="margin:2px;">
                                                         <div class="col-12">
                                                             <button class='btn btn-block custombtn' type="submit">SUBMIT</button>
@@ -528,7 +528,7 @@
                                                     e.preventDefault();
                                                     //var data = $(this).serialize();
                                                     //alert (base_url)
-                                                
+
                                                         $.ajax({
                                                         url:"{{route('educationalinfo.update')}}",
                                                         method:"POST",
@@ -553,17 +553,17 @@
                                                                $('.eduupdateinfo').css('display','none');
                                                              $( ".eduinfo" ).load(window.location.href + " .eduinfo" );
                                                             toastr.success('Data Inserted Successfully');
-                                                            
+
                                                         }
-                                                        
+
                                                     });
-                                                
+
                                                 });
                                                 $(document).on('click','.aadd_more',function(){
                                                      var pyear =  $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.pyear').val();
                                                         if(pyear==''){
                                                             alert('You have to Fill Passing year!');
-                                                            
+
                                                         }else{
                                                     var index = $('.alist').data('index_no');
                                                     $('.alist').data('index_no', index + 1);
@@ -620,16 +620,16 @@
                                                       <tr>
                                                           <th width="20%">Job Title</th>
                                                           <th width="20%">Company Name</th>
-                                                          <th width="20%">Responsibilities</th> 
-                                                          <th width="20%">Joined On</th> 
-                                                          <th width="20%">Left On</th> 
+                                                          <th width="20%">Responsibilities</th>
+                                                          <th width="20%">Joined On</th>
+                                                          <th width="20%">Left On</th>
                                                       </tr>
                                                       </thead>
                                                       <tbody>
-                                                          
+
                                                           @if(!empty($findCv->experience))
                                                               <?php $jsonexpdata = json_decode($findCv->experience);?>
-                                                          
+
                                                           @foreach($jsonexpdata as $exp)
                                                           <tr>
                                                           <td>{{$exp->title}}</td>
@@ -657,7 +657,7 @@
                                                           </tr>
                                                           </thead>
                                                           <tbody>
-                                                              
+
                                                               @if(!empty($findCv->project))
                                                                  <?php  $jsonprojectdata = json_decode($findCv->project);?>
                                                               @foreach($jsonprojectdata as $pro)
@@ -683,7 +683,7 @@
                                                                   </tr>
                                                                   </thead>
                                                                   <tbody>
-                                                                      
+
                                                                       @if(!empty($findCv->achievement))
                                                                          <?php  $jsonachievementdata = json_decode($findCv->achievement);?>
                                                                         @foreach($jsonachievementdata as $achv)
@@ -698,7 +698,7 @@
                                                <div class="expupdate" style="display:none">
                                             <form id="experienceform">
                                                 @csrf
-                                                <div class="col-md-12"> 
+                                                <div class="col-md-12">
                                                         <div class="form-group">
                                                                 <input type="hidden" class="form-control" id="" name="userid" value="{{$findCv->userid}}">
                                                                 <label for="experience" class="control-label"><span style="color:red">*</span> Experience</label>
@@ -744,7 +744,7 @@
                                                                     cursor: pointer;">+</span><br><br>
                                                                 </div>
                                                             </div>
-                                                        </div> 
+                                                        </div>
                                                      </div>
                                                      <div class="col-md-12">
                                                             <div class="form-group">
@@ -755,7 +755,7 @@
                                                                     <div class="witemWrapper">
                                                                         <table class="table table-bordered wmoreTable">
                                                                             <tr>
-                                                                                
+
                                                                                 <th width="30%" class="labelclass">Url</th>
                                                                                 <th width="50%" class="labelclass">Project Details</th>
                                                                                 <th width="10%" class="labelclass">Option</th>
@@ -764,7 +764,7 @@
                                                                                 <?php  $jsonprojectdata = json_decode($findCv->project);?>
                                                                                 @foreach($jsonprojectdata as $pro)
                                                                                 <tr class="witem_tr wsingle_list">
-                                                                                    
+
                                                                                     <td><input type="text" class="form-control" id="pro_url" name="project[{{$loop->index + 1}}][url]" value="{{$pro->url}}"><br></td>
                                                                                 <td><textarea class="form-control" id="pro_comment" name="project[{{$loop->index + 1}}][comment]">{{$pro->comment}}</textarea><br></td>
                                                                                   <td><span class="wremove" style="background: #ed3610;
@@ -787,9 +787,9 @@
                                                                         cursor: pointer;">+</span><br><br>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
+                                                            </div>
                                                         </div>
-                                                         <div class="col-md-12"> 
+                                                         <div class="col-md-12">
                                                                 <div class="form-group">
                                                                         <label for="experience" class="control-label"><span style="color:red">*</span> Personal Achievements</label>
                                                                     </div>
@@ -816,7 +816,7 @@
                                                                                                 margin-bottom: 10px;
                                                                                                 cursor: pointer;">-</span></td>
                                                                                             </tr>
-                                                                                        
+
                                                                                      @endforeach
                                                                                      @endif
                                                                                     </table>
@@ -829,7 +829,7 @@
                                                                                     cursor: pointer;">+</span><br><br>
                                                                                 </div>
                                                                             </div>
-                                                                        </div> 
+                                                                        </div>
                                                              </div>
                                                         <div class="row cbtn" style="margin:2px;">
                                                             <div class="col-12">
@@ -850,9 +850,9 @@
             //var id = $(this).data('id');
             $.ajax({
             url: "{!! route('degree.majorminor') !!}",
-            type: "get", 
-            data: {  
-                id: id, 
+            type: "get",
+            data: {
+                id: id,
             },
             //context: this,
             success: function(data) {
@@ -863,29 +863,29 @@
                    if(majordegree.major==null){
                         $this.closest('.aitem_tr').find('.majorapp').append('<option >No data found</option>');
                     }else{
-                        $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');                        
-                    }                
-               }); 
+                        $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');
+                    }
+               });
                $.each(JSON.parse(data.minor),function(index, minordegree){
                    if(minordegree.minor==null){
                     $this.closest('.aitem_tr').find('.minorapp').append('<option >No Data Found</option>');
                     }else{
-                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');                        
-                    }                
-               });              
+                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');
+                    }
+               });
             }
         })
         });
         $(document).on('change','.institute',function(){
             if(this.value =='other'){
-                
+
                 $(this).closest('.aitem_tr').find('.otherinst').show();
             }else{
-                $(this).closest('.aitem_tr').find('.otherinst').hide(); 
-            }         
+                $(this).closest('.aitem_tr').find('.otherinst').hide();
+            }
         })
         //end new
-                                    
+
                                          $(document).on('click','.updateexpinfo',function(e){
                                             e.preventDefault;
                                             $('.expsection').css('display','none');
@@ -895,7 +895,7 @@
                                                     e.preventDefault();
                                                     //var data = $(this).serialize();
                                                     //alert (base_url)
-                                                
+
                                                         $.ajax({
                                                         url:"{{route('expinfo.update')}}",
                                                         method:"POST",
@@ -941,12 +941,12 @@
                                                 <table class="table table-bordered table-striped">
                                                         <thead>
                                                         <tr>
-                                                           
+
                                                             <th>Skills</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                            
+
                                                             @if(!empty($findCv->skill))
                                                                <?php  $jsonskilldata = json_decode($findCv->skill);?>
                                                             @foreach($jsonskilldata as $sk)
@@ -958,10 +958,10 @@
                                                         </tbody>
                                                        </table><br>
                                                  </div>
-                                                 
+
                                                  <div class="skillupdate" style="display:none">
                                                  <form id="skillform">
-                                                  <div class="col-md-12" > 
+                                                  <div class="col-md-12" >
                                                      @csrf
                                                         <div class="form-group">
                                                                 <label for="experience" class="control-label"><span style="color:red">*</span> Skills</label>
@@ -1002,7 +1002,7 @@
                                                                                 cursor: pointer;">+</span><br><br>
                                                                             </div>
                                                                         </div>
-                                                            </div> 
+                                                            </div>
                                                      </div>
                                                      <div class="row cbtn" style="margin:2px;">
                                                             <div class="col-12">
@@ -1011,7 +1011,7 @@
                                                         </div>
                                                     </form>
                                                  </div>
-                                               
+
                                         </div>
                                     </div>
                             </div>
@@ -1074,12 +1074,12 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        
+
                                                                         @if(!empty($findCv->reference))
                                                                            <?php  $jsonreferencedata = json_decode($findCv->reference);?>
                                                                         @foreach($jsonreferencedata as $ref)
                                                                         <tr>
-                                                                       
+
                                                                         <td>{{$ref->title}}</td>
                                                                         <td>{{$ref->company}}</td>
                                                                         <td>{{$ref->contactinfo}}</td>
@@ -1092,7 +1092,7 @@
                                                 <div class="refupdate" style="display:none">
                                                     <form id="refform">
                                                         @csrf
-                                                    <div class="col-md-12"> 
+                                                    <div class="col-md-12">
                                                         <div class="form-group">
                                                                 <input type="hidden" class="form-control" id="" name="userid" value="{{$findCv->userid}}">
                                                                 <label for="experience" class="control-label"><span style="color:red">*</span> Refarence</label>
@@ -1136,7 +1136,7 @@
                                                                                 cursor: pointer;">+</span><br><br>
                                                                             </div>
                                                                         </div>
-                                                            </div> 
+                                                            </div>
                                                      </div>
                                                      <div class="row cbtn" style="margin:2px;">
                                                             <div class="col-12">
@@ -1189,7 +1189,7 @@
                            $(document).on('click','.add_more',function(){
                                var lefton =  $(this).closest('.itemWrapper').find('.item_tr:last').find('.lefton').val();
                                 var joinon =  $(this).closest('.itemWrapper').find('.item_tr:last').find('.joinon').val();
-                        
+
                                     if(joinon=='' || lefton =='' ){
                                         alert('You have to Fill Left In and Join In must.If status is running choose current date!');
                                     }else{
@@ -1318,7 +1318,7 @@
                                 }
                             }
                         });
-                        
+
                     </script>
                   </div>
                  </div>

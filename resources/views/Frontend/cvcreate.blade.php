@@ -150,7 +150,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="title" class="col-sm-4 control-label labelclass"><span style="color:red">*</span> Name</label>
                                         <div class="col-sm-10" style="max-width: 100%">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+                                            <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="Enter Your Name">
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="birthdate" class="col-sm-4 control-label labelclass"><span style="color:red">*</span> Birthdate</label>
                                         <div class="col-sm-10" style="max-width: 100%">
-                                            <input type="date" class="form-control" id="birthdate" name="birthdate" placeholder="Enter Your Name">
+                                            <input type="date"  oninput="this.className = ''" style="width: 100%;" class="form-control" id="birthdate" name="birthdate" value="{{old('birthday')}}" placeholder="Enter Your Name">
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="haddress" class="col-4 control-label labelclass"><span style="color:red">*</span> Home Address</label>
                                         <div class="col-10" style="max-width: 100%">
-                                            <input type="text" class="form-control" id="haddress" name="haddress" placeholder="Enter  Address">
+                                            <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="haddress" name="haddress" value="{{old('haddress')}}" placeholder="Enter  Address">
                                         </div>
                                     </div>
                                 </div>
@@ -174,15 +174,15 @@ button:hover {
                                     <div class="form-group">
                                         <label for="paddress" class="col-6 control-label labelclass"><span style="color:red">*</span> Permanent Address</label>
                                         <div class="col-10" style="max-width: 100%">
-                                            <input type="text" class="form-control" id="paddress" name="paddress" placeholder="Enter  Address">
+                                            <input type="text" oninput="this.className = ''" class="form-control" id="paddress" name="paddress" value="{{old('paddress')}}" placeholder="Enter  Address">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Phone No</label>
-                                        <div class="col-10" style="max-width: 100%">
-                                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter  Mobile Number">
+                                        <div class="col-10"  style="max-width: 100%">
+                                            <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="mobile" name="mobile" value="{{old('mobile')}}" placeholder="Enter  Mobile Number">
                                         </div>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Email </label>
                                         <div class="col-10" style="max-width: 100%">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address">
+                                        <input type="email" oninput="this.className = ''" style="width: 100%;" class="form-control" id="email" name="email" value="{{old('email')}}" placeholder="Enter Email Address">
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +199,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Password(At least 8 characters) </label>
                                         <div class="col-10" style="max-width: 100%">
-                                            <input type="password" class="form-control" id="matchpassword" name="password" placeholder="Enter password">
+                                            <input type="password" oninput="this.className = ''" style="width: 100%;" class="form-control" id="matchpassword" name="password" placeholder="Enter password">
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Confirm Password </label>
                                         <div class="col-10" style="max-width: 100%">
-                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
+                                            <input type="password" oninput="this.className = ''" style="width: 100%;" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
                                         </div>
                                     </div>
                                 </div>
@@ -215,9 +215,9 @@ button:hover {
                                     <div class="form-radio form-radio-inline">
                                         <div style="padding-left:6px;font-size: 1rem" class="form-radio-legend "><span style="color:red">*</span> Gender</div>
 
-                                        &nbsp;&nbsp;&nbsp; <input type="radio"  name=gender class="form-radio-field" type="radio" required value="Male" />
+                                        &nbsp;&nbsp;&nbsp; <input type="radio" oninput="this.className = ''"   name=gender class="form-radio-field"  type="radio" required value="Male" />
                                             <span>Male</span>
-                                            &nbsp;&nbsp;&nbsp; <input type="radio"  name=gender class="form-radio-field" type="radio" required value="Female" />
+                                            &nbsp;&nbsp;&nbsp; <input type="radio" oninput="this.className = ''"   name=gender class="form-radio-field" type="radio" required value="Female" />
                                             <span>Female</span>
                                         </label>
                                     </div>
@@ -245,11 +245,11 @@ button:hover {
                                     <div class="form-radio form-radio-inline">
                                         <div style="padding-left:6px;font-size: 1rem" class="form-radio-legend "><span style="color:red">*</span> Marital Status</div>
 
-                                           &nbsp;&nbsp;&nbsp; <input name=marital_status class="form-radio-field" type="radio" required value="Married" />
+                                           &nbsp;&nbsp;&nbsp; <input name="marital_status" oninput="this.className = ''" class="form-radio-field" type="radio"  required value="Married" />
                                             <span>Married</span>
 
 
-                                            &nbsp;&nbsp;&nbsp; <input name=marital_status class="form-radio-field" type="radio" required value="Unmarried" />
+                                            &nbsp;&nbsp;&nbsp; <input name="marital_status" oninput="this.className = ''" class="form-radio-field" type="radio" required value="Unmarried" />
                                             <span>Unmarried</span>
 
                                     </div>
@@ -258,7 +258,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> NID/Birth/Passport/Driving </label>
                                         <div class="col-10" style="max-width: 100%">
-                                            <input type="text" class="form-control" id="matchpassword" name="nid" placeholder="NID/Passport/Birth Cirtificate/Driving license">
+                                            <input type="text" class="form-control" style="width: 100%;" oninput="this.className = ''" id="matchpassword" name="nid" value="{{old('nid')}}" placeholder="NID/Passport/Birth Cirtificate/Driving license">
                                         </div>
                                     </div>
                                 </div>
@@ -274,7 +274,9 @@ button:hover {
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="objective" class="form-control" rows="4" placeholder="Write Objective...."></textarea>
+                                        <textarea name="objective" class="form-control" rows="4" placeholder="Write Objective....">
+                                            {{old('objective')}}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +290,9 @@ button:hover {
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="interest" class="form-control" rows="4" placeholder="Write About Yourself...."></textarea>
+                                        <textarea name="interest" class="form-control" rows="4" placeholder="Write About Yourself....">
+                                            {{old('interest')}}
+                                        </textarea>
                                     </div>
                                 </div>
                             </div>
@@ -297,13 +301,13 @@ button:hover {
                                 <div class="col-6">
                                     <div>
                                         <label for="sel1" class="labelclass">Upload Your Photo</label><br>
-                                        <input type="file"name='image'>
+                                        <input type="file" oninput="this.className = ''" name='image' value="{{old('image')}}">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div>
                                         <label for="sel1" class="labelclass">Upload Your Cv(doc,pdf)</label>
-                                        <input type="file"name='cv'>
+                                        <input type="file" oninput="this.className = ''" name='cv' value="{{old('cv')}}">
                                     </div>
                                 </div>
                             </div> <br>
@@ -355,10 +359,10 @@ button:hover {
                                                                         @endforeach
                                                                         <option value="other">Other</option>
                                                                     </select>
-                                                                    <input type="text" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
+                                                                    <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]" value="{{old('academic[0][instnameoth]')}}" placeholder="Enter Institute Name" style="display:none" >
 
                                                                 </td>
-                                                                <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
+                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
                                                                 <td>
                                                                     <select class="form-control majorapp"  name="academic[0][major]">
                                                                         </select>
@@ -367,8 +371,8 @@ button:hover {
                                                                     <select class="form-control minorapp"  name="academic[0][minor]">
                                                                         </select>
                                                                     </td>
-                                                                <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
-                                                                <td><input type="date" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
+                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="academic[0][location]"  value="{{old('academic[0][location]')}}" placeholder="Enter Location "><br></td>
+                                                                <td><input type="date" oninput="this.className = ''" style="width: 100%;" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
 
                                                                     <td><span class="aremove" style="background: #ed3610;
                                                                 padding: 0px 7px;;
@@ -409,7 +413,7 @@ button:hover {
                             <div class="form-group">
                                 <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Score of Last Degree </label>
                                 <div class="col-10" style="max-width: 100%">
-                                <input type="text" class="form-control" id="l_score" name="l_score" placeholder="EX:3.80" required>
+                                <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="l_score" name="l_score" value="{{old('l_score')}}"  placeholder="EX:3.80" required>
                                 </div>
                             </div>
                         </div>
@@ -444,11 +448,11 @@ button:hover {
 
                                                         <tr class="item_tr single_list">
                                                             <td class="day_no labelclass" >1</td>
-                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][title]" placeholder="Enter Job Title"><br></td>
-                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][company]" placeholder="Enter Company Name"><br></td>
-                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][responsibilites]" placeholder="Enter Responsibilites"><br></td>
-                                                            <td><input type="date" class="form-control joinon" id="pro_role" name="experience[0][joinedin]" placeholder="Enter Joined date EX:dd-mm-yy"><br></td>
-                                                            <td><input type="date" class="form-control lefton" id="pro_role" name="experience[0][leftin]" placeholder="Enter Leftin date EX:dd-mm-yy"><br></td>
+                                                            <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_role" name="experience[0][title]" value="{{old('experience[0][title]')}}" placeholder="Enter Job Title"><br></td>
+                                                            <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_role" name="experience[0][company]" value="{{old('experience[0][company]')}}" placeholder="Enter Company Name"><br></td>
+                                                            <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_role" name="experience[0][responsibilites]" value="{{old('experience[0][responsibilites]')}}" placeholder="Enter Responsibilites"><br></td>
+                                                            <td><input type="date" oninput="this.className = ''" style="width: 100%;" class="form-control joinon" id="pro_role" name="experience[0][joinedin]" value="{{old('experience[0][joinedin]')}}" placeholder="Enter Joined date EX:dd-mm-yy"><br></td>
+                                                            <td><input type="date" oninput="this.className = ''" style="width: 100%;" class="form-control lefton" id="pro_role" name="experience[0][leftin]" value="{{old('experience[0][leftin]')}}" placeholder="Enter Leftin date EX:dd-mm-yy"><br></td>
                                                             <td><span class="remove" style="background: #ed3610;
                                                                 padding: 0px 7px;;
                                                                 color: #fff;
@@ -493,8 +497,7 @@ button:hover {
 
                                                             <tr class="witem_tr wsingle_list">
                                                                 <td class="day_no labelclass">1</td>
-                                                                <td><input type="text" class="form-control" id="pro_url" name="project[0][url]" placeholder="Enter Project Url"><br></td>
-                                                                <td><textarea type="text" class="form-control" id="pro_comment" name="project[0][comment]" placeholder="Enter Description About Project"></textarea><br></td>
+                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_url" name="project[0][url]" value="{{old('project[0][url]')}}" placeholder="Enter Project Url"><br></td>
                                                                <td><span class="wremove" style="background: #ed3610;
                                                                 padding: 0px 7px;;
                                                                 color: #fff;
@@ -538,7 +541,9 @@ button:hover {
 
                                                             <tr class="acitem_tr acsingle_list">
                                                                 <td class="day_no labelclass">1</td>
-                                                                <td><textarea type="text" class="form-control" id="achievement" rows="3" name="achievement[0][achieve]" placeholder="Enter Your personal achievement"></textarea><br></td>
+                                                                <td><textarea type="text" class="form-control" id="achievement" rows="3" name="achievement[0][achieve]" placeholder="Enter Your personal achievement">
+                                                                    {{old('achievement[0][achieve]')}}
+                                                                </textarea><br></td>
                                                                <td><span class="acremove" style="background: #ed3610;
                                                                 padding: 0px 7px;;
                                                                 color: #fff;
@@ -586,7 +591,7 @@ button:hover {
 
                                                             <tr class="skitem_tr sksingle_list">
                                                                 <td class="day_no labelclass">1</td>
-                                                                <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
+                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" oninput="this.className = ''" class="form-control" id="skill"  name="skill[0][competent]" value="{{old('skill[0][competent]')}}" placeholder="Eg:HTML,CSS,JS"><br></td>
                                                                 <td><span class="skremove" style="background: #ed3610;
                                                                 padding: 0px 7px;;
                                                                 color: #fff;
@@ -636,9 +641,9 @@ button:hover {
 
                                                                 <tr class="reitem_tr resingle_list">
                                                                     <td class="day_no labelclass" >1</td>
-                                                                    <td><input type="text" class="form-control"  name="reference[0][title]" placeholder="Enter Degree  Name"><br></td>
-                                                                    <td><input type="text" class="form-control"  name="reference[0][company]" placeholder="Enter Institute Name"><br></td>
-                                                                    <td><input type="text" class="form-control"  name="reference[0][contactinfo]" placeholder="Enter Score "><br></td>
+                                                                    <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="reference[0][title]" value="{{old('reference[0][title]')}}" placeholder="Enter Degree  Name"><br></td>
+                                                                    <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="reference[0][company]" value="{{old('reference[0][company]')}}" placeholder="Enter Institute Name"><br></td>
+                                                                    <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="reference[0][contactinfo]" value="{{old('skill[0][contactinfo]')}}" placeholder="Enter Score "><br></td>
                                                                     <td><span class="reremove" style="background: #ed3610;
                                                                     padding: 0px 7px;;
                                                                     color: #fff;

@@ -38,8 +38,9 @@ $data['footer'] = Footer::find(1);
                 <div class="col-sm-12">
                     <div class="social-media">
                         <ul class="nav">
+                            <li><a href="{{$data['footer']->ln_link}}" class="twitter"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="{{$data['footer']->fb_link}}" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <!--<li><a href="{{$data['footer']->ln_link}}" class="twitter"><i class="fab fa-twitter"></i></a></li>-->
+                            <li><a href="{{$data['footer']->ln_link}}" class="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -50,7 +51,7 @@ $data['footer'] = Footer::find(1);
       <div class="container">
           <div class="row">
               <div class="col-sm-12">
-              <p>© <a href="www.peoplescape.com">Peoplescape Ltd</a> 2019. All Rights Reserved. Developed by <a
+              <p>© <a href="www.peoplescape.com">Peoplescape Ltd</a> 2006. All Rights Reserved. Developed by <a
                       href="www.weaverbd.com">Weaver Innovations Ltd</a></p></div>
           </div>
       </div>

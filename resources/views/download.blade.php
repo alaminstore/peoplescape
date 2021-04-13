@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 
 
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     </head>
     <style>
         .body {
@@ -83,9 +83,9 @@ table {
                                     {{$careerInfoByid->objective}}
                             </div>
                         </div>
-        
+
                         <hr class="myline">
-        
+
                         <div class="myobjective">
                             <div class="myleft">
                                 <p>PROFESSIONAL ACHIEVEMENTS</p>
@@ -94,14 +94,14 @@ table {
                                     @if(!empty($careerInfoByid->achievement))
                                     <?php  $jsonachievementdata = json_decode($careerInfoByid->achievement);?>
                                     @foreach($jsonachievementdata as $achv)
-                                    <span>. {{ $achv->achieve }}</span><br> 
+                                    <span>. {{ $achv->achieve }}</span><br>
                                     @endforeach
                                @endif
                              </div>
                         </div>
-        
+
                         <hr class="myline">
-        
+
                         <div class="myobjective">
                             <div class="myleft">
                                 <p>SKILLS</p>
@@ -115,14 +115,14 @@ table {
                                @endif
                             </div>
                         </div>
-        
+
                         <hr class="myline">
-        
+
                         <div class="myobjective">
                             <div class="myleft">
                                 <p>WORK HISTORY</p>
                             </div>
-                            <div class="myelement">                        
+                            <div class="myelement">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -150,9 +150,9 @@ table {
                                 </table>
                             </div>
                         </div>
-        
+
                         <hr class="myline">
-        
+
                         <div class="myobjective">
                             <div class="myleft">
                                 <p>EDUCATION</p>
@@ -173,22 +173,26 @@ table {
                                     <tbody>
                                             @if(!empty($careerInfoByid->academic))
                                             <?php $jsonaccdata = json_decode($careerInfoByid->academic);?>
-                                        
-                                        
+
+
                                         @foreach($jsonaccdata as $acc)
                                         <tr>
                                             <td>{{$acc->degree}}</td>
                                             <td>{{$acc->instname=='other' ? $acc->instnameoth : $acc->instname}}</td>
                                             <td>{{$acc->cgpa}}</td>
                                             <td>
-        									   @if(array_key_exists('major', $acc))
-                                                {{$acc->major}}
+        									   {{-- @if(array_key_exists('major', $acc)) --}}
+        									   @if($acc->major == "No Data Found"))
+                                                  @php
+                                                      echo "No"
+                                                  @endphp
                                                 @else
                                                 {{N/A}}
                                                 @endif
         									 </td>
         									<td>
-        									     @if(array_key_exists('minor', $acc))
+        									     {{-- @if(array_key_exists('minor', $acc)) --}}
+        									     @if(isset($acc->minor))
                                                 {{$acc->minor}}
                                                 @else
                                                 {{N/A}}
@@ -203,11 +207,11 @@ table {
                                 </table>
                             </div>
                         </div>
-        
+
                         <hr class="myline">
-        
+
                         {{-- <div class="myobjective">
-                           
+
 
                             <div class="myleft">
                                 <p>REFERENCE</p>
@@ -219,7 +223,7 @@ table {
                                     {{$ref->company}}<br>
                                     {{$ref->contactinfo}}<br>
                                   </div><br>
-                                @endforeach 
+                                @endforeach
                              </div>
                             @endif
                         </div> --}}
@@ -238,9 +242,9 @@ table {
                                                 {{$ref->contactinfo}}
                                             </div>
                                         </div><br>
-                                    @endforeach                      
+                                    @endforeach
                                 </div>
-                               
+
                             </div>
                         @endif
                     </div>

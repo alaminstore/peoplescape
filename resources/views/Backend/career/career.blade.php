@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="title" class="col-sm-2 control-label">Job Nature</label>
                                 <div class="col-sm-6">
-                                   <select  class="form-control"  name="jobtype">
+                                   <select  class="form-control job_nature_selection" id="job_nature_selection" name="jobtype">
                                       <option value="">Select Job Nature</option>
                                       @foreach($data['jobnature'] as $type)
                                           <option value="{{$type->nature}}" >{{$type->nature}}</option>
@@ -104,7 +104,7 @@
                                 align-items: center;
                                 ">
                                     <div class="col-sm-6">
-                                        <select id="category" class="form-control"  name="catid">
+                                        <select id="category" class="form-control career_cat_selection"  name="catid">
                                             <option value="">Select Category</option>
                                             @foreach($data['cat'] as $category)
                                                 <option value="{{$category->id}}">{{$category->title}}</option>
@@ -201,12 +201,6 @@
 
                                 {{-- Modal start --}}
 
-
-
-
-
-
-
                                     <!-- Button trigger modal -->
 
 
@@ -216,7 +210,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLongTitle">Job Nature</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"ss>
                                                 <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
                                             </button>
                                             </div>
@@ -355,6 +349,9 @@
                                                                           </td>
                                                                           </tr>`);
                                                                           $('#jobnature').trigger('reset');
+                                                                          $('.job_nature_selection').append(`<option value="`+data.nature+`">`+data.nature+`</option>`);
+
+                                                                          $('#job_nature_selection').trigger('reset');
                                                                       }
 
                                                                   });
@@ -494,7 +491,7 @@
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Career Category</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
                                             </button>
@@ -624,7 +621,6 @@
 
                                                                   },
 
-
                                                             },
 
                                                             highlight: function(element) {
@@ -675,6 +671,7 @@
                                                                         </td>
                                                                       </tr>`);
                                                                       $('#categoryAdd').trigger('reset');
+                                                                      $('.career_cat_selection').append(`<option value="`+data.id+`">`+data.title+`</option>`)
                                                                     }
 
                                                                 });
@@ -775,6 +772,7 @@
                                             </div>
                                             </div>
                                             <div class="modal-footer">
+                                                {{-- onclick="javascript:window.location.reload()" --}}
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                                             </div>
