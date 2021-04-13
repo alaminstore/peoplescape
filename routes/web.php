@@ -224,7 +224,5 @@ Route::group(['prefix' => 'admin'], function(){
     Route::post('refinfo','Backend\ApplicationController@refinfo')->name('refinfo.update');
     Route::post('basicinfop','Backend\ApplicationController@basicinfop')->name('basicinfop.update');
 
-
-
   });
 });

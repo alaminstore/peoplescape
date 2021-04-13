@@ -359,8 +359,8 @@ button:hover {
                                                                         @endforeach
                                                                         <option value="other">Other</option>
                                                                     </select>
-                                                                    <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]" value="{{old('academic[0][instnameoth]')}}" placeholder="Enter Institute Name" style="display:none" >
-
+                                                                    {{-- <input type="text" oninput="this.className = ''"  style="width: 100%;" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]"  placeholder="Enter Institute Name" style="display:none" > --}}
+                                                                    <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]"  placeholder="Enter Institute Name" style="display:none" >
                                                                 </td>
                                                                 <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
                                                                 <td>
@@ -371,7 +371,7 @@ button:hover {
                                                                     <select class="form-control minorapp"  name="academic[0][minor]">
                                                                         </select>
                                                                     </td>
-                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="academic[0][location]"  value="{{old('academic[0][location]')}}" placeholder="Enter Location "><br></td>
+                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="academic[0][location]"  placeholder="Enter Location "><br></td>
                                                                 <td><input type="date" oninput="this.className = ''" style="width: 100%;" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
 
                                                                     <td><span class="aremove" style="background: #ed3610;
@@ -841,6 +841,7 @@ function fixStepIndicator(n) {
                 $(this).closest('.aitem_tr').find('.otherinst').show();
             }else{
                 $(this).closest('.aitem_tr').find('.otherinst').hide();
+                $(this).closest('.aitem_tr').find('.otherinst').val("other");
             }
         })
 
@@ -929,7 +930,6 @@ function fixStepIndicator(n) {
                 email:"Please enter a valid email address",
                 // remote:("Email is already in use"),
             },
-
             image:
             {
                 extension:("Only jpg,png,jpeg image is accepted"),
