@@ -32,7 +32,10 @@ class ApplicationController extends Controller
          $userid=[];
         $leftIn=[];
         $i=0;
+        // return $cv;
+
         foreach($cv as $us){
+
             $i++;
             $sum=0;
             $decoded = json_decode($us->experience);
@@ -61,7 +64,8 @@ class ApplicationController extends Controller
                     if($userid[$i]['lastinst']=='other'){
                         $userid[$i]['lastinst']=$acc->instnameoth;
                     }
-                    $userid[$i]['lastdegree']=$acc->degree;
+                    $userid[$i]['lastdegree']=$us->l_degree;
+
                 //    if(array_key_exists('major', $acc)){
                    if(isset($acc->major)){
                       $userid[$i]['major']=$acc->major;

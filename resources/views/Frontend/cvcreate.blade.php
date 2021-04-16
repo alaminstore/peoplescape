@@ -174,7 +174,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="paddress" class="col-6 control-label labelclass"><span style="color:red">*</span> Permanent Address</label>
                                         <div class="col-10" style="max-width: 100%">
-                                            <input type="text" oninput="this.className = ''" class="form-control" id="paddress" name="paddress" value="{{old('paddress')}}" placeholder="Enter  Address">
+                                            <input type="text" oninput="this.className = ''"   style="width: 100%;" class="form-control" id="paddress" name="paddress" value="{{old('paddress')}}" placeholder="Enter  Address">
                                         </div>
                                     </div>
                                 </div>
@@ -323,101 +323,101 @@ button:hover {
                                             </div>
                                         </div>
                                     </div>
-                            <div class="row" >
-                                <div class="col-12">
-                                        <div class="form-group">
-                                                <div class="alist col-sm-12 " data-index_no="1000">
-                                                <div class="aitemWrapper">
-                                                    <table class="table table-bordered amoreTable">
-                                                        <tr>
-                                                            <th width="5%" class="labelclass">S.N</th>
-                                                            <th width="15%" class="labelclass">Degree</th>
-                                                            <th width="15%" class="labelclass">Institution Name</th>
-                                                            <th width="10%" class="labelclass">Score</th>
-                                                            <th width="15%" class="labelclass">Major</th>
-                                                            <th width="15%" class="labelclass">Minor</th>
-                                                            <th width="10%" class="labelclass">Location</th>
-                                                            <th width="10%" class="labelclass">Passing Year</th>
-                                                            <th width="5%" class="labelclass">Remove</th>
-                                                        </tr>
+                                    <div class="row" >
+                                        <div class="col-12">
+                                               <div class="form-group">
+                                                        <div class="alist col-sm-12 " data-index_no="1000">
+                                                        <div class="aitemWrapper">
+                                                            <table class="table table-bordered amoreTable">
+                                                                <tr>
+                                                                    <th width="5%" class="labelclass">S.N</th>
+                                                                    <th width="15%" class="labelclass">Degree</th>
+                                                                    <th width="15%" class="labelclass">Institution Name</th>
+                                                                    <th width="10%" class="labelclass">Score</th>
+                                                                    <th width="15%" class="labelclass">Major</th>
+                                                                    <th width="15%" class="labelclass">Minor</th>
+                                                                    <th width="10%" class="labelclass">Location</th>
+                                                                    <th width="10%" class="labelclass">Passing Year</th>
+                                                                    <th width="5%" class="labelclass">Remove</th>
+                                                                </tr>
 
-                                                            <tr class="aitem_tr asingle_list">
-                                                                <td class="day_no labelclass" >1</td>
-                                                                <td>
-                                                                    <select class="form-control degreeonchange" name="academic[0][degree]" id="degree">
-                                                                        <option value="">SelectOption</option>
-                                                                        @foreach ($data['deg'] as $item)
-                                                                            <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </td>
-                                                                <td class="otherapp deloapp">
-                                                                    <select class="form-control institute delinst"  name="academic[0][instname]">
-                                                                        <option value="">Select</option>
-                                                                        @foreach ($data['inst'] as $insti)
-                                                                            <option value="{{$insti->name}}">{{$insti->name}}</option>
-                                                                        @endforeach
-                                                                        <option value="other">Other</option>
-                                                                    </select>
-                                                                    {{-- <input type="text" oninput="this.className = ''"  style="width: 100%;" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]"  placeholder="Enter Institute Name" style="display:none" > --}}
-                                                                    <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control otherinst" value="Other"  name="academic[0][instnameoth]"  placeholder="Enter Institute Name" style="display:none" >
-                                                                </td>
-                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
-                                                                <td>
-                                                                    <select class="form-control majorapp"  name="academic[0][major]">
-                                                                        </select>
-                                                                    </td>
-                                                                    <td>
-                                                                    <select class="form-control minorapp"  name="academic[0][minor]">
-                                                                        </select>
-                                                                    </td>
-                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="academic[0][location]"  placeholder="Enter Location "><br></td>
-                                                                <td><input type="date" oninput="this.className = ''" style="width: 100%;" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
+                                                                    <tr class="aitem_tr asingle_list">
+                                                                        <td class="day_no labelclass" >1</td>
+                                                                        <td>
+                                                                            <select class="form-control degreeonchange" name="academic[0][degree]" id="degree">
+                                                                                <option value="">SelectOption</option>
+                                                                                @foreach ($data['deg'] as $item)
+                                                                                    <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </td>
+                                                                        <td class="otherapp deloapp">
+                                                                           <select class="form-control institute delinst"  name="academic[0][instname]">
+                                                                                <option value="">Select</option>
+                                                                                @foreach ($data['inst'] as $insti)
+                                                                                    <option value="{{$insti->name}}">{{$insti->name}}</option>
+                                                                                @endforeach
+                                                                                <option value="other">Other</option>
+                                                                            </select>
+                                                                            <input type="text" class="form-control otherinst"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
 
-                                                                    <td><span class="aremove" style="background: #ed3610;
-                                                                padding: 0px 7px;;
-                                                                color: #fff;
-                                                                border-radius: 8%;
-                                                                text-decoration: none;
-                                                                margin-bottom: 10px;
-                                                                cursor: pointer;">-</span></td>
-                                                            </tr>
+                                                                        </td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
+                                                                        <td>
+                                                                            <select class="form-control majorapp"  name="academic[0][major]">
+                                                                             </select>
+                                                                         </td>
+                                                                         <td>
+                                                                            <select class="form-control minorapp"  name="academic[0][minor]">
+                                                                             </select>
+                                                                         </td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
+                                                                        <td><input type="date" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
 
-                                                    </table>
-                                                    <span  class="aadd_more" style="background: #0d72ba;
-                                                    padding: 0px 7px;;
-                                                    color: #fff;
-                                                    border-radius: 8%;
-                                                    text-decoration: none;
-                                                    margin-bottom: 10px;
-                                                    cursor: pointer;">+</span><br><br>
+                                                                         <td><span class="aremove" style="background: #ed3610;
+                                                                        padding: 0px 7px;;
+                                                                        color: #fff;
+                                                                        border-radius: 8%;
+                                                                        text-decoration: none;
+                                                                        margin-bottom: 10px;
+                                                                        cursor: pointer;">-</span></td>
+                                                                    </tr>
+
+                                                            </table>
+                                                            <span  class="aadd_more" style="background: #0d72ba;
+                                                            padding: 0px 7px;;
+                                                            color: #fff;
+                                                            border-radius: 8%;
+                                                            text-decoration: none;
+                                                            margin-bottom: 10px;
+                                                            cursor: pointer;">+</span><br><br>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                        </div>
+                                        <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Last Degree</label>
+                                            <div class="col-10" style="max-width: 100%">
+                                                <!--<input type="text" class="form-control" id="l_degree" name="l_degree" placeholder="EX:M.B.A" required>-->
+                                                <select class="form-control" name="l_degree">
+                                                    <option value="">SelectOption</option>
+                                                    @foreach ($data['deg'] as $item)
+                                                        <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                 </div>
                                 <div class="col-6">
-                                <div class="form-group">
-                                    <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Last Degree</label>
-                                    <div class="col-10" style="max-width: 100%">
-                                        <!--<input type="text" class="form-control" id="l_degree" name="l_degree" placeholder="EX:M.B.A" required>-->
-                                        <select class="form-control" name="l_degree">
-                                            <option value="">SelectOption</option>
-                                            @foreach ($data['deg'] as $item)
-                                                <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="form-group">
+                                        <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Score of Last Degree </label>
+                                        <div class="col-10" style="max-width: 100%">
+                                        <input type="text" class="form-control" id="l_score" name="l_score" placeholder="EX:3.80" required>
+                                        </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Score of Last Degree </label>
-                                <div class="col-10" style="max-width: 100%">
-                                <input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="l_score" name="l_score" value="{{old('l_score')}}"  placeholder="EX:3.80" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                    </div>
 
             </div>
 
@@ -430,51 +430,51 @@ button:hover {
                                             </div>
                                         </div>
                                 </div>
-                                 <div class="row" >
-                                  <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="list col-sm-12 " data-index_no="1000">
-                                            <div class="itemWrapper">
-                                                <table class="table table-bordered moreTable">
-                                                    <tr>
-                                                        <th width="5%" class="labelclass">S.N</th>
-                                                        <th width="15%" class="labelclass">Job Title</th>
-                                                        <th width="15%" class="labelclass">Company Name</th>
-                                                        <th width="20%" class="labelclass">Responsibilities</th>
-                                                        <th width="15%" class="labelclass">Joined On</th>
-                                                        <th width="15%" class="labelclass">Left On</th>
-                                                        <th width="10%" class="labelclass">Remove</th>
-                                                    </tr>
+                                <div class="row" >
+                                    <div class="col-12">
+                                      <div class="form-group">
+                                          <div class="list col-sm-12 " data-index_no="1000">
+                                              <div class="itemWrapper">
+                                                  <table class="table table-bordered moreTable">
+                                                      <tr>
+                                                          <th width="5%" class="labelclass">S.N</th>
+                                                          <th width="15%" class="labelclass">Job Title</th>
+                                                          <th width="15%" class="labelclass">Company Name</th>
+                                                          <th width="20%" class="labelclass">Responsibilities</th>
+                                                          <th width="15%" class="labelclass">Joined On</th>
+                                                          <th width="15%" class="labelclass">Left On</th>
+                                                          <th width="10%" class="labelclass">Remove</th>
+                                                      </tr>
 
-                                                        <tr class="item_tr single_list">
-                                                            <td class="day_no labelclass" >1</td>
-                                                            <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_role" name="experience[0][title]" value="{{old('experience[0][title]')}}" placeholder="Enter Job Title"><br></td>
-                                                            <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_role" name="experience[0][company]" value="{{old('experience[0][company]')}}" placeholder="Enter Company Name"><br></td>
-                                                            <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_role" name="experience[0][responsibilites]" value="{{old('experience[0][responsibilites]')}}" placeholder="Enter Responsibilites"><br></td>
-                                                            <td><input type="date" oninput="this.className = ''" style="width: 100%;" class="form-control joinon" id="pro_role" name="experience[0][joinedin]" value="{{old('experience[0][joinedin]')}}" placeholder="Enter Joined date EX:dd-mm-yy"><br></td>
-                                                            <td><input type="date" oninput="this.className = ''" style="width: 100%;" class="form-control lefton" id="pro_role" name="experience[0][leftin]" value="{{old('experience[0][leftin]')}}" placeholder="Enter Leftin date EX:dd-mm-yy"><br></td>
-                                                            <td><span class="remove" style="background: #ed3610;
-                                                                padding: 0px 7px;;
-                                                                color: #fff;
-                                                                border-radius: 8%;
-                                                                text-decoration: none;
-                                                                margin-bottom: 10px;
-                                                                cursor: pointer;">-</span></td>
-                                                        </tr>
+                                                          <tr class="item_tr single_list">
+                                                              <td class="day_no labelclass" >1</td>
+                                                              <td><input type="text" class="form-control" id="pro_role" name="experience[0][title]" placeholder="Enter Job Title"><br></td>
+                                                              <td><input type="text" class="form-control" id="pro_role" name="experience[0][company]" placeholder="Enter Company Name"><br></td>
+                                                              <td><input type="text" class="form-control" id="pro_role" name="experience[0][responsibilites]" placeholder="Enter Responsibilites"><br></td>
+                                                              <td><input type="date" class="form-control joinon" id="pro_role" name="experience[0][joinedin]" placeholder="Enter Joined date EX:dd-mm-yy"><br></td>
+                                                              <td><input type="date" class="form-control lefton" id="pro_role" name="experience[0][leftin]" placeholder="Enter Leftin date EX:dd-mm-yy"><br></td>
+                                                              <td><span class="remove" style="background: #ed3610;
+                                                                  padding: 0px 7px;;
+                                                                  color: #fff;
+                                                                  border-radius: 8%;
+                                                                  text-decoration: none;
+                                                                  margin-bottom: 10px;
+                                                                  cursor: pointer;">-</span></td>
+                                                          </tr>
 
-                                                </table>
-                                                <span  class="add_more" style="background: #0d72ba;
-                                                padding: 0px 7px;;
-                                                color: #fff;
-                                                border-radius: 8%;
-                                                text-decoration: none;
-                                                margin-bottom: 10px;
-                                                cursor: pointer;">+</span><br><br>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                        </div>
+                                                  </table>
+                                                  <span  class="add_more" style="background: #0d72ba;
+                                                  padding: 0px 7px;;
+                                                  color: #fff;
+                                                  border-radius: 8%;
+                                                  text-decoration: none;
+                                                  margin-bottom: 10px;
+                                                  cursor: pointer;">+</span><br><br>
+                                              </div>
+                                          </div>
+                                      </div>
+                              </div>
+                          </div>
                         <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -498,7 +498,8 @@ button:hover {
                                                             <tr class="witem_tr wsingle_list">
                                                                 <td class="day_no labelclass">1</td>
                                                                 <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_url" name="project[0][url]" value="{{old('project[0][url]')}}" placeholder="Enter Project Url"><br></td>
-                                                               <td><span class="wremove" style="background: #ed3610;
+                                                                <td><textarea type="text" class="form-control" id="pro_comment" name="project[0][comment]" placeholder="Enter Description About Project"></textarea><br></td>
+                                                                <td><span class="wremove" style="background: #ed3610;
                                                                 padding: 0px 7px;;
                                                                 color: #fff;
                                                                 border-radius: 8%;
@@ -820,14 +821,14 @@ function fixStepIndicator(n) {
                 $this.closest('.aitem_tr').find('.minorapp').empty();
                 $.each(JSON.parse(data.major),function(index, majordegree){
                    if(majordegree.major==null){
-                        $this.closest('.aitem_tr').find('.majorapp').append('<option >No data found</option>');
+                        $this.closest('.aitem_tr').find('.majorapp').append('<option >Not Available</option>');
                     }else{
                         $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');
                     }
                });
                $.each(JSON.parse(data.minor),function(index, minordegree){
                    if(minordegree.minor==null){
-                    $this.closest('.aitem_tr').find('.minorapp').append('<option >No Data Found</option>');
+                    $this.closest('.aitem_tr').find('.minorapp').append('<option >Not Available</option>');
                     }else{
                         $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');
                     }
@@ -962,6 +963,7 @@ function fixStepIndicator(n) {
             this.id = this.id.replace(/\d+/, index+1);
             this.value = '';
         }).end();
+        console.log('clone:   ',html);
         $('.amoreTable').append(html);
         var rowCount = $('.amoreTable tr').length;
         $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.day_no').html(rowCount-1);

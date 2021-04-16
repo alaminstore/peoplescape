@@ -3,6 +3,11 @@
 @section('title', 'PeopleScape | Application Lists')
 @section('content')
 
+<style>
+    .bg_black{
+        background-color: rgb(124, 115, 115);
+    }
+</style>
 <section class="content">
     <div class="row">
       <div class="col-xs-12">
@@ -50,17 +55,17 @@
               <table id="table2excel" class="table table-bordered table-striped ">
                 <thead>
                 <tr class="noExl">
-                  <th >Name</th>
-                   <th >Email</th>
-                   <th >MobileNO</th>
-                   <th >Last Degree</th>
-                   <th >Last Institution</th>
-                   <th >Major</th>
-                   <th >Minor</th>
-                   <th >Last Organization</th>
-                   <th >Year Of Experience</th>
-                   <th>Age</th>
-                   <th >Gender</th>
+                  <th class="text-center ">Name</th>
+                   <th class="text-center ">Email</th>
+                   <th class="text-center ">Mobile No</th>
+                   <th class="text-center ">Last Degree</th>
+                   <th class="text-center ">Last Institution</th>
+                   <th class="text-center ">Major</th>
+                   <th class="text-center ">Minor</th>
+                   <th class="text-center ">Last Organization</th>
+                   <th class="text-center ">Year Of Experience</th>
+                   <th class="text-center ">Age</th>
+                   <th class="text-center ">Gender</th>
 
                 </tr>
                 <tr style="display:none">
@@ -83,7 +88,7 @@
                       <td>{{ $item['name']}}</td>
                       <td>{{ $item['email']}}</td>
                       <td>{{ $item['mobile']}}</td>
-                        <td>{{$item['lastdegree']}}</td>
+                      <td>{{$item['lastdegree']}}</td>
                       <td>{{$item['lastinst']}}</td>
                       <td>{{$item['major']}}</td>
                       <td>{{$item['minor']}}</td>

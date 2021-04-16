@@ -96,12 +96,12 @@ class PeoplesscapeHomeController extends Controller
         $cvform->mobile = $request->mobile;
         $cvform->email = $request->email;
         $cvform->interest = $request->interest;
-         $cvform->objective = $request->objective;
-         $cvform->l_degree = $request->l_degree;
-          $cvform->l_score = $request->l_score;
+        $cvform->objective = $request->objective;
+        $cvform->l_degree = $request->l_degree;
+        $cvform->l_score = $request->l_score;
         $cvform->cv ='careerfile/'.$new_name;
         $cvform->marital_status=$request->marital_status;
-         $cvform->nid=$request->nid;
+        $cvform->nid=$request->nid;
         if($request->academic){
             $cvform->academic = json_encode($request->academic);
         }

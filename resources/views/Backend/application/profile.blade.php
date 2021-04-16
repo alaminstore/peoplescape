@@ -20,7 +20,11 @@
     }
     .acchead{
         background: #43759014;
-         margin: 5px;
+        margin: 5px;
+    }
+    .text-center.profile_image img {
+        height: 220px;
+        width: 220px;
     }
 </style>
 @php
@@ -42,10 +46,10 @@
                       <div class="basicpifo">
                             <div class="pull-right">
                                 <i title="Edit"  class="fa fa-pencil basicinfo" style="font-size:20px;cursor:pointer;color:#0d72ba;"></i>
-                            </div><br><br>
-                             <div class="text-center">
+                            </div>
+                             <div class="text-center profile_image">
                              <img src="{{url($user_info->image)}}" style="border-radius:50%"/>
-                             </div>
+                             </div> <br>
                               <table class="table table-bordered table-striped">
                                 <tr>
                                     <td width="40%"><b>Name</b></td>
@@ -69,9 +73,9 @@
                   </div>
                 </div>
                 <div class="basicpinfoupdate" style="display:none">
-                               <div class="text-center">
+                               <div class="text-center profile_image">
                                 <img src="{{url($user_info->image)}}" style="border-radius:50%"/>
-                                </div>
+                                </div> <br>
                                 <form id="basicinfoformup">
                                     @csrf
                                  <table class="table table-bordered table-striped">
