@@ -66,8 +66,8 @@ class PeoplesscapeHomeController extends Controller
              'objective'=>'required',
              'l_degree'=>'required',
              'l_score'=>'required',
-            'image' => 'required|mimes:jpeg,jpg,png|',
-            'cv' => 'required|mimes:doc,docx,pdf|max:200',
+             'image' => 'required|mimes:jpeg,jpg,png|',
+             'cv' => 'required|mimes:doc,docx,pdf|max:200',
 
         ]);
         $image = $request->file('image');
@@ -87,6 +87,7 @@ class PeoplesscapeHomeController extends Controller
         $image = $request->file('cv');
         $new_name = time().'.'.$image->getClientOriginalExtension();
         $image->move('careerfile/',$new_name);
+        $user_image = $user->image;
         $cvform  = new Cvform();
         $cvform->userid = $user->id;
         $cvform->name = $request->name;
@@ -130,6 +131,7 @@ class PeoplesscapeHomeController extends Controller
         $cvform->age=$age;
         $cvform->area=$request->area;
         $cvform->gender=$request->gender;
+        $cvform->image = $user_image ;
         $cvform->dateee=date('Y-m-d');
         $cvform->save();
 
@@ -149,7 +151,7 @@ class PeoplesscapeHomeController extends Controller
         view()->share('careerInfoByid',$careerInfoByid);
         // $pdf = PDF::loadView( 'myPDF', compact('careerInfoByid'))->save( 'careerfile/pdfname.pdf' );
         $pdf = PDF::loadView('myPDF');
-        return view('myPDF');
+        return view('myPDF',compact('careerInfoByid'));
         // return $pdf->download('itsolutionstuff.pdf');
     }
     public function pdfdownload(Request $request)
@@ -160,12 +162,17 @@ class PeoplesscapeHomeController extends Controller
         $pdf = PDF::loadView('download');
         // return $pdf->download('download.pdf');
 
-        $pdf->setOptions(['isPhpEnabled' => true,'isRemoteEnabled' => true]);
+
+
+
+
+
+        // $pdf->setOptions(['isPhpEnabled' => true,'isRemoteEnabled' => true]);
         $filename = "generatepdf.pdf";
         // Save file to the directory
         $pdf->save('careerfile/'.$filename);
         //Download Pdf
-        return $pdf->download('generatepdf.pdf');
+        return $pdf->stream('generatepdf.pdf');
     }
     public function emailchk(Request $request){
         $email = $request->email_address;

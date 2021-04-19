@@ -483,44 +483,44 @@ button:hover {
                                 </div>
                         </div>
                         <div class="row" >
-                                <div class="col-12">
-                                        <div class="form-group">
-                                            <div class="wlist col-sm-12 " data-index_no="1000">
-                                                <div class="witemWrapper">
-                                                    <table class="table table-bordered wmoreTable">
-                                                        <tr>
-                                                            <th width="5%" class="labelclass">S.N</th>
-                                                            <th width="30%" class="labelclass">Url</th>
-                                                            <th width="50%" class="labelclass">Project Details</th>
-                                                            <th width="10%" class="labelclass">Remove</th>
+                            <div class="col-12">
+                                    <div class="form-group">
+                                        <div class="wlist col-sm-12 " data-index_no="1000">
+                                            <div class="witemWrapper">
+                                                <table class="table table-bordered wmoreTable">
+                                                    <tr>
+                                                        <th width="5%" class="labelclass">S.N</th>
+                                                        <th width="30%" class="labelclass">Url</th>
+                                                        <th width="50%" class="labelclass">Project Details</th>
+                                                        <th width="10%" class="labelclass">Remove</th>
+                                                    </tr>
+
+                                                        <tr class="witem_tr wsingle_list">
+                                                            <td class="day_no labelclass">1</td>
+                                                            <td><input type="text" class="form-control" id="pro_url" name="project[0][url]" placeholder="Enter Project Url"><br></td>
+                                                            <td><textarea type="text" class="form-control" id="pro_comment" name="project[0][comment]" placeholder="Enter Description About Project"></textarea><br></td>
+                                                           <td><span class="wremove" style="background: #ed3610;
+                                                            padding: 0px 7px;;
+                                                            color: #fff;
+                                                            border-radius: 8%;
+                                                            text-decoration: none;
+                                                            margin-bottom: 10px;
+                                                            cursor: pointer;">-</span></td>
                                                         </tr>
 
-                                                            <tr class="witem_tr wsingle_list">
-                                                                <td class="day_no labelclass">1</td>
-                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control" id="pro_url" name="project[0][url]" value="{{old('project[0][url]')}}" placeholder="Enter Project Url"><br></td>
-                                                                <td><textarea type="text" class="form-control" id="pro_comment" name="project[0][comment]" placeholder="Enter Description About Project"></textarea><br></td>
-                                                                <td><span class="wremove" style="background: #ed3610;
-                                                                padding: 0px 7px;;
-                                                                color: #fff;
-                                                                border-radius: 8%;
-                                                                text-decoration: none;
-                                                                margin-bottom: 10px;
-                                                                cursor: pointer;">-</span></td>
-                                                            </tr>
-
-                                                    </table>
-                                                    <span  class="wadd_more" style="background: #0d72ba;
-                                                    padding: 0px 7px;;
-                                                    color: #fff;
-                                                    border-radius: 8%;
-                                                    text-decoration: none;
-                                                    margin-bottom: 10px;
-                                                    cursor: pointer;">+</span><br><br>
-                                                </div>
+                                                </table>
+                                                <span  class="wadd_more" style="background: #0d72ba;
+                                                padding: 0px 7px;;
+                                                color: #fff;
+                                                border-radius: 8%;
+                                                text-decoration: none;
+                                                margin-bottom: 10px;
+                                                cursor: pointer;">+</span><br><br>
                                             </div>
                                         </div>
-                                </div>
+                                    </div>
                             </div>
+                        </div>
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -592,7 +592,7 @@ button:hover {
 
                                                             <tr class="skitem_tr sksingle_list">
                                                                 <td class="day_no labelclass">1</td>
-                                                                <td><input type="text" oninput="this.className = ''" style="width: 100%;" oninput="this.className = ''" class="form-control" id="skill"  name="skill[0][competent]" value="{{old('skill[0][competent]')}}" placeholder="Eg:HTML,CSS,JS"><br></td>
+                                                                <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
                                                                 <td><span class="skremove" style="background: #ed3610;
                                                                 padding: 0px 7px;;
                                                                 color: #fff;
@@ -642,9 +642,9 @@ button:hover {
 
                                                                 <tr class="reitem_tr resingle_list">
                                                                     <td class="day_no labelclass" >1</td>
-                                                                    <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="reference[0][title]" value="{{old('reference[0][title]')}}" placeholder="Enter Degree  Name"><br></td>
-                                                                    <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="reference[0][company]" value="{{old('reference[0][company]')}}" placeholder="Enter Institute Name"><br></td>
-                                                                    <td><input type="text" oninput="this.className = ''" style="width: 100%;" class="form-control"  name="reference[0][contactinfo]" value="{{old('skill[0][contactinfo]')}}" placeholder="Enter Score "><br></td>
+                                                                    <td><input type="text" class="form-control"  name="reference[0][title]" placeholder="Enter Degree  Name"><br></td>
+                                                                    <td><input type="text" class="form-control"  name="reference[0][company]" placeholder="Enter Institute Name"><br></td>
+                                                                    <td><input type="text" class="form-control"  name="reference[0][contactinfo]" placeholder="Enter Score "><br></td>
                                                                     <td><span class="reremove" style="background: #ed3610;
                                                                     padding: 0px 7px;;
                                                                     color: #fff;
