@@ -5,7 +5,7 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>People Scape - CV Format</title>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
 <style>
     @charset "utf-8";
 
@@ -30,6 +30,7 @@ html {
 body {
     position: relative;
     overflow-x: hidden;
+
 }
 
 ul {
@@ -101,10 +102,16 @@ select:focus {
     padding: 1.25rem;
     background: #e9e8e8;
 }
+.cv_format {
+    max-width: 794px;
+    margin: 8px auto;
+    background:#f6f6f6;
+    height:100%;
+ }
 
 .content-wrapper {
     width: 100%;
-    height: 100%;
+
     padding: 0 16px 42px;
     position: relative;
 }
@@ -184,39 +191,38 @@ select:focus {
     padding-left: 16px;
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-}
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-}
 .page-break{
     page-break-after: always;
 }
+.alignleft {
+    float: left;
+    width: 35%;
+}
+.alignright {
+    float: right;
+    width: 65%;
+    height: 100%;
+    background-color: #ffffff;
+}
 
+.skill_header {
+    width: 100%;
+}
+.skill_image {
+    height: 20px;
+    width: 28px;
+    float: left;
+    margin-right:10px;
+}
 </style>
    </head>
    <body>
 
-      <section class="cv-format">
-         <div class="container-fluid px-0">
-            <div class="row no-gutters">
-               <div class="col-12 col-md-4">
+      <section class="cv_format">
+
+               <div class="alignleft">
                   <div class="content-wrapper cv-left">
-                     {{-- <img src="http://127.0.0.1:8000/peoplescape_logo.png" /> --}}
+
                      <!-- contact info -->
                      <div class="content-inner">
                         <div class="title-box">
@@ -237,15 +243,19 @@ select:focus {
                         </ul>
                      </div>
                      <!-- skils -->
+
+
+
                      <div class="content-inner">
-                        <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-                              </div>
-                           </div>
-                           <h2>skils</h2>
+
+
+                        <div class="skill_header">
+                            {{-- <div class="skill_image">
+                                <img src="https://img.icons8.com/wired/64/000000/communication-skill.png" height="25" width="10"/>
+                            </div> --}}
+                            <h2>skils</h2>
                         </div>
+<br>
                         <ul>
                             @if (!empty($careerInfoByid->skill))
                             @php($skills = json_decode($careerInfoByid->skill))
@@ -260,19 +270,13 @@ select:focus {
                      </div>
                   </div>
                </div>
-               <div class="col-12 col-md-8">
+               <div class="alignright">
                   <div class="content-wrapper cv-right">
                      <div class="logo-wrapper">
-
                      </div>
                      <!-- objectives -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>objectives</h2>
                         </div>
                         <p>
@@ -286,11 +290,7 @@ select:focus {
                      <!-- experience -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
+
                            <h2>experience</h2>
                         </div>
                         @if (!empty($careerInfoByid->experience))
@@ -309,11 +309,7 @@ select:focus {
                      <!-- education -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
+
                            <h2>education</h2>
                         </div>
 
@@ -345,15 +341,10 @@ select:focus {
                          @endforeach
                         @endif
                      </div>
-                     <div class="page-break"></div>
+                     {{-- <div class="page-break"></div> --}}
                      <!-- projects -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>personal projects</h2>
                         </div>
                         @if (!empty($careerInfoByid->project))
@@ -370,11 +361,6 @@ select:focus {
                      <!-- achivements -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>personal achivements</h2>
                         </div>
                         @if (!empty($careerInfoByid->achievement))
@@ -392,11 +378,6 @@ select:focus {
                      <!-- interest -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>interenst(s)</h2>
                         </div>
                         <div class="content-box">
@@ -408,11 +389,6 @@ select:focus {
                      <!-- interest -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>reference</h2>
                         </div>
                         <ol>
@@ -428,8 +404,6 @@ select:focus {
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
       </section>
    </body>
 </html>

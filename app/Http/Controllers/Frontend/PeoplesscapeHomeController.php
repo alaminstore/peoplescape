@@ -167,7 +167,7 @@ class PeoplesscapeHomeController extends Controller
 
 
 
-        // $pdf->setOptions(['isPhpEnabled' => true,'isRemoteEnabled' => true]);
+        $pdf->setOptions(['isPhpEnabled' => true,'isRemoteEnabled' => true,'isHtml5ParserEnabled'=>true]);
         $filename = "generatepdf.pdf";
         // Save file to the directory
         $pdf->save('careerfile/'.$filename);

@@ -5,33 +5,223 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>People Scape - CV Format</title>
-      <!--open snas font link-->
-      <link
-         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600&display=swap"
-         rel="stylesheet">
-      <!--fontawesome-5 icon-->
-      <link rel="stylesheet" href={{ asset('frontEnd/css/fontawesome.all.min.css') }}>
-      <!--bootstrap css-->
-      <!-- CSS only -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-      <!--custom css-->
-      <link rel="stylesheet" href={{asset('frontEnd/mycv.css')}}>
-      <style>
-         body {
-         font-family: 'Open Sans', sans-serif;
-         }
-      </style>
+
+<style>
+    @charset "utf-8";
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+html {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active {
+    outline: none;
+}
+
+/* --input and button type focus & outline style-- */
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+select:focus {
+    outline: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.btn.focus,
+.btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
+/* --cv format start-- */
+.cv-format {
+    max-width: 794px;
+    /* height: 1123px; */
+    margin: 8px auto;
+    border: 1px solid #d5d5d5;
+    padding: 1.25rem;
+    background: #e9e8e8;
+}
+.cv_format {
+    max-width: 794px;
+    margin: 8px auto;
+    background:#f6f6f6;
+    overflow: hidden;
+}
+
+.content-wrapper {
+    width: 100%;
+
+    padding: 0 16px 42px;
+    position: relative;
+}
+
+.content-wrapper.cv-left {
+    background-color: #f6f6f6;
+}
+.content-wrapper.cv-right {
+    background-color: #ffffff;
+}
+
+.content-wrapper img {
+    width: 100%;
+}
+
+.logo-wrapper {
+    position: absolute;
+    width: 62px;
+    top: 8px;
+    right: 16px;
+}
+
+.content-inner {
+    padding-top: 4rem;
+}
+.content-inner h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fcb34b;
+    align-self: center;
+    text-transform: uppercase;
+}
+
+.content-inner .content-box:not(:nth-child(2)) {
+    margin-top: 3rem;
+}
+.content-box h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #111111;
+    text-transform: uppercase;
+    padding-bottom: 0.75rem;
+}
+
+.content-inner p {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.7);
+}
+.content-inner .title-box {
+    display: flex;
+    padding-bottom: 1rem;
+}
+.content-inner .title-box > div:first-child {
+    margin-right: 0.5rem;
+    flex-basis: 32px;
+}
+.content-inner .title-box .icon-wrap {
+    width: 32px;
+    height: 32px;
+    background: #909cdf;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 32px;
+}
+.content-inner ul {
+    margin-bottom: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.content-inner ul li:not(:last-child) {
+    margin-bottom: 0.25rem;
+}
+
+.content-inner ol {
+    padding-left: 16px;
+}
+
+.page-break{
+    page-break-after: always;
+}
+.alignleft {
+    float: left;
+    width: 35%;
+}
+.alignright {
+    float: right;
+    width: 65%;
+}
+
+.skill_header {
+    width: 100%;
+}
+.skill_image {
+    height: 20px;
+    width: 28px;
+    float: left;
+    margin-right:10px;
+}
+</style>
    </head>
    <body>
-      <a href="{{route('pdfdownload',['id'=>$careerInfoByid->id])}}">
-      <button class="btn btn-info btn-sm">Download as pdf</button>
-      </a>
-      <section class="cv-format">
-         <div class="container-fluid px-0">
-            <div class="row no-gutters">
-               <div class="col-12 col-md-4">
+    <a href="{{route('pdfdownload',['id'=>$careerInfoByid->id])}}">
+        <button class="btn btn-info btn-sm">Download as pdf</button>
+        </a>
+      <section class="cv_format">
+
+               <div class="alignleft">
                   <div class="content-wrapper cv-left">
-                     <img class="" src={{asset($careerInfoByid->image)}} alt="">
+                     {{-- <img src="http://127.0.0.1:8000/peoplescape_logo.png" /> --}}
                      <!-- contact info -->
                      <div class="content-inner">
                         <div class="title-box">
@@ -52,15 +242,19 @@
                         </ul>
                      </div>
                      <!-- skils -->
+
+
+
                      <div class="content-inner">
-                        <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
-                              </div>
-                           </div>
-                           <h2>skils</h2>
+
+
+                        <div class="skill_header">
+                            {{-- <div class="skill_image">
+                                <img src="https://img.icons8.com/wired/64/000000/communication-skill.png" height="25" width="10"/>
+                            </div> --}}
+                            <h2>skils</h2>
                         </div>
+<br>
                         <ul>
                             @if (!empty($careerInfoByid->skill))
                             @php($skills = json_decode($careerInfoByid->skill))
@@ -75,22 +269,15 @@
                      </div>
                   </div>
                </div>
-               <div class="col-12 col-md-8">
+               <div class="alignright">
                   <div class="content-wrapper cv-right">
                      <div class="logo-wrapper">
-                        <img class="img-fluid" src={{asset('peoplescape_logo.png')}} alt="logo">
-                        {{-- <img class="" src={{url('peoplescape_logo.png')}} alt="logo"> --}}
-                        {{-- <img src="http://127.0.0.1:8000/peoplescape_logo.png" /> --}}
-                        {{-- $image = str_replace(' ', '%20', $items->image); --}}
+                         <img src="http://127.0.0.1:8000/peoplescape_logo.jpg" alt="">
+
                      </div>
                      <!-- objectives -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>objectives</h2>
                         </div>
                         <p>
@@ -104,11 +291,7 @@
                      <!-- experience -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
+
                            <h2>experience</h2>
                         </div>
                         @if (!empty($careerInfoByid->experience))
@@ -127,11 +310,7 @@
                      <!-- education -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
+
                            <h2>education</h2>
                         </div>
 
@@ -163,14 +342,10 @@
                          @endforeach
                         @endif
                      </div>
+                     <div class="page-break"></div>
                      <!-- projects -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>personal projects</h2>
                         </div>
                         @if (!empty($careerInfoByid->project))
@@ -187,11 +362,6 @@
                      <!-- achivements -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>personal achivements</h2>
                         </div>
                         @if (!empty($careerInfoByid->achievement))
@@ -209,11 +379,6 @@
                      <!-- interest -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>interenst(s)</h2>
                         </div>
                         <div class="content-box">
@@ -225,11 +390,6 @@
                      <!-- interest -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <div>
-                              <div class="icon-wrap">
-                                 <i class="far fa-address-card"></i>
-                              </div>
-                           </div>
                            <h2>reference</h2>
                         </div>
                         <ol>
@@ -245,15 +405,6 @@
                      </div>
                   </div>
                </div>
-            </div>
-         </div>
       </section>
-      <!--bootstrap js-->
-      <script src="assets/js/vendor/jquery-3.4.1.min.js"></script>
-      <script src="assets/js/popper.min.js"></script>
-      <script src="assets/js/bootstrap.min.js"></script>
-      <!--custom js-->
-      <script src="assets/js/custom.js"></script>
-      <script src="https://kit.fontawesome.com/f88912b5bf.js" crossorigin="anonymous"></script>
    </body>
 </html>
