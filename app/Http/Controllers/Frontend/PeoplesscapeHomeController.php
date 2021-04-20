@@ -24,6 +24,9 @@ use App\User;
 use App\Degree;
 use App\Institution;
 use App\Degreemajorminor;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\TemplateProcessor;
+
 class PeoplesscapeHomeController extends Controller
 {
     public function index(){
@@ -55,9 +58,10 @@ class PeoplesscapeHomeController extends Controller
         $request->validate([
              'name'=>'required',
              'email' => 'required|unique:users',
-             'mobile'=>'required',
+             'mobile'=>'required|min:11|numeric',
              'gender' => 'required',
-             'area' => 'required',
+             'marital_status' => 'required',
+             'division' => 'required',
              'password'=>'required',
              'birthdate'=>'required',
              'paddress'=>'required',
@@ -129,7 +133,7 @@ class PeoplesscapeHomeController extends Controller
             : (date("Y") - $birthDate[0]));
         //return "Age is:" . $age;
         $cvform->age=$age;
-        $cvform->area=$request->area;
+        $cvform->area=$request->division;
         $cvform->gender=$request->gender;
         $cvform->image = $user_image ;
         $cvform->dateee=date('Y-m-d');
@@ -181,12 +185,57 @@ class PeoplesscapeHomeController extends Controller
 
     public function wordExport($id)
     {
-        $user = User::findOrFail($id);
-        $templateProcessor = new TemplateProcessor('word-template/user.docx');
+        $user = Cvform::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/word.docx');
         $templateProcessor->setValue('id', $user->id);
         $templateProcessor->setValue('name', $user->name);
         $templateProcessor->setValue('email', $user->email);
-        $templateProcessor->setValue('address', $user->address);
+        $templateProcessor->setValue('mobile', $user->mobile);
+        $templateProcessor->setValue('gender', $user->gender);
+        $templateProcessor->setValue('address', $user->haddress);
+        $templateProcessor->setValue('objective', $user->objective);
+        $templateProcessor->setValue('skill', $user->skill);
+        // $skills = json_encode($user->skill);
+
+
+        // if(is_array($user->skill) || is_object($user->skill)){
+        //     foreach($user->skill as $skill){
+        //         $data[] = $skill->competent;
+        //     }
+
+        //     $templateProcessor->setValue('skill',$data);
+        // }
+
+        // while(in_array('skill',$templateProcessor->getVariables())){
+        //      $templateProcessor->setValue('skill',$user->skill);
+
+        //   }
+
+
+
+
+        //     $topic = $user->skill;
+
+
+        //     $templateProcessor->setValue('skill',
+        //     if(is_array($topic) || is_object($topic)){
+        //     foreach ($topic as $skill){
+        //         // Values for loop in .docx file
+        //         $skill->competent;
+
+        //     }
+        //   }
+        // );
+
+
+
+
+
+
+
+
+
+
 
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
@@ -203,7 +252,6 @@ class PeoplesscapeHomeController extends Controller
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
-
 
 
 

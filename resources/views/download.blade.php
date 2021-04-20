@@ -7,8 +7,9 @@
 
       <title>People Scape - CV Format</title>
 
-<style>
+<style type="text/css">
     @charset "utf-8";
+    @page { margin: 100px; }
 
 *,
 *::before,
@@ -231,16 +232,21 @@ select:focus {
                         </div>
                         <ul>
                            <li>
-                              <p>{{$careerInfoByid->haddress}} sdfhsd sef se s efe</p>
+                              <p><b>Home Address: </b>{{$careerInfoByid->haddress}}</p>
                            </li>
                            <li>
-                              <p>{{$careerInfoByid->mobile}}</p>
+                              <p><b>Mobile: </b>{{$careerInfoByid->mobile}}</p>
                            </li>
                            <li>
                               <p>
-                                 <a href="mailto:" {{$careerInfoByid->email}}>{{$careerInfoByid->email}}</a>
+                                 <b>Email: </b><a href="mailto:" {{$careerInfoByid->email}}>{{$careerInfoByid->email}}</a>
                               </p>
                            </li>
+                           <li>
+                            <p>
+                               <b>Marital Status: </b>{{$careerInfoByid->marital_status}}
+                            </p>
+                         </li>
                         </ul>
                      </div>
                      <!-- skils -->
@@ -248,14 +254,10 @@ select:focus {
 
 
                      <div class="content-inner">
-
-
-                        <div class="skill_header">
-                            {{-- <div class="skill_image">
-                                <img src="https://img.icons8.com/wired/64/000000/communication-skill.png" height="25" width="10"/>
-                            </div> --}}
-                            <h2>skils</h2>
-                        </div>
+                        <table>
+                            <td style="height: 22px;width:22px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.jpg'))) }}"></td>
+                            <td><h2>skills</h2></td>
+                        </table>
 <br>
                         <ul>
                             @if (!empty($careerInfoByid->skill))
@@ -280,7 +282,10 @@ select:focus {
                      <!-- objectives -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <h2>objectives</h2>
+                            <table>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/objectives.png'))) }}"></td>
+                                <td><h2> &nbsp;Objectives</h2></td>
+                            </table>
                         </div>
                         <p>
                             @if ($careerInfoByid->objective)
@@ -293,8 +298,10 @@ select:focus {
                      <!-- experience -->
                      <div class="content-inner">
                         <div class="title-box">
-
-                           <h2>experience</h2>
+                            <table>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/experience.png'))) }}"></td>
+                                <td><h2> &nbsp;Experience</h2></td>
+                            </table>
                         </div>
                         @if (!empty($careerInfoByid->experience))
                         @php($jsonexpdata = json_decode($careerInfoByid->experience))
@@ -312,8 +319,10 @@ select:focus {
                      <!-- education -->
                      <div class="content-inner">
                         <div class="title-box">
-
-                           <h2>education</h2>
+                            <table>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/education.png'))) }}"></td>
+                                <td><h2> &nbsp;Education</h2></td>
+                            </table>
                         </div>
 
                         @if(!empty($careerInfoByid->academic))
@@ -348,7 +357,12 @@ select:focus {
                      <!-- projects -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <h2>personal projects</h2>
+                           <table>
+                            <tr>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/project.png'))) }}"></td>
+                                <td><h2> &nbsp;personal_projects</h2></td>
+                            </tr>
+                        </table>
                         </div>
                         @if (!empty($careerInfoByid->project))
                          @php($projects = json_decode($careerInfoByid->project))
@@ -364,7 +378,13 @@ select:focus {
                      <!-- achivements -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <h2>personal achivements</h2>
+
+                           <table>
+                            <tr>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/project.png'))) }}"></td>
+                                <td><h2> &nbsp;personal_achivements</h2></td>
+                            </tr>
+                        </table>
                         </div>
                         @if (!empty($careerInfoByid->achievement))
                         @php($jsonreferencedata = json_decode($careerInfoByid->achievement))
@@ -381,7 +401,13 @@ select:focus {
                      <!-- interest -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <h2>interenst(s)</h2>
+
+                           <table>
+                            <tr>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/interest.png'))) }}"></td>
+                                <td><h2> &nbsp;interenst(s)</h2></td>
+                            </tr>
+                        </table>
                         </div>
                         <div class="content-box">
                             @if(!empty($careerInfoByid->interest))
@@ -392,7 +418,13 @@ select:focus {
                      <!-- interest -->
                      <div class="content-inner">
                         <div class="title-box">
-                           <h2>reference</h2>
+
+                           <table>
+                            <tr>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/work.png'))) }}"></td>
+                                <td><h2> &nbsp;reference</h2></td>
+                            </tr>
+                        </table>
                         </div>
                         <ol>
                             @if(!empty($careerInfoByid->reference))

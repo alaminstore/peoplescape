@@ -116,19 +116,19 @@ button:hover {
                <form action="{{url('/cvformstore')}}" method="post" id="cvcreateform" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item step">
+                        <li class=" step">
                           <a class="nav-link " id="pills-information-tab" data-toggle="pill" href="#pills-information" role="tab" aria-controls="pills-info" aria-selected="true"><i class="fas fa-user"></i> Personal Information</a>
                         </li>
-                        <li class="nav-item step">
+                        <li class=" step">
                           <a class="nav-link" id="pills-education-tab" data-toggle="pill" href="#pills-education" role="tab" aria-controls="pills-education" aria-selected="false"><i class="fas fa-book-open"></i> Educational Qualification</a>
                         </li>
-                        <li class="nav-item step">
+                        <li class=" step">
                           <a class="nav-link" id="pills-experience-tab" data-toggle="pill" href="#pills-experience" role="tab" aria-controls="pills-experience" aria-selected="false"><i class="far fa-file-alt"></i> Experience</a>
                         </li>
-                        <li class="nav-item step">
+                        <li class=" step">
                           <a class="nav-link" id="pills-skills-tab" data-toggle="pill" href="#pills-skills" role="tab" aria-controls="pills-skills" aria-selected="false"><i class="fas fa-archive"></i> Skills</a>
                         </li>
-                        <li class="nav-item step">
+                        <li class=" step">
                           <a class="nav-link" id="pills-reference-tab" data-toggle="pill" href="#pills-reference" role="tab" aria-controls="pills-reference" aria-selected="false"><i class="far fa-share-square"></i> Reference</a>
                         </li>
                     </ul>
@@ -227,7 +227,7 @@ button:hover {
                                         <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Division</label>
                                         <div class="col-10" style="max-width: 100%">
                                             <!--<input type="password" class="form-control" id="matchpassword" name="password" placeholder="Enter password">-->
-                                         <select class="form-control" name="area" id="area">
+                                         <select class="form-control" name="division" id="area">
                                             <option value="">SelectOption</option>
                                             <option value="Dhaka">Dhaka</option>
                                             <option value="Rajshahi">Rajshahi</option>
@@ -240,6 +240,12 @@ button:hover {
                                           </select>
                                         </div>
                                     </div>
+                                    {{-- validation
+                                    @if( $errors->has('area'))
+                                    <div class="error red">
+                                        {{$errors->first('area')}}
+                                    </div>
+                                    @endif --}}
                                 </div>
                                 <div class="col-6">
                                     <div class="form-radio form-radio-inline">
@@ -274,9 +280,7 @@ button:hover {
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="objective" class="form-control" rows="4" placeholder="Write Objective....">
-                                            {{old('objective')}}
-                                        </textarea>
+                                        <textarea name="objective" class="form-control" rows="4" placeholder="Write Objective....">{{old('objective')}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -290,9 +294,7 @@ button:hover {
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea name="interest" class="form-control" rows="4" placeholder="Write About Yourself....">
-                                            {{old('interest')}}
-                                        </textarea>
+                                        <textarea name="interest" class="form-control" rows="4" placeholder="Write About Yourself....">{{old('interest')}}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -300,8 +302,9 @@ button:hover {
                             <div class="row" style="margin:10px 2px 2px 2px;">
                                 <div class="col-6">
                                     <div>
+                                        {{-- accept=".png, .jpg, .jpeg"  --}}
                                         <label for="sel1" class="labelclass">Upload Your Photo</label><br>
-                                        <input type="file" oninput="this.className = ''" name='image' value="{{old('image')}}">
+                                        <input type="file"  oninput="this.className = ''" name='image' value="{{old('image')}}">
                                     </div>
                                 </div>
                                 <div class="col-6">
