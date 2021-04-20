@@ -1,9 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="en">
    <head>
-      <meta charset="utf-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
       <title>People Scape - CV Format</title>
 
 <style>
@@ -222,7 +223,7 @@ select:focus {
 
                <div class="alignleft">
                   <div class="content-wrapper cv-left">
-
+                    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path($careerInfoByid->image))) }}">
                      <!-- contact info -->
                      <div class="content-inner">
                         <div class="title-box">
@@ -273,6 +274,8 @@ select:focus {
                <div class="alignright">
                   <div class="content-wrapper cv-right">
                      <div class="logo-wrapper">
+                        {{-- <img src="{{public_path('images/peoplescape_logo.png')}}"> --}}
+                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/peoplescape_logo.png'))) }}">
                      </div>
                      <!-- objectives -->
                      <div class="content-inner">

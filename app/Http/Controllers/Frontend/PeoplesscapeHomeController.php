@@ -154,26 +154,61 @@ class PeoplesscapeHomeController extends Controller
         return view('myPDF',compact('careerInfoByid'));
         // return $pdf->download('itsolutionstuff.pdf');
     }
+
+
     public function pdfdownload(Request $request)
     {
+
         $id = $request->id;
         $careerInfoByid = Cvform::findorfail($id);
         view()->share('careerInfoByid',$careerInfoByid);
-        $pdf = PDF::loadView('download');
+
         // return $pdf->download('download.pdf');
 
+        $pdf = PDF::loadView('download');
+        $pdf->setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
 
 
 
-
-
-        $pdf->setOptions(['isPhpEnabled' => true,'isRemoteEnabled' => true,'isHtml5ParserEnabled'=>true]);
         $filename = "generatepdf.pdf";
         // Save file to the directory
         $pdf->save('careerfile/'.$filename);
         //Download Pdf
         return $pdf->stream('generatepdf.pdf');
     }
+
+
+
+    public function wordExport($id)
+    {
+        $user = User::findOrFail($id);
+        $templateProcessor = new TemplateProcessor('word-template/user.docx');
+        $templateProcessor->setValue('id', $user->id);
+        $templateProcessor->setValue('name', $user->name);
+        $templateProcessor->setValue('email', $user->email);
+        $templateProcessor->setValue('address', $user->address);
+
+        $phpWord = new \PhpOffice\PhpWord\PhpWord();
+        $section = $phpWord->addSection();
+        // Add Header
+        $header = $section->addHeader();
+        // $templateProcessor->setValue('image',$header->addImage(asset(img.png)));
+
+
+        $templateProcessor->setImageValue('image', array('path' => $user->image, 'width' => 300, 'height' => 300, 'ratio' => true));
+
+
+
+        $fileName = $user->name;
+        $templateProcessor->saveAs($fileName . '.docx');
+        return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
+    }
+
+
+
+
+
+
     public function emailchk(Request $request){
         $email = $request->email_address;
         $find_email = User::where('email','=',$email)->first();

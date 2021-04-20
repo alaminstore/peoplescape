@@ -283,7 +283,7 @@ button:hover {
                             <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="sel1" style="font-size: 22px;"> Personal Interest</label>
+                                        <label for="sel1" style="font-size: 22px;"> Personal Interest(s)</label>
                                     </div>
                                 </div>
                             </div>
@@ -394,29 +394,36 @@ button:hover {
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                        </div>
+
+                                       <div class="col-md-12">
+                                           <div class="container"><p><span style="color:red">*</span> Please enter your last degree & it's score again</p></div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Last Degree</label>
+                                                    <div class="col-10" style="max-width: 100%">
+                                                        <!--<input type="text" class="form-control" id="l_degree" name="l_degree" placeholder="EX:M.B.A" required>-->
+                                                        <select class="form-control" name="l_degree">
+                                                            <option value="">SelectOption</option>
+                                                            @foreach ($data['deg'] as $item)
+                                                                <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
                                         </div>
                                         <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Last Degree</label>
-                                            <div class="col-10" style="max-width: 100%">
-                                                <!--<input type="text" class="form-control" id="l_degree" name="l_degree" placeholder="EX:M.B.A" required>-->
-                                                <select class="form-control" name="l_degree">
-                                                    <option value="">SelectOption</option>
-                                                    @foreach ($data['deg'] as $item)
-                                                        <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
-                                                    @endforeach
-                                                </select>
+                                            <div class="form-group">
+                                                <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Score of Last Degree </label>
+                                                <div class="col-10" style="max-width: 100%">
+                                                <input type="text" class="form-control" id="l_score" name="l_score" placeholder="EX:3.80" required>
+                                                </div>
                                             </div>
                                         </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Score of Last Degree </label>
-                                        <div class="col-10" style="max-width: 100%">
-                                        <input type="text" class="form-control" id="l_score" name="l_score" placeholder="EX:3.80" required>
                                         </div>
-                                    </div>
-                                </div>
+                                       </div>
                                     </div>
 
             </div>
@@ -635,7 +642,7 @@ button:hover {
                                                             <tr>
                                                                 <th width="5%" class="labelclass">S.N</th>
                                                                 <th width="20%" class="labelclass">Title</th>
-                                                                <th width="20%" class="labelclass">Company</th>
+                                                                <th width="20%" class="labelclass">Institution</th>
                                                                 <th width="40%" class="labelclass">Contact info</th>
                                                                 <th width="15%" class="labelclass">Remove</th>
                                                             </tr>

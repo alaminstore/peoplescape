@@ -45,6 +45,7 @@ Route::get('loginemail','Frontend\PeoplesscapeHomeController@emailchk')->name('l
 Route::get('loginpass','Frontend\PeoplesscapeHomeController@passchk')->name('loginpass.chk');
 Route::get('pdfview','Frontend\PeoplesscapeHomeController@pdfview')->name('pdfcreate.generate');
 Route::get('pdfdownload','Frontend\PeoplesscapeHomeController@pdfdownload')->name('pdfdownload');
+Route::get('wordexport','Frontend\PeoplesscapeHomeController@wordExport')->name('wordexport');
 Route::get('unqemailchk','Frontend\PeoplesscapeHomeController@unqemailchk')->name('unqemail.chk');
 //2/12/2020
 Route::get('majorminorbydegree','Frontend\PeoplesscapeHomeController@majorminorbyDegree')->name('degree.majorminor');

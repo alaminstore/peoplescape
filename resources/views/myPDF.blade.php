@@ -218,10 +218,11 @@ select:focus {
         <button class="btn btn-info btn-sm">Download as pdf</button>
         </a>
       <section class="cv_format">
-
                <div class="alignleft">
                   <div class="content-wrapper cv-left">
-                     {{-- <img src="http://127.0.0.1:8000/peoplescape_logo.png" /> --}}
+                    <img class="" src={{url($careerInfoByid->image)}}>
+
+
                      <!-- contact info -->
                      <div class="content-inner">
                         <div class="title-box">
@@ -272,8 +273,7 @@ select:focus {
                <div class="alignright">
                   <div class="content-wrapper cv-right">
                      <div class="logo-wrapper">
-                         <img src="http://127.0.0.1:8000/peoplescape_logo.jpg" alt="">
-
+                        <img src="/images/peoplescape_logo.png" alt="">
                      </div>
                      <!-- objectives -->
                      <div class="content-inner">
