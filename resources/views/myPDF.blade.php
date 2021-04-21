@@ -278,11 +278,13 @@ select:focus {
 
 
                         <table>
-                            <td style="height: 22px;width:22px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.jpg'))) }}"></td>
+                            {{-- <i class="fa fa-facebook"></i> --}}
+                            <td style="height: 22px;width:22px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill2.png'))) }}"></td>
                             <td><h2>skills</h2></td>
                         </table>
 <br>
                         <ul>
+
                             @if (!empty($careerInfoByid->skill))
                             @php($skills = json_decode($careerInfoByid->skill))
                              @foreach ($skills as $skill)
@@ -305,7 +307,7 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/objectives.png'))) }}"></td>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/objectives2.png'))) }}"></td>
                                 <td><h2> &nbsp;Objectives</h2></td>
                             </table>
                         </div>
@@ -321,7 +323,7 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/experience.png'))) }}"></td>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/experience2.png'))) }}"></td>
                                 <td><h2> &nbsp;Experience</h2></td>
                             </table>
                         </div>
@@ -342,7 +344,7 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/education.png'))) }}"></td>
+                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/education2.png'))) }}"></td>
                                 <td><h2> &nbsp;Education</h2></td>
                             </table>
                         </div>
@@ -402,7 +404,7 @@ select:focus {
                         <div class="title-box">
                             <table>
                                 <tr>
-                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/project.png'))) }}"></td>
+                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/achievement.png'))) }}"></td>
                                     <td><h2> &nbsp;personal_achivements</h2></td>
                                 </tr>
                             </table>
@@ -424,7 +426,7 @@ select:focus {
                         <div class="title-box">
                             <table>
                                 <tr>
-                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/interest.png'))) }}"></td>
+                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/achievement.png'))) }}"></td>
                                     <td><h2> &nbsp;interenst(s)</h2></td>
                                 </tr>
                             </table>
@@ -440,7 +442,7 @@ select:focus {
                         <div class="title-box">
                             <table>
                                 <tr>
-                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/work.png'))) }}"></td>
+                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/reference2.png'))) }}"></td>
                                     <td><h2> &nbsp;reference</h2></td>
                                 </tr>
                             </table>
@@ -459,5 +461,7 @@ select:focus {
                   </div>
                </div>
       </section>
+      <script src="https://kit.fontawesome.com/f88912b5bf.js" crossorigin="anonymous"></script>
+
    </body>
 </html>

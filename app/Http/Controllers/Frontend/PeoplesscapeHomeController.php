@@ -24,6 +24,7 @@ use App\User;
 use App\Degree;
 use App\Institution;
 use App\Degreemajorminor;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\TemplateProcessor;
 
@@ -195,16 +196,59 @@ class PeoplesscapeHomeController extends Controller
         $templateProcessor->setValue('address', $user->haddress);
         $templateProcessor->setValue('objective', $user->objective);
         $templateProcessor->setValue('skill', $user->skill);
-        // $skills = json_encode($user->skill);
+        foreach ($user->skill as $value) {
+            echo $value[0]->competent ;
+           }
 
 
-        // if(is_array($user->skill) || is_object($user->skill)){
-        //     foreach($user->skill as $skill){
-        //         $data[] = $skill->competent;
-        //     }
+        // $test_var = json_decode($user->skill);
+        // print_r($test_var);
+        // dd();
 
-        //     $templateProcessor->setValue('skill',$data);
+
+
+
+        // $array = json_decode($user->skill, true);
+        //     foreach($array as $values) {
+        //     echo $values["0"]["competent"];
+
         // }
+        // dd();
+
+
+
+
+
+        // // $skl = json_encode($user->skill);
+        // // $templateProcessor->setValue('skill', $skl);
+        // // $skills = json_encode($user->skill);
+
+
+        // // if(is_array($user->skill) || is_object($user->skill)){
+        //     $i=0;
+        //     $json    = json_decode($user->skill);
+        //     foreach ($json as $skills){
+        //         // Values for loop in .docx file
+        //         $templateProcessor->setValue('skill'.$i, $skills->competent);
+        //         $i++;
+        //     }
+        // // }
+
+
+        // // $skills = json_decode($user->skill);
+        // // foreach($skills as $ts){
+        // //     echo $ts->competent;
+        // // }
+
+
+
+
+
+
+
+
+
+
 
         // while(in_array('skill',$templateProcessor->getVariables())){
         //      $templateProcessor->setValue('skill',$user->skill);

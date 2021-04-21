@@ -365,7 +365,7 @@ button:hover {
                                                                             <input type="text" class="form-control otherinst"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
 
                                                                         </td>
-                                                                        <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][cgpa]"  placeholder="EX:3.80 "><br></td>
                                                                         <td>
                                                                             <select class="form-control majorapp"  name="academic[0][major]">
                                                                              </select>
