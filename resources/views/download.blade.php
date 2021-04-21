@@ -4,12 +4,13 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
       <title>People Scape - CV Format</title>
 
 <style type="text/css">
     @charset "utf-8";
-    @page { margin: 100px; }
+    @page { margin: 50px auto!important; }
 
 *,
 *::before,
@@ -32,6 +33,9 @@ html {
 body {
     position: relative;
     overflow-x: hidden;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Open Sans';
+
 
 }
 
@@ -58,10 +62,14 @@ h6 {
 p {
     margin: 0;
     padding: 0;
+    font-size: 12px!important;
 }
 
 a {
     text-decoration: none;
+}
+h3{
+    font-size:14px!important;
 }
 
 a:hover,
@@ -106,14 +114,14 @@ select:focus {
 }
 .cv_format {
     max-width: 794px;
-    margin: 8px auto;
+    margin: 0px auto;
     background:#f6f6f6;
+    /* border: 1px solid #d5d5d5; */
     height:100%;
  }
 
 .content-wrapper {
     width: 100%;
-
     padding: 0 16px 42px;
     position: relative;
 }
@@ -137,7 +145,7 @@ select:focus {
 }
 
 .content-inner {
-    padding-top: 4rem;
+    padding-top: 2rem;
 }
 .content-inner h2 {
     font-size: 18px;
@@ -153,9 +161,9 @@ select:focus {
 .content-box h3 {
     font-size: 17px;
     font-weight: 600;
-    color: #111111;
+    color: #201e1e;
     text-transform: uppercase;
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.75rem;s
 }
 
 .content-inner p {
@@ -221,7 +229,6 @@ select:focus {
    <body>
 
       <section class="cv_format">
-
                <div class="alignleft">
                   <div class="content-wrapper cv-left">
                     <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path($careerInfoByid->image))) }}">
@@ -234,7 +241,7 @@ select:focus {
                         </div>
                         <ul>
                            <li>
-                              <p><b>Home Address: </b>{{$careerInfoByid->haddress}}</p>
+                              <p><strong>Home Address: </strong>{{$careerInfoByid->haddress}}</p>
                            </li>
                            <li>
                               <p><b>Mobile: </b>{{$careerInfoByid->mobile}}</p>
@@ -256,11 +263,10 @@ select:focus {
 
 
                      <div class="content-inner">
-                        <table>
+                        <table style="padding-bottom: 10px;">
                             <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill2.png'))) }}"></td>
                             <td><h2>&nbsp;skills</h2></td>
                         </table>
-<br>
                         <ul>
                             @if (!empty($careerInfoByid->skill))
                             @php($skills = json_decode($careerInfoByid->skill))
@@ -393,7 +399,7 @@ select:focus {
                         @foreach ($jsonreferencedata as $achv)
 
                         <div class="content-box">
-                           <p><b>{{$achv->achieve}}</b></p>
+                           <p>{{$achv->achieve}}</p>
                         </div>
                         @endforeach
                         @endif

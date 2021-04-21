@@ -72,7 +72,7 @@ class PeoplesscapeHomeController extends Controller
              'l_degree'=>'required',
              'l_score'=>'required',
              'image' => 'required|mimes:jpeg,jpg,png|',
-             'cv' => 'required|mimes:doc,docx,pdf|max:200',
+             'cv' => 'required|mimes:doc,docx,pdf|max:250',
 
         ]);
         $image = $request->file('image');
@@ -160,10 +160,8 @@ class PeoplesscapeHomeController extends Controller
         // return $pdf->download('itsolutionstuff.pdf');
     }
 
-
     public function pdfdownload(Request $request)
     {
-
         $id = $request->id;
         $careerInfoByid = Cvform::findorfail($id);
         view()->share('careerInfoByid',$careerInfoByid);
@@ -174,12 +172,11 @@ class PeoplesscapeHomeController extends Controller
         $pdf->setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true]);
 
 
-
         $filename = "generatepdf.pdf";
         // Save file to the directory
         $pdf->save('careerfile/'.$filename);
         //Download Pdf
-        return $pdf->stream('generatepdf.pdf');
+        return $pdf->stream($careerInfoByid->name.'.pdf');
     }
 
 
@@ -196,90 +193,11 @@ class PeoplesscapeHomeController extends Controller
         $templateProcessor->setValue('address', $user->haddress);
         $templateProcessor->setValue('objective', $user->objective);
         $templateProcessor->setValue('skill', $user->skill);
-        foreach ($user->skill as $value) {
-            echo $value[0]->competent ;
-           }
-
-
-        // $test_var = json_decode($user->skill);
-        // print_r($test_var);
-        // dd();
-
-
-
-
-        // $array = json_decode($user->skill, true);
-        //     foreach($array as $values) {
-        //     echo $values["0"]["competent"];
-
-        // }
-        // dd();
-
-
-
-
-
-        // // $skl = json_encode($user->skill);
-        // // $templateProcessor->setValue('skill', $skl);
-        // // $skills = json_encode($user->skill);
-
-
-        // // if(is_array($user->skill) || is_object($user->skill)){
-        //     $i=0;
-        //     $json    = json_decode($user->skill);
-        //     foreach ($json as $skills){
-        //         // Values for loop in .docx file
-        //         $templateProcessor->setValue('skill'.$i, $skills->competent);
-        //         $i++;
-        //     }
-        // // }
-
-
-        // // $skills = json_decode($user->skill);
-        // // foreach($skills as $ts){
-        // //     echo $ts->competent;
-        // // }
-
-
-
-
-
-
-
-
-
-
-
-        // while(in_array('skill',$templateProcessor->getVariables())){
-        //      $templateProcessor->setValue('skill',$user->skill);
-
-        //   }
-
-
-
-
-        //     $topic = $user->skill;
-
-
-        //     $templateProcessor->setValue('skill',
-        //     if(is_array($topic) || is_object($topic)){
-        //     foreach ($topic as $skill){
-        //         // Values for loop in .docx file
-        //         $skill->competent;
-
-        //     }
-        //   }
-        // );
-
-
-
-
-
-
-
-
-
-
+        $templateProcessor->setValue('academic', $user->academic);
+        $templateProcessor->setValue('experience', $user->experience);
+        $templateProcessor->setValue('achievement', $user->achievement);
+        $templateProcessor->setValue('project', $user->project);
+        $templateProcessor->setValue('reference', $user->reference);
 
         $phpWord = new \PhpOffice\PhpWord\PhpWord();
         $section = $phpWord->addSection();
@@ -296,10 +214,6 @@ class PeoplesscapeHomeController extends Controller
         $templateProcessor->saveAs($fileName . '.docx');
         return response()->download($fileName . '.docx')->deleteFileAfterSend(true);
     }
-
-
-
-
 
     public function emailchk(Request $request){
         $email = $request->email_address;

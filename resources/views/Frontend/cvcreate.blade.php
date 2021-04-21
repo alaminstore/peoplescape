@@ -158,7 +158,7 @@ button:hover {
                                     <div class="form-group">
                                         <label for="birthdate" class="col-sm-4 control-label labelclass"><span style="color:red">*</span> Birthdate</label>
                                         <div class="col-sm-10" style="max-width: 100%">
-                                            <input type="date"  oninput="this.className = ''" style="width: 100%;" class="form-control" id="birthdate" name="birthdate" value="{{old('birthday')}}" placeholder="Enter Your Name">
+                                            <input type="date"  oninput="this.className = ''" style="width: 100%;" class="form-control" id="birthdate" name="birthdate" value="{{old('birthdate')}}" placeholder="Enter Your Name">
                                         </div>
                                     </div>
                                 </div>
@@ -215,9 +215,9 @@ button:hover {
                                     <div class="form-radio form-radio-inline">
                                         <div style="padding-left:6px;font-size: 1rem" class="form-radio-legend "><span style="color:red">*</span> Gender</div>
 
-                                        &nbsp;&nbsp;&nbsp; <input type="radio" oninput="this.className = ''"   name=gender class="form-radio-field"  type="radio" required value="Male" />
+                                        &nbsp;&nbsp;&nbsp; <input type="radio" oninput="this.className = ''"   name="gender" class="form-radio-field"  type="radio" checked required value="Male" />
                                             <span>Male</span>
-                                            &nbsp;&nbsp;&nbsp; <input type="radio" oninput="this.className = ''"   name=gender class="form-radio-field" type="radio" required value="Female" />
+                                            &nbsp;&nbsp;&nbsp; <input type="radio" oninput="this.className = ''"   name="gender" class="form-radio-field" type="radio"  required value="Female" />
                                             <span>Female</span>
                                         </label>
                                     </div>
@@ -255,7 +255,7 @@ button:hover {
                                             <span>Married</span>
 
 
-                                            &nbsp;&nbsp;&nbsp; <input name="marital_status" oninput="this.className = ''" class="form-radio-field" type="radio" required value="Unmarried" />
+                                            &nbsp;&nbsp;&nbsp; <input name="marital_status" oninput="this.className = ''" class="form-radio-field" type="radio" required value="Unmarried" checked/>
                                             <span>Unmarried</span>
 
                                     </div>
@@ -329,74 +329,74 @@ button:hover {
                                     <div class="row" >
                                         <div class="col-12">
                                                <div class="form-group">
-                                                        <div class="alist col-sm-12 " data-index_no="1000">
-                                                        <div class="aitemWrapper">
-                                                            <table class="table table-bordered amoreTable">
-                                                                <tr>
-                                                                    <th width="5%" class="labelclass">S.N</th>
-                                                                    <th width="15%" class="labelclass">Degree</th>
-                                                                    <th width="15%" class="labelclass">Institution Name</th>
-                                                                    <th width="10%" class="labelclass">Score</th>
-                                                                    <th width="15%" class="labelclass">Major</th>
-                                                                    <th width="15%" class="labelclass">Minor</th>
-                                                                    <th width="10%" class="labelclass">Location</th>
-                                                                    <th width="10%" class="labelclass">Passing Year</th>
-                                                                    <th width="5%" class="labelclass">Remove</th>
-                                                                </tr>
+                                                <div class="alist col-sm-12 " data-index_no="1000">
+                                                <div class="aitemWrapper">
+                                                    <table class="table table-bordered amoreTable">
+                                                        <tr>
+                                                            <th width="5%" class="labelclass">S.N</th>
+                                                            <th width="15%" class="labelclass">Degree</th>
+                                                            <th width="15%" class="labelclass">Institution Name</th>
+                                                            <th width="10%" class="labelclass">Score</th>
+                                                            <th width="15%" class="labelclass">Major</th>
+                                                            <th width="15%" class="labelclass">Minor</th>
+                                                            <th width="10%" class="labelclass">Location</th>
+                                                            <th width="10%" class="labelclass">Passing Year</th>
+                                                            <th width="5%" class="labelclass">Remove</th>
+                                                        </tr>
 
-                                                                    <tr class="aitem_tr asingle_list">
-                                                                        <td class="day_no labelclass" >1</td>
-                                                                        <td>
-                                                                            <select class="form-control degreeonchange" name="academic[0][degree]" id="degree">
-                                                                                <option value="">SelectOption</option>
-                                                                                @foreach ($data['deg'] as $item)
-                                                                                    <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </td>
-                                                                        <td class="otherapp deloapp">
-                                                                           <select class="form-control institute delinst"  name="academic[0][instname]">
-                                                                                <option value="">Select</option>
-                                                                                @foreach ($data['inst'] as $insti)
-                                                                                    <option value="{{$insti->name}}">{{$insti->name}}</option>
-                                                                                @endforeach
-                                                                                <option value="other">Other</option>
-                                                                            </select>
-                                                                            <input type="text" class="form-control otherinst"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
+                                                            <tr class="aitem_tr asingle_list">
+                                                                <td class="day_no labelclass" >1</td>
+                                                                <td>
+                                                                    <select class="form-control degreeonchange" name="academic[0][degree]" id="degree">
+                                                                        <option value="">SelectOption</option>
+                                                                        @foreach ($data['deg'] as $item)
+                                                                            <option value="{{$item->degree}}" data-id="{{$item->id}}">{{$item->degree}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </td>
+                                                                <td class="otherapp deloapp">
+                                                                   <select class="form-control institute delinst"  name="academic[0][instname]">
+                                                                        <option value="">Select</option>
+                                                                        @foreach ($data['inst'] as $insti)
+                                                                            <option value="{{$insti->name}}">{{$insti->name}}</option>
+                                                                        @endforeach
+                                                                        <option value="other">Other</option>
+                                                                    </select>
+                                                                    <input type="text" class="form-control otherinst"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
 
-                                                                        </td>
-                                                                        <td><input type="text" class="form-control"  name="academic[0][cgpa]"  placeholder="EX:3.80 "><br></td>
-                                                                        <td>
-                                                                            <select class="form-control majorapp"  name="academic[0][major]">
-                                                                             </select>
-                                                                         </td>
-                                                                         <td>
-                                                                            <select class="form-control minorapp"  name="academic[0][minor]">
-                                                                             </select>
-                                                                         </td>
-                                                                        <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
-                                                                        <td><input type="date" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
+                                                                </td>
+                                                                <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="EX:3.80 "><br></td>
+                                                                <td>
+                                                                    <select class="form-control majorapp"  name="academic[0][major]">
+                                                                     </select>
+                                                                 </td>
+                                                                 <td>
+                                                                    <select class="form-control minorapp"  name="academic[0][minor]">
+                                                                     </select>
+                                                                 </td>
+                                                                <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
+                                                                <td><input type="date" class="form-control pyear"  name="academic[0][pyear]" placeholder=" "><br></td>
 
-                                                                         <td><span class="aremove" style="background: #ed3610;
-                                                                        padding: 0px 7px;;
-                                                                        color: #fff;
-                                                                        border-radius: 8%;
-                                                                        text-decoration: none;
-                                                                        margin-bottom: 10px;
-                                                                        cursor: pointer;">-</span></td>
-                                                                    </tr>
+                                                                 <td><span class="aremove" style="background: #ed3610;
+                                                                padding: 0px 7px;;
+                                                                color: #fff;
+                                                                border-radius: 8%;
+                                                                text-decoration: none;
+                                                                margin-bottom: 10px;
+                                                                cursor: pointer;">-</span></td>
+                                                            </tr>
 
-                                                            </table>
-                                                            <span  class="aadd_more" style="background: #0d72ba;
-                                                            padding: 0px 7px;;
-                                                            color: #fff;
-                                                            border-radius: 8%;
-                                                            text-decoration: none;
-                                                            margin-bottom: 10px;
-                                                            cursor: pointer;">+</span><br><br>
-                                                        </div>
-                                                    </div>
+                                                    </table>
+                                                    <span  class="aadd_more" style="background: #0d72ba;
+                                                    padding: 0px 7px;;
+                                                    color: #fff;
+                                                    border-radius: 8%;
+                                                    text-decoration: none;
+                                                    margin-bottom: 10px;
+                                                    cursor: pointer;">+</span><br><br>
                                                 </div>
+                                            </div>
+                                        </div>
 
                                         </div>
 
@@ -840,7 +840,7 @@ function fixStepIndicator(n) {
                    if(minordegree.minor==null){
                     $this.closest('.aitem_tr').find('.minorapp').append('<option >Not Available</option>');
                     }else{
-                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');
+                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minor+'">'+minordegree.minor+'</option>');
                     }
                });
             }
