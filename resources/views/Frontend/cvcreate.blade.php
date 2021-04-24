@@ -63,9 +63,11 @@ button:hover {
 }
 
 .btn_prev, .btn_next{
-    padding: 5px 80px;
+    padding: 7px 200px;
     font-size: 20px;
     font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
 }
 /* Make circles that indicate the steps of the form: */
 .step {
@@ -91,12 +93,7 @@ button:hover {
 /* Custom Style End */
 
 
-
-
-
-
-
-    </style>
+</style>
 <!-- Services Details Area START -->
 <section class="services-details-area">
     <div class="container">
@@ -163,6 +160,7 @@ button:hover {
                                     </div>
                                 </div>
                                 <div class="col-6">
+
                                     <div class="form-group">
                                         <label for="haddress" class="col-4 control-label labelclass"><span style="color:red">*</span> Home Address</label>
                                         <div class="col-10" style="max-width: 100%">
@@ -240,12 +238,7 @@ button:hover {
                                           </select>
                                         </div>
                                     </div>
-                                    {{-- validation
-                                    @if( $errors->has('area'))
-                                    <div class="error red">
-                                        {{$errors->first('area')}}
-                                    </div>
-                                    @endif --}}
+
                                 </div>
                                 <div class="col-6">
                                     <div class="form-radio form-radio-inline">
@@ -309,7 +302,7 @@ button:hover {
                                 </div>
                                 <div class="col-6">
                                     <div>
-                                        <label for="sel1" class="labelclass">Upload Your Cv(doc,pdf)</label>
+                                        <label for="sel1" class="labelclass">Upload Your Cv(doc,pdf)</label><br>
                                         <input type="file" oninput="this.className = ''" name='cv' value="{{old('cv')}}">
                                     </div>
                                 </div>
@@ -711,7 +704,6 @@ button:hover {
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     {{-- <script src="{{ asset('frontEnd/form-wizard/js/main.js') }}"></script> --}}
 
-
    <script>
        var currentTab = 0; // Current tab is set to be the first tab (0)
        showTab(currentTab); // Display the current tab
@@ -793,21 +785,6 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1126,6 +1103,17 @@ function fixStepIndicator(n) {
             }
         }
     });
+
+
+    //  $(document).on('click','#cvcreateform',function(){
+    //      var selectbox_val = document.getElementById("area");
+    //      if(selectbox_val.value=""){
+    //          alert('Please, Select your division in Personal Information Tab');
+    //          return false;
+    //      }
+    //      return true;
+    //  });
+
     </script>
     <script>
             @if(Session::has('message'))

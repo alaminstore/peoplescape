@@ -258,11 +258,13 @@ class ApplicationController extends Controller
         $cvform->save();
         return $id;
     }
+
+
     public function yourcvstore(Request $request){
-        //return $request->all();
-        $image = $request->file('cv');
-        $new_name =time().'.'.$image->getClientOriginalExtension();
-        $image->move('careerfile/',$new_name);
+        // return $request->all();
+        $cv = $request->file('cv');
+        $new_name =time().'.'.$cv->getClientOriginalExtension();
+        $cv->move('careerfile/',$new_name);
         $cvform  = new Cvform();
         $cvform->userid = $request->userid;
         $cvform->name = $request->name;
@@ -308,11 +310,12 @@ class ApplicationController extends Controller
         }if($request->reference){
             $cvform->reference = json_encode($request->reference);
         }
-        $cvform->save();
+
         $image = $request->file('image');
         $new_name_image =time().'.'.$image->getClientOriginalExtension();
         $image->move('careerfile/',$new_name_image);
-
+        $cvform->image = 'careerfile/'.$new_name_image;
+        $cvform->save();
         $user = User::find($request->userid);
         $user->image = 'careerfile/'.$new_name_image;
         $user->save();
@@ -324,6 +327,8 @@ class ApplicationController extends Controller
 
         return redirect('/home')->with($notification);
     }
+
+
     public function usercv(){
         return response()->json('redirect');
     }

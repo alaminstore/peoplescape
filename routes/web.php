@@ -23,6 +23,8 @@ Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('config:cache');
     return 'DONE'; //Return anything
 });
+
+Route::get('word-doc','Frontend\PeoplesscapeHomeController@word');
 Route::get('/','Frontend\PeoplesscapeHomeController@index')->name('peoplesscape.home');
 Route::get('create-cv','Frontend\PeoplesscapeHomeController@cvform')->name('CV.createcv');
 Route::post('/cvformstore','Frontend\PeoplesscapeHomeController@cvformstore');
@@ -39,7 +41,7 @@ Route::get('applybyapplicant','Frontend\CareerController@applybyapplicant')->nam
 Route::resource('contact-us','Frontend\ContactController');
 Route::post('contactmessage/','Frontend\ContactController@store');
 
-Route::resource('image-galary','Frontend\GaleryController');
+Route::resource('image-gallery','Frontend\GaleryController');
 //new for fronntend
 Route::get('loginemail','Frontend\PeoplesscapeHomeController@emailchk')->name('logineamil.chk');
 Route::get('loginpass','Frontend\PeoplesscapeHomeController@passchk')->name('loginpass.chk');

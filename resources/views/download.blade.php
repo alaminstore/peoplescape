@@ -224,6 +224,16 @@ select:focus {
     float: left;
     margin-right:10px;
 }
+table.bg_icon {
+    height: 25px!important;
+    width: 25px!important;
+    background: #1292ee;
+    border-radius: 50%!important;
+    padding: 4px 4px 0px 4px;
+}
+table.bg_icon img {
+    filter: invert(1) grayscale(100%)!important;
+}
 </style>
    </head>
    <body>
@@ -264,7 +274,11 @@ select:focus {
 
                      <div class="content-inner">
                         <table style="padding-bottom: 10px;">
-                            <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill2.png'))) }}"></td>
+                            <td>
+                                <table class="bg_icon">
+                                    <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.png'))) }}"></td>
+                                </table>
+                            </td>
                             <td><h2>&nbsp;skills</h2></td>
                         </table>
                         <ul>
@@ -291,7 +305,11 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/objectives2.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/file.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;Objectives</h2></td>
                             </table>
                         </div>
@@ -307,7 +325,11 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/experience2.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/briefcase.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;Experience</h2></td>
                             </table>
                         </div>
@@ -328,7 +350,11 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/education2.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/book.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;Education</h2></td>
                             </table>
                         </div>
@@ -367,7 +393,11 @@ select:focus {
                         <div class="title-box">
                            <table>
                             <tr>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/project.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/project2.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;personal_projects</h2></td>
                             </tr>
                         </table>
@@ -389,7 +419,11 @@ select:focus {
 
                            <table>
                             <tr>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/achievement.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/work.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;personal_achivements</h2></td>
                             </tr>
                         </table>
@@ -412,7 +446,11 @@ select:focus {
 
                            <table>
                             <tr>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/achievement.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/like.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;interenst(s)</h2></td>
                             </tr>
                         </table>
@@ -429,7 +467,11 @@ select:focus {
 
                            <table>
                             <tr>
-                                <td style="height: 22px;width:22px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/reference2.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/group.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;reference</h2></td>
                             </tr>
                         </table>

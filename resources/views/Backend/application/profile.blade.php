@@ -865,14 +865,14 @@
                 $this.closest('.aitem_tr').find('.minorapp').empty();
                 $.each(JSON.parse(data.major),function(index, majordegree){
                    if(majordegree.major==null){
-                        $this.closest('.aitem_tr').find('.majorapp').append('<option >No data found</option>');
+                        $this.closest('.aitem_tr').find('.majorapp').append('<option >Not Available</option>');
                     }else{
                         $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');
                     }
                });
                $.each(JSON.parse(data.minor),function(index, minordegree){
                    if(minordegree.minor==null){
-                    $this.closest('.aitem_tr').find('.minorapp').append('<option >No Data Found</option>');
+                    $this.closest('.aitem_tr').find('.minorapp').append('<option >Not Available</option>');
                     }else{
                         $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');
                     }

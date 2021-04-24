@@ -2,7 +2,7 @@
 
 @section('hm','active')
 
-@section('title', 'Peoplesscap | Home ')
+@section('title', 'PeopleScape | Home ')
 
 @section('frntcontent')
 
@@ -56,7 +56,7 @@
 
         </div>
 
-    
+
 
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 
@@ -74,11 +74,11 @@
 
         </a>
 
-    
+
 
     </section>
 
-    
+
 
    <!--  <section class="introduction-area">
 
@@ -100,7 +100,7 @@
 
                 <h2>{{$data['sliderbtm']->title}} <span class="title-img-style"><img src="{{asset('frontEnd/img/title-style.png')}}" alt=""></span></h2>
 
-    
+
 
                     <p>{{$data['sliderbtm']->description}}
 
@@ -170,7 +170,7 @@
 
                         <!--<i class="{{$service->icon}}"></i>-->
                         <img src="{{url($service->icon)}}" />
-                            
+
                         <h4>{{$service->title}}</h4>
 
                        <p>{{ $service->short_des }}</p>
@@ -209,14 +209,10 @@
                     <div class="col-sm-12">
 
                     <div class="team-wrapper owl-carousel">
-
-                        {{-- @php
-
-                           dd($data['teammembers']);
-
-                          @endphp --}}
-
                         @foreach($data['teammembers'] as $member)
+                        {{-- @php
+                            dd($member);
+                        @endphp --}}
 
                        <div class="team-box">
 
@@ -247,10 +243,8 @@
                          </div>
 
                        @endforeach
+                    </div>
 
-    
-
-               </div>
 
            </div>
 
@@ -280,7 +274,7 @@
         </div>
 
     </section>
-    
+
 
 
 
@@ -310,7 +304,7 @@
 
                                     <h3 class="counter">{{$data['counterpart']->team}}</h3>
 
-                                    <p>CLIENT</p>
+                                    <p>CLIENTS</p>
 
                                 </div>
 
@@ -320,7 +314,7 @@
 
                                     <h3 class="counter">{{$data['counterpart']->location}}</h3>
 
-                                    <p>Office Location</p>
+                                    <p>OFFICE LOCATIONS</p>
 
                                 </div>
 
@@ -330,7 +324,7 @@
 
                                     <h3><span class="counter">{{$data['counterpart']->employee}}</span>+</h3>
 
-                                    <p>Employee</p>
+                                    <p>EMPLOYEES</p>
 
                                 </div>
 
@@ -366,9 +360,9 @@
 
     <!--                    @foreach ($data['testimonial'] as $item)-->
 
-                            
 
-                       
+
+
 
     <!--                    <div class="testimonial-box">-->
 
@@ -410,7 +404,7 @@
 
     <!--                </div>-->
 
-    
+
 
                     <!--<div class="testimonial_nav">-->
 
@@ -420,7 +414,7 @@
 
                     <!--</div>-->
 
-    
+
 
     <!--            </div>-->
 

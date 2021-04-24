@@ -7,7 +7,7 @@ use App\User;
 if(Auth::check()){
        $user = Auth::user();
        $user_info =User::findorfail($user->id) ;
-      
+
      }
      else{
       return redirect()->route('login');
@@ -30,7 +30,7 @@ if(Auth::check()){
     }
 </style>
     <section class="content">
-      
+
             <div class="box box-info">
                  <div class="box-header with-border">
                    <h1 class="box-title">Provide Your Information</h1>
@@ -39,11 +39,11 @@ if(Auth::check()){
                      <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
                    </div>
                  </div>
-                
+
                  <div class="box-body">
-                    <div class="row" style="padding:12px;"> 
+                    <div class="row" style="padding:12px;">
                         <div class="welcome-card">
-                          
+
                         <form action="{{route('application.yourcvstore')}}" method="post" id="yourcvcreateform" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                               <div class="box-body">
@@ -73,9 +73,9 @@ if(Auth::check()){
                                             </div>
                                         </div>
                                       </div>
-                                    
 
-                                    
+
+
                                         <div class="col-md-12">
                                           <div class="form-group">
                                             <label for="haddress" class="control-label"><span style="color:red">*</span> Home Address</label>
@@ -84,7 +84,7 @@ if(Auth::check()){
                                             </div>
                                           </div>
                                         </div>
-                                          
+
                                         <div class="col-md-12">
                                           <div class="form-group">
                                             <label for="paddress" class="control-label"><span style="color:red">*</span> Permanent Address</label>
@@ -93,8 +93,8 @@ if(Auth::check()){
                                             </div>
                                           </div>
                                         </div>
-                                    
-                                      
+
+
                                       <div class="col-md-12">
                                         <div class="form-group">
                                           <label for="title" class="control-label"><span style="color:red">*</span> Phone No</label>
@@ -169,7 +169,7 @@ if(Auth::check()){
                                                   </select>
                                                 </div>
                                             </div>
-                                           
+
                                         </div>
                                       </div>
                                       {{-- <div class="col-md-6">
@@ -226,7 +226,7 @@ if(Auth::check()){
                                                                     <th width="10%" class="labelclass">Passing Year</th>
                                                                     <th width="5%" class="labelclass">Remove</th>
                                                                 </tr>
-                                                                
+
                                                                     <tr class="aitem_tr asingle_list">
                                                                       <td class="day_no labelclass" >1</td>
                                                                       <td>
@@ -238,7 +238,7 @@ if(Auth::check()){
                                                                                 </select>
                                                                           </td>
                                                                       <!--<td>-->
-                                                                          
+
                                                                       <!--    <input type="text" class="form-control"  name="academic[0][instname]" placeholder="Enter Institute Name">-->
                                                                       <!--    <br>-->
                                                                       <!--  </td>-->
@@ -251,17 +251,17 @@ if(Auth::check()){
                                                                                 <option value="other">Other</option>
                                                                             </select>
                                                                             <input type="text" class="form-control otherinst"  name="academic[0][instnameoth]" placeholder="Enter Institute Name" style="display:none" >
-                                                                                                                                               
+
                                                                         </td>
 
                                                                       <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="Enter Score "><br></td>
                                                                       <td>
                                                                             <select class="form-control majorapp"  name="academic[0][major]">
-                                                                             </select>                                                                                                                                              
+                                                                             </select>
                                                                          </td>
                                                                          <td>
                                                                             <select class="form-control minorapp"  name="academic[0][minor]">
-                                                                             </select>                                                                                                                                             
+                                                                             </select>
                                                                          </td>
                                                                       <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
                                                                       <td><input type="date" class="form-control pyear"  name="academic[0][pyear]" placeholder="Enter Location "><br></td>
@@ -273,7 +273,7 @@ if(Auth::check()){
                                                                         margin-bottom: 10px;
                                                                         cursor: pointer;">-</span></td>
                                                                     </tr>
-                                                                
+
                                                             </table>
                                                             <span  class="aadd_more" style="background: #0d72ba;
                                                             padding: 0px 7px;;
@@ -284,9 +284,9 @@ if(Auth::check()){
                                                             cursor: pointer;">+</span><br><br>
                                                         </div>
                                                     </div>
-                                                </div> 
+                                                </div>
                                         </div>
-                                        
+
                                           <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="title" class="control-label"><span style="color:red">*</span> Last Degree</label>
@@ -318,7 +318,7 @@ if(Auth::check()){
                                         </div>
                                 </div>
                                 <div class="row" >
-                                  <div class="col-12"> 
+                                  <div class="col-12">
                                     <div class="form-group">
                                         <div class="list col-sm-12 " data-index_no="1000">
                                             <div class="itemWrapper">
@@ -332,7 +332,7 @@ if(Auth::check()){
                                                         <th width="15%" class="labelclass">Left On</th>
                                                         <th width="10%" class="labelclass">Remove</th>
                                                     </tr>
-                                                    
+
                                                         <tr class="item_tr single_list">
                                                             <td class="day_no labelclass" >1</td>
                                                             <td><input type="text" class="form-control" id="pro_role" name="experience[0][title]" placeholder="Enter Job Title"><br></td>
@@ -348,7 +348,7 @@ if(Auth::check()){
                                                                 margin-bottom: 10px;
                                                                 cursor: pointer;">-</span></td>
                                                         </tr>
-                                                    
+
                                                 </table>
                                                 <span  class="add_more" style="background: #0d72ba;
                                                 padding: 0px 7px;;
@@ -359,7 +359,7 @@ if(Auth::check()){
                                                 cursor: pointer;">+</span><br><br>
                                             </div>
                                         </div>
-                                    </div> 
+                                    </div>
                             </div>
                         </div>
                         <div class="row" style="margin:2px;">
@@ -381,7 +381,7 @@ if(Auth::check()){
                                                             <th width="50%" class="labelclass">Project Details</th>
                                                             <th width="10%" class="labelclass">Remove</th>
                                                         </tr>
-                                                        
+
                                                             <tr class="witem_tr wsingle_list">
                                                                 <td class="day_no labelclass">1</td>
                                                                 <td><input type="text" class="form-control" id="pro_url" name="project[0][url]" placeholder="Enter Project Url"><br></td>
@@ -394,7 +394,7 @@ if(Auth::check()){
                                                                 margin-bottom: 10px;
                                                                 cursor: pointer;">-</span></td>
                                                             </tr>
-                                                      
+
                                                     </table>
                                                     <span  class="wadd_more" style="background: #0d72ba;
                                                     padding: 0px 7px;;
@@ -405,7 +405,7 @@ if(Auth::check()){
                                                     cursor: pointer;">+</span><br><br>
                                                 </div>
                                             </div>
-                                        </div> 
+                                        </div>
                                 </div>
                             </div>
                             <div class="row" style="margin:2px;">
@@ -426,7 +426,7 @@ if(Auth::check()){
                                                           <th width="700%" class="labelclass">Achievements</th>
                                                          <th width="10%" class="labelclass">Remove</th>
                                                       </tr>
-                                                      
+
                                                           <tr class="acitem_tr acsingle_list">
                                                               <td class="day_no labelclass">1</td>
                                                               <td><textarea type="text" class="form-control" id="achievement" rows="3" name="achievement[0][achieve]" placeholder="Enter Your personal achievement"></textarea><br></td>
@@ -438,7 +438,7 @@ if(Auth::check()){
                                                               margin-bottom: 10px;
                                                               cursor: pointer;">-</span></td>
                                                           </tr>
-                                                     
+
                                                   </table>
                                                   <span  class="acadd_more" style="background: #0d72ba;
                                                   padding: 0px 7px;;
@@ -449,7 +449,7 @@ if(Auth::check()){
                                                   cursor: pointer;">+</span><br><br>
                                               </div>
                                           </div>
-                                      </div> 
+                                      </div>
                               </div>
                           </div>
                           <div class="row" style="margin:2px;">
@@ -470,7 +470,7 @@ if(Auth::check()){
                                                           <th width="700%" class="labelclass">Professional Or Technical Skills</th>
                                                          <th width="10%" class="labelclass">Remove</th>
                                                       </tr>
-                                                      
+
                                                           <tr class="skitem_tr sksingle_list">
                                                               <td class="day_no labelclass">1</td>
                                                               <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
@@ -482,7 +482,7 @@ if(Auth::check()){
                                                               margin-bottom: 10px;
                                                               cursor: pointer;">-</span></td>
                                                           </tr>
-                                                     
+
                                                   </table>
                                                   <span  class="skadd_more" style="background: #0d72ba;
                                                   padding: 0px 7px;;
@@ -493,7 +493,7 @@ if(Auth::check()){
                                                   cursor: pointer;">+</span><br><br>
                                               </div>
                                           </div>
-                                      </div> 
+                                      </div>
                               </div>
                           </div>
                           <div class="row" style="margin:2px;">
@@ -524,7 +524,7 @@ if(Auth::check()){
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row" style="margin:2px;">
                                   <div class="col-12">
                                       <div class="form-group">
@@ -545,7 +545,7 @@ if(Auth::check()){
                                                           <th width="40%" class="labelclass">Contactinfo</th>
                                                           <th width="15%" class="labelclass">Remove</th>
                                                       </tr>
-                                                      
+
                                                           <tr class="reitem_tr resingle_list">
                                                               <td class="day_no labelclass" >1</td>
                                                               <td><input type="text" class="form-control"  name="reference[0][title]" placeholder="Enter Title"><br></td>
@@ -559,7 +559,7 @@ if(Auth::check()){
                                                               margin-bottom: 10px;
                                                               cursor: pointer;">-</span></td>
                                                           </tr>
-                                                      
+
                                                   </table>
                                                   <span  class="readd_more" style="background: #0d72ba;
                                                   padding: 0px 7px;;
@@ -570,7 +570,7 @@ if(Auth::check()){
                                                   cursor: pointer;">+</span><br><br>
                                               </div>
                                           </div>
-                                      </div> 
+                                      </div>
                               </div>
                           </div>
                                 <div class="row" style="margin:2px;">
@@ -608,9 +608,9 @@ if(Auth::check()){
             //var id = $(this).data('id');
             $.ajax({
             url: "{!! route('degree.majorminor') !!}",
-            type: "get", 
-            data: {  
-                id: id, 
+            type: "get",
+            data: {
+                id: id,
             },
             //context: this,
             success: function(data) {
@@ -619,28 +619,28 @@ if(Auth::check()){
                 $this.closest('.aitem_tr').find('.minorapp').empty();
                 $.each(JSON.parse(data.major),function(index, majordegree){
                    if(majordegree.major==null){
-                        $this.closest('.aitem_tr').find('.majorapp').append('<option >No data found</option>');
+                        $this.closest('.aitem_tr').find('.majorapp').append('<option >Not Available</option>');
                     }else{
-                        $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');                        
-                    }                
-               }); 
+                        $this.closest('.aitem_tr').find('.majorapp').append('<option value="'+majordegree.major+'">'+majordegree.major+'</option>');
+                    }
+               });
                $.each(JSON.parse(data.minor),function(index, minordegree){
                    if(minordegree.minor==null){
-                    $this.closest('.aitem_tr').find('.minorapp').append('<option >No Data Found</option>');
+                    $this.closest('.aitem_tr').find('.minorapp').append('<option >Not Available</option>');
                     }else{
-                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minjor+'">'+minordegree.minor+'</option>');                        
-                    }                
-               });              
+                        $this.closest('.aitem_tr').find('.minorapp').append('<option value="'+minordegree.minor+'">'+minordegree.minor+'</option>');
+                    }
+               });
             }
         })
         });
         $(document).on('change','.institute',function(){
             if(this.value =='other'){
-                
+
                 $(this).closest('.aitem_tr').find('.otherinst').show();
             }else{
-                $(this).closest('.aitem_tr').find('.otherinst').hide(); 
-            }         
+                $(this).closest('.aitem_tr').find('.otherinst').hide();
+            }
         })
         //end new
                    $(document).ready(function () {
@@ -651,94 +651,94 @@ if(Auth::check()){
                             return false;
                         }
                     });
-                      $('#yourcvcreateform').validate({ 
+                      $('#yourcvcreateform').validate({
                       rules: {
-                              name: 
+                              name:
                               {
                               required: true,
-                              
+
                               },
-                              birthdate: 
+                              birthdate:
                               {
                               required: true,
-                              
+
                               },
-                              area: 
+                              area:
                               {
                               required: true,
-                              
+
                               },
-                              haddress: 
+                              haddress:
                               {
                               required: true,
-                              
+
                               },
-                              paddress: 
+                              paddress:
                               {
                               required: true,
-                              
+
                               },
-                              mobile: 
+                              mobile:
                               {
                               required: true,
-                              
-                              },   
-                              email: 
-                              {
-                              required: true,
-                              
-                              }, 
-                              password: 
-                              {
-                              required: true,
-                              
-                              }, 
-                              con_password: 
-                              {
-                              required: true,
-                              
-                              }, 
-                              objective: 
-                              {
-                              required: true,
-                              
-                              }, 
-                              l_degree: 
-                              {
-                              required: true,
-                              
+
                               },
-                              l_score: 
+                              email:
                               {
                               required: true,
-                              
+
                               },
-                              image: 
+                              password:
+                              {
+                              required: true,
+
+                              },
+                              con_password:
+                              {
+                              required: true,
+
+                              },
+                              objective:
+                              {
+                              required: true,
+
+                              },
+                              l_degree:
+                              {
+                              required: true,
+
+                              },
+                              l_score:
+                              {
+                              required: true,
+
+                              },
+                              image:
                               {
                               required: true,
                               extension: "jpg|png|jpeg"
-                              }, 
-                              cv: 
+                              },
+                              cv:
                               {
                               required: true,
                               extension: "pdf|doc|docx",
                               filesize: 200000,
-                              }, 
+                              },
                       },
-                      messages: 
+                      messages:
                         {
-                          
-                          image: 
+
+                          image:
                           {
                               extension:("Only jpg,png,jpeg image is accepted"),
                           },
-                          cv: 
+                          cv:
                           {
                               extension:("Only Pdf,Doc,Docx is accepted"),
                               filesize:("file size must be less than 200 KB."),
                           },
                       },
-                      
+
                       highlight: function(element) {
                           $(element).parent().addClass('has-error');
                       },
@@ -751,7 +751,7 @@ if(Auth::check()){
                       var pyear =  $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.pyear').val();
                     if(pyear==''){
                         alert('You have to Fill Passing year!');
-                        
+
                     }else{
                   var index = $('.alist').data('index_no');
                   $('.alist').data('index_no', index + 1);
@@ -764,7 +764,7 @@ if(Auth::check()){
                   var rowCount = $('.amoreTable tr').length;
                   $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.day_no').html(rowCount-1);
                   $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.dayval').val(rowCount-1);
-                   $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.otherinst').hide(); 
+                   $(this).closest('.aitemWrapper').find('.aitem_tr:last').find('.otherinst').hide();
                 }
               });
               $(document).on('click', '.aremove', function () {
@@ -782,7 +782,7 @@ if(Auth::check()){
               $(document).on('click','.add_more',function(){
                       var lefton =  $(this).closest('.itemWrapper').find('.item_tr:last').find('.lefton').val();
                         var joinon =  $(this).closest('.itemWrapper').find('.item_tr:last').find('.joinon').val();
-                
+
                         if(joinon=='' || lefton =='' ){
                             alert('You have to Fill Left In and Join In must.If status is running choose current date!');
                         }else{
@@ -912,7 +912,7 @@ if(Auth::check()){
             }
         }
     });
-               
+
                 </script>
              </section>
 @endsection

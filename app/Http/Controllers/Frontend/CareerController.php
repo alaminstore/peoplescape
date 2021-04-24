@@ -20,7 +20,7 @@ class CareerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $jobDetail = DB::table('careers')
                      ->select('careers.*','careercats.title as catname')
                      ->leftJoin('careercats','careers.catid','=','careercats.id')
@@ -57,7 +57,7 @@ class CareerController extends Controller
         if($findApplieduserbyid){
             return response()->json('warning');
         }else{
-            
+
             $appliedJob = new Jobapplied();
             $appliedJob->job_id = $jobid;
             $appliedJob->applicant_id =$userid;
@@ -72,7 +72,7 @@ class CareerController extends Controller
            $pdf->save('careerfile/'.$filename);
             return response()->json('success');
         }
-        
+
     }
 
     /**

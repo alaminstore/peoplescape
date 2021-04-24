@@ -5,6 +5,7 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+      <!-- CSS only -->
       <title>People Scape - CV Format</title>
 
 <style>
@@ -218,33 +219,60 @@ select:focus {
     margin: 0 auto;
     padding: 10px 0;
 }
+
+table.bg_icon {
+    height: 25px!important;
+    width: 25px;
+    background: #1292ee;
+    border-radius: 50%;
+    padding: 4px 4px 0px 4px;
+}
+table.bg_icon img {
+    filter: invert(1) grayscale(100%);
+}
 .btn{
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: rgb(255, 255, 255);
-    padding: 7px 20px;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    border-radius: 4px;
+    vertical-align: middle;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 13px;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d67ee;
 }
 </style>
    </head>
    <body>
-       <div class="export_buttons">
+       <div class="export_buttons" style="display: flex;justify-content:space-between;">
         <a href="{{route('pdfdownload',['id'=>$careerInfoByid->id])}}">
-            <button class="btn">Download as pdf</button>
+            <button class="btn btn-primary btn-sm">Download as pdf</button>
             </a>
-            <a href="{{ url('wordexport/' . $careerInfoByid->id) }}">
+            <a href="https://smallpdf.com/pdf-to-word" target="_blank">
+                <button class="btn">Pdf to Word Convert Link</button>
+            </a>
+            {{-- <a href="{{ url('wordexport/' . $careerInfoByid->id) }}">
                 <button class="btn">Export Word</button>
-            </a>
+            </a> --}}
        </div><br>
       <section class="cv_format">
                <div class="alignleft">
                   <div class="content-wrapper cv-left">
                     <img class="" src={{url($careerInfoByid->image)}}>
+
 
 
                      <!-- contact info -->
@@ -279,8 +307,11 @@ select:focus {
 
 
                         <table>
-                            {{-- <i class="fa fa-facebook"></i> --}}
-                            <td style="height: 22px;width:22px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill2.png'))) }}"></td>
+                            <td>
+                                <table class="bg_icon">
+                                    <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.png'))) }}"></td>
+                                </table>
+                            </td>
                             <td><h2>skills</h2></td>
                         </table>
 <br>
@@ -308,7 +339,11 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/objectives2.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/file.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;Objectives</h2></td>
                             </table>
                         </div>
@@ -324,7 +359,11 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/experience2.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/briefcase.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;Experience</h2></td>
                             </table>
                         </div>
@@ -345,7 +384,11 @@ select:focus {
                      <div class="content-inner">
                         <div class="title-box">
                             <table>
-                                <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/education2.png'))) }}"></td>
+                                <td>
+                                    <table class="bg_icon">
+                                        <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/book.png'))) }}"></td>
+                                    </table>
+                                </td>
                                 <td><h2> &nbsp;Education</h2></td>
                             </table>
                         </div>
@@ -384,7 +427,11 @@ select:focus {
                         <div class="title-box">
                             <table>
                                 <tr>
-                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/project.png'))) }}"></td>
+                                    <td>
+                                        <table class="bg_icon">
+                                            <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/project2.png'))) }}"></td>
+                                        </table>
+                                    </td>
                                     <td><h2> &nbsp;personal_projects</h2></td>
                                 </tr>
                             </table>
@@ -405,7 +452,11 @@ select:focus {
                         <div class="title-box">
                             <table>
                                 <tr>
-                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/achievement.png'))) }}"></td>
+                                    <td>
+                                        <table class="bg_icon">
+                                            <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/work.png'))) }}"></td>
+                                        </table>
+                                    </td>
                                     <td><h2> &nbsp;personal_achivements</h2></td>
                                 </tr>
                             </table>
@@ -427,7 +478,11 @@ select:focus {
                         <div class="title-box">
                             <table>
                                 <tr>
-                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/achievement.png'))) }}"></td>
+                                    <td>
+                                        <table class="bg_icon">
+                                            <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/like.png'))) }}"></td>
+                                        </table>
+                                    </td>
                                     <td><h2> &nbsp;interenst(s)</h2></td>
                                 </tr>
                             </table>
@@ -443,7 +498,11 @@ select:focus {
                         <div class="title-box">
                             <table>
                                 <tr>
-                                    <td style="height: 20px;width:20px;"><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/reference2.png'))) }}"></td>
+                                    <td>
+                                        <table class="bg_icon">
+                                            <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/group.png'))) }}"></td>
+                                        </table>
+                                    </td>
                                     <td><h2> &nbsp;reference</h2></td>
                                 </tr>
                             </table>

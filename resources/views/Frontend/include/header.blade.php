@@ -52,7 +52,7 @@
 
                       @endif
 
-                     
+
 
 
 
@@ -101,15 +101,15 @@
                                             <div class="form-element form-input">
 
                                                 <input id="email" type="email" class="form-element-field" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                                
+
                                                 <div class="form-element-bar"></div>
-                                                 
+
                                                 <label class="form-element-label" for="email">Email</label>
 
                                                 <!--<small class="form-element-hint">Please provide your email</small>-->
                                               <span id="regem_error" style="color:red"></span>
                                             </div>
-                                              
+
 
 
 
@@ -219,8 +219,6 @@
 
                                 <div class="modal-body">
 
-
-
                                     <h4 class="modal-title">Login Form</h4>
                                     <span id="erroremail" style="color:red"></span>
 
@@ -241,7 +239,7 @@
                                                 <label class="form-element-label" for="email">Email</label>
 
                                             </div>
-                                           
+
 
 
                                             <div class="form-element form-input">
@@ -267,7 +265,7 @@
                                                 <a class="btn btn-link" style="color: #000" href="{{ route('password.request') }}">
                                                     {{ __('Forgot Your Password?') }}
                                                 </a>
-                                            @endif 
+                                            @endif
 
                                         </div>
 
@@ -367,13 +365,13 @@
 
           <li class="nav-item">
 
-          <a class="nav-link @yield('srv')" href="{{route('services.index')}}">Service</a>
+          <a class="nav-link @yield('srv')" href="{{route('services.index')}}">Services</a>
 
         </li>
 
         <li class="nav-item">
 
-          <a class="nav-link @yield('cl')" href="{{route('clients.index')}}">Client</a>
+          <a class="nav-link @yield('cl')" href="{{route('clients.index')}}">Clients</a>
 
         </li>
 
@@ -385,7 +383,7 @@
 
         <li class="nav-item">
 
-                <a class="nav-link @yield('gl')" href="{{route('image-galary.index')}}">Gallery</a>
+                <a class="nav-link @yield('gl')" href="{{route('image-gallery.index')}}">Gallery</a>
 
               </li>
 
@@ -437,9 +435,9 @@
         let email_address = $(this).val();
         $.ajax({
                 url: "{!! route('logineamil.chk') !!}",
-                type: "get", 
-                data: {  
-                    email_address: email_address, 
+                type: "get",
+                data: {
+                    email_address: email_address,
                 },
                 success: function(data) {
                     console.log(data);
@@ -453,14 +451,14 @@
                 }
         });
     });
-        
+
         $("#email").blur(function(){
         let email = $(this).val();
         $.ajax({
                 url: "{!! route('logineamil.chk') !!}",
-                type: "get", 
-                data: {  
-                    email_address: email, 
+                type: "get",
+                data: {
+                    email_address: email,
                 },
                 success: function(data) {
                     console.log(data);
@@ -472,16 +470,16 @@
                         $('.regbtn').attr("disabled", false);
                     }
                 }
-            
+
         });
-      }); 
+      });
 //   $("#login_password").blur(function(){
 //         let pass = $(this).val();
 //         let email = $("#login_email").val();
 //         $.ajax({
 //                 url: "{!! route('loginpass.chk') !!}",
-//                 type: "get", 
-//                 data: {  
+//                 type: "get",
+//                 data: {
 //                     pass: pass,
 //                     email: email,
 //                 },
@@ -497,6 +495,6 @@
 //                 }
 //         });
 //     //    alert(email_address);
-  //}); 
+  //});
 </script>
 </nav>

@@ -240,4 +240,9 @@ class PeoplesscapeHomeController extends Controller
         return response()->json($findmajorminorBydegree);
     }
 
+
+    public function word(){
+        return view('word_doc');
+    }
+
 }
