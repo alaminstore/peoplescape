@@ -122,7 +122,8 @@ class PeoplesscapeHomeController extends Controller
         }
         if($request->skill){
             $cvform->skill = json_encode($request->skill);
-        }if($request->reference){
+        }
+        if($request->reference){
             $cvform->reference = json_encode($request->reference);
         }
         $birthDate = $request->birthdate;
@@ -174,7 +175,7 @@ class PeoplesscapeHomeController extends Controller
 
         $filename = "generatepdf.pdf";
         // Save file to the directory
-        $pdf->save('careerfile/'.$filename);
+        // $pdf->save('careerfile/'.$filename);
         //Download Pdf
         return $pdf->stream($careerInfoByid->name.'.pdf');
     }

@@ -92,8 +92,8 @@
                       <td>{{$item['lastinst']}}</td>
                       <td>{{$item['major']}}</td>
                       <td>{{$item['minor']}}</td>
-                      <td>{{$item['lastcompany']}}</td>
-                      <td>{{ $item['experience']}}</td>
+                      <td>{{$item['lastcompany']==null ? "Fresher" :$item['lastcompany']  }}</td>
+                      <td>{{$item['lastcompany']==null? "0" : $item['experience']}}</td>
                       <td>{{ $item['age']}}</td>
                       <td>{{ $item['gender']}}</td>
                 </tr>

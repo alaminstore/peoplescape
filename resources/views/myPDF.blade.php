@@ -221,14 +221,22 @@ select:focus {
 }
 
 table.bg_icon {
-    height: 25px!important;
+
     width: 25px;
-    background: #1292ee;
-    border-radius: 50%;
-    padding: 4px 4px 0px 4px;
+    /* background: #fcb34b; */
+    /* border-radius: 50%; */
+    padding:0;
+    /* padding: 4px 4px 0px 4px; */
+    /* padding: 20px 24px 24px 22px; */
 }
+
+
+
+
+
+
 table.bg_icon img {
-    filter: invert(1) grayscale(100%);
+    /* filter: invert(1) grayscale(100%); */
 }
 .btn{
     display: inline-block;
@@ -271,7 +279,8 @@ table.bg_icon img {
       <section class="cv_format">
                <div class="alignleft">
                   <div class="content-wrapper cv-left">
-                    <img class="" src={{url($careerInfoByid->image)}}>
+                    {{-- <img class="" src={{url($careerInfoByid->image)}}> --}}
+                    <img class="" src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path($careerInfoByid->image))) }}">
 
 
 
@@ -309,7 +318,7 @@ table.bg_icon img {
                         <table>
                             <td>
                                 <table class="bg_icon">
-                                    <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.png'))) }}"></td>
+                                    <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.jpg'))) }}"></td>
                                 </table>
                             </td>
                             <td><h2>skills</h2></td>
@@ -370,12 +379,15 @@ table.bg_icon img {
                         @if (!empty($careerInfoByid->experience))
                         @php($jsonexpdata = json_decode($careerInfoByid->experience))
                         @foreach ($jsonexpdata as $exp)
-
-                        <div class="content-box">
-                           <h3>{{$exp->title}} ({{$exp->joinedin}} > {{$exp->leftin}})</h3>
-                           <p><b>Company Name:</b> {{$exp->company}}</p>
-                           <p><b>Responsibilites:</b> &nbsp;&nbsp;{{$exp->responsibilites}}</p>
-                        </div>
+                        @if ($exp->company != null)
+                            <div class="content-box">
+                                <h3>{{$exp->title}} ({{$exp->joinedin}} > {{$exp->leftin}})</h3>
+                                <p><b>Company Name:</b> {{$exp->company}}</p>
+                                <p><b>Responsibilites:</b> &nbsp;&nbsp;{{$exp->responsibilites}}</p>
+                            </div>
+                            @else
+                            <h3>Fresher</h3>
+                        @endif
                         @endforeach
                         @endif
 

@@ -225,14 +225,17 @@ select:focus {
     margin-right:10px;
 }
 table.bg_icon {
-    height: 25px!important;
-    width: 25px!important;
-    background: #1292ee;
-    border-radius: 50%!important;
-    padding: 4px 4px 0px 4px;
+
+width: 25px;
+/* background: #fcb34b; */
+border-radius: 50%;
+padding:0;
+/* padding: 6px 6px 0px 6px; */
+/* padding: 20px 24px 24px 22px; */
+
 }
 table.bg_icon img {
-    filter: invert(1) grayscale(100%)!important;
+    /* filter: invert(1) grayscale(100%)!important; */
 }
 </style>
    </head>
@@ -276,7 +279,7 @@ table.bg_icon img {
                         <table style="padding-bottom: 10px;">
                             <td>
                                 <table class="bg_icon">
-                                    <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.png'))) }}"></td>
+                                    <td><img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('pdficon/skill.jpg'))) }}"></td>
                                 </table>
                             </td>
                             <td><h2>&nbsp;skills</h2></td>
@@ -490,7 +493,5 @@ table.bg_icon img {
                   </div>
                </div>
       </section>
-
-
    </body>
 </html>

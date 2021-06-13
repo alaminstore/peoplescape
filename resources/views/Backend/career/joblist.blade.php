@@ -70,18 +70,18 @@
                 $(document).on('click','.runningstatus',function(){
                     var jobid = $(this).data('jobid');
                     var sttype = $(this).attr('data-type');
-                   
-                    
+
+
                         // $("#comstatus").load(location.href + " #comstatus");
                          //console.log(sttype);
-                    
+
                     $.ajax({
                       url: "{!! route('job.completestatus') !!}",
-                      type: "get", 
-                      data: {  
-                        jobid: jobid, 
-                        sttype: sttype, 
-            
+                      type: "get",
+                      data: {
+                        jobid: jobid,
+                        sttype: sttype,
+
                       },
                       success: function(data) {
                         console.log(data);
@@ -105,13 +105,13 @@
                             $(this).addClass('btn-success');
                             $(this).attr("data-type","com");
                             $(this).text('Complete');
-                    }else if(sttype=='com'){                            
+                    }else if(sttype=='com'){
                         $(this).removeClass('btn-success');
                         $(this).addClass('btn-primary');
                          $(this).attr("data-type","run");
                         $(this).text('Running');
                     }
-                   
+
                 })
                     $(document).on('click', '.sadd_more', function () {
                     var index = $('.slist').data('index_no');
@@ -163,76 +163,76 @@
                             }
                         }
                     });
-                    $('#myjob').validate({ 
+                    $('#myjob').validate({
                         rules: {
-                              title: 
+                              title:
                               {
                                 required: true,
-                                
+
                               },
-                              company: 
+                              company:
                               {
                                 required: true,
-                                
+
                               },
-                              experience: 
+                              experience:
                               {
                                 required: true,
-                                
+
                               },
-                              vacancy: 
+                              vacancy:
                               {
                                 required: true,
-                                
+
                               },
-                              education: 
+                              education:
                               {
                                 required: true,
-                                
+
                               },
-                              deadline: 
+                              deadline:
                               {
                                 required: true,
-                                
+
                               },
-                              location: 
+                              location:
                               {
                                 required: true,
-                                
+
                               },
-                              salary: 
+                              salary:
                               {
                                 required: true,
-                                
+
                               },
-                              topdescription: 
+                              topdescription:
                               {
                                 required: true,
-                                
+
                               },
-                              responsibilitiestext: 
+                              responsibilitiestext:
                               {
                                 required: true,
-                                
+
                               },
-                              howtoapply: 
+                              howtoapply:
                               {
                                 required: true,
-                                
+
                               },
-                              howtoapply: 
+                              howtoapply:
                               {
                                 required: true,
-                                
+
                               },
-                                 catid: 
+                                 catid:
                               {
                                 required: true,
-                                
+
                               },
-                             
+
                         },
-                        
+
                         highlight: function(element) {
                             $(element).parent().addClass('has-error');
                         },
@@ -281,10 +281,10 @@
                                       <a href="`+url+`"  class="editjob"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                                       <a class="deletejob" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                                     </td>
-                                  </tr>`);          
+                                  </tr>`);
                                   $('#myjob').trigger('reset');
                                 }
-                                
+
                             });
                            }
                        });
@@ -293,19 +293,19 @@
                     //     var id = $(this).data('id');
                     //     $.ajax({
                     //       url: "{!! route('career.edit') !!}",
-                    //       type: "get", 
-                    //       data: {  
-                    //           id: id, 
+                    //       type: "get",
+                    //       data: {
+                    //           id: id,
                     //       },
                     //       success: function(data) {
-                            
+
                     //         // var newid = data.id;
                     //         // var base = "{!! route('career.edit') !!}";
                     //         // var url = base+'?id='+id ;
                     //         //  window.location.href=url;
                     //          //console.log(url);
 
-                          
+
                     //       }
                     //     });
                     // })
@@ -322,22 +322,22 @@
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Yes, delete it!',
-                        
+
                         }).then(result => {
-                        
+
                         if (result.value) {
                             $.ajax({
                             url: "{!! route('career.delete') !!}",
-                            type: "get", 
-                            data: {  
-                                id: id, 
+                            type: "get",
+                            data: {
+                                id: id,
                             },
                             success: function(data) {
                                 }
                             });
-                            
+
                             $(this).closest('tr').hide();
-                            
+
                         }
                         }
                     )
@@ -349,10 +349,10 @@
         $(this).addClass('jobactive');
         $.ajax({
           url: "{!! route('job.status') !!}",
-          type: "get", 
-          data: {  
-            id: id, 
-            jobid: jobid, 
+          type: "get",
+          data: {
+            id: id,
+            jobid: jobid,
 
           },
           success: function(data) {
@@ -380,10 +380,10 @@
         $(this).addClass('jobdeactive');
         $.ajax({
           url: "{!! route('job.status') !!}",
-          type: "get", 
-          data: {  
-            id: id, 
-            jobid: jobid, 
+          type: "get",
+          data: {
+            id: id,
+            jobid: jobid,
           },
           success: function(data) {
             toastr.options = {

@@ -2,6 +2,7 @@
 @section('application-active','active')
 @section('title', 'PeopleScape | Application Lists')
 @section('content')
+
 <section class="content">
     <div class="row">
       <div class="col-xs-12">
@@ -140,8 +141,8 @@
           <td>{{$exp->title}}</td>
           <td>{{$exp->company}}</td>
           <td>{{$exp->responsibilites}}</td>
-          <td>{{$exp->joinedin}}</td>
-          <td>{{$exp->leftin}}</td>
+          <td>{{$exp->title == null? "" : $exp->joinedin}}</td>
+          <td>{{$exp->title == null? "" : $exp->leftin}}</td>
           </tr>
         @endforeach
         @endif
