@@ -204,8 +204,11 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('exams-view', 'ExamController@examPopup')->name('exams.popup');
         Route::post('exams/store', 'ExamController@store')->name('exams.store');
         Route::get('examsdelete', 'ExamController@destroy')->name('exams.destroy');
-        Route::get('exams/{id}/edit','ExamController@edit')->name('exams.edit');
-        Route::post('exams/updated', 'ExamController@updated')->name('exams.updated');
+        Route::get('examsedit','ExamController@edit')->name('exams.edit');
+        Route::post('examupdate','ExamController@updateExam')->name('exams.update');
+        //job to cat find route
+        Route::get('testroute','ExamController@jobToCat')->name('exams.catview');
+        Route::get('testroute2','ExamController@jobToCat2')->name('exams.catview2');
 
 
     });

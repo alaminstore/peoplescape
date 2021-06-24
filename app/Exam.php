@@ -13,4 +13,7 @@ class Exam extends Model
     public function getCareercat(){
         return $this->belongsTo(Careercat::class,'careercat_id','id');
     }
+    public function getCareer(){
+        return $this->belongsTo(Career::class,'job_id','id');
+    }
 }

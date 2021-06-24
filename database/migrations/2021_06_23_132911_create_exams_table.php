@@ -16,16 +16,17 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('exam_id');
             $table->unsignedInteger('careercat_id')->nullable();
+            $table->unsignedInteger('job_id')->nullable();
             $table->string('exam_name')->nullable();
             $table->string('vanue')->nullable();
             $table->string('designation')->nullable();
             $table->date('exam_date')->nullable();
             $table->string('active')->nullable();
+            $table->string('status')->nullable();
             $table->date('post_date')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

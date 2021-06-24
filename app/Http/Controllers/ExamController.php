@@ -13,11 +13,11 @@ Use \Carbon\Carbon;
 class ExamController extends Controller
 {
     public function examView(Request $request){
-        $jobCat = Careercat::all();
+        $jobs = Career::all();
         $cat_id = $request->id;
         $filterExam = Exam::where('careercat_id',$cat_id)->get();
-        $examlists = Exam::with('getCareercat')->get();
-        return view('Backend.exams.exams',compact('jobCat','examlists','filterExam'));
+        $examlists = Exam::with('getCareer')->get();
+        return view('Backend.exams.exams',compact('jobs','examlists','filterExam'));
     }
     public function store(Request $request){
         $validator = Validator::make($request->all(),[
@@ -31,6 +31,7 @@ class ExamController extends Controller
             return response()->json(['status'=> 0,'error'=>$validator->errors()->toArray()]);
         }else{
             $exm= new Exam();
+            $exm->job_id = $request->job_id;
             $exm->careercat_id = $request->careercat_id;
             $exm->exam_name = $request->exam_name;
             $exm->vanue = $request->vanue;
@@ -43,9 +44,9 @@ class ExamController extends Controller
 
         }
     }
-    public function edit($id){
-        dd($id);
-        $data  = Exam::find($id);
+    public function edit(Request $request){
+
+        $data=Exam::where('exam_id',$request->id)->first();
 
         if($data){
           return response()->json([
@@ -56,7 +57,7 @@ class ExamController extends Controller
         else{
           return response()->json([
               'success' => false,
-              'data' => 'No information found'
+              'data' => 'Job Info Not found'
             ]);
         }
     }
@@ -76,7 +77,7 @@ class ExamController extends Controller
             ]);
         }
     }
-    public function updated(Request $request)
+    public function updateExam(Request $request)
     {
         $validator = Validator::make($request->all(),[
             'careercat_id'=>'required',
@@ -89,15 +90,15 @@ class ExamController extends Controller
             return response()->json(['status'=> 0,'error'=>$validator->errors()->toArray()]);
         }else{
             $exm = Exam::find($request->category_id);
+            $exm->job_id = $request->job_id;
             $exm->careercat_id = $request->careercat_id;
             $exm->exam_name = $request->exam_name;
             $exm->vanue = $request->vanue;
             $exm->designation = $request->designation;
             $exm->exam_date = $request->exam_date;
-            // $exm->post_date = Carbon::now();
-            $exm->active = 1;
-            $exm->save();
-            return response()->json($exm);
+            if($exm->save()){
+                return response()->json(['success'=>true,'data'=>$exm]);
+            }
         }
 
     }
@@ -108,5 +109,39 @@ class ExamController extends Controller
         if($exam->delete()){
             return response()->json($exam);
         }
+    }
+
+    public function jobToCat(Request $request){
+        $data=Career::where('id',$request->id)->first();
+        if($data){
+          return response()->json([
+              'success' => true,
+              'data' => $data
+            ]);
+        }
+        else{
+          return response()->json([
+              'success' => false,
+              'data' => 'Job Info Not found'
+            ]);
+        }
+
+    }
+
+    public function jobToCat2(Request $request){
+        $data=Career::where('id',$request->id)->first();
+        if($data){
+          return response()->json([
+              'success' => true,
+              'data' => $data
+            ]);
+        }
+        else{
+          return response()->json([
+              'success' => false,
+              'data' => 'Job Info Not found'
+            ]);
+        }
+
     }
 }

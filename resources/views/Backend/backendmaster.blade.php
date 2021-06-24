@@ -284,7 +284,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="{{asset('backEnd/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('backEnd/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('backEnd/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
   <!-- FastClick -->
   <script src="{{asset('backEnd/bower_components/fastclick/lib/fastclick.js')}}"></script>
   <!-- AdminLTE App -->
@@ -337,5 +337,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     } );
 
   </script>
+  @yield('js')
 </body>
 </html>

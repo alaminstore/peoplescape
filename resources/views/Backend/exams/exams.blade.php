@@ -40,9 +40,9 @@
                             <table id="examlist" class="table table-bordered table-striped jobprepend">
                                 <thead>
                                 <tr>
-                                    <th class="text-center" width="15%">Job Category</th>
+                                    <th class="text-center" width="15%">Job</th>
                                     <th class="text-center" width="15%">Exam Name</th>
-                                    <th class="text-center" width="15%">Vanue</th>
+                                    <th class="text-center" width="15%">Venue</th>
                                     <th class="text-center" width="15%">Exam Date</th>
                                     <th class="text-center" width="15%">Designation</th>
                                     <th class="text-center" width="22%">Action</th>
@@ -51,16 +51,18 @@
                                 <tbody id="loadnow">
                                     @foreach ($examlists as $exam)
                                         <tr class="text-center">
-                                            <td>{{$exam->getCareercat->title}}</td>
+                                            <td>{{$exam->getCareer->title}}</td>
                                             <td>{{$exam->exam_name}}</td>
                                             <td>{{$exam->vanue}}</td>
                                             <td>{{$exam->exam_date}}</td>
                                             <td>{{ \Illuminate\Support\Str::limit($exam->designation, 20, $end='...') }}</td>
                                             <td>
-
+                                                {{-- view --}}
                                                 <a class="viewData" data-id="{{$exam->exam_id}}"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
+                                                {{-- delete --}}
                                                 <a class="deletejob" data-id="{{$exam->exam_id}}"><span
                                                         class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                {{-- edit --}}
                                                 <a class="editjob" data-id="{{$exam->exam_id}}"><span
                                                         class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                                             </td>
@@ -86,16 +88,20 @@
                                     {!!Form::open(['class' => 'form-horizontal','id'=>'createExam'])!!}
                                     @csrf
                                     <div class="form-group row">
-                                        <label for="job category" class="col-sm-3 col-md-3 col-form-label">Select Job
-                                            Category</label>
+                                        <label for="job category" class="col-sm-3 col-md-3 col-form-label">Select Job</label>
                                         <div class="col-sm-9 col-md-9">
-                                            <select style="width: 100%;" name="careercat_id" class="jobcat form-control"
+                                            <select class="jobcatfind" style="width: 100%;" name="job_id"  id="jobtocat"
                                                     required>
                                                 <option value=""></option>
-                                                @foreach ($jobCat as $cat)
-                                                    <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                                @foreach ($jobs as $job)
+                                                    <option value="{{$job->id}}">{{$job->title}}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-froup row">
+                                        <div class="col-md-12">
+                                            <input type="hidden" name="careercat_id" id="careercat_id">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -159,25 +165,29 @@
                                     <h4 class="modal-title" id="exampleModalLongTitle">Update The Exam Schedule</h4>
                                 </div>
                                 <div class="modal-body">
-                                    {!!Form::open(['class' => 'form-horizontal','id'=>'updateExam'])!!}
+                                {!!Form::open(['class' => 'form-horizontal','id'=>'updateExam'])!!}
                                     @csrf
                                     <div class="form-group row">
-                                        <label for="job category" class="col-sm-3 col-md-3 col-form-label">Select Job
-                                            Category</label>
+                                        <label for="job category" class="col-sm-3 col-md-3 col-form-label">Select Job</label>
                                         <div class="col-sm-9 col-md-9">
-                                            <select style="width: 100%;" name="careercat_id" id="jobcat2" class="jobcat form-control"
+                                            <select class="jobcatfind2 form-control" style="width: 100%;" name="job_id"  id="jobtocat2"
                                                     required>
-                                                <option value=""></option>
-                                                @foreach ($jobCat as $cat)
-                                                    <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                                <option disabled value="">Select Job...</option>
+                                                @foreach ($jobs as $job)
+                                                    <option value="{{$job->id}}">{{$job->title}}</option>
                                                 @endforeach
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-froup row">
+                                        <div class="col-md-12">
+                                            <input type="text" name="careercat_id" id="careercat_id2">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-3 col-form-label">Exam Name</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" id="exam_name2" name="exam_name"
+                                            <input class="form-control" type="text" name="exam_name" id='exam_name2'
                                                    placeholder="Exam Name Here..." required>
                                             <input type="text" name="category_id" id="category-edit-id" class="form-control">
                                         </div>
@@ -186,25 +196,24 @@
                                     <div class="form-group row">
                                         <label for="name" class="col-sm-3 col-form-label">Vanue</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" id="vanue2" name="vanue"
+                                            <input class="form-control" type="text" name="vanue" id="venue2"
                                                    placeholder="Vanue Here..." required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Designation</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" id="designation2" name="designation"
+                                            <input class="form-control" type="text" name="designation" id="designation2"
                                                    placeholder="Designation Here..." required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Exam Date</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="date" id="exam_date2" name="exam_date"
+                                            <input class="form-control" type="date" name="exam_date" id="exam_date2"
                                                    placeholder="Designation Here..." required>
                                         </div>
                                     </div>
-
                                     <div class="form-group row  pull-right">
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-primary waves-effect waves-light">
@@ -216,7 +225,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    {!!Form::close()!!}
+                                {!!Form::close()!!}
                                 </div>
                                 <br>
                                 <div class="modal-footer">
@@ -229,7 +238,7 @@
 
     {{-- View Modal --}}
 
-    <div id="viewModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    {{-- <div id="viewModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -256,33 +265,51 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
                 </div>
             </div>
         </div>
     </section>
-    <script>
-        $(document).ready(function () {
-            $('.jobcat').select2({
-                placeholder: "Select job category"
-            });
 
-            // Edit Data...
-            $('#reload-category').on('click', '.editjob', function () {
+
+
+@endsection
+@section('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.jobcatfind').select2({
+            placeholder: "Job Selection"
+        });
+
+
+        //edit data...
+        $('#reload-category').on('click', '.editjob', function () {
                 let id = $(this).attr('data-id');
-                console.log('id:',id);
+                console.log('edit:',id);
+
                 $.ajax({
-                    url: "{{url('examedt')}}/" + id + '/edit',
-                    method: "get",
-                    data: {},
+                    url: '{{ route('exams.edit') }}',
+                    method: 'get',
+                    data: {
+                        id
+                    },
                     dataType: 'json',
                     success: function (response) {
-                        console.log('data', response);
+                        console.log('data', response.data);
+                        // $('#updateExam').find('#jobtocat2').val(response.data.job_id);
+                       var job_active =  $('#jobtocat2').val(response.data.job_id);
+                        $('#careercat_id2').val(response.data.careercat_id);
                         $('#exam_name2').val(response.data.exam_name);
+                        $('#venue2').val(response.data.vanue);
+                        $('#designation2').val(response.data.designation);
+                        $('#exam_date2').val(response.data.exam_date);
                         $('#category-edit-id').val(response.data.exam_id);
                         $('#updateModal').modal('show');
+
+
                     },
                     error: function (error) {
                         if (error.status == 404) {
@@ -292,123 +319,177 @@
                 });
             });
 
-            //view data
-            $('#reload-category').on('click', '.viewData', function () {
-                let id = $(this).attr('data-id');
-                console.log('id--', id);
-                $.ajax({
-                    url: "{{url('exams-view')}}/" + id,
-                    method: "get",
-                    data: {},
-                    dataType: 'json',
-                    success: function (response) {
-                        console.log(response.data);
-                        // $('#viewName').text(response.data.name);
-                        // $('#viewDescription').text(response.data.description);
-                        // $('#viewIcon').html(`<img width="300" height="300" class="img-fluid"  src="${url}/${response.data.icon}" class="dropify"/>`);
-                        $('#viewModel').modal('show');
-                    },
-                    error: function (error) {
-                        if (error.status == 404) {
-                            toastr.error('Not found!');
-                        }
-                    }
-                });
-            });
+            // $('#jobtocat2').select2({placeholder:job_active});
+        //view data
+        // $('#reload-category').on('click', '.viewData', function () {
+        //     let id = $(this).attr('data-id');
+        //     console.log('id--', id);
+        //     $.ajax({
+        //         url: "{{url('exams-view')}}/" + id,
+        //         method: "get",
+        //         data: {},
+        //         dataType: 'json',
+        //         success: function (response) {
+        //             console.log(response.data);
+        //             // $('#viewName').text(response.data.name);
+        //             // $('#viewDescription').text(response.data.description);
+        //             // $('#viewIcon').html(`<img width="300" height="300" class="img-fluid"  src="${url}/${response.data.icon}" class="dropify"/>`);
+        //             $('#viewModel').modal('show');
+        //         },
+        //         error: function (error) {
+        //             if (error.status == 404) {
+        //                 toastr.error('Not found!');
+        //             }
+        //         }
+        //     });
+        // });
 
-            //save data
-            $('#createExam').on('submit', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "{{route('exams.store')}}",
-                    method: "POST",
-                    data: new FormData(this),
-                    dataType: 'JSON',
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function (data) {
-                        console.log('save', data);
-                        toastr.options = {
-                            "debug": false,
-                            "positionClass": "toast-bottom-right",
-                            "onclick": null,
-                            "fadeIn": 300,
-                            "fadeOut": 1000,
-                            "timeOut": 5000,
-                            "extendedTimeOut": 1000
-                        };
-                        $('#examSave').modal('hide');
-                        setTimeout(function () {
-                            $("#loadnow").load(location.href + " #loadnow>*", "");
-                        }, 1);
-                        toastr.success('Data Inserted Successfully');
-                        $('#examSave').trigger('reset');
-                    }
-                });
-            });
-            //Delete data
-            $(document).on('click', '.deletejob', function (e) {
-                e.preventDefault();
-                var id = $(this).data('id');
-                console.log('id: ', id);
-                //alert(role);
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!',
-                }).then(result => {
-                        if (result.value) {
-                            $.ajax({
-                                url: "{!! route('exams.destroy') !!}",
-                                type: "get",
-                                data: {
-                                    id: id,
-                                },
-                            });
-                            toastr.success('Data Deleted Successfully');
-                            $(this).closest('tr').hide();
-                        }
-                    }
-                )
-            });
+        //save data
+        $('#createExam').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "{{route('exams.store')}}",
+                method: "POST",
+                data: new FormData(this),
+                dataType: 'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    console.log('save', data);
+                    toastr.options = {
+                        "debug": false,
+                        "positionClass": "toast-bottom-right",
+                        "onclick": null,
+                        "fadeIn": 300,
+                        "fadeOut": 1000,
+                        "timeOut": 5000,
+                        "extendedTimeOut": 1000
+                    };
+                    $('#examSave').trigger('reset');
+                    $('#examSave').modal('hide');
+                    setTimeout(function () {
+                        $("#loadnow").load(location.href + " #loadnow>*", "");
+                    }, 1);
+                    toastr.success('Data Inserted Successfully');
 
-            //Update data
-            $('#updateExam').on('submit', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    url: "{{route('exams.updated')}}",
-                    method: "POST",
-                    data: new FormData(this),
-                    dataType: 'JSON',
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function (data) {
-                        console.log('update', data);
-                        toastr.options = {
-                            "debug": false,
-                            "positionClass": "toast-bottom-right",
-                            "onclick": null,
-                            "fadeIn": 300,
-                            "fadeOut": 1000,
-                            "timeOut": 5000,
-                            "extendedTimeOut": 1000
-                        };
-                        $('#updateModal').modal('hide');
-                        setTimeout(function () {
-                            $("#loadnow").load(location.href + " #loadnow>*", "");
-                        }, 1);
-                        toastr.success('Data Updated Successfully');
-                        $('#updateExam').trigger('reset');
-                    }
-                });
+                }
             });
         });
-    </script>
+        //Delete data
+        $(document).on('click', '.deletejob', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            console.log('id: ', id);
+            //alert(role);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+            }).then(result => {
+                    if (result.value) {
+                        $.ajax({
+                            url: "{!! route('exams.destroy') !!}",
+                            type: "get",
+                            data: {
+                                id: id,
+                            },
+                        });
+                        toastr.success('Data Deleted Successfully');
+                        $(this).closest('tr').hide();
+                    }
+                }
+            )
+        });
 
+        //Update data
+        $('#updateExam').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: "{{route('exams.update')}}",
+                method: "POST",
+                data: new FormData(this),
+                dataType: 'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+
+                    console.log('update', data);
+                    toastr.options = {
+                        "debug": false,
+                        "positionClass": "toast-bottom-right",
+                        "onclick": null,
+                        "fadeIn": 300,
+                        "fadeOut": 1000,
+                        "timeOut": 5000,
+                        "extendedTimeOut": 1000
+                    };
+                    $('#updateModal').modal('hide');
+                    if(data.success = true){
+                        $('#updateExam').trigger('reset');
+                        $("#loadnow").load(location.href + " #loadnow>*", "");
+                        toastr.success('Data Updated Successfully');
+                    }else{
+                        toastr.error('Something went wrong!');
+                    }
+
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+
+    //jobcatfind Add
+    $(document).on('change', '.jobcatfind', function (e) {
+        e.preventDefault();
+        let id = $(this).val();
+        console.log(id);
+        $.ajax({
+            url: '{{ route('exams.catview') }}',
+            method: 'get',
+            data: {
+                id
+            },
+            dataType: 'json',
+            success: function (response) {
+                console.log('result',response);
+                $('#careercat_id').val(response.data.catid);
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+
+    });
+    //jobcatfind edit
+    $(document).on('change', '.jobcatfind2', function (e) {
+        e.preventDefault();
+        let id = $(this).val();
+        console.log(id);
+        $.ajax({
+            url: '{{ route('exams.catview2') }}',
+            method: 'get',
+            data: {
+                id
+            },
+            dataType: 'json',
+            success: function (response) {
+                console.log('result',response);
+                $('#careercat_id2').val(response.data.catid);
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+
+    });
+</script>
 @endsection
