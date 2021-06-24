@@ -15,87 +15,7 @@
         </div>
     </section>
     <style>
-        .labelclass {
-            font-weight: normal !important;
-        }
-
-        .custombtn {
-            border: 1px solid #0d72ba;
-            background: #0d72ba;
-            color: #e4d8d8;
-            font-weight: 700;
-            font-size: 17px;
-        }
-
-        .cbtn button:hover {
-            background: transparent !important;
-            cursor: pointer;
-        }
-
-
-        /* Custom Style Start */
-
-        /* Mark input boxes that gets an error on validation: */
-        input.invalid {
-            background-color: #ffdddd;
-        }
-
-        /* Hide all steps by default: */
-        .tab {
-            display: none;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 17px;
-            font-family: Raleway;
-            cursor: pointer;
-        }
-
-        button:hover {
-            opacity: 0.8;
-        }
-
-        #prevBtn {
-
-        }
-
-        .btn_prev, .btn_next {
-            padding: 7px 200px;
-            font-size: 20px;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            display: inline-block;
-        }
-
-        /* Make circles that indicate the steps of the form: */
-        .step {
-            margin: 0 2px;
-            background-color: rgb(148, 122, 122) 2);
-            border: none;
-            border-radius: 4%;
-            display: inline-block;
-            opacity: 0.5;
-        }
-
-        .step.active {
-            opacity: 1;
-            color: #fff;
-            background-color: #007bff;
-        }
-
-        /* Mark the steps that are finished and valid: */
-        .step.finish {
-            opacity: 1;
-            background-color: #4CAF50;
-        }
-
-        /* Custom Style End */
-
-
+        .labelclass{font-weight:400!important}.custombtn{border:1px solid #0d72ba;background:#0d72ba;color:#e4d8d8;font-weight:700;font-size:17px}.cbtn button:hover{background:0 0!important;cursor:pointer}input.invalid{background-color:#fdd}.tab{display:none}button{background-color:#4caf50;color:#fff;border:none;padding:10px 20px;font-size:17px;font-family:Raleway;cursor:pointer}button:hover{opacity:.8}.btn_next,.btn_prev{padding:7px 200px;font-size:20px;font-weight:700;font-family:Montserrat,sans-serif;display:inline-block}.step{margin:0 2px;background-color:#947a7a 2);border:none;border-radius:4%;display:inline-block;opacity:.5}.step.active{opacity:1;color:#fff;background-color:#007bff}.step.finish{opacity:1;background-color:#4caf50}
     </style>
     <!-- Services Details Area START -->
     <section class="services-details-area">
@@ -113,8 +33,8 @@
                     @endif
                     {{-- to be form in tab form --}}
                     {{-- {!!Form::open(['method' => 'post', 'url' => '/cvformstore','class' => 'form-horizontal','id'=>'cvcreateform','enctype'=>'multipart/form-data'])!!} --}}
-                    <form action="{{url('/cvformstore')}}" method="post" id="cvcreateform"
-                          enctype="multipart/form-data">
+                    <form action="{{url('/cvformstore')}}" method="post" id="cvcreateform" enctype="multipart/form-data">
+
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class=" step">

@@ -36,14 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -197,6 +190,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
          {{-- Job Open End --}}
 
           <li class="@yield('joblist-active')"><a href="{{route('job.list')}}"><i class="fa fa fa-share"></i> <span>Joblist</span></a></li>
+          <li class="@yield('exams-active')"><a href="{{route('exams.view')}}"><i class="fa fa fa-share"></i> <span>Exams</span></a></li>
           <li class="@yield('contact-active')"><a href="{{route('contactop.index')}}"><i class="fa fa fa-share"></i> <span>Contact</span></a></li>
           <li class="@yield('galery-active')"><a href="{{route('galeryop.index')}}"><i class="fa fa fa-share"></i> <span>Gallery</span></a></li>
           <li class="@yield('application-active')"><a href="{{route('application.index')}}"><i class="fa fa fa-share"></i> <span>Application Lists</span></a></li>
@@ -211,6 +205,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <li class="@yield('recog-active')"><a href="{{route('recog.index')}}"><i class="fa fa fa-share"></i> <span>Recognition</span></a></li>
       <li class="@yield('career-active')"><a href="{{route('careerop.index')}}"><i class="fa fa fa-share"></i> <span>Create Job</span></a></li>
       <li class="@yield('joblist-active')"><a href="{{route('job.list')}}"><i class="fa fa fa-share"></i> <span>Joblist</span></a></li>
+      <li class="@yield('exams-active')"><a href="{{route('exams.view')}}"><i class="fa fa fa-share"></i> <span>Exams</span></a></li>
       <li class="@yield('contact-active')"><a href="{{route('contactop.index')}}"><i class="fa fa fa-share"></i> <span>Contact</span></a></li>
       <li class="@yield('galery-active')"><a href="{{route('galeryop.index')}}"><i class="fa fa fa-share"></i> <span>Gallery</span></a></li>
       <!--<li class="@yield('application-active')"><a href="{{route('application.index')}}"><i class="fa fa fa-share"></i> <span>Application Lists</span></a></li>-->
@@ -284,12 +279,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-  {{-- <script src="{{asset('backEnd/bower_components/jquery/dist/jquery.min.js')}}"></script> --}}
+  <script src="{{asset('backEnd/bower_components/jquery/dist/jquery.min.js')}}"></script>
   <!-- Bootstrap 3.3.7 -->
   <script src="{{asset('backEnd/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('backEnd/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('backEnd/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-
+  <script src="{{asset('backEnd/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <!-- FastClick -->
   <script src="{{asset('backEnd/bower_components/fastclick/lib/fastclick.js')}}"></script>
   <!-- AdminLTE App -->
@@ -314,10 +309,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @stack('scripts')
   <script>
 
-    $('#example1').DataTable()
-     $('#example2').DataTable()
+    $('#joblist').DataTable()
+    $('#examlist').DataTable()
+    $('#example2').DataTable()
      //$('#example3').DataTable()
-      $('#example3').DataTable( {
+    $('#example3').DataTable( {
         dom: 'Bfrtip',
         buttons: [
              {

@@ -22,11 +22,11 @@
               <tr>
                <th width="5%">S.I</th>
                 <th width="23%">Job Title</th>
-                <th width="23%">Company</th> 
-                <th width="23%">Applied At</th> 
-                <th width="23%">Deadline</th>
-                 <th width="23%">Details</th>
-                
+                <th width="23%">Company</th>
+                <th width="15%">Applied At</th>
+                <th width="15%">Deadline</th>
+                <th width="39%">Details</th>
+
               </tr>
               </thead>
               <tbody>
@@ -39,7 +39,8 @@
                   <td>{{$val->deadline}}</td>
                   <td>
                       <a href="{!!route('career.details',['id'=>$val->jobid])!!}" target="_blank"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
-                  </td>
+                      <a href=""><button class="btn btn-primary btn-sm">Admit Card</button></a>
+                    </td>
                  </tr>
               @endforeach
               </tbody>

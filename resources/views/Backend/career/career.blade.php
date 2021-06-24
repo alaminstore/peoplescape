@@ -74,8 +74,7 @@
                                             <div class="pull-right">
                                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                                         data-target="#exampleModalCenter">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add New Job
-                                                    Nature
+                                                    <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Add New Job Nature
                                                 </button>
                                             </div>
                                         </div>

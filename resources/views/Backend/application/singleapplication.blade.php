@@ -165,8 +165,7 @@
           <tbody>
               @if(!empty($careerInfoByid->project))
                  <?php  $jsonprojectdata = json_decode($careerInfoByid->project);?>
-
-
+                 
               @foreach($jsonprojectdata as $pro)
               <tr>
               <td>{{$pro->url}}</td>
@@ -186,7 +185,6 @@
               <table class="table table-bordered table-striped">
                   <thead>
                   <tr>
-
                       <th>Achievements</th>
                   </tr>
                   </thead>
@@ -287,11 +285,8 @@
           </div>
           @endif
           </div>
-          <!-- /.box-body -->
         </div>
-        <!-- /.box -->
       </div>
-      <!-- /.col -->
     </div>
 </section>
 @endsection

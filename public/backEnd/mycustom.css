@@ -1,37 +1,37 @@
-.error{
-    color:red;
+.error {
+    color: red;
 }
 .swal2-popup {
     font-size: 1.6rem !important;
-  }
-.modal-header{
+}
+.modal-header {
     background: #3c8dbc;
-  }
-  .modal-title{
+}
+.modal-title {
     color: #fff;
     font-weight: bold;
-    font:22px;
-  }
-  .commonlitabforcash a {
-    color:rgb(36, 1, 1)!important;
+    font: 22px;
+}
+.commonlitabforcash a {
+    color: rgb(36, 1, 1) !important;
     background: #00c0ef;
-    font-size:15px;
-    font-weight:bold;
-  }
-  .switch {
+    font-size: 15px;
+    font-weight: bold;
+}
+.switch {
     position: relative;
     display: inline-block;
     width: 52px;
     height: 25px;
-  }
-  
-  .switch input { 
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: -2px;
@@ -39,45 +39,45 @@
     right: 0;
     bottom: 0;
     background-color: #ddd;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 20px;
     width: 20px;
-    left: 4px;;
+    left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
     background-color: #d6c207;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus + .slider {
     box-shadow: 0 0 1px #d6c207;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+/* Rounded sliders */
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
-  .countnumber{
+}
+.countnumber {
     position: relative;
     height: 25px;
     width: 25px;
@@ -86,27 +86,30 @@
     display: inline-block;
     color: #fff;
     top: 8px;
-  }
-  .textcount{
+}
+.textcount {
     position: absolute;
-    padding-left: 7px;
-    font-size: 17px;
+    font-size: 16px;
     color: #fff;
+    height: 25px;
+    width: 25px;
     font-weight: bold;
-    top: 3px;
-  }
-  .userswitch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userswitch {
     position: relative;
     display: inline-block;
     width: 36px;
     height: 18px;
-  }
-  .user-btn-size{
+}
+.user-btn-size {
     padding: 5px 7px;
     font-size: 11px;
     line-height: 1.5;
-  }
-  .userslider {
+}
+.userslider {
     position: absolute;
     cursor: pointer;
     top: -2px;
@@ -114,10 +117,10 @@
     right: 0;
     bottom: 0;
     background-color: #ddd;
-    -webkit-transition: .6s;
-    transition: .6s;
-  }
-  .userslider:before {
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+}
+.userslider:before {
     position: absolute;
     content: "";
     height: 16px;
@@ -125,46 +128,46 @@
     left: -3px;
     bottom: 2px;
     background-color: white;
-    -webkit-transition: .6s;
-    transition: .6s;
-  }
-  input:checked + .userslider {
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+}
+input:checked + .userslider {
     background-color: #d6c207;
-  }
-  
-  input:focus + .userslider {
+}
+
+input:focus + .userslider {
     box-shadow: 0 0 1px #d6c207;
-  }
-  
-  input:checked + .userslider:before {
+}
+
+input:checked + .userslider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .userslider.round {
+}
+
+/* Rounded sliders */
+.userslider.round {
     border-radius: 34px;
-  }
-  
-  .userslider.round:before {
+}
+
+.userslider.round:before {
     border-radius: 50%;
-  }
-  .stargreen{
-      color:#178a55;
-    }
-    .stardeem{
-      color:#ddd;
-    }
-    .dataTables_wrapper button{
+}
+.stargreen {
+    color: #178a55;
+}
+.stardeem {
+    color: #ddd;
+}
+.dataTables_wrapper button {
     background: #3c8dbc;
     color: #fff;
     padding: 9px 25px;
     font-weight: bolder;
-  }
-  .dataTables_wrapper button:hover{
+}
+.dataTables_wrapper button:hover {
     background: #3c8dbc;
-    color:#fff;
+    color: #fff;
     padding: 9px 25px;
     font-weight: bolder;
-  }
+}

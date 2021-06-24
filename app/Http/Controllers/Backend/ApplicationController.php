@@ -21,10 +21,7 @@ class ApplicationController extends Controller
      */
      public function __construct()
     {
-
-
         $this->middleware('accesscontrol', ['only' => ['index']]);
-
     }
     public function index()
     {

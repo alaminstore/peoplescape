@@ -46,6 +46,8 @@ class CareerController extends Controller
                         LEFT JOIN jobapplieds ON careers.id = jobapplieds.job_id
                         LEFT JOIN shortlisteds ON careers.id = shortlisteds.job_id
                         GROUP BY careers.id"));
+        // return $data['job'];
+
         $data['careerhead'] = Careerhead::find(1);
         return view('Backend.career.joblist',compact('data'));
     }
@@ -186,7 +188,6 @@ class CareerController extends Controller
     }
 
     public function detailsjob(Request $request){
-
         $id = $request->id;
         $data['careerbyid']  = Career::find($id);
         $data['cat'] = Careercat::all();
@@ -234,12 +235,14 @@ class CareerController extends Controller
                         $userid[$i]['lastinst']=$acc->instnameoth;
                     }
                     $userid[$i]['lastdegree']=$acc->degree;
-                   if(array_key_exists('major', $acc)){
+                //    if(array_key_exists('major', $acc)){
+                    if(isset($acc->major)){
                       $userid[$i]['major']=$acc->major;
                     }else{
                         $userid[$i]['major']='No Data';
                     }
-                   if(array_key_exists('minor', $acc)){
+                //    if(array_key_exists('minor', $acc)){
+                    if(isset($acc->minor)){
                       $userid[$i]['minor']=$acc->minor;
                    }else{
                         $userid[$i]['minor']='No Data';

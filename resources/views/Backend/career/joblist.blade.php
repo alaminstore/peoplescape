@@ -14,43 +14,44 @@
                             </div>
                            </div>
                         <div class="box-body">
-                          <table id="example1" class="table table-bordered table-striped jobprepend">
+                          <table id="joblist" class="table table-bordered table-striped jobprepend">
                             <thead>
                             <tr>
-                                <th width="15%">Title</th>
-                               <th width="15%">Company</th>
-                               <th width="15%">Experience</th>
-                               <th width="10%">Total Applicant</th>
-                               <th width="13%">Shortlisted Applicant</th>
-                               <th width="27%">Action</th>
+                               <th class="text-center" width="15%">Title</th>
+                               <th class="text-center" width="15%">Company</th>
+                               <th class="text-center" width="15%">Experience</th>
+                               <th class="text-center" width="10%">Total Applicant</th>
+                               <th class="text-center" width="13%">Shortlisted Applicant</th>
+                               <th class="text-center" width="27%">Action</th>
                             </tr>
                             </thead>
                             <tbody class="jobappend">
                               @foreach($data['job'] as $job)
                              <tr class='unqjob{{$job->id}}'>
-                                <td>
+                                <td class="text-center">
                                   <a href="{{route('careerjob.detail',['id'=>$job->id])}}" target="_blank">{{$job->title}}</a>
                                 </td>
-                                <td>{{$job->company}}</td>
-                                <td>{{$job->experience}}</td>
-                                <td><span class="countnumber"><small class="textcount">{{$job->totalapplicant}}</small></span></td>
-                                <td><span class="countnumber"><small class="textcount">{{$job->totalshortlisted}}</small></span></td>
+                                <td class="text-center">{{$job->company}}</td>
+                                <td class="text-center">{{$job->experience}}</td>
+                                <td class="text-center"><span class="countnumber"><small class="textcount">{{$job->totalapplicant}}</small></span></td>
+                                <td class="text-center"><span class="countnumber"><small class="textcount">{{$job->totalshortlisted}}</small></span></td>
                                  @if(Auth::user()->status =='moderator')
-                                 <td>N/A</td>
+                                 <td class="text-center">N/A</td>
                                   @else
                                  <td>
+                                  <a href="{{route('careerjob.detail',['id'=>$job->id])}}" target="_blank"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
                                   <a href="{{ route('career.edit',['id'=>$job->id]) }}"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                                   <a class="deletejob" data-id="{{$job->id}}"><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                   <a href="{{route('careerjob.detail',['id'=>$job->id])}}" target="_blank"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
                                   <label class="switch">
                                       <input type="checkbox" {{$job->status ==1 ? 'checked':''}}>
                                       <span data-jobid="{{$job->id}}" data-ofid="0" data-onid="1" class="slider round {{$job->status == 1 ? 'jobdeactive':'jobactive'}}"></span>
                                   </label>
                                         @if($job->comstatus == 'running')
-                                         <a id="comstatus"  class="btn btn-primary runningstatus" data-type="run" data-jobid="{{$job->id}}">Running</a>
+                                         <a id="comstatus"  class="btn btn-primary runningstatus btn-sm" data-type="run" data-jobid="{{$job->id}}">Running</a>
                                         @else
-                                             <a id="comstatus"  class="btn btn-success runningstatus" data-type="com" data-jobid="{{$job->id}}">Complete</a>
+                                             <a id="comstatus"  class="btn btn-success btn-sm runningstatus" data-type="com" data-jobid="{{$job->id}}">Complete</a>
                                         @endif
+                                    <a href="{{route('exams.view',['id'=>$job->catid])}}" target="_blank"><span class="btn btn-info btn-sm">Exam</span></a>
                                   <!--<button class="btn btn-success completestatus "data-jobid="{{$job->id}}" data-id="1">Complete</</button>-->
                                 </td>
                                @endif
@@ -255,12 +256,6 @@
                               processData: false,
                                 success:function(data)
                                 {
-                                 //console.log(data);
-                                //  var newid = data.id;
-                                //   var base = "{!! route('career.edit') !!}";
-                                //   var url = base+'?id='+id ;
-                                //   window.location.href=url;
-                             //console.log(url);
                                   toastr.options = {
                                           "debug": false,
                                           "positionClass": "toast-bottom-right",

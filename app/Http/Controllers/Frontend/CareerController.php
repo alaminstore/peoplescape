@@ -12,6 +12,7 @@ use App\Careerhead;
 use App\Aboutcall2;
 use App\Jobapplied;
 use DB;
+
 class CareerController extends Controller
 {
     /**
@@ -22,54 +23,58 @@ class CareerController extends Controller
     public function index()
     {
         $jobDetail = DB::table('careers')
-                     ->select('careers.*','careercats.title as catname')
-                     ->leftJoin('careercats','careers.catid','=','careercats.id')
-                     ->where('careers.status',1)
-                     ->where('careers.comstatus','running')
-                     ->paginate(2);
+            ->select('careers.*', 'careercats.title as catname')
+            ->leftJoin('careercats', 'careers.catid', '=', 'careercats.id')
+            ->where('careers.status', 1)
+            ->where('careers.comstatus', 'running')
+            ->paginate(2);
         $data['careerhead'] = Careerhead::find(1);
-        return view('Frontend.career',\compact('jobDetail','data'));
+        return view('Frontend.career', \compact('jobDetail', 'data'));
     }
-    public function careerdetails(Request $request){
-     $id = $request->id;
-     $careerByid = DB::table('careers')
-                ->select('careers.*','careercats.title as catname')
-                ->select('careers.*','careercats.title as catname','careercats.id as catid')
-                ->leftJoin('careercats','careers.catid','=','careercats.id')
-                ->where('careers.id','=',$id)
-                ->first();
-     $catid = $careerByid->catid;
-    $categoryWisecareer = DB::table('careers')
-                        ->select('careers.*','careercats.title as catname')
-                        ->select('careers.*','careercats.title as catname')
-                        ->leftJoin('careercats','careers.catid','=','careercats.id')
-                        ->where('careers.catid','=',$catid)
-                        ->where('careers.id','!=',$id)
-                        ->get();
-     $callact= Aboutcall2::find(1);
-     return view('Frontend.singlecareer',compact('careerByid','callact','categoryWisecareer'));
+
+    public function careerdetails(Request $request)
+    {
+        $id = $request->id;
+        $careerByid = DB::table('careers')
+            ->select('careers.*', 'careercats.title as catname')
+            ->select('careers.*', 'careercats.title as catname', 'careercats.id as catid')
+            ->leftJoin('careercats', 'careers.catid', '=', 'careercats.id')
+            ->where('careers.id', '=', $id)
+            ->first();
+        $catid = $careerByid->catid;
+        $categoryWisecareer = DB::table('careers')
+            ->select('careers.*', 'careercats.title as catname')
+            ->select('careers.*', 'careercats.title as catname')
+            ->leftJoin('careercats', 'careers.catid', '=', 'careercats.id')
+            ->where('careers.catid', '=', $catid)
+            ->where('careers.id', '!=', $id)
+            ->get();
+        $callact = Aboutcall2::find(1);
+        return view('Frontend.singlecareer', compact('careerByid', 'callact', 'categoryWisecareer'));
     }
-        public function applybyapplicant(Request $request){
+
+    public function applybyapplicant(Request $request)
+    {
 
         $userid = $request->userid;
         $jobid = $request->jobid;
-        $findApplieduserbyid = Jobapplied::where('applicant_id','=', $userid)->where('job_id','=',$jobid)->first();
-        if($findApplieduserbyid){
+        $findApplieduserbyid = Jobapplied::where('applicant_id', '=', $userid)->where('job_id', '=', $jobid)->first();
+        if ($findApplieduserbyid) {
             return response()->json('warning');
-        }else{
+        } else {
 
             $appliedJob = new Jobapplied();
             $appliedJob->job_id = $jobid;
-            $appliedJob->applicant_id =$userid;
+            $appliedJob->applicant_id = $userid;
             $appliedJob->applied_time = date('Y-m-d');
-            $appliedJob->pdf = $userid.'.pdf';
+            $appliedJob->pdf = $userid . '.pdf';
             $appliedJob->save();
-            $careerInfoByid = Cvform::where('userid','=',$userid)->first();
-            view()->share('careerInfoByid',$careerInfoByid);
-           $pdf = PDF::loadView('download');
-           $pdf->setOptions(['isPhpEnabled' => true,'isRemoteEnabled' => true]);
-           $filename = $userid.".pdf";
-           $pdf->save('careerfile/'.$filename);
+            $careerInfoByid = Cvform::where('userid', '=', $userid)->first();
+            view()->share('careerInfoByid', $careerInfoByid);
+            $pdf = PDF::loadView('download');
+            $pdf->setOptions(['isPhpEnabled' => true, 'isRemoteEnabled' => true]);
+            $filename = $userid . ".pdf";
+            $pdf->save('careerfile/' . $filename);
             return response()->json('success');
         }
 
@@ -88,7 +93,7 @@ class CareerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -99,7 +104,7 @@ class CareerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -110,7 +115,7 @@ class CareerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -121,8 +126,8 @@ class CareerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -133,7 +138,7 @@ class CareerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
