@@ -96,7 +96,7 @@
                                     <div class="form-froup row">
                                         <div class="col-md-12">
                                             <input type="hidden" name="careercat_id" id="careercat_id">
-                                            <input type="text" name="job_name" id="job_nameid">
+                                            <input type="hidden" name="job_name" id="job_nameid">
                                         </div>
                                     </div>
                                     <div class="form-group row">
