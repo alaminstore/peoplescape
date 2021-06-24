@@ -3,15 +3,9 @@
 @section('title', 'PeopleScape | Exams-List')
 @section('content')
     <style>
-        .p-0 {
-            padding-right: 0;
-        }
-        span.select2-selection.select2-selection--single {
-            height: 31px;
-        }
-        div.dataTables_wrapper div.dataTables_filter input {
-            min-width: 177px;
-        }
+        .p-0 {padding-right: 0;}
+        span.select2-selection.select2-selection--single {height: 31px;}
+        div.dataTables_wrapper div.dataTables_filter input {min-width: 177px;}
     </style>
     <section class="content">
         <div class="row">
@@ -102,6 +96,7 @@
                                     <div class="form-froup row">
                                         <div class="col-md-12">
                                             <input type="hidden" name="careercat_id" id="careercat_id">
+                                            <input type="text" name="job_name" id="job_nameid">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -181,7 +176,7 @@
                                     </div>
                                     <div class="form-froup row">
                                         <div class="col-md-12">
-                                            <input type="text" name="careercat_id" id="careercat_id2">
+                                            <input type="hidden" name="careercat_id" id="careercat_id2">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -189,7 +184,7 @@
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="exam_name" id='exam_name2'
                                                    placeholder="Exam Name Here..." required>
-                                            <input type="text" name="category_id" id="category-edit-id" class="form-control">
+                                            <input type="hidden" name="category_id" id="category-edit-id" class="form-control">
                                         </div>
                                     </div>
 
@@ -238,40 +233,85 @@
 
     {{-- View Modal --}}
 
-    {{-- <div id="viewModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myLargeModalLabel">Portfolio Category Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body" style="background: #f5f5f5;">
-
-                    <div class="Catname d-flex">
-                        <p><b>Portfolio Category Name:&nbsp;&nbsp;&nbsp;</b></p>
-                        <div id="viewName"></div>
-                        <br>
-                    </div>
-
-                    <div class="desc">
-                        <p><b>Portfolio Category Description:&nbsp;&nbsp;&nbsp;</b></p>
-                        <div id="viewDescription"></div>
-                    </div>
-                    <div class="iconview">
-                        <p><b>Portfolio Category Icon:&nbsp;&nbsp;&nbsp;</b></p>
-                        <div id="viewIcon" class="text-center"></div>
+                <div id="viewModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleModalLongTitle">Exam Details</h4>
+                            </div>
+                            <div class="modal-body" style="background: #f5f5f5;">
+                                <div class="Catname">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-2" style="padding-right: 0;">
+                                                <p><b>Job:</b></p>
+                                            </div>
+                                            <div class="col-sm-10" style="padding-left:0;">
+                                                <div id="jobview"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Catname">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-2" style="padding-right: 0;">
+                                                <p><b>Exam Name:</b></p>
+                                            </div>
+                                            <div class="col-sm-10" style="padding-left:0;">
+                                                <div id="examview"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Catname">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-2" style="padding-right: 0;">
+                                                <p><b>Exam Date:</b></p>
+                                            </div>
+                                            <div class="col-sm-10" style="padding-left:0;">
+                                                <div id="dateview"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Catname">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-2" style="padding-right: 0;">
+                                                <p><b>Venue:</b></p>
+                                            </div>
+                                            <div class="col-sm-10" style="padding-left:0;">
+                                                <div id="vanueview"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Catname">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-2" style="padding-right: 0;">
+                                                <p><b>Designation:</b></p><br>
+                                            </div>
+                                            <div class="col-sm-10" style="padding-left:0;">
+                                                <div id="designationview"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> --}}
-
-
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
 
 
@@ -319,30 +359,36 @@
                 });
             });
 
-            // $('#jobtocat2').select2({placeholder:job_active});
+            $('#jobtocat2').select2();
         //view data
-        // $('#reload-category').on('click', '.viewData', function () {
-        //     let id = $(this).attr('data-id');
-        //     console.log('id--', id);
-        //     $.ajax({
-        //         url: "{{url('exams-view')}}/" + id,
-        //         method: "get",
-        //         data: {},
-        //         dataType: 'json',
-        //         success: function (response) {
-        //             console.log(response.data);
-        //             // $('#viewName').text(response.data.name);
-        //             // $('#viewDescription').text(response.data.description);
-        //             // $('#viewIcon').html(`<img width="300" height="300" class="img-fluid"  src="${url}/${response.data.icon}" class="dropify"/>`);
-        //             $('#viewModel').modal('show');
-        //         },
-        //         error: function (error) {
-        //             if (error.status == 404) {
-        //                 toastr.error('Not found!');
-        //             }
-        //         }
-        //     });
-        // });
+        $('#reload-category').on('click', '.viewData', function () {
+            let id = $(this).attr('data-id');
+            console.log('id--', id);
+            $.ajax({
+                url: '{{ route('exams.show') }}',
+                method: 'get',
+                data: {
+                    id
+                },
+                dataType: 'json',
+                success: function (response) {
+                        let url = window.location.origin;
+                        console.log('data', response);
+                        $('#jobview').html(response.data.job_name);
+                        $('#examview').html(response.data.exam_name);
+                        $('#dateview').html(response.data.exam_date);
+                        $('#designationview').html(response.data.designation);
+                        $('#vanueview').html(response.data.vanue);
+                        $('#viewModel').modal('show');
+
+                    },
+                error: function (error) {
+                    if (error.status == 404) {
+                        toastr.error('Not found!');
+                    }
+                }
+            });
+        });
 
         //save data
         $('#createExam').on('submit', function (e) {
@@ -462,6 +508,7 @@
             success: function (response) {
                 console.log('result',response);
                 $('#careercat_id').val(response.data.catid);
+                $('#job_nameid').val(response.data.title);
             },
             error: function (err) {
                 console.log(err)

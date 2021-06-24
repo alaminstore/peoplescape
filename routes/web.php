@@ -201,7 +201,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         //exams
         Route::get('exams', 'ExamController@examView')->name('exams.view');
-        Route::get('exams-view', 'ExamController@examPopup')->name('exams.popup');
+        Route::get('examsview', 'ExamController@examPopup')->name('exams.show');
         Route::post('exams/store', 'ExamController@store')->name('exams.store');
         Route::get('examsdelete', 'ExamController@destroy')->name('exams.destroy');
         Route::get('examsedit','ExamController@edit')->name('exams.edit');

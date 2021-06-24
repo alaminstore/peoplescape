@@ -33,6 +33,7 @@ class ExamController extends Controller
             $exm= new Exam();
             $exm->job_id = $request->job_id;
             $exm->careercat_id = $request->careercat_id;
+            $exm->job_name = $request->job_name;
             $exm->exam_name = $request->exam_name;
             $exm->vanue = $request->vanue;
             $exm->designation = $request->designation;
@@ -62,8 +63,8 @@ class ExamController extends Controller
         }
     }
 
-    public function examPopup($id){
-        $data=Exam::find($id);
+    public function examPopup(Request $request){
+        $data=Exam::where('exam_id',$request->id)->first();
         if($data){
           return response()->json([
               'success' => true,
@@ -73,7 +74,7 @@ class ExamController extends Controller
         else{
           return response()->json([
               'success' => false,
-              'data' => 'No information found'
+              'data' => 'No data found'
             ]);
         }
     }
