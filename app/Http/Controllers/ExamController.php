@@ -93,6 +93,7 @@ class ExamController extends Controller
             $exm = Exam::find($request->category_id);
             $exm->job_id = $request->job_id;
             $exm->careercat_id = $request->careercat_id;
+            $exm->job_name = $request->job_name;
             $exm->exam_name = $request->exam_name;
             $exm->vanue = $request->vanue;
             $exm->designation = $request->designation;

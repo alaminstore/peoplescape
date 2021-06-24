@@ -185,6 +185,7 @@
                                             <input class="form-control" type="text" name="exam_name" id='exam_name2'
                                                    placeholder="Exam Name Here..." required>
                                             <input type="hidden" name="category_id" id="category-edit-id" class="form-control">
+                                            <input type="hidden" name="job_name" id="job_nameid2">
                                         </div>
                                     </div>
 
@@ -347,6 +348,7 @@
                         $('#designation2').val(response.data.designation);
                         $('#exam_date2').val(response.data.exam_date);
                         $('#category-edit-id').val(response.data.exam_id);
+                        $('#job_nameid2').val(response.data.job_name);
                         $('#updateModal').modal('show');
 
 
@@ -359,7 +361,7 @@
                 });
             });
 
-            $('#jobtocat2').select2();
+            // $('#jobtocat2').select2({placeholder:job_active});
         //view data
         $('#reload-category').on('click', '.viewData', function () {
             let id = $(this).attr('data-id');
@@ -531,6 +533,7 @@
             success: function (response) {
                 console.log('result',response);
                 $('#careercat_id2').val(response.data.catid);
+                $('#job_nameid2').val(response.data.title);
             },
             error: function (err) {
                 console.log(err)
