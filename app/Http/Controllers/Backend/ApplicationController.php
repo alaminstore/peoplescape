@@ -337,6 +337,7 @@ class ApplicationController extends Controller
                              ->LeftJoin('careers','careers.id','=','jobapplieds.job_id')
                              ->where('jobapplieds.applicant_id','=',$id)
                              ->get();
+        // return $applicantByjobid;
         $numberofJob = Jobapplied::where('applicant_id',$id)->get();
         return view('Backend.application.appliedhistory',compact('applicantByjobid','numberofJob'));
     }

@@ -117,7 +117,7 @@
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Designation</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" id="url" name="designation"
+                                            <input class="form-control" type="text" id="designation" name="designation"
                                                    placeholder="Designation Here..." required>
                                         </div>
                                     </div>
@@ -126,6 +126,12 @@
                                         <div class="col-sm-9">
                                             <input class="form-control" type="date" name="exam_date"
                                                    placeholder="Designation Here..." required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="url" class="col-sm-3 col-form-label">Rules & regulations</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="summernote" name="rules" cols="30" rows="10" placeholder="Rules & regulations Here..." required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row  pull-right">
@@ -210,10 +216,16 @@
                                                    placeholder="Designation Here..." required>
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="url" class="col-sm-3 col-form-label">Exam Date</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="summernote" name="rules" id="rules" cols="30" rows="10" placeholder="Rules & regulations Here..." required></textarea>
+                                        </div>
+                                    </div>
                                     <div class="form-group row  pull-right">
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                                Submit
+                                            <button type="submit" class="btn btn-success waves-effect waves-light">
+                                                Update
                                             </button>
                                             <button type="reset" class="btn btn-secondary waves-effect m-l-5"
                                                     data-dismiss="modal">
@@ -229,8 +241,6 @@
                             </div>
                         </div>
                     </div>
-
-
 
     {{-- View Modal --}}
 
@@ -319,12 +329,84 @@
 @endsection
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+<script>
+    $("#createExam").validate({
+    rules: {
+        job_id: {
+            required:true,
+        },
+        job_name: {
+            required:true,
+            maxlength: 100,
+        },
+        exam_name: {
+            required:true,
+            maxlength: 100,
+        },
+        vanue: {
+            required:true,
+            maxlength: 200,
+        },
+        designation: {
+            required:true,
+            maxlength: 200,
+        },
+        exam_date: {
+            required:true,
+        },
+        rules: {
+            required:true,
+        },
+
+        }
+    });
+    $("#updateExam").validate({
+        rules: {
+        job_id: {
+            required:true,
+        },
+        job_name: {
+            required:true,
+            maxlength: 100,
+        },
+        exam_name: {
+            required:true,
+            maxlength: 100,
+        },
+        vanue: {
+            required:true,
+            maxlength: 200,
+        },
+        designation: {
+            required:true,
+            maxlength: 200,
+        },
+        exam_date: {
+            required:true,
+        },
+        rules: {
+            required:true,
+        },
+
+        }
+    });
+    </script>
 <script>
     $(document).ready(function () {
         $('.jobcatfind').select2({
             placeholder: "Job Selection"
         });
-
+        $('.summernote').summernote({
+            height: 120,
+            width: "100%",
+            styleTags: [
+                'p',
+                { title: 'Blockquote', tag: 'blockquote', className: 'blockquote', value: 'blockquote' },
+                'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'
+            ],
+        });
 
         //edit data...
         $('#reload-category').on('click', '.editjob', function () {
@@ -349,6 +431,7 @@
                         $('#exam_date2').val(response.data.exam_date);
                         $('#category-edit-id').val(response.data.exam_id);
                         $('#job_nameid2').val(response.data.job_name);
+                        $('#rules').summernote('code', response.data.rules);
                         $('#updateModal').modal('show');
 
 
@@ -395,6 +478,8 @@
         //save data
         $('#createExam').on('submit', function (e) {
             e.preventDefault();
+            var $form = $(this);
+            if(! $form.valid()) return false;
             $.ajax({
                 url: "{{route('exams.store')}}",
                 method: "POST",
@@ -457,6 +542,8 @@
         //Update data
         $('#updateExam').on('submit', function (e) {
             e.preventDefault();
+            var $form = $(this);
+            if(! $form.valid()) return false;
 
             $.ajax({
                 url: "{{route('exams.update')}}",

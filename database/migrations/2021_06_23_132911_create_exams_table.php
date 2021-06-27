@@ -24,6 +24,7 @@ class CreateExamsTable extends Migration
             $table->string('active')->nullable();
             $table->string('status')->nullable();
             $table->date('post_date')->nullable();
+            $table->text('rules')->nullable();
             $table->timestamps();
         });
     }

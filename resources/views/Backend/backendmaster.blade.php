@@ -37,6 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{{asset('backEnd')}}/dist/summernote/dist/summernote-bs4.css">
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -44,7 +45,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" id="bodyPrint">
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -285,6 +286,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="{{asset('backEnd/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('backEnd/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 
+  <script src="{{asset('backEnd')}}/dist/summernote/dist/summernote-bs4.min.js"></script>
   <!-- FastClick -->
   <script src="{{asset('backEnd/bower_components/fastclick/lib/fastclick.js')}}"></script>
   <!-- AdminLTE App -->

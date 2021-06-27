@@ -39,7 +39,7 @@
                   <td>{{$val->deadline}}</td>
                   <td>
                       <a href="{!!route('career.details',['id'=>$val->jobid])!!}" target="_blank"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
-                      <a href=""><button class="btn btn-primary btn-sm">Admit Card</button></a>
+                      <a href="/admin/career/admitcard/{{$val->jobid}}"><button class="btn btn-primary btn-sm">Admit Card</button></a>
                     </td>
                  </tr>
               @endforeach

@@ -38,6 +38,7 @@ class ExamController extends Controller
             $exm->vanue = $request->vanue;
             $exm->designation = $request->designation;
             $exm->exam_date = $request->exam_date;
+            $exm->rules = $request->rules;
             $exm->post_date = Carbon::now();
             $exm->active = 1;
             $exm->save();
@@ -98,6 +99,7 @@ class ExamController extends Controller
             $exm->vanue = $request->vanue;
             $exm->designation = $request->designation;
             $exm->exam_date = $request->exam_date;
+            $exm->rules = $request->rules;
             if($exm->save()){
                 return response()->json(['success'=>true,'data'=>$exm]);
             }
@@ -145,5 +147,11 @@ class ExamController extends Controller
             ]);
         }
 
+    }
+
+    public function admitCard($id){
+        $exams_data = Exam::where('job_id','=',$id)->first();
+        // return $exams_data;
+        return view('Backend.exams.admitcard',compact('exams_data'));
     }
 }

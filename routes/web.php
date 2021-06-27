@@ -209,6 +209,7 @@ Route::group(['prefix' => 'admin'], function () {
         //job to cat find route
         Route::get('testroute','ExamController@jobToCat')->name('exams.catview');
         Route::get('testroute2','ExamController@jobToCat2')->name('exams.catview2');
+        Route::get('admitcard/{id}','ExamController@admitCard')->name('exams.admitCard');
 
 
     });
