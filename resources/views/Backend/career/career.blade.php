@@ -34,36 +34,43 @@
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Job Title</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="title" name="title"
-                                                   placeholder="Enter category Title">
+                                            <input type="text" class="form-control" name="title"
+                                                   placeholder="Enter category Title" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="title" class="col-sm-2 control-label">Job Short Code</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="shotsavecode" name="short_code"
+                                                   placeholder="HRM,ACCOUNTANT,DEVELOPER,D ... " required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Company Name</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="company" name="company"
-                                                   placeholder="Enter Company Name">
+                                                   placeholder="Enter Company Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Experience</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="experience" name="experience"
-                                                   placeholder="Enter experience">
+                                                   placeholder="Enter experience" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Vacancy</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="vacancy" name="vacancy"
-                                                   placeholder="Enter vacancy ">
+                                                   placeholder="Enter vacancy " required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Job Nature</label>
                                         <div class="col-sm-6">
                                             <select class="form-control job_nature_selection" id="job_nature_selection"
-                                                    name="jobtype">
+                                                    name="jobtype" required>
                                                 <option value="">Select Job Nature</option>
                                                 @foreach($data['jobnature'] as $type)
                                                     <option value="{{$type->nature}}">{{$type->nature}}</option>
@@ -83,28 +90,28 @@
                                         <label for="title" class="col-sm-2 control-label">Education</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="education" name="education"
-                                                   placeholder="Enter education">
+                                                   placeholder="Enter education" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Deadline</label>
                                         <div class="col-sm-8">
                                             <input type="date" class="form-control" id="deadline" name="deadline"
-                                                   placeholder="Enter deadline">
+                                                   placeholder="Enter deadline" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Location</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="location" name="location"
-                                                   placeholder="Enter location">
+                                                   placeholder="Enter location" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Salary</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="salary" name="salary"
-                                                   placeholder="Enter Salary">
+                                                   placeholder="Enter Salary" required>
                                         </div>
                                     </div>
 
@@ -117,7 +124,7 @@
                                         ">
                                         <div class="col-sm-6">
                                             <select id="category" class="form-control career_cat_selection"
-                                                    name="catid">
+                                                    name="catid" required>
                                                 <option value="">Select Category</option>
                                                 @foreach($data['cat'] as $category)
                                                     <option value="{{$category->id}}">{{$category->title}}</option>
@@ -141,7 +148,7 @@
                                     <div class="col-sm-8">
                                         <textarea type="text" class="form-control" id="topdescription"
                                                   name="topdescription" placeholder="Enter Job Description"
-                                                  rows="8"></textarea>
+                                                  rows="8" required></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -149,7 +156,7 @@
                                     <div class="col-sm-8">
                                         <textarea type="text" class="form-control" id="responsibilitiestext"
                                                   name="responsibilitiestext"
-                                                  placeholder="Enter Job responsibilitiestext" rows="5"></textarea>
+                                                  placeholder="Enter Job responsibilitiestext" rows="5" required></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -165,7 +172,7 @@
 
                                                 <tr class="item_tr single_list">
                                                     <td class="day_no">1</td>
-                                                    <td><input type="text" class="form-control" id="pro_description"
+                                                    <td><input type="text" class="form-control"
                                                                name="program[0][responsibilitiespoint]"><br></td>
                                                     <td><span class="remove"
                                                               style="background: #ed3610;padding: 8px 10px;color: #fff;border-radius: 6%;text-decoration: none;cursor:pointer">-</span>
@@ -194,7 +201,7 @@
                                                 <tr class="sitem_tr ssingle_list">
                                                     <td class="day_no">1</td>
                                                     <td><input type="text" class="form-control" id="pro_description"
-                                                               name="qualification[0][qualification]"><br></td>
+                                                               name="qualification[0][qualification]" required><br></td>
                                                     <td><span class="sremove"
                                                               style="background: #ed3610;padding: 8px 10px;color: #fff;border-radius: 6%;text-decoration: none;cursor:pointer">-</span>
                                                     </td>
@@ -212,7 +219,7 @@
                                     <label for="title" class="col-sm-2 control-label">How To Apply Text</label>
                                     <div class="col-sm-8">
                                         <textarea type="text" class="form-control" id="howtoapply" name="howtoapply"
-                                                  placeholder="Enter howtoapply" rows="5"></textarea>
+                                                  placeholder="Enter howtoapply" rows="5" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -255,8 +262,8 @@
                                                                 <label for="title"
                                                                        class="col-sm-2 control-label">Nature </label>
                                                                 <div class="col-sm-8">
-                                                                    <input type="text" class="form-control" id="nature"
-                                                                           name="nature" placeholder="Ex: Full Time..">
+                                                                    <input type="text" class="form-control"
+                                                                           name="nature" placeholder="Ex: Full Time.." required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -320,7 +327,7 @@
                                                                                    class="col-sm-2 control-label">Nature</label>
                                                                             <div class="col-sm-8">
                                                                                 <input type="text" class="form-control"
-                                                                                       id="nature" name="nature">
+                                                                                       id="nature" name="nature" required>
                                                                                 <input type="hidden"
                                                                                        class="form-control" id="id"
                                                                                        name="id">
@@ -340,27 +347,27 @@
                                                 </div>
                                                 <script>
                                                     $(document).ready(function () {
-                                                        $('#jobnature').validate({
-                                                            rules: {
-                                                                nature:
-                                                                    {
-                                                                        required: true,
+                                                        // $('#jobnature').validate({
+                                                        //     rules: {
+                                                        //         nature:
+                                                        //             {
+                                                        //                 required: true,
 
-                                                                    },
-                                                            },
+                                                        //             },
+                                                        //     },
 
-                                                            highlight: function (element) {
-                                                                $(element).parent().addClass('has-error');
-                                                            },
-                                                            unhighlight: function (element) {
-                                                                $(element).parent().removeClass('has-error');
-                                                            },
-                                                        });
+                                                        //     highlight: function (element) {
+                                                        //         $(element).parent().addClass('has-error');
+                                                        //     },
+                                                        //     unhighlight: function (element) {
+                                                        //         $(element).parent().removeClass('has-error');
+                                                        //     },
+                                                        // });
 
                                                     });
                                                     $('#jobnature').on('submit', function (e) {
                                                         e.preventDefault();
-                                                        if ($('#jobnature').valid()) {
+                                                        // if ($('#jobnature').valid()) {
                                                             $.ajax({
                                                                 url: "{{route('jobnature.store')}}",
                                                                 method: "POST",
@@ -395,7 +402,7 @@
                                                                 }
 
                                                             });
-                                                        }
+                                                        // }
                                                     });
                                                     $(document).on('click', '.editjobnature', function () {
                                                         var id = $(this).data('id');
@@ -415,32 +422,32 @@
                                                         });
                                                     })
                                                     $(document).ready(function () {
-                                                        $('#updatejobnature').validate({
-                                                            rules: {
+                                                        // $('#updatejobnature').validate({
+                                                        //     rules: {
 
 
-                                                                nature:
-                                                                    {
-                                                                        required: true,
+                                                        //         nature:
+                                                        //             {
+                                                        //                 required: true,
 
-                                                                    },
+                                                        //             },
 
 
-                                                            },
+                                                        //     },
 
-                                                            highlight: function (element) {
-                                                                $(element).parent().addClass('has-error');
-                                                            },
-                                                            unhighlight: function (element) {
-                                                                $(element).parent().removeClass('has-error');
-                                                            },
-                                                        });
+                                                        //     highlight: function (element) {
+                                                        //         $(element).parent().addClass('has-error');
+                                                        //     },
+                                                        //     unhighlight: function (element) {
+                                                        //         $(element).parent().removeClass('has-error');
+                                                        //     },
+                                                        // });
 
                                                     });
 
                                                     $(document).on('submit', '#updatejobnature', function (e) {
                                                         e.preventDefault();
-                                                        if ($('#updatejobnature').valid()) {
+                                                        // if ($('#updatejobnature').valid()) {
                                                             $.ajax({
                                                                 url: "{!! route('jobnature.update') !!}",
                                                                 method: "POST",
@@ -475,7 +482,7 @@
                                                                 }
 
                                                             });
-                                                        }
+                                                        // }
 
                                                     })
                                                     $(document).on('click', '.deletejobnature', function (e) {
@@ -549,8 +556,8 @@
                                                 <div class="form-group">
                                                     <label for="title" class="col-sm-2 control-label">Title</label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="title" name="title"
-                                                               placeholder="Enter category Title">
+                                                        <input type="text" class="form-control"  name="title"
+                                                               placeholder="Enter category Title" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -630,8 +637,8 @@
                                                                    class="col-sm-2 control-label">Title</label>
                                                             <div class="col-sm-8">
                                                                 <input type="text" class="form-control" id="title"
-                                                                       name="title" placeholder="Enter  Title">
-                                                                <input type="hidden" class="form-control" id="id"
+                                                                       name="title" placeholder="Enter  Title" required>
+                                                                <input type="hidden" class="form-control"
                                                                        name="id" placeholder="Enter Image Title">
 
                                                             </div>
@@ -647,43 +654,43 @@
                                         <script>
                                             //Form validation Script
                                             $(document).ready(function () {
-                                                $('#categoryAdd').validate({
-                                                    rules: {
-                                                        title:
-                                                            {
-                                                                required: true,
+                                                // $('#categoryAdd').validate({
+                                                //     rules: {
+                                                //         title:
+                                                //             {
+                                                //                 required: true,
 
-                                                            },
+                                                //             },
 
-                                                    },
+                                                //     },
 
-                                                    highlight: function (element) {
-                                                        $(element).parent().addClass('has-error');
-                                                    },
-                                                    unhighlight: function (element) {
-                                                        $(element).parent().removeClass('has-error');
-                                                    },
-                                                });
+                                                //     highlight: function (element) {
+                                                //         $(element).parent().addClass('has-error');
+                                                //     },
+                                                //     unhighlight: function (element) {
+                                                //         $(element).parent().removeClass('has-error');
+                                                //     },
+                                                // });
                                             });
                                             //Form validation Script
                                             $(document).ready(function () {
-                                                $('#updatecat').validate({
-                                                    rules: {
-                                                        title:
-                                                            {
-                                                                required: true,
+                                                // $('#updatecat').validate({
+                                                //     rules: {
+                                                //         title:
+                                                //             {
+                                                //                 required: true,
 
-                                                            },
+                                                //             },
 
-                                                    },
+                                                //     },
 
-                                                    highlight: function (element) {
-                                                        $(element).parent().addClass('has-error');
-                                                    },
-                                                    unhighlight: function (element) {
-                                                        $(element).parent().removeClass('has-error');
-                                                    },
-                                                });
+                                                //     highlight: function (element) {
+                                                //         $(element).parent().addClass('has-error');
+                                                //     },
+                                                //     unhighlight: function (element) {
+                                                //         $(element).parent().removeClass('has-error');
+                                                //     },
+                                                // });
                                             });
 
                                             $(document).on('submit', '#categoryAdd', function (e) {
@@ -694,7 +701,7 @@
                                                 //  console.log('id',prod_id);
                                                 // alert('ok');
                                                 //var data = $(this).serialize();
-                                                if ($('#categoryAdd').valid()) {
+                                                // if ($('#categoryAdd').valid()) {
                                                     $.ajax({
                                                         url: "{{route('careercat.store')}}",
                                                         method: "POST",
@@ -728,7 +735,7 @@
                                                         }
 
                                                     });
-                                                }
+                                                // }
                                             });
                                             $(document).on('click', '.editcat', function () {
                                                 var id = $(this).data('id');
@@ -750,7 +757,7 @@
                                             $(document).on('submit', '#updatecat', function (e) {
                                                 e.preventDefault();
                                                 //var data = $(this).serialize();
-                                                if ($('#updatecat').valid()) {
+                                                // if ($('#updatecat').valid()) {
                                                     $.ajax({
                                                         url: "{!! route('careercat.update') !!}",
                                                         method: "POST",
@@ -787,7 +794,7 @@
                                                         }
 
                                                     });
-                                                }
+                                                // }
                                             })
                                             $(document).on('click', '.deletecat', function (e) {
                                                 e.preventDefault();
@@ -948,91 +955,98 @@
                 }
             }
         });
-        $('#myjob').validate({
-            rules: {
-                title:
-                    {
-                        required: true,
+        // $('#myjob').validate({
+        //     rules: {
+        //         title:
+        //             {
+        //                 required: true,
 
-                    },
-                company:
-                    {
-                        required: true,
+        //             },
+        //     short_code:
+        //             {
+        //                 required: true,
 
-                    },
-                jobtype: {
-                    required: true,
-                },
-                experience:
-                    {
-                        required: true,
+        //             },
+        //         company:
+        //             {
+        //                 required: true,
 
-                    },
-                vacancy:
-                    {
-                        required: true,
+        //             },
+        //         jobtype: {
+        //             required: true,
+        //         },
+        //         experience:
+        //             {
+        //                 required: true,
 
-                    },
-                education:
-                    {
-                        required: true,
+        //             },
+        //         vacancy:
+        //             {
+        //                 required: true,
 
-                    },
-                deadline:
-                    {
-                        required: true,
+        //             },
+        //         education:
+        //             {
+        //                 required: true,
 
-                    },
-                location:
-                    {
-                        required: true,
+        //             },
+        //         deadline:
+        //             {
+        //                 required: true,
 
-                    },
-                salary:
-                    {
-                        required: true,
+        //             },
+        //         location:
+        //             {
+        //                 required: true,
 
-                    },
-                topdescription:
-                    {
-                        required: true,
+        //             },
+        //         salary:
+        //             {
+        //                 required: true,
 
-                    },
-                responsibilitiestext:
-                    {
-                        required: true,
+        //             },
+        //         topdescription:
+        //             {
+        //                 required: true,
 
-                    },
-                howtoapply:
-                    {
-                        required: true,
+        //             },
+        //         responsibilitiestext:
+        //             {
+        //                 required: true,
 
-                    },
-                howtoapply:
-                    {
-                        required: true,
+        //             },
+        //         howtoapply:
+        //             {
+        //                 required: true,
 
-                    },
-                catid:
-                    {
-                        required: true,
+        //             },
+        //         howtoapply:
+        //             {
+        //                 required: true,
 
-                    },
+        //             },
+        //         catid:
+        //             {
+        //                 required: true,
 
-            },
+        //             },
 
-            highlight: function (element) {
-                $(element).parent().addClass('has-error');
-            },
-            unhighlight: function (element) {
-                $(element).parent().removeClass('has-error');
-            },
-        });
+        //     },
+
+        //     // highlight: function (element) {
+        //     //     $(element).parent().addClass('has-error');
+        //     // },
+        //     // unhighlight: function (element) {
+        //     //     $(element).parent().removeClass('has-error');
+        //     // },
+        // });
         $('#myjob').on('submit', function (e) {
             e.preventDefault();
             //alert('ok');
             //var data = $(this).serialize();
-            if ($('#myjob').valid()) {
+            // if ($('#myjob').valid()) {
+            // var $form = $(this);
+            // if(! $form.valid()) return false;
                 $.ajax({
                     url: "{{route('careerop.store')}}",
                     method: "POST",
@@ -1057,6 +1071,7 @@
                             "timeOut": 5000,
                             "extendedTimeOut": 1000
                         };
+                        $('#myjob').trigger('reset');
                         toastr.success('Data Inserted Successfully');
                         $('.jobappend').prepend(`<tr class='unqjob` + data.id + `'>
                                     <td>` + data.title + `</td>
@@ -1073,7 +1088,7 @@
                     }
 
                 });
-            }
+            // }
         });
 
         //    $(document).on('click','.editjob',function(){
@@ -1194,4 +1209,5 @@
     {{-- here...... tab 4 --}}
     </div>
     </section>
+
 @endsection

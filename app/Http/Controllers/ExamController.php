@@ -151,8 +151,10 @@ class ExamController extends Controller
 
     public function admitCard($id){
         $exams_data = Exam::where('job_id','=',$id)->first();
+        $careers = Career::where('id','=',$id)->first();
+        // return $careers;
         // return $exams_data;
-        return view('Backend.exams.admitcard',compact('exams_data'));
+        return view('Backend.exams.admitcard',compact('exams_data','careers'));
     }
 
     public function status(Request $request){

@@ -123,6 +123,7 @@ class CareerController extends Controller
 
         $career = new Career();
         $career->title = $request->title;
+        $career->short_code = $request->short_code;
         $career->company = $request->company;
         $career->experience = $request->experience;
         $career->vacancy = $request->vacancy;
@@ -157,6 +158,7 @@ class CareerController extends Controller
 
         $career = Career::find($request->id);
         $career->title = $request->title;
+        $career->short_code = $request->short_code;
         $career->company = $request->company;
         $career->experience = $request->experience;
         $career->vacancy = $request->vacancy;

@@ -10,7 +10,7 @@
              {!!Form::open(['route'=>'career.update','class' => 'form-horizontal','id'=>'jobupdate','enctype'=>'multipart/form-data'])!!}
              <div class="box-body">
                  <div class="form-group">
-                     <label for="title" class="col-sm-2 control-label">Job Title (2)</label>
+                     <label for="title" class="col-sm-2 control-label">Job Title</label>
                      <div class="col-sm-8">
                      <input type="text" class="form-control" id="title" name="title" value="{{$data['careerbyid']->title}}">
                      <input type="hidden" class="form-control" id="id" name="id" value="{{$data['careerbyid']->id}}">
@@ -18,7 +18,14 @@
                      </div>
                  </div>
                  <div class="form-group">
-                    <label for="title" class="col-sm-2 control-label">Company Name (2)</label>
+                    <label for="short_code" class="col-sm-2 control-label">Job Short Code</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="short_code" name="short_code"
+                               placeholder="HRM,ACCOUNTANT,DEVELOPER, etc ... " value="{{$data['careerbyid']->short_code}}">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="title" class="col-sm-2 control-label">Company Name</label>
                     <div class="col-sm-8">
                     <input type="text" class="form-control" id="company" name="company" value="{{$data['careerbyid']->company}}">
                     </div>
@@ -43,7 +50,7 @@
                           @foreach($data['jobnature'] as $type)
                               <option value="{{$type->nature}}"@if($type->nature == $data['careerbyid']->jobtype) selected = 'selected' @endif >{{$type->nature}}</option>
                           @endforeach
-                      </select> 
+                      </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,7 +77,7 @@
                     <input type="text" class="form-control" id="salary" name="salary" value="{{$data['careerbyid']->salary}}">
                     </div>
                 </div>
-               
+
                 <div class="form-group">
                     <label for="department"  class="col-sm-2 control-label">Select Category</label>
                     <div class="col-sm-8">
@@ -82,7 +89,7 @@
                       </select>
                     </div>
                   </div>
-                
+
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Job Description</label>
                     <div class="col-sm-8">
@@ -109,8 +116,8 @@
                                 <th width="15%">Option</th>
                             </tr>
                              @foreach ($program as $item)
-                                 
-                            
+
+
                                 <tr class="item_tr single_list">
                                     <td class="day_no">{{$loop->index +1}}</td>
                                     <td><input type="text" class="form-control" id="pro_description" name="program[{{$loop->index +1}}][responsibilitiespoint]" value="{{$item->responsibilitiespoint}}" ><br></td>
@@ -124,7 +131,7 @@
                                                                 border-radius: 8%;text-decoration: none; margin-bottom: 10px;cursor:pointer;">+</span><br><br>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="form-group">
                 <label for="title" class="col-sm-2 control-label">Qualifications</label>
                 @php

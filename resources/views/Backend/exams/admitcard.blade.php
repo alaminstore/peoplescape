@@ -78,7 +78,7 @@
                                     </h4>
                                 </div>
                                 <div class="col-md-offset-3 col-md-6 reg_no text-center">
-                                    <h4 style="background: antiquewhite;padding: 10px 5px;"><b>Reg No. PS 1011</b></h4>
+                                    <h4><b style="background: antiquewhite;padding: 10px;">Reg No. {{$careers->short_code}} {{Auth::User()->id}}</b></h4>
                                 </div>
                                 <div class="clr"></div>
                                 <div class="col-md-offset-3 col-md-6" style="display: flex;
