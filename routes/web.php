@@ -201,6 +201,7 @@ Route::group(['prefix' => 'admin'], function () {
 
         //exams
         Route::get('exams', 'ExamController@examView')->name('exams.view');
+        Route::get('exams-id', 'ExamController@examViewById')->name('exams.view.byId');
         Route::get('examsview', 'ExamController@examPopup')->name('exams.show');
         Route::post('exams/store', 'ExamController@store')->name('exams.store');
         Route::get('examsdelete', 'ExamController@destroy')->name('exams.destroy');
@@ -210,7 +211,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('testroute','ExamController@jobToCat')->name('exams.catview');
         Route::get('testroute2','ExamController@jobToCat2')->name('exams.catview2');
         Route::get('admitcard/{id}','ExamController@admitCard')->name('exams.admitCard');
-
+        Route::get('examstatus', 'ExamController@status')->name('exam.status');
 
     });
     Route::group(['prefix' => 'contact'], function () {

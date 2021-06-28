@@ -13,9 +13,6 @@
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
               </div>
              </div>
-             {{-- @php
-                 dd($applicantByjobid);
-             @endphp --}}
           <div class="box-body">
             <table id="example1" class="table table-bordered table-striped">
               <thead>
@@ -39,7 +36,13 @@
                   <td>{{$val->deadline}}</td>
                   <td>
                       <a href="{!!route('career.details',['id'=>$val->jobid])!!}" target="_blank"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
-                      <a href="/admin/career/admitcard/{{$val->jobid}}"><button class="btn btn-primary btn-sm">Admit Card</button></a>
+                      <?php
+                          $active = App\Exam::where('job_id','=',$val->jobid)
+                                            ->where('active','=',1)->first();
+                          if($active){?>
+                          <a href="/admin/career/admitcard/{{$val->jobid}}"><button class="btn btn-primary btn-sm">Admit Card</button></a>
+                        <?php } ?>
+
                     </td>
                  </tr>
               @endforeach

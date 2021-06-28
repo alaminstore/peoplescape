@@ -48,13 +48,13 @@
                 <div class="box box-info">
                     <div class="box-header">
                         <h3 class="box-title"><b>Admit Card</b></h3>
-
-                            <div class="top-buttons">
+                        <button class="btn btn-primary btn-sm" onclick="printPage()">Print Admit Card</button>
+                            {{-- <div class="top-buttons"> --}}
                                 {{-- <button type="button" class="btn btn-primary btn-xs m-r-1" onclick="window.print();">
                                     <i class="fa fa-print icon_size"></i>
                                 </button> --}}
-                                <button class="btn btn-primary btn-sm" onclick="printPage()">Print Admit Card</button>
-                            </div>
+
+                            {{-- </div> --}}
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -67,32 +67,36 @@
 
                         <div class="container" id="printable">
                             <div class="row">
-                                <div class="col-md-offset-3 col-md-6 diplay-flex" style="padding-right:0;">
+                                <br><br>
+                                <div class="col-md-offset-3 col-md-6" style="padding-right:0; display: flex;justify-content: space-evenly;align-items: center;">
                                     <div class="img_portion">
-                                        <img src="{{asset('frontEnd/img/logo.png')}}" width="65" alt="logo">
+                                        <img src="https://www.peoplescapebd.net/frontEnd/img/logo.png" width="65" alt="logo">
                                     </div>
-                                    <h4 class="admit_header">
+                                    <h4 style="line-height: 30px; padding-bottom: 15px;">
                                         <b>Apprentice Recruitment Examination Admit Card</b><br>
                                         <span><b>Venue:</b> {{$exams_data->vanue}}</span>
                                     </h4>
                                 </div>
                                 <div class="col-md-offset-3 col-md-6 reg_no text-center">
-                                    <h4 class="reg_no_bg" ><b>Reg No. PS 1011</b></h4>
+                                    <h4 style="background: antiquewhite;padding: 10px 5px;"><b>Reg No. PS 1011</b></h4>
                                 </div>
                                 <div class="clr"></div>
-                                <div class="col-md-offset-3 col-md-6 diplay-flex2">
-                                    <div class="input_fld">
-                                        <h4><b>Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Auth::User()->name}} <br> <b>Mobile No:&nbsp;</b>{{Auth::user()->mobile}}</h4>
+                                <div class="col-md-offset-3 col-md-6" style="display: flex;
+                                                                                        justify-content: space-evenly;
+                                                                                        align-items: center;
+                                                                                        margin-top: 25px;">
+                                    <div>
+                                        <h4 style="line-height: 30px;"><b>Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Auth::User()->name}} <br> <b>Mobile No:&nbsp;</b>{{Auth::user()->mobile}}</h4>
                                     </div>
-                                    <img src="{{asset(Auth::user()->image)}}" class="admit_img" width="90" alt="logo">
+                                    <img src="{{asset(Auth::user()->image)}}" style="border: 2px solid #c4c4c4; border-radius: 8px;" width="90" alt="logo">
                                 </div>
                                 <div class="col-md-offset-3 col-md-6 descipe_pepolescape text-center">
-                                      <h4 class="com_info">
+                                      <h4 class="com_info" style="line-height: 23px; margin-top: 50px;">
                                           <b>Peoplescape Limited</b><br>
                                           H#8, R#23/C, Gulshan-1, Dhaka-1212 <br>
-                                          <span class="bdr_bottom">hr@peoplescapebd.net</span>
+                                          <span class="bdr_bottom" style="border-bottom: 1px solid #000">hr@peoplescapebd.net</span>
                                       </h4>
-                                      <h4 class="admit_inst">
+                                      <h4 style="margin-top: 22px;font-size: 15px;">
                                           <b>(Please keep the Admit Card safely for viva Examination) <br>
                                           Note: Any kinf of Money transaction is strongly prohibited</b>
                                       </h4>
@@ -115,7 +119,7 @@
 </section>
 
 <script>
-  function printPage(){
+  function printPage(e){
       var body = document.getElementById('bodyPrint').innerHTML;
       var data = document.getElementById('printable').innerHTML;
       document.getElementById('bodyPrint').innerHTML = data;

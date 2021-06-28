@@ -171,23 +171,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           {{-- Job Open start --}}
 
           <li class="@yield('jobopen-active')"><a href="{{route('job.open')}}"><i class="fa fa fa-share"></i>Job Opening</a></li>
-
-         {{-- <li class="nav-item open-main-menu">
-            <a class="nav-link" data-toggle="collapse" href="#job_open" aria-expanded="false" aria-controls="ui-sliders" style="display: flex;
-            justify-content: space-between;
-            align-items: center; width:75%;">
-                <div class="open">
-                    <i class="ti-agenda menu-icon"></i>
-                    <i class="fa fa fa-share"></i> <span class="menu-title">Job Open</span>
-                </div>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </a>
-            <div class="collapse" id="job_open">
-                <ul class="nav flex-column sub-menu">
-                  <li class="@yield('jobopen-active')"><a href="{{route('job.open')}}">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i>  &nbsp;&nbsp;Job Opening Header</a></li>
-                </ul>
-            </div>
-        </li> --}}
          {{-- Job Open End --}}
 
           <li class="@yield('joblist-active')"><a href="{{route('job.list')}}"><i class="fa fa fa-share"></i> <span>Joblist</span></a></li>

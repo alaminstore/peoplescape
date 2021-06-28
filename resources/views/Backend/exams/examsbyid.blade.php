@@ -12,7 +12,15 @@
             <div class="col-xs-12">
                 <div class="box box-info">
                     <div class="box-header">
-                        <h3 class="box-title"><b>Exam List</b></h3>
+                        <h3 class="box-title"><b>
+                          @if ($filterExam)
+                          @foreach ($filterExam as $exam)
+                            {{$exam->exam_name}}
+                          @endforeach
+                          @else
+                          No Exam Set Yet
+                          @endif
+                        </b></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i></button>
@@ -21,17 +29,9 @@
                         </div>
                     </div>
                     <div class="box-body">
-                        <div class=" pull-right col-sm-2 p-0">
-                            <div class="pull-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#examSave">
-                                    <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Create New Exam Date
-                                </button>
-                            </div>
-                        </div>
-                        <br><br><br>
                         <div id="reload-category">
-                            <table id="examlist" class="table table-bordered table-striped jobprepend">
+                            {{-- id="examlist" --}}
+                            <table  class="table table-bordered table-striped jobprepend">
                                 <thead>
                                 <tr>
                                     <th class="text-center" width="15%">Job</th>
@@ -43,29 +43,35 @@
                                 </tr>
                                 </thead>
                                 <tbody id="loadnow">
-                                    @foreach ($examlists as $exam)
-                                        <tr class="text-center">
-                                            <td>{{$exam->getCareer->title}}</td>
-                                            <td>{{$exam->exam_name}}</td>
-                                            <td>{{$exam->vanue}}</td>
-                                            <td>{{$exam->exam_date}}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($exam->designation, 20, $end='...') }}</td>
-                                            <td>
-                                                {{-- view --}}
-                                                <a class="viewData" data-id="{{$exam->exam_id}}"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
-                                                {{-- delete --}}
-                                                <a class="deletejob" data-id="{{$exam->exam_id}}"><span
-                                                        class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                                {{-- edit --}}
-                                                <a class="editjob" data-id="{{$exam->exam_id}}"><span
-                                                        class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                                <label class="switch">
-                                                    <input type="checkbox" {{$exam->active ==1 ? 'checked':''}}>
-                                                    <span data-jobid="{{$exam->exam_id}}" data-ofid="0" data-onid="1" class="slider round {{$exam->active == 1 ? 'examdeactive':'examactive'}}"></span>
-                                                </label>
-                                            </td>
-                                        </tr>
-                                   @endforeach
+                                    @if($filterExam)
+                                        @foreach ($filterExam as $exam)
+                                            <tr class="text-center">
+                                                <td>{{$exam->getCareer->title}}</td>
+                                                <td>{{$exam->exam_name}}</td>
+                                                <td>{{$exam->vanue}}</td>
+                                                <td>{{$exam->exam_date}}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($exam->designation, 20, $end='...') }}</td>
+                                                <td>
+                                                    {{-- view --}}
+                                                    <a class="viewData" data-id="{{$exam->exam_id}}"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
+                                                    {{-- delete --}}
+                                                    <a class="deletejob" data-id="{{$exam->exam_id}}"><span
+                                                            class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                                    {{-- edit --}}
+                                                    <a class="editjob" data-id="{{$exam->exam_id}}"><span
+                                                            class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                                    <label class="switch">
+                                                        <input type="checkbox" {{$exam->active ==1 ? 'checked':''}}>
+                                                        <span data-jobid="{{$exam->exam_id}}" data-ofid="0" data-onid="1" class="slider round {{$exam->active == 1 ? 'examdeactive':'examactive'}}"></span>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                    <tr class="text-center">
+                                        <td colspan="6">No Exam set yet</td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

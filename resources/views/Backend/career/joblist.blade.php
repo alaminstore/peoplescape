@@ -51,7 +51,7 @@
                                         @else
                                              <a id="comstatus"  class="btn btn-success btn-sm runningstatus" data-type="com" data-jobid="{{$job->id}}">Complete</a>
                                         @endif
-                                    <a href="{{route('exams.view',['id'=>$job->catid])}}" target="_blank"><span class="btn btn-info btn-sm">Exam</span></a>
+                                    <a href="{{route('exams.view.byId',['id'=>$job->id])}}" target="_blank"><span class="btn btn-info btn-sm">Exam</span></a>
                                   <!--<button class="btn btn-success completestatus "data-jobid="{{$job->id}}" data-id="1">Complete</</button>-->
                                 </td>
                                @endif

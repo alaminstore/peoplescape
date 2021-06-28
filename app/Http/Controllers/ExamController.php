@@ -154,4 +154,20 @@ class ExamController extends Controller
         // return $exams_data;
         return view('Backend.exams.admitcard',compact('exams_data'));
     }
+
+    public function status(Request $request){
+        $activeCons = Exam::find($request->jobid);
+        $activeCons->active = $request->id;
+        if( $activeCons->save()){
+            return response()->json($request->examid);
+        }
+  }
+
+  public function examViewById(Request $request){
+    $jobs = Career::all();
+    $cat_id = $request->id;
+    $filterExam = Exam::where('job_id',$cat_id)->first();
+    $examlists = Exam::with('getCareer')->get();
+    return view('Backend.exams.examsbyid',compact('jobs','examlists','filterExam'));
+  }
 }
