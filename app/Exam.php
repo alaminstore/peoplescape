@@ -10,7 +10,7 @@ class Exam extends Model
     protected $table = "exams";
     protected $primaryKey = 'exam_id';
 
-    public function getCareercat(){
+    public function getCareerCat(){
         return $this->belongsTo(Careercat::class,'careercat_id','id');
     }
     public function getCareer(){

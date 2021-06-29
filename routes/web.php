@@ -212,6 +212,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('testroute2','ExamController@jobToCat2')->name('exams.catview2');
         Route::get('admitcard/{id}','ExamController@admitCard')->name('exams.admitCard');
         Route::get('examstatus', 'ExamController@status')->name('exam.status');
+        Route::get('examscompletestatus', 'ExamController@completestatus')->name('exams.completestatus');
 
     });
     Route::group(['prefix' => 'contact'], function () {

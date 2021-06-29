@@ -34,11 +34,11 @@
                             <table id="examlist" class="table table-bordered table-striped jobprepend">
                                 <thead>
                                 <tr>
-                                    <th class="text-center" width="15%">Job</th>
+                                    <th class="text-center" width="15%">Job Title</th>
+                                    <th class="text-center" width="15%">Company</th>
                                     <th class="text-center" width="15%">Exam Name</th>
                                     <th class="text-center" width="15%">Venue</th>
                                     <th class="text-center" width="15%">Exam Date</th>
-                                    <th class="text-center" width="15%">Designation</th>
                                     <th class="text-center" width="22%">Action</th>
                                 </tr>
                                 </thead>
@@ -46,10 +46,10 @@
                                     @foreach ($examlists as $exam)
                                         <tr class="text-center">
                                             <td>{{$exam->getCareer->title}}</td>
+                                            <td>{{$exam->getCareer->company}}</td>
                                             <td>{{$exam->exam_name}}</td>
                                             <td>{{$exam->vanue}}</td>
                                             <td>{{$exam->exam_date}}</td>
-                                            <td>{{ \Illuminate\Support\Str::limit($exam->designation, 20, $end='...') }}</td>
                                             <td>
                                                 {{-- view --}}
                                                 <a class="viewData" data-id="{{$exam->exam_id}}"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
@@ -63,6 +63,11 @@
                                                     <input type="checkbox" {{$exam->active ==1 ? 'checked':''}}>
                                                     <span data-jobid="{{$exam->exam_id}}" data-ofid="0" data-onid="1" class="slider round {{$exam->active == 1 ? 'examdeactive':'examactive'}}"></span>
                                                 </label>
+                                                @if($exam->status == 'running')
+                                                <a id="comstatus"  class="btn btn-primary runningstatus btn-sm" data-type="run" data-jobid="{{$exam->exam_id}}">Running</a>
+                                                @else
+                                                    <a id="comstatus"  class="btn btn-success btn-sm runningstatus" data-type="com" data-jobid="{{$exam->exam_id}}">Complete</a>
+                                                @endif
                                             </td>
                                         </tr>
                                    @endforeach
@@ -108,7 +113,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="name" class="col-sm-3 col-form-label">Exam Name</label>
+                                        <label for="name" class="col-sm-3 col-form-label">Exam Title</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="exam_name"
                                                    placeholder="Exam Name Here..." required>
@@ -116,19 +121,19 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="name" class="col-sm-3 col-form-label">Vanue</label>
+                                        <label for="name" class="col-sm-3 col-form-label">Venue</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="vanue"
-                                                   placeholder="Vanue Here..." required>
+                                                   placeholder="Venue Here..." required>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    {{-- <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Designation</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" id="designation" name="designation"
                                                    placeholder="Designation Here..." required>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Exam Date</label>
                                         <div class="col-sm-9">
@@ -139,7 +144,7 @@
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Rules & regulations</label>
                                         <div class="col-sm-9">
-                                            <textarea class="summernote" name="rules" cols="30" rows="10" placeholder="Rules & regulations Here..." required></textarea>
+                                            <textarea class="summernote" name="rulesregulations" cols="30" rows="10" placeholder="Rules & regulations Here..." required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row  pull-right">
@@ -210,13 +215,13 @@
                                                    placeholder="Vanue Here..." required>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    {{-- <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Designation</label>
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" name="designation" id="designation2"
                                                    placeholder="Designation Here..." required>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Exam Date</label>
                                         <div class="col-sm-9">
@@ -227,7 +232,7 @@
                                     <div class="form-group row">
                                         <label for="url" class="col-sm-3 col-form-label">Exam Date</label>
                                         <div class="col-sm-9">
-                                            <textarea class="summernote" name="rules" id="rules" cols="30" rows="10" placeholder="Rules & regulations Here..." required></textarea>
+                                            <textarea class="summernote" name="rulesregulations" id="rules" cols="30" rows="10" placeholder="Rules & regulations Here..." required></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row  pull-right">
@@ -364,7 +369,7 @@
         exam_date: {
             required:true,
         },
-        rules: {
+        rulesregulations: {
             required:true,
         },
 
@@ -394,7 +399,7 @@
         exam_date: {
             required:true,
         },
-        rules: {
+        rulesregulations: {
             required:true,
         },
 
@@ -439,7 +444,7 @@
                         $('#exam_date2').val(response.data.exam_date);
                         $('#category-edit-id').val(response.data.exam_id);
                         $('#job_nameid2').val(response.data.job_name);
-                        $('#rules').summernote('code', response.data.rules);
+                        $('#rules').summernote('code', response.data.rulesregulations);
                         $('#updateModal').modal('show');
 
 
@@ -697,6 +702,55 @@
             //Do Something to handle error
           }
         });
+    });
+</script>
+<script>
+
+$(document).on('click','.runningstatus',function(){
+    var jobid = $(this).data('jobid');
+        var sttype = $(this).attr('data-type');
+
+
+            // $("#comstatus").load(location.href + " #comstatus");
+                //console.log(sttype);
+
+        $.ajax({
+            url: "{!! route('exams.completestatus') !!}",
+            type: "get",
+            data: {
+            jobid: jobid,
+            sttype: sttype,
+
+            },
+            success: function(data) {
+            console.log(data);
+            toastr.options = {
+                            "debug": false,
+                            "positionClass": "toast-bottom-right",
+                            "onclick": null,
+                            "fadeIn": 300,
+                            "fadeOut": 1000,
+                            "timeOut": 5000,
+                            "extendedTimeOut": 1000
+                };
+            toastr.success('Job Status Updated');
+            },
+            error: function(xhr) {
+            //Do Something to handle error
+            }
+        });
+        if(sttype=='run'){
+                $(this).removeClass('btn-primary');
+                $(this).addClass('btn-success');
+                $(this).attr("data-type","com");
+                $(this).text('Complete');
+        }else if(sttype=='com'){
+            $(this).removeClass('btn-success');
+            $(this).addClass('btn-primary');
+                $(this).attr("data-type","run");
+            $(this).text('Running');
+        }
+
     });
 </script>
 @endsection

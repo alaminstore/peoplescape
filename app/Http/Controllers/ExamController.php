@@ -16,14 +16,14 @@ class ExamController extends Controller
         $jobs = Career::all();
         $cat_id = $request->id;
         $filterExam = Exam::where('careercat_id',$cat_id)->get();
-        $examlists = Exam::with('getCareer')->get();
+        $examlists = Exam::with("getCareer","getCareerCat")->get();
+        // return $examlists;
         return view('Backend.exams.exams',compact('jobs','examlists','filterExam'));
     }
     public function store(Request $request){
         $validator = Validator::make($request->all(),[
             'careercat_id'=>'required',
             'exam_name'=>'required',
-            'vanue'=>'required',
             'vanue'=>'required',
             'exam_date'=>'required',
         ]);
@@ -36,11 +36,12 @@ class ExamController extends Controller
             $exm->job_name = $request->job_name;
             $exm->exam_name = $request->exam_name;
             $exm->vanue = $request->vanue;
-            $exm->designation = $request->designation;
+            // $exm->designation = $request->designation;
             $exm->exam_date = $request->exam_date;
-            $exm->rules = $request->rules;
+            $exm->rulesregulations = $request->rulesregulations;
             $exm->post_date = Carbon::now();
             $exm->active = 1;
+            $exm->status = "running";
             $exm->save();
             return response()->json($exm);
 
@@ -85,7 +86,6 @@ class ExamController extends Controller
             'careercat_id'=>'required',
             'exam_name'=>'required',
             'vanue'=>'required',
-            'vanue'=>'required',
             'exam_date'=>'required',
         ]);
         if(!$validator->passes()){
@@ -97,9 +97,9 @@ class ExamController extends Controller
             $exm->job_name = $request->job_name;
             $exm->exam_name = $request->exam_name;
             $exm->vanue = $request->vanue;
-            $exm->designation = $request->designation;
+            // $exm->designation = $request->designation;
             $exm->exam_date = $request->exam_date;
-            $exm->rules = $request->rules;
+            $exm->rulesregulations = $request->rulesregulations;
             if($exm->save()){
                 return response()->json(['success'=>true,'data'=>$exm]);
             }
@@ -172,4 +172,20 @@ class ExamController extends Controller
     $examlists = Exam::with('getCareer')->get();
     return view('Backend.exams.examsbyid',compact('jobs','examlists','filterExam'));
   }
+
+  public function completestatus(Request $request){
+        if($request->sttype=='run'){
+        $findJob = Exam::find($request->jobid);
+            $findJob->status = 'complete';
+            $findJob->save();
+        }else{
+            $findJob = Exam::find($request->jobid);
+            $findJob->status = 'running';
+            $findJob->save();
+
+        }
+        //$findJob->status = $request->id;
+        //$findJob->save();
+        return response()->json($request->sttype);
+    }
 }

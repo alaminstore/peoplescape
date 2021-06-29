@@ -73,7 +73,7 @@
                                         <img src="https://www.peoplescapebd.net/frontEnd/img/logo.png" width="65" alt="logo">
                                     </div>
                                     <h4 style="line-height: 30px; padding-bottom: 15px;">
-                                        <b>Apprentice Recruitment Examination Admit Card</b><br>
+                                        <b>{{$exams_data->job_name}} Recruitment Examination Admit Card</b><br>
                                         <span><b>Venue:</b> {{$exams_data->vanue}}</span>
                                     </h4>
                                 </div>
@@ -106,7 +106,7 @@
                                 <h4 class="text-center"><b>Rules & Regulations</b></h4>
                                 <div class=".rules_reg">
                                     <div class="col-md-offset-2 col-md-offset-8">
-                                        {!!$exams_data->rules!!}
+                                        {!!$exams_data->rulesregulations!!}
                                     </div>
 
                                 </div>

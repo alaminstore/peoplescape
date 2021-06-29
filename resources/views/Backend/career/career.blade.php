@@ -42,7 +42,7 @@
                                         <label for="title" class="col-sm-2 control-label">Job Short Code</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="shotsavecode" name="short_code"
-                                                   placeholder="HRM,ACCOUNTANT,DEVELOPER,D ... " required>
+                                                   placeholder="HRM / ACCOUNTANT / DEVELOPER... " required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -1209,5 +1209,4 @@
     {{-- here...... tab 4 --}}
     </div>
     </section>
-
 @endsection
