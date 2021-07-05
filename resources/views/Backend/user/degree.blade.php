@@ -1,5 +1,5 @@
 @extends('Backend.backendmaster')
-@section('user-active','active')
+@section('degree-active','active')
 @section('title', 'Peoplescape | Create Degree')
 @section('content')
 <div class="row">

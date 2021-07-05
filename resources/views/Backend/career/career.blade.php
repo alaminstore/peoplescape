@@ -1062,29 +1062,34 @@
                         //   var url = base+'?id='+id ;
                         //   window.location.href=url;
                         //console.log(url);
-                        toastr.options = {
-                            "debug": false,
-                            "positionClass": "toast-bottom-right",
-                            "onclick": null,
-                            "fadeIn": 300,
-                            "fadeOut": 1000,
-                            "timeOut": 5000,
-                            "extendedTimeOut": 1000
-                        };
-                        $('#myjob').trigger('reset');
-                        toastr.success('Data Inserted Successfully');
-                        $('.jobappend').prepend(`<tr class='unqjob` + data.id + `'>
-                                    <td>` + data.title + `</td>
-                                    <td>` + data.company + `</td>
-                                    <td>` + data.experience + `</td>
-                                    <td>` + data.salary + `</td>
-                                    <td>` + data.location + `</td>
-                                    <td>
-                                      <a href="` + url + `"  class="editjob"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
-                                      <a class="deletejob" data-id ="` + data.id + `" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
-                                    </td>
-                                  </tr>`);
-                        $('#myjob').trigger('reset');
+                       if(data.status != 0){
+                            toastr.options = {
+                                "debug": false,
+                                "positionClass": "toast-bottom-right",
+                                "onclick": null,
+                                "fadeIn": 300,
+                                "fadeOut": 1000,
+                                "timeOut": 5000,
+                                "extendedTimeOut": 1000
+                            };
+                            $('#myjob').trigger('reset');
+                            toastr.success('Data Inserted Successfully');
+                            $('.jobappend').prepend(`<tr class='unqjob` + data.id + `'>
+                                        <td>` + data.title + `</td>
+                                        <td>` + data.company + `</td>
+                                        <td>` + data.experience + `</td>
+                                        <td>` + data.salary + `</td>
+                                        <td>` + data.location + `</td>
+                                        <td>
+                                        <a href="` + url + `"  class="editjob"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
+                                        <a class="deletejob" data-id ="` + data.id + `" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
+                                        </td>
+                                    </tr>`);
+                            $('#myjob').trigger('reset');
+                       }else{
+                        toastr.error('Job title already exist!');
+                       }
+
                     }
 
                 });

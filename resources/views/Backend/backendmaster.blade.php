@@ -159,9 +159,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         @if($user_status == "superadmin")
           <ul class="sidebar-menu tree" data-widget="tree">
           <li class="@yield('home-active')"><a href="{{route('slider.index')}}"><i class="fa fa fa-share"></i> <span>Home</span></a></li>
-            <li class="@yield('home-active')"><a href="{{route('degree.create')}}"><i class="fa fa fa-share"></i> <span>Degree List</span></a></li>
+            <li class="@yield('degree-active')"><a href="{{route('degree.create')}}"><i class="fa fa fa-share"></i> <span>Degree List</span></a></li>
             <li class="@yield('inst-active')"><a href="{{route('institution.create')}}"><i class="fa fa fa-share"></i> <span>Institution List</span></a></li>
-            <li class="@yield('home-active')"><a href="{{route('maintainuser.create')}}"><i class="fa fa fa-share"></i> <span>Create User</span></a></li>
+            <li class="@yield('create-user-active')"><a href="{{route('maintainuser.create')}}"><i class="fa fa fa-share"></i> <span>Create User</span></a></li>
             <li class="@yield('about-active')"><a href="{{route('aboutusop.index')}}"><i class="fa fa fa-share"></i> <span>About Us</span></a></li>
           <li class="@yield('service-active')"><a href="{{route('serviceop.index')}}"><i class="fa fa fa-share"></i> <span>Services</span></a></li>
           <li class="@yield('client-active')"><a href="{{route('clientop.index')}}"><i class="fa fa fa-share"></i> <span>Client</span></a></li>
@@ -295,7 +295,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script>
 
     $('#joblist').DataTable()
-    $('#examlist').DataTable()
+    $('#examlist').DataTable({
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select class="form-control"><option value="">Choose Job Category</option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    })
     $('#example2').DataTable()
      //$('#example3').DataTable()
     $('#example3').DataTable( {

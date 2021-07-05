@@ -39,7 +39,8 @@
                       <?php
                           $active = App\Exam::where('job_id','=',$val->jobid)
                                             ->where('active','=',1)
-                                            ->where('status','running')->first();
+                                            ->where('status','running')
+                                            ->where('exam_date','>=',Carbon\Carbon::now()->format('Y/m/d'))->first();
                           if($active){?>
                           <a href="/admin/career/admitcard/{{$val->jobid}}"><button class="btn btn-primary btn-sm">Admit Card</button></a>
                         <?php } ?>

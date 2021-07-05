@@ -16,8 +16,8 @@ class ExamController extends Controller
         $jobs = Career::all();
         $cat_id = $request->id;
         $filterExam = Exam::where('careercat_id',$cat_id)->get();
-        $examlists = Exam::with("getCareer","getCareerCat")->get();
-        // return $examlists;
+        $examlists = Exam::with("getCareer","careerCat")->get();
+        //  return $examlists;
         return view('Backend.exams.exams',compact('jobs','examlists','filterExam'));
     }
     public function store(Request $request){
@@ -167,9 +167,10 @@ class ExamController extends Controller
 
   public function examViewById(Request $request){
     $jobs = Career::all();
-    $cat_id = $request->id;
-    $filterExam = Exam::where('job_id',$cat_id)->first();
+    $jobid = $request->id;
+    $filterExam = Exam::where('job_id',$jobid)->first();
     $examlists = Exam::with('getCareer')->get();
+    // return $filterExam;
     return view('Backend.exams.examsbyid',compact('jobs','examlists','filterExam'));
   }
 
@@ -184,8 +185,6 @@ class ExamController extends Controller
             $findJob->save();
 
         }
-        //$findJob->status = $request->id;
-        //$findJob->save();
         return response()->json($request->sttype);
     }
 }

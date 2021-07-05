@@ -62,6 +62,7 @@ class PeoplesscapeHomeController extends Controller
         // return $request->all();
         $request->validate([
             'name' => 'required',
+            'father_name' => 'required',
             'email' => 'required|unique:users',
             'mobile' => 'required|min:11|numeric',
             'gender' => 'required',
@@ -85,6 +86,7 @@ class PeoplesscapeHomeController extends Controller
 
         $user = new User();
         $user->name = $request->name;
+        $user->father_name = $request->father_name;
         $user->email = $request->email;
         $user->mobile = $request->mobile;
         $user->gender = $request->gender;

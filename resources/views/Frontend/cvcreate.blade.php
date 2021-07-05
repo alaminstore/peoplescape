@@ -90,6 +90,17 @@
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
+                                            <label for="title" class="col-sm-4 control-label labelclass"><span
+                                                    style="color:red">*</span> Father's Name</label>
+                                            <div class="col-sm-10" style="max-width: 100%">
+                                                <input type="text" oninput="this.className = ''" style="width: 100%;"
+                                                       class="form-control" id="name" name="father_name"
+                                                       value="{{old('father_name')}}" placeholder="Enter Your Father Name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
                                             <label for="birthdate" class="col-sm-4 control-label labelclass"><span
                                                     style="color:red">*</span> Birthdate</label>
                                             <div class="col-sm-10" style="max-width: 100%">

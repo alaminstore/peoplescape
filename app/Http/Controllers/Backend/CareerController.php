@@ -15,6 +15,7 @@ use App\Jobnature;
 use App\Cvform;
 use App\Degree;
 use DB;
+use Illuminate\Support\Facades\Validator;
 use Zipper;
 class CareerController extends Controller
 {
@@ -120,31 +121,38 @@ class CareerController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),[
+            'title' => 'required | string | max: 200  | unique:careers',
 
-        $career = new Career();
-        $career->title = $request->title;
-        $career->short_code = $request->short_code;
-        $career->company = $request->company;
-        $career->experience = $request->experience;
-        $career->vacancy = $request->vacancy;
-        $career->education = $request->education;
-         $career->jobtype = $request->jobtype;
-        $career->deadline = $request->deadline;
-        $career->location = $request->location;
-        $career->salary = $request->salary;
-        $career->catid = $request->catid;
-        $career->posteddate = date('d/m/Y');
-        $career->topdescription = $request->topdescription;
-        $career->howtoapply = $request->howtoapply;
-        $career->responsibilitiestext = $request->responsibilitiestext;
-        if($request->program){
-            $career->responsibilitiespoint = json_encode($request->program);
+        ]);
+        if(!$validator->passes()){
+            return response()->json(['status'=> 0,'error'=>$validator->errors()->toArray()]);
+        }else{
+            $career = new Career();
+            $career->title = $request->title;
+            $career->short_code = $request->short_code;
+            $career->company = $request->company;
+            $career->experience = $request->experience;
+            $career->vacancy = $request->vacancy;
+            $career->education = $request->education;
+             $career->jobtype = $request->jobtype;
+            $career->deadline = $request->deadline;
+            $career->location = $request->location;
+            $career->salary = $request->salary;
+            $career->catid = $request->catid;
+            $career->posteddate = date('d/m/Y');
+            $career->topdescription = $request->topdescription;
+            $career->howtoapply = $request->howtoapply;
+            $career->responsibilitiestext = $request->responsibilitiestext;
+            if($request->program){
+                $career->responsibilitiespoint = json_encode($request->program);
+            }
+            if($request->qualification){
+                $career->qualification = json_encode($request->qualification);
+            }
+             $career->save();
+             return response()->json($career);
         }
-        if($request->qualification){
-            $career->qualification = json_encode($request->qualification);
-        }
-         $career->save();
-         return response()->json($career);
     }
     public function careeredit(Request $request){
      $id = $request->id;

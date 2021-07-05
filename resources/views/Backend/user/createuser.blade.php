@@ -1,5 +1,5 @@
 @extends('Backend.backendmaster')
-@section('user-active','active')
+@section('create-user-active','active')
 @section('title', 'PeopleScape | Create USer')
 @section('content')
 <div class="row">
@@ -78,13 +78,13 @@
               <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped ">
                   <thead>
-                   
+
                   <tr>
                     <th>Name</th>
                     <th>Role</th>
                    <th>Action</th>
                   </tr>
-                 
+
                   </thead>
                   <tbody class="userappend">
                   @foreach($GetAdminuser as $user)
@@ -119,7 +119,7 @@
                 </div>
                   <div class="modal-body">
                       {!!Form::open(['class' => 'form-horizontal','id'=>'updateuser','enctype'=>'multipart/form-data'])!!}
-                     
+
                       <div class="box-body">
                         <div class="form-group">
                             <label for="title" class="col-sm-2 control-label">Name </label>
@@ -157,17 +157,17 @@
                                   <div class="col-sm-8">
                                   <input type="file" class="form-control" id="image" name="image" placeholder="">
                                   <input type="hidden" class="form-control" id="id" name="id" placeholder="">
-              
+
                                   </div>
                                 </div>
-              
+
                                 <div class="form-group">
                                   <label for="title" class="col-sm-2 control-label"></label>
                                   <div class="col-md-10">
                                       <img id="myImage" class="img-responsive" width="150" height="70" src="" alt="">
                                   </div>
                                 </div>
-                      </div>                   
+                      </div>
                       <div class="box-footer">
                           <button type="submit" class="btn btn-info btn-block">Update</button>
                       </div>
@@ -184,10 +184,10 @@
         $(this).addClass('useractive');
         $.ajax({
           url: "{!! route('user.status') !!}",
-          type: "get", 
-          data: {  
-            id: id, 
-            userid: userid, 
+          type: "get",
+          data: {
+            id: id,
+            userid: userid,
 
           },
           success: function(data) {
@@ -202,8 +202,8 @@
                   "extendedTimeOut": 1000
                 };
           toastr.success('User Was  Deactivated Successfully');
-          
-           
+
+
           },
           error: function(xhr) {
             //Do Something to handle error
@@ -217,10 +217,10 @@
         $(this).addClass('userdeactive');
         $.ajax({
           url: "{!! route('user.status') !!}",
-          type: "get", 
-          data: {  
-            id: id, 
-            userid: userid, 
+          type: "get",
+          data: {
+            id: id,
+            userid: userid,
           },
           success: function(data) {
                console.log(data);
@@ -234,7 +234,7 @@
                   "extendedTimeOut": 1000
                 };
           toastr.success('User activated Successfully');
-          
+
           },
           error: function(xhr) {
             //Do Something to handle error
@@ -243,42 +243,42 @@
     });
 
       $(document).ready(function () {
-        $('#usercreate').validate({ 
+        $('#usercreate').validate({
         rules: {
-                name: 
+                name:
                 {
                 required: true,
-                
+
                 },
-                email: 
+                email:
                 {
                 required: true,
-                
+
                 },
-                password: 
+                password:
                 {
                 required: true,
-                
+
                 },
-                mobile: 
+                mobile:
                 {
                 required: true,
-                
+
                 },
-                status: 
+                status:
                 {
                 required: true,
-                
+
                 },
-                image: 
+                image:
                 {
                 required: true,
-                
+
                 },
-                
-                
+
+
         },
-        
+
         highlight: function(element) {
             $(element).parent().addClass('has-error');
         },
@@ -286,7 +286,7 @@
             $(element).parent().removeClass('has-error');
         },
         });
-        
+
     });
     $('#usercreate').on('submit',function(e){
         e.preventDefault();
@@ -322,10 +322,10 @@
                     <a data-id ="`+data.id+`" data-toggle="modal" data-target="#usermodal" class="edituser"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                     <a class="deleteuser" data-id ="`+data.id+`"><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                 </td>
-                </tr>`);          
+                </tr>`);
                 $('#usercreate').trigger('reset');
             }
-            
+
         });
         }
     });
@@ -334,9 +334,9 @@
           var base_url = $('#updateuser').find('#path').val();
         $.ajax({
         url: "{!! route('maintainuser.edit') !!}",
-        type: "get", 
-        data: {  
-            id: id, 
+        type: "get",
+        data: {
+            id: id,
         },
         success: function(data) {
           console.log(data);
@@ -347,31 +347,31 @@
             $('#updateuser').find('#name').val(data.name);
             $('#updateuser').find('#email').val(data.email);
             $('#updateuser').find('#mobile').val(data.mobile);
-            $('#updateuser').find('#status').append(`<option selected='selected' value=`+data.status+`>`+data.status+`</option>`);           
+            $('#updateuser').find('#status').append(`<option selected='selected' value=`+data.status+`>`+data.status+`</option>`);
           }
         });
     })
     $(document).ready(function () {
-        $('#updateuser').validate({ 
+        $('#updateuser').validate({
         rules: {
-              name: 
+              name:
                 {
                   required: true,
                 },
-                email: 
+                email:
                 {
                   required: true,
                 },
-                mobile: 
+                mobile:
                 {
                   required: true,
                 },
-                status: 
+                status:
                 {
                   required: true,
                 },
         },
-        
+
         highlight: function(element) {
             $(element).parent().addClass('has-error');
         },
@@ -379,7 +379,7 @@
             $(element).parent().removeClass('has-error');
         },
         });
-        
+
     });
 
     $(document).on('submit','#updateuser',function(e){
@@ -411,20 +411,20 @@
                         $('.unquser'+data.id).replaceWith(`<tr class='unquser`+data.id+`'>
                         <td>`+data.name+`</td>
                       <td>`+data.status+`</td>
-                   
+
                       <td>
                             <a data-id ="`+data.id+`" data-toggle="modal" data-target="#usermodal" class="edituser"><span class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                             <a class="deleteuser" data-id ="`+data.id+`" ><span class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                         </td>
-                </tr>`);    
+                </tr>`);
                     setTimeout(function() {$('#usermodal').modal('hide');}, 1500);
-        
+
                     $('#updateuser').trigger('reset');
                 }
-                
+
             });
             }
-        
+
     })
     $(document).on('click','.deleteuser',function(e) {
         e.preventDefault();
@@ -438,22 +438,22 @@
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!',
-        
+
         }).then(result => {
-        
+
         if (result.value) {
             $.ajax({
             url: "{!! route('maintainuser.delete') !!}",
-            type: "get", 
-            data: {  
-                id: id, 
+            type: "get",
+            data: {
+                id: id,
             },
             success: function(data) {
                 }
             });
-            
+
             $(this).closest('tr').hide();
-            
+
         }
         }
     )

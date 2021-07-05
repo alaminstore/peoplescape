@@ -41,21 +41,18 @@
         line-height: 30px;
         padding-bottom: 15px;
     }
+    .box-title{
+        width:100%;
+        text-align: center;
+    }
     </style>
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box box-info">
                     <div class="box-header">
+                        <button class="btn btn-primary" onclick="printPage()"><i class="fa fa-print" aria-hidden="true"></i>&nbsp; Print</button><br>
                         <h3 class="box-title"><b>Admit Card</b></h3>
-                        <button class="btn btn-primary btn-sm" onclick="printPage()">Print Admit Card</button>
-                            {{-- <div class="top-buttons"> --}}
-                                {{-- <button type="button" class="btn btn-primary btn-xs m-r-1" onclick="window.print();">
-                                    <i class="fa fa-print icon_size"></i>
-                                </button> --}}
-
-                            {{-- </div> --}}
-
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i></button>
@@ -86,7 +83,9 @@
                                                                                         align-items: center;
                                                                                         margin-top: 25px;">
                                     <div>
-                                        <h4 style="line-height: 30px;"><b>Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Auth::User()->name}} <br> <b>Mobile No:&nbsp;</b>{{Auth::user()->mobile}}</h4>
+                                        <h4 style="line-height: 30px;"><b>Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{Auth::User()->name}} <br>
+                                                                       <b>Father Name:</b> {{Auth::User()->father_name}} <br>
+                                                                       <b>Mobile No:&nbsp;</b>{{Auth::user()->mobile}}</h4>
                                     </div>
                                     <img src="{{asset(Auth::user()->image)}}" style="border: 2px solid #c4c4c4; border-radius: 8px;" width="90" alt="logo">
                                 </div>
@@ -97,8 +96,8 @@
                                           <span class="bdr_bottom" style="border-bottom: 1px solid #000">hr@peoplescapebd.net</span>
                                       </h4>
                                       <h4 style="margin-top: 22px;font-size: 15px;">
-                                          <b>(Please keep the Admit Card safely for viva Examination) <br>
-                                          Note: Any kinf of Money transaction is strongly prohibited</b>
+                                          <b>(Please keep the admit card safely for viva Examination) <br>
+                                          Note: Any kind of Money transaction is strongly prohibited</b>
                                       </h4>
                                 </div>
                             </div><br><br>

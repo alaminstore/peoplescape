@@ -14,9 +14,9 @@
                     <div class="box-header">
                         <h3 class="box-title"><b>
                           @if ($filterExam)
-                          @foreach ($filterExam as $exam)
-                            {{$exam->exam_name}}
-                          @endforeach
+                          {{-- @foreach ($filterExam as $exam) --}}
+                            {{$filterExam->exam_name}}
+                          {{-- @endforeach --}}
                           @else
                           No Exam Set Yet
                           @endif
@@ -44,29 +44,34 @@
                                 </thead>
                                 <tbody id="loadnow">
                                     @if($filterExam)
-                                        @foreach ($filterExam as $exam)
+                                        {{-- @foreach ($filterExam as $exam) --}}
                                             <tr class="text-center">
-                                                <td>{{$exam->getCareer->title}}</td>
-                                                <td>{{$exam->exam_name}}</td>
-                                                <td>{{$exam->vanue}}</td>
-                                                <td>{{$exam->exam_date}}</td>
-                                                <td>{{ \Illuminate\Support\Str::limit($exam->designation, 20, $end='...') }}</td>
+                                                <td>{{$filterExam->getCareer->title}}</td>
+                                                <td>{{$filterExam->exam_name}}</td>
+                                                <td>{{$filterExam->vanue}}</td>
+                                                <td>{{$filterExam->exam_date}}</td>
+                                                <td>{{ \Illuminate\Support\Str::limit($filterExam->designation, 20, $end='...') }}</td>
                                                 <td>
                                                     {{-- view --}}
-                                                    <a class="viewData" data-id="{{$exam->exam_id}}"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
+                                                    <a class="viewData" data-id="{{$filterExam->exam_id}}"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
                                                     {{-- delete --}}
-                                                    <a class="deletejob" data-id="{{$exam->exam_id}}"><span
+                                                    <a class="deletejob" data-id="{{$filterExam->exam_id}}"><span
                                                             class="glyphicon glyphicon-trash btn btn-danger btn-sm"></span></a>
                                                     {{-- edit --}}
-                                                    <a class="editjob" data-id="{{$exam->exam_id}}"><span
+                                                    <a class="editjob" data-id="{{$filterExam->exam_id}}"><span
                                                             class="glyphicon glyphicon-edit btn btn-primary btn-sm"></span></a>
                                                     <label class="switch">
-                                                        <input type="checkbox" {{$exam->active ==1 ? 'checked':''}}>
-                                                        <span data-jobid="{{$exam->exam_id}}" data-ofid="0" data-onid="1" class="slider round {{$exam->active == 1 ? 'examdeactive':'examactive'}}"></span>
+                                                        <input type="checkbox" {{$filterExam->active ==1 ? 'checked':''}}>
+                                                        <span data-jobid="{{$filterExam->exam_id}}" data-ofid="0" data-onid="1" class="slider round {{$filterExam->active == 1 ? 'examdeactive':'examactive'}}"></span>
                                                     </label>
+                                                    @if($filterExam->status == 'running')
+                                                        <a id="comstatus"  class="btn btn-primary runningstatus btn-sm" data-type="run" data-jobid="{{$filterExam->exam_id}}">Running</a>
+                                                    @else
+                                                        <a id="comstatus"  class="btn btn-success btn-sm runningstatus" data-type="com" data-jobid="{{$filterExam->exam_id}}">Complete</a>
+                                                    @endif
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        {{-- @endforeach --}}
                                     @else
                                     <tr class="text-center">
                                         <td colspan="6">No Exam set yet</td>
@@ -317,18 +322,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="Catname">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-2" style="padding-right: 0;">
-                                                <p><b>Designation:</b></p><br>
-                                            </div>
-                                            <div class="col-sm-10" style="padding-left:0;">
-                                                <div id="designationview"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -476,7 +469,6 @@
                         $('#jobview').html(response.data.job_name);
                         $('#examview').html(response.data.exam_name);
                         $('#dateview').html(response.data.exam_date);
-                        $('#designationview').html(response.data.designation);
                         $('#vanueview').html(response.data.vanue);
                         $('#viewModel').modal('show');
 
@@ -705,4 +697,48 @@
         });
     });
 </script>
+
+<script>
+    $(document).on('click','.runningstatus',function(){
+        var jobid = $(this).data('jobid');
+            var sttype = $(this).attr('data-type');
+            $.ajax({
+                url: "{!! route('exams.completestatus') !!}",
+                type: "get",
+                data: {
+                jobid: jobid,
+                sttype: sttype,
+
+                },
+                success: function(data) {
+                console.log(data);
+                toastr.options = {
+                                "debug": false,
+                                "positionClass": "toast-bottom-right",
+                                "onclick": null,
+                                "fadeIn": 300,
+                                "fadeOut": 1000,
+                                "timeOut": 5000,
+                                "extendedTimeOut": 1000
+                    };
+                toastr.success('Exam Status Updated');
+                },
+                error: function(xhr) {
+                //Do Something to handle error
+                }
+            });
+            if(sttype=='run'){
+                    $(this).removeClass('btn-primary');
+                    $(this).addClass('btn-success');
+                    $(this).attr("data-type","com");
+                    $(this).text('Complete');
+            }else if(sttype=='com'){
+                $(this).removeClass('btn-success');
+                $(this).addClass('btn-primary');
+                    $(this).attr("data-type","run");
+                $(this).text('Running');
+            }
+
+        });
+    </script>
 @endsection

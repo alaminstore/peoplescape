@@ -23,7 +23,7 @@
                     <div class="box-body">
                         <div class=" pull-right col-sm-2 p-0">
                             <div class="pull-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                <button id="addNew" type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#examSave">
                                     <i class="fa fa-plus" aria-hidden="true"></i> &nbsp; Create New Exam Date
                                 </button>
@@ -34,22 +34,28 @@
                             <table id="examlist" class="table table-bordered table-striped jobprepend">
                                 <thead>
                                 <tr>
-                                    <th class="text-center" width="15%">Job Title</th>
-                                    <th class="text-center" width="15%">Company</th>
-                                    <th class="text-center" width="15%">Exam Name</th>
-                                    <th class="text-center" width="15%">Venue</th>
-                                    <th class="text-center" width="15%">Exam Date</th>
-                                    <th class="text-center" width="22%">Action</th>
+                                    <th class="text-center" width="12%">Job Category</th>
+                                    <th class="text-center" width="11%">Job Title</th>
+                                    <th class="text-center" width="13%">Company</th>
+                                    <th class="text-center" width="10%">Exam Name</th>
+                                    <th class="text-center" width="12%">Venue</th>
+                                    <th class="text-center" width="10%">Exam Date</th>
+                                    <th class="text-center" width="20%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody id="loadnow">
                                     @foreach ($examlists as $exam)
-                                        <tr class="text-center">
-                                            <td>{{$exam->getCareer->title}}</td>
-                                            <td>{{$exam->getCareer->company}}</td>
-                                            <td>{{$exam->exam_name}}</td>
-                                            <td>{{$exam->vanue}}</td>
-                                            <td>{{$exam->exam_date}}</td>
+                                        <tr>
+                                            {{-- <td class="text-center">{{$exam->careercat_id}}</td> --}}
+                                            <td class="text-center">{{$exam->careerCat->title}}</td>
+                                            <td class="text-center">{{$exam->getCareer->title}}</td>
+                                            <td class="text-center">{{$exam->getCareer->company}}</td>
+                                            <td class="text-center">{{$exam->exam_name}}</td>
+                                            <td class="text-center">{{$exam->vanue}}</td>
+                                            @if ($exam->exam_date)
+                                            <td class="text-center">{{ \Carbon\Carbon::parse($exam->exam_date)->format('d/m/Y')}}</td>
+                                            @endif
+
                                             <td>
                                                 {{-- view --}}
                                                 <a class="viewData" data-id="{{$exam->exam_id}}"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
@@ -72,6 +78,11 @@
                                         </tr>
                                    @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Job Category</th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>
@@ -345,6 +356,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
 <script>
+    $('#examlist tfoot tr').prependTo('#examlist thead');
     $("#createExam").validate({
     rules: {
         job_id: {
@@ -488,6 +500,9 @@
             });
         });
 
+        $(document).on('click', '#addNew', function (e) {
+            $('#createExam').trigger('reset');
+        });
         //save data
         $('#createExam').on('submit', function (e) {
             e.preventDefault();
@@ -512,12 +527,13 @@
                         "timeOut": 5000,
                         "extendedTimeOut": 1000
                     };
-                    $('#examSave').trigger('reset');
+                    $('#createExam').trigger('reset');
                     $('#examSave').modal('hide');
+                    toastr.success('Data Inserted Successfully');
                     setTimeout(function () {
                         $("#loadnow").load(location.href + " #loadnow>*", "");
+                        $("#jobtocat").load(location.href + " #jobtocat>*", "");
                     }, 1);
-                    toastr.success('Data Inserted Successfully');
 
                 }
             });
@@ -709,11 +725,6 @@
 $(document).on('click','.runningstatus',function(){
     var jobid = $(this).data('jobid');
         var sttype = $(this).attr('data-type');
-
-
-            // $("#comstatus").load(location.href + " #comstatus");
-                //console.log(sttype);
-
         $.ajax({
             url: "{!! route('exams.completestatus') !!}",
             type: "get",
@@ -733,7 +744,7 @@ $(document).on('click','.runningstatus',function(){
                             "timeOut": 5000,
                             "extendedTimeOut": 1000
                 };
-            toastr.success('Job Status Updated');
+            toastr.success('Exam Status Updated');
             },
             error: function(xhr) {
             //Do Something to handle error

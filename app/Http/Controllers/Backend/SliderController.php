@@ -44,7 +44,7 @@ class SliderController extends Controller
         $monialTop = Monialtop::find(1);
         $footer = Footer::find(1);
         $counter =Counterpart::find(1);
-        return view('Backen///////////////////////////////////////d.home.home',compact('sliderList','sliderBottom','servicetop','allservices','locationtop','alllocations','hcall','teamTop','teams','testmonials','monialTop','footer','counter'));
+        return view('Backend.home.home',compact('sliderList','sliderBottom','servicetop','allservices','locationtop','alllocations','hcall','teamTop','teams','testmonials','monialTop','footer','counter'));
     }
 
 
