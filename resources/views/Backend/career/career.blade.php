@@ -46,6 +46,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="title" class="col-sm-2 control-label">Select Admit / Invitation</label>
+                                        <div class="col-sm-8">
+                                            <select name="admit_or_invitation" class="form-control" id="admit_or_invitation" required>
+                                                <option value="">Choose Admit Card / Invitation ...</option>
+                                                <option value="1">Admit Card</option>
+                                                <option value="2">Invitation</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="title" class="col-sm-2 control-label">Company Name</label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="company" name="company"

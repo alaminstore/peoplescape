@@ -24,6 +24,16 @@
                                placeholder="HRM,ACCOUNTANT,DEVELOPER, etc ... " value="{{$data['careerbyid']->short_code}}">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="title" class="col-sm-2 control-label">Select Admit / Invitation</label>
+                    <div class="col-sm-8">
+                        <select name="admit_or_invitation" class="form-control" id="admit_or_invitation" required>
+                            <option value="" disabled>Choose Admit Card / Invitation ...</option>
+                            <option value="1" {{$data['careerbyid']->admit_or_invitation == 1 ? 'selected':''}}>Admit Card</option>
+                            <option value="2" {{$data['careerbyid']->admit_or_invitation == 2 ? 'selected':''}}>Invitation</option>
+                        </select>
+                    </div>
+                </div>
                  <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Company Name</label>
                     <div class="col-sm-8">

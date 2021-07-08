@@ -52,7 +52,7 @@
                 <div class="box box-info">
                     <div class="box-header">
                         <button class="btn btn-primary" onclick="printPage()"><i class="fa fa-print" aria-hidden="true"></i>&nbsp; Print</button><br>
-                        <h3 class="box-title"><b>Admit Card</b></h3>
+                        <h3 class="box-title"><b>{{$exams_data->admit_or_invitation == 1? 'Admit Card': 'Invitation' }}</b></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i></button>
@@ -70,7 +70,7 @@
                                         <img src="https://www.peoplescapebd.net/frontEnd/img/logo.png" width="65" alt="logo">
                                     </div>
                                     <h4 style="line-height: 30px; padding-bottom: 15px;">
-                                        <b>{{$exams_data->job_name}} Recruitment Examination Admit Card</b><br>
+                                        <b>{{$exams_data->admit_or_invitation == 1? 'Admit Card': 'Invitation' }} For {{$exams_data->job_name}} Recruitment Examination</b><br>
                                         <span><b>Venue:</b> {{$exams_data->vanue}}</span>
                                     </h4>
                                 </div>

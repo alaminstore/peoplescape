@@ -37,13 +37,21 @@
                   <td>
                       <a href="{!!route('career.details',['id'=>$val->jobid])!!}" target="_blank"><span class="glyphicon glyphicon-eye-open btn btn-info btn-sm"></span></a>
                       <?php
-                          $active = App\Exam::where('job_id','=',$val->jobid)
+                          $shortlist = App\Shortlisted::where('job_id','=',$val->jobid)
+                                                        ->where('user_id','=', Auth::user()->id)->first();
+                         if($shortlist){
+                            $active = App\Exam::where('job_id','=',$val->jobid)
                                             ->where('active','=',1)
                                             ->where('status','running')
                                             ->where('exam_date','>=',Carbon\Carbon::now()->format('Y/m/d'))->first();
-                          if($active){?>
-                          <a href="/admin/career/admitcard/{{$val->jobid}}"><button class="btn btn-primary btn-sm">Admit Card</button></a>
-                        <?php } ?>
+
+                            if($active){?>
+                            <a href="/admin/career/admitcard/{{$val->jobid}}"><button class="btn btn-primary btn-sm">Admit Card</button></a>
+                            <?php }
+
+                        } ?>
+
+
 
                     </td>
                  </tr>

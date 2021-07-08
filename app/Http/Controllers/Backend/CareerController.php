@@ -131,6 +131,7 @@ class CareerController extends Controller
             $career = new Career();
             $career->title = $request->title;
             $career->short_code = $request->short_code;
+            $career->admit_or_invitation = $request->admit_or_invitation;
             $career->company = $request->company;
             $career->experience = $request->experience;
             $career->vacancy = $request->vacancy;
@@ -167,6 +168,7 @@ class CareerController extends Controller
         $career = Career::find($request->id);
         $career->title = $request->title;
         $career->short_code = $request->short_code;
+        $career->admit_or_invitation = $request->admit_or_invitation;
         $career->company = $request->company;
         $career->experience = $request->experience;
         $career->vacancy = $request->vacancy;
@@ -319,12 +321,14 @@ class CareerController extends Controller
                         $userid[$i]['lastinst']=$acc->instnameoth;
                     }
                     $userid[$i]['lastdegree']=$acc->degree;
-                   if(array_key_exists('major', $acc)){
+                //    if(array_key_exists('major', $acc)){
+                    if($acc->major){
                       $userid[$i]['major']=$acc->major;
                     }else{
                         $userid[$i]['major']='No Data';
                     }
-                   if(array_key_exists('minor', $acc)){
+                //    if(array_key_exists('minor', $acc)){
+                    if($acc->minor){
                       $userid[$i]['minor']=$acc->minor;
                    }else{
                         $userid[$i]['minor']='No Data';

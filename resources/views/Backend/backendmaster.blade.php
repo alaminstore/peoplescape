@@ -294,7 +294,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   @stack('scripts')
   <script>
 
-    $('#joblist').DataTable()
+    $('#joblist').DataTable();
     $('#examlist').DataTable({
         initComplete: function () {
             this.api().columns().every( function () {
