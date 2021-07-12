@@ -19,7 +19,7 @@ class InvitationMail extends Mailable
     public function __construct($emailbody)
     {
        $this->emailbody = $emailbody;
-        ;
+
     }
 
     /**

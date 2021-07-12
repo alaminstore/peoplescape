@@ -10,4 +10,8 @@ class Career extends Model
     public function getCat(){
         return $this->belongsTo(Career::class,'catid','id');
     }
+
+    protected $rules = [
+        'short_code' => 'sometimes|required|unique:careers',
+    ];
 }
